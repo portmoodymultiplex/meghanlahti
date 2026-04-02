@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preview Access — Meghan Lahti 2026</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:  #0E2466;
+    --rose:  #C93370;
+    --gold:  #D4920A;
+    --cream: #EDE8DF;
+    --warm-white: #F7F4EF;
+    --font-head: 'Playfair Display', Georgia, serif;
+    --font-body: 'Source Serif 4', Georgia, serif;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--navy);
+    font-family: var(--font-body);
+    padding: 24px;
+  }
+
+  .gate {
+    background: var(--warm-white);
+    border-radius: 6px;
+    padding: 52px 48px 48px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+  }
+
+  .gate-bar {
+    width: 48px;
+    height: 4px;
+    background: var(--rose);
+    margin: 0 auto 28px;
+    border-radius: 2px;
+  }
+
+  .gate-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 12px;
+  }
+
+  .gate-title {
+    font-family: var(--font-head);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .gate-sub {
+    font-size: 15px;
+    color: rgba(14,36,102,0.55);
+    margin-bottom: 36px;
+    line-height: 1.5;
+  }
+
+  .gate-input {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 16px;
+    font-family: var(--font-body);
+    border: 2px solid rgba(14,36,102,0.15);
+    border-radius: 4px;
+    background: white;
+    color: var(--navy);
+    outline: none;
+    transition: border-color 0.15s;
+    text-align: center;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+  }
+
+  .gate-input:focus {
+    border-color: var(--rose);
+  }
+
+  .gate-input.error {
+    border-color: #c0392b;
+    background: #fdf2f2;
+  }
+
+  .gate-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--navy);
+    color: var(--warm-white);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .gate-btn:hover { background: var(--rose); }
+
+  .gate-error {
+    font-size: 13px;
+    color: #c0392b;
+    margin-top: 12px;
+    display: none;
+  }
+
+  .gate-error.visible { display: block; }
+
+  .gate-footer {
+    margin-top: 32px;
+    font-size: 12px;
+    color: rgba(14,36,102,0.35);
+    letter-spacing: 0.04em;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Serif+4:wght@400;600&display=swap');
+</style>
+</head>
+<body>
+
+<div class="gate">
+  <div class="gate-bar"></div>
+  <div class="gate-eyebrow">Preview Access</div>
+  <h1 class="gate-title">Meghan Lahti<br>for Mayor 2026</h1>
+  <p class="gate-sub">This site is in private preview.<br>Enter the access password to continue.</p>
+
+  <input
+    type="password"
+    id="pw"
+    class="gate-input"
+    placeholder="Password"
+    autocomplete="off"
+    autofocus
+  />
+  <button class="gate-btn" onclick="checkPassword()">Enter Site</button>
+  <p class="gate-error" id="err">Incorrect password. Please try again.</p>
+
+  <p class="gate-footer">Port Moody &bull; Together &bull; Forward</p>
+</div>
+
+<script>
+  // Password: lahti
+  // Stored as SHA-256 so it's not plaintext in source
+  const HASH = "f1f606449ef4602990153edfbd439bc2440f94047fc86cc0846b5127a168f66a";
+
+  async function sha256(str) {
+    const buf = await crypto.subtle.digest(
+      "SHA-256",
+      new TextEncoder().encode(str)
+    );
+    return Array.from(new Uint8Array(buf))
+      .map(b => b.toString(16).padStart(2, "0"))
+      .join("");
+  }
+
+  async function checkPassword() {
+    const input = document.getElementById("pw").value.trim().toLowerCase();
+    const hash = await sha256(input);
+    if (hash === HASH) {
+      sessionStorage.setItem("lahti_preview", "granted");
+      const redirect = sessionStorage.getItem("lahti_redirect") || "/index.html";
+      sessionStorage.removeItem("lahti_redirect");
+      window.location.href = redirect;
+    } else {
+      document.getElementById("pw").classList.add("error");
+      document.getElementById("err").classList.add("visible");
+      document.getElementById("pw").value = "";
+      document.getElementById("pw").focus();
+    }
+  }
+
+  document.getElementById("pw").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") checkPassword();
+    this.classList.remove("error");
+    document.getElementById("err").classList.remove("visible");
+  });
+
+  // If already authorized, go home
+  if (sessionStorage.getItem("lahti_preview") === "granted") {
+    window.location.href = "/index.html";
+  }
+</script>
+
+</body>
+</html>
