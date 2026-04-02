@@ -1,28 +1,28 @@
 /* ============================================================
    LAHTI 2026 — SHARED STYLESHEET
-   Playfair Display + Source Serif 4 only. No emojis. No DM Mono.
+   Times New Roman + Inter only. No emojis. No DM Mono.
    ============================================================ */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --navy:       #0E2466;
-  --forest:     #1648B8;
-  --gold:       #D4920A;
-  --gold-pale:  #F5EDD6;
-  --cream:      #EDE8DF;
+  --navy:       #1B2A4A;
+  --forest:     #2A4068;
+  --gold:       #E24B8A;
+  --gold-pale:  #FDF2F6;
+  --cream:      #F0EDEA;
   --warm-white: #F7F4EF;
   --slate:      #4A5568;
   --taupe:      #8B8272;
   --mist:       #D6DDE8;
   --lforest:    #E8F0EA;
-  --font-head:  'Playfair Display', Georgia, serif;
-  --font-body:  'Source Serif 4', Georgia, serif;
-  --rose:        #C93370;
-  --rose-deep:   #A82259;
+  --font-head:  'Times New Roman', Georgia, serif;
+  --font-body:  'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --rose:        #D63D7B;
+  --rose-deep:   #C02B65;
   --rose-pale:   #FAEEF5;
-  --cobalt:      #1648B8;
-  --cobalt-pale: #EAF0FC;
+  --cobalt:      #2A4068;
+  --cobalt-pale: #EEF1F6;
 }
 
 html { scroll-behavior: smooth; }
@@ -45,7 +45,7 @@ img { display: block; max-width: 100%; }
 }
 .t-label-forest { color: var(--forest); }
 .t-label-slate  { color: var(--taupe); }
-.t-label-light  { color: rgba(201,168,76,0.7); }
+.t-label-light  { color: rgba(226,75,138,0.7); }
 
 .t-h1 {
   font-family: var(--font-head);
@@ -78,9 +78,9 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.02em; line-height: 1;
 }
 .btn-gold    { background: var(--gold); color: var(--navy); }
-.btn-gold:hover { background: #b8962e; color: var(--warm-white); }
+.btn-gold:hover { background: #C93D75; color: var(--warm-white); }
 .btn-navy    { background: var(--navy); color: var(--warm-white); }
-.btn-navy:hover { background: #0f1d2e; }
+.btn-navy:hover { background: #13203A; }
 .btn-outline { background: transparent; color: var(--warm-white); border: 2px solid rgba(247,244,239,0.3); }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 .btn-outline-navy { background: transparent; color: var(--navy); border: 2px solid rgba(27,45,69,0.3); }
@@ -136,7 +136,7 @@ img { display: block; max-width: 100%; }
   transition: all 0.15s; white-space: nowrap;
 }
 .nav-links a:hover,
-.nav-links a.active { color: var(--warm-white); background: rgba(201,168,76,0.1); }
+.nav-links a.active { color: var(--warm-white); background: rgba(226,75,138,0.1); }
 .nav-links a.active { color: var(--gold); }
 .nav-cta {
   background: var(--gold); color: var(--navy) !important;
@@ -144,7 +144,7 @@ img { display: block; max-width: 100%; }
   border-radius: 2px; white-space: nowrap; flex-shrink: 0;
   font-size: 15px !important; transition: background 0.15s !important;
 }
-.nav-cta:hover { background: #b8962e !important; color: var(--warm-white) !important; }
+.nav-cta:hover { background: #C93D75 !important; color: var(--warm-white) !important; }
 
 /* hamburger */
 .hamburger {
@@ -152,7 +152,7 @@ img { display: block; max-width: 100%; }
   cursor: pointer; background: none; border: none; padding: 6px;
 }
 .hamburger span { display: block; width: 24px; height: 2px; background: var(--warm-white); }
-.mobile-menu { display: none; background: #16253a; padding: 10px 0 18px; }
+.mobile-menu { display: none; background: #1E3350; padding: 10px 0 18px; }
 .mobile-menu a {
   display: block; font-size: 17px; font-weight: 600;
   color: var(--warm-white); padding: 13px 32px;
@@ -202,7 +202,7 @@ img { display: block; max-width: 100%; }
   font-family: var(--font-head);
   font-size: 16px; font-weight: 700; font-style: italic;
   color: rgba(247,244,239,0.35);
-  border-left: 3px solid rgba(201,168,76,0.25);
+  border-left: 3px solid rgba(226,75,138,0.25);
   padding-left: 14px; line-height: 1.4;
   margin-bottom: 20px;
 }
@@ -216,12 +216,12 @@ img { display: block; max-width: 100%; }
   border: 1px solid rgba(247,244,239,0.08);
   transition: all 0.15s;
 }
-.footer-social a:hover { color: var(--gold); background: rgba(201,168,76,0.1); }
+.footer-social a:hover { color: var(--gold); background: rgba(226,75,138,0.1); }
 .footer-col h4 {
   font-family: var(--font-head);
   font-size: 15px; font-weight: 700; color: var(--warm-white);
   margin-bottom: 14px; padding-bottom: 10px;
-  border-bottom: 2px solid rgba(201,51,112,0.22);
+  border-bottom: 2px solid rgba(214,61,123,0.22);
 }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
 .footer-col ul li a {
@@ -229,8 +229,8 @@ img { display: block; max-width: 100%; }
 }
 .footer-col ul li a:hover { color: var(--gold); }
 .footer-donate-box {
-  background: rgba(201,168,76,0.07);
-  border: 1px solid rgba(201,168,76,0.18);
+  background: rgba(226,75,138,0.07);
+  border: 1px solid rgba(226,75,138,0.18);
   border-top: 3px solid var(--gold);
   padding: 16px; text-align: center; margin-top: 4px;
 }
@@ -243,14 +243,14 @@ img { display: block; max-width: 100%; }
 .footer-donate-label {
   font-size: 11px; font-weight: 600;
   letter-spacing: 0.1em; text-transform: uppercase;
-  color: rgba(201,168,76,0.45); margin-bottom: 12px;
+  color: rgba(226,75,138,0.45); margin-bottom: 12px;
 }
 .footer-donate-btn {
   display: block; background: var(--gold); color: var(--navy);
   font-size: 14px; font-weight: 700; padding: 10px;
   text-align: center; border-radius: 2px; transition: background 0.15s;
 }
-.footer-donate-btn:hover { background: #b8962e; }
+.footer-donate-btn:hover { background: #C93D75; }
 .footer-bottom {
   border-top: 1px solid rgba(247,244,239,0.07);
   padding: 18px 72px;
@@ -259,7 +259,7 @@ img { display: block; max-width: 100%; }
 }
 .footer-legal { font-size: 12px; color: rgba(214,221,232,0.25); line-height: 1.6; }
 .footer-tags { display: flex; gap: 14px; }
-.footer-tag { font-size: 12px; font-weight: 600; color: rgba(201,168,76,0.35); }
+.footer-tag { font-size: 12px; font-weight: 600; color: rgba(226,75,138,0.35); }
 .footer-ack {
   padding: 14px 72px;
   font-size: 12px; color: rgba(214,221,232,0.2);
@@ -282,7 +282,7 @@ img { display: block; max-width: 100%; }
 .pullquote-source {
   font-size: 13px; font-weight: 600;
   letter-spacing: 0.12em; text-transform: uppercase;
-  color: rgba(201,168,76,0.45);
+  color: rgba(226,75,138,0.45);
 }
 .donate-strip {
   background: var(--gold); padding: 44px 72px;
@@ -365,7 +365,7 @@ img { display: block; max-width: 100%; }
   content: ""; position: absolute;
   top: -100px; right: -60px;
   width: 360px; height: 360px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(226,75,138,0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 .page-banner h1 {
