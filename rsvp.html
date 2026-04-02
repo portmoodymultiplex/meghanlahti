@@ -242,8 +242,13 @@ img { display: block; max-width: 100%; }
         <div class="t-divider" style="background:var(--rose);width:60px;"></div>
         <p class="t-body" style="margin-bottom:24px;">We&rsquo;d love to see you there. Fill in your details below and we&rsquo;ll send you a confirmation with all the info you need.</p>
 
-        <form class="rsvp-form" id="rsvpForm" name="rsvp" method="POST" data-netlify="true" action="/rsvp.html#thanks" onsubmit="return handleRSVP(event);">
-          <input type="hidden" name="form-name" value="rsvp">
+        <form class="rsvp-form" id="rsvpForm" method="POST" action="https://formsubmit.co/sheri@zadagroup.ca" onsubmit="return handleRSVP(event);">
+          <!-- FormSubmit config -->
+          <input type="hidden" name="_cc" value="meghanplahti@gmail.com">
+          <input type="hidden" name="_subject" value="New RSVP — Meghan Lahti Campaign Kick-Off">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://lahti2026.ca/rsvp.html#thanks">
+          <input type="hidden" name="_captcha" value="false">
           <div class="form-row">
             <div><label class="form-label">First Name</label>
             <input type="text" name="first-name" class="form-input" placeholder="Your first name" required></div>
