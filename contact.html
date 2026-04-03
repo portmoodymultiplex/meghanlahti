@@ -232,39 +232,47 @@ img { display: block; max-width: 100%; }
         <span class="t-label" style="color:var(--rose);">Send a Message</span>
         <h2 class="t-h2" style="margin-bottom:14px;">We&rsquo;ll get back to you within 48 hours.</h2>
         <div class="t-divider" style="background:var(--rose);width:60px;"></div>
-        <form style="display:flex;flex-direction:column;gap:18px;margin-top:8px;" onsubmit="return false;">
+        <form id="contactForm" style="display:flex;flex-direction:column;gap:18px;margin-top:8px;" onsubmit="return handleContact(event);">
+          <input type="hidden" name="_subject" value="New Message — Meghan Lahti 2026 Campaign">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
             <div><label style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--taupe);display:block;margin-bottom:6px;">First Name</label>
-            <input type="text" style="width:100%;padding:13px 16px;border:1.5px solid #D6D0C5;border-radius:3px;font-family:'Inter','Helvetica Neue',Arial,sans-serif;font-size:16px;color:var(--navy);background:var(--warm-white);outline:none;" placeholder="Jane"></div>
+            <input type="text" name="first-name" required style="width:100%;padding:13px 16px;border:1.5px solid #D6D0C5;border-radius:3px;font-family:'Inter','Helvetica Neue',Arial,sans-serif;font-size:16px;color:var(--navy);background:var(--warm-white);outline:none;" placeholder="Jane"></div>
             <div><label style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--taupe);display:block;margin-bottom:6px;">Last Name</label>
-            <input type="text" style="width:100%;padding:13px 16px;border:1.5px solid #D6D0C5;border-radius:3px;font-family:'Inter','Helvetica Neue',Arial,sans-serif;font-size:16px;color:var(--navy);background:var(--warm-white);outline:none;" placeholder="Smith"></div>
+            <input type="text" name="last-name" required style="width:100%;padding:13px 16px;border:1.5px solid #D6D0C5;border-radius:3px;font-family:'Inter','Helvetica Neue',Arial,sans-serif;font-size:16px;color:var(--navy);background:var(--warm-white);outline:none;" placeholder="Smith"></div>
           </div>
           <div><label style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--taupe);display:block;margin-bottom:6px;">Email</label>
-          <input type="email" style="width:100%;padding:13px 16px;border:1.5px solid #D6D0C5;border-radius:3px;font-family:'Inter','Helvetica Neue',Arial,sans-serif;font-size:16px;color:var(--navy);background:var(--warm-white);outline:none;" placeholder="jane@example.com"></div>
+          <input type="email" name="email" required style="width:100%;padding:13px 16px;border:1.5px solid #D6D0C5;border-radius:3px;font-family:'Inter','Helvetica Neue',Arial,sans-serif;font-size:16px;color:var(--navy);background:var(--warm-white);outline:none;" placeholder="jane@example.com"></div>
           <div><label style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--taupe);display:block;margin-bottom:6px;">I&rsquo;m interested in</label>
           <div style="display:flex;flex-wrap:wrap;gap:10px;">
-            <label style="display:flex;align-items:center;gap:8px;font-size:15px;color:var(--slate);cursor:pointer;"><input type="checkbox" style="accent-color:var(--forest);width:16px;height:16px;">Volunteering</label>
-            <label style="display:flex;align-items:center;gap:8px;font-size:15px;color:var(--slate);cursor:pointer;"><input type="checkbox" style="accent-color:var(--forest);width:16px;height:16px;">Campaign Updates</label>
-            <label style="display:flex;align-items:center;gap:8px;font-size:15px;color:var(--slate);cursor:pointer;"><input type="checkbox" style="accent-color:var(--forest);width:16px;height:16px;">Media Inquiry</label>
-            <label style="display:flex;align-items:center;gap:8px;font-size:15px;color:var(--slate);cursor:pointer;"><input type="checkbox" style="accent-color:var(--forest);width:16px;height:16px;">Hosting a Sign</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:15px;color:var(--slate);cursor:pointer;"><input type="checkbox" name="interest" value="Volunteering" style="accent-color:var(--forest);width:16px;height:16px;">Volunteering</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:15px;color:var(--slate);cursor:pointer;"><input type="checkbox" name="interest" value="Campaign Updates" style="accent-color:var(--forest);width:16px;height:16px;">Campaign Updates</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:15px;color:var(--slate);cursor:pointer;"><input type="checkbox" name="interest" value="Media Inquiry" style="accent-color:var(--forest);width:16px;height:16px;">Media Inquiry</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:15px;color:var(--slate);cursor:pointer;"><input type="checkbox" name="interest" value="Hosting a Sign" style="accent-color:var(--forest);width:16px;height:16px;">Hosting a Sign</label>
           </div></div>
           <div><label style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--taupe);display:block;margin-bottom:6px;">Message</label>
-          <textarea rows="5" style="width:100%;padding:13px 16px;border:1.5px solid #D6D0C5;border-radius:3px;font-family:'Inter','Helvetica Neue',Arial,sans-serif;font-size:16px;color:var(--navy);background:var(--warm-white);outline:none;resize:vertical;" placeholder="Your message here&hellip;"></textarea></div>
-          <button type="submit" class="btn btn-gold" style="align-self:flex-start;font-size:16px;padding:14px 28px;">Send Message</button>
+          <textarea name="message" rows="5" required style="width:100%;padding:13px 16px;border:1.5px solid #D6D0C5;border-radius:3px;font-family:'Inter','Helvetica Neue',Arial,sans-serif;font-size:16px;color:var(--navy);background:var(--warm-white);outline:none;resize:vertical;" placeholder="Your message here&hellip;"></textarea></div>
+          <button type="submit" id="contactBtn" class="btn btn-gold" style="align-self:flex-start;font-size:16px;padding:14px 28px;">Send Message</button>
         </form>
+        <div id="contactSuccess" style="display:none;background:var(--gold-pale);border:2px solid var(--gold);border-radius:8px;padding:32px 24px;text-align:center;margin-top:8px;">
+          <div style="font-size:40px;margin-bottom:12px;">&#10003;</div>
+          <h3 style="font-family:'Times New Roman',Georgia,serif;font-size:26px;font-weight:900;color:var(--navy);margin-bottom:8px;">Message Sent!</h3>
+          <p style="font-size:16px;color:var(--slate);">Thanks for reaching out. We&rsquo;ll get back to you within 48 hours.</p>
+        </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:3px;">
         <div style="background:var(--navy);padding:28px 28px;">
           <h3 class="t-h3" style="color:var(--warm-white);font-size:18px;margin-bottom:18px;">Campaign Contact</h3>
           <div style="display:flex;flex-direction:column;gap:14px;">
-            <div style="display:flex;gap:14px;align-items:flex-start;"><div style="width:36px;height:36px;border-radius:50%;background:rgba(214,61,123,0.10);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C93370" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></div><div><div style="font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--taupe);margin-bottom:3px;">Email</div><a href="mailto:info@lahti2026.ca" style="font-size:16px;color:var(--gold);">info@lahti2026.ca</a></div></div>
+            <div style="display:flex;gap:14px;align-items:flex-start;"><div style="width:36px;height:36px;border-radius:50%;background:rgba(214,61,123,0.10);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C93370" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></div><div><div style="font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--taupe);margin-bottom:3px;">Email</div><a href="mailto:info@lahti2026.com" style="font-size:16px;color:var(--gold);">info@lahti2026.com</a></div></div>
             <div style="display:flex;gap:14px;align-items:flex-start;"><div style="width:36px;height:36px;border-radius:50%;background:rgba(214,61,123,0.10);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C93370" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div style="font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--taupe);margin-bottom:3px;">Location</div><div style="font-size:16px;color:rgba(247,244,239,0.7);">Port Moody, British Columbia</div></div></div>
             <div style="display:flex;gap:14px;align-items:flex-start;"><div style="width:36px;height:36px;border-radius:50%;background:rgba(214,61,123,0.10);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C93370" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div><div><div style="font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--taupe);margin-bottom:3px;">Social</div><div style="font-size:16px;color:rgba(247,244,239,0.7);">@Lahti2026</div></div></div>
           </div>
         </div>
         <div style="background:var(--cream);padding:24px 28px;">
           <h3 class="t-h3" style="font-size:17px;margin-bottom:10px;">Media Inquiries</h3>
-          <p style="font-size:15px;color:var(--slate);line-height:1.7;">For press and media requests, please email <a href="mailto:info@lahti2026.ca" style="color:var(--forest);font-weight:600;">info@lahti2026.ca</a> with &ldquo;Media&rdquo; in the subject line. We aim to respond within 24 hours.</p>
+          <p style="font-size:15px;color:var(--slate);line-height:1.7;">For press and media requests, please email <a href="mailto:info@lahti2026.com" style="color:var(--forest);font-weight:600;">info@lahti2026.com</a> with &ldquo;Media&rdquo; in the subject line. We aim to respond within 24 hours.</p>
         </div>
         <div style="background:var(--rose-pale);border-top:3px solid var(--rose);padding:24px 28px;">
           <h3 class="t-h3" style="font-size:17px;margin-bottom:10px;">Open-Door Meetings</h3>
@@ -289,13 +297,13 @@ img { display: block; max-width: 100%; }
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
         <a href="https://www.facebook.com" style="background:rgba(247,244,239,0.07);color:rgba(247,244,239,0.6);font-size:13px;font-weight:600;padding:7px 14px;border-radius:3px;border:1px solid rgba(247,244,239,0.1);">Facebook</a>
         <a href="https://www.instagram.com" style="background:rgba(247,244,239,0.07);color:rgba(247,244,239,0.6);font-size:13px;font-weight:600;padding:7px 14px;border-radius:3px;border:1px solid rgba(247,244,239,0.1);">Instagram</a>
-        <a href="mailto:info@lahti2026.ca" style="background:rgba(247,244,239,0.07);color:rgba(247,244,239,0.6);font-size:13px;font-weight:600;padding:7px 14px;border-radius:3px;border:1px solid rgba(247,244,239,0.1);">Email</a>
+        <a href="mailto:info@lahti2026.com" style="background:rgba(247,244,239,0.07);color:rgba(247,244,239,0.6);font-size:13px;font-weight:600;padding:7px 14px;border-radius:3px;border:1px solid rgba(247,244,239,0.1);">Email</a>
       </div>
     </div>
     <div class="footer-col"><h4>Pages</h4><ul><li><a href="/index.html">Home</a></li><li><a href="/about.html">About Meghan</a></li><li><a href="/platform.html">Platform</a></li><li><a href="/the-record.html">The Record</a></li><li><a href="/volunteer.html">Volunteer</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
     <div class="footer-col"><h4>Platform</h4><ul><li><a href="/platform.html#housing">Housing &amp; Growth</a></li><li><a href="/platform.html#parks">Parks &amp; Environment</a></li><li><a href="/platform.html#traffic">Traffic &amp; Infrastructure</a></li><li><a href="/platform.html#economy">Economy &amp; Jobs</a></li><li><a href="/the-record.html">What&rsquo;s Been Built</a></li></ul></div>
     <div class="footer-col"><h4>Contact</h4>
-      <p style="font-size:15px;color:rgba(214,221,232,0.55);line-height:1.7;margin-bottom:16px;"><a href="mailto:info@lahti2026.ca" style="color:var(--gold);">info@lahti2026.ca</a><br>Port Moody, British Columbia<br>@Lahti2026</p>
+      <p style="font-size:15px;color:rgba(214,221,232,0.55);line-height:1.7;margin-bottom:16px;"><a href="mailto:info@lahti2026.com" style="color:var(--gold);">info@lahti2026.com</a><br>Port Moody, British Columbia<br>@Lahti2026</p>
       </div>
   </div>
   <div class="footer-bottom">
@@ -308,4 +316,40 @@ img { display: block; max-width: 100%; }
 document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
 }());</script>
 <script src="/password-gate.js"></script>
+<script>
+function handleContact(e) {
+  e.preventDefault();
+  var form = document.getElementById('contactForm');
+  var btn = document.getElementById('contactBtn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  // Collect checked interests
+  var interests = Array.from(form.querySelectorAll('input[name="interest"]:checked')).map(function(cb){ return cb.value; }).join(', ');
+  var data = {
+    'first-name': form.querySelector('[name="first-name"]').value,
+    'last-name':  form.querySelector('[name="last-name"]').value,
+    'email':      form.querySelector('[name="email"]').value,
+    'interests':  interests || 'None selected',
+    'message':    form.querySelector('[name="message"]').value,
+    '_subject':   'New Message — Meghan Lahti 2026 Campaign',
+    '_template':  'table',
+    '_captcha':   'false'
+  };
+
+  fetch('https://formsubmit.co/ajax/sheri@zadagroup.ca', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(data)
+  }).then(function(res){ return res.json(); }).then(function(){
+    form.style.display = 'none';
+    document.getElementById('contactSuccess').style.display = 'block';
+  }).catch(function(){
+    btn.textContent = 'Send Message';
+    btn.disabled = false;
+    alert('Something went wrong. Please email info@lahti2026.com directly.');
+  });
+  return false;
+}
+</script>
 </body></html>
