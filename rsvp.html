@@ -20,7 +20,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="You're Invited — Meghan Lahti Campaign Kick-Off">
 <meta name="twitter:description" content="Join us Thursday, April 16, 2026 · 6–9 PM · 200–2414 St. Johns Street, Port Moody, B.C.">
-<meta name="twitter:image" content="https://lahti2026.ca/og-kickoff.png">
+<meta name="twitter:image" content="https://lahti2026.com/og-kickoff.png">
 <meta name="twitter:image:alt" content="Meghan Lahti Campaign Kick-Off Event Invite">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style>/* ── RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -249,7 +249,7 @@ img { display: block; max-width: 100%; }
           <input type="hidden" name="_cc" value="meghanplahti@gmail.com">
           <input type="hidden" name="_subject" value="New RSVP — Meghan Lahti Campaign Kick-Off">
           <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="https://lahti2026.ca/rsvp.html#thanks">
+          <input type="hidden" name="_next" value="https://lahti2026.com/rsvp.html#thanks">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_autoresponse" value="Thanks for RSVPing! We can't wait to see you on April 16. Here's what you need to know: Thursday, April 16, 2026 · 6–9 PM · 200–2414 St. Johns Street, Port Moody, B.C. Questions? Email info@lahti2026.ca">
           <div class="form-row">
@@ -360,12 +360,11 @@ function handleRSVP(e) {
   var btn = form.querySelector('button[type="submit"]');
   btn.textContent = 'Sending...';
   btn.disabled = true;
-  // Submit to Netlify Forms
-  fetch('/', {
+  fetch('https://formsubmit.co/ajax/sheri@zadagroup.ca', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(new FormData(form)).toString()
-  }).then(function() {
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(Object.fromEntries(new FormData(form)))
+  }).then(function(res) { return res.json(); }).then(function(data) {
     document.getElementById('rsvpFormSection').style.display = 'none';
     document.getElementById('rsvpSuccess').classList.add('show');
     document.getElementById('rsvpSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -377,5 +376,4 @@ function handleRSVP(e) {
   return false;
 }
 </script>
-<script src="/password-gate.js"></script>
 </body></html>
