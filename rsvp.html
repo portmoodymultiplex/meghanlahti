@@ -357,11 +357,19 @@ function handleRSVP(e) {
   var btn = form.querySelector('button[type="submit"]');
   btn.textContent = 'Sending...';
   btn.disabled = true;
-  fetch('https://formsubmit.co/ajax/sheri@zadagroup.ca', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify(Object.fromEntries(new FormData(form)))
-  }).then(function(res) { return res.json(); }).then(function(data) {
+  var data = Object.fromEntries(new FormData(form));
+  data['Date'] = new Date().toLocaleString('en-CA', {timeZone:'America/Vancouver'});
+  Promise.all([
+    fetch('https://formsubmit.co/ajax/sheri@zadagroup.ca', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    }),
+    fetch('https://hooks.zapier.com/hooks/catch/27087516/u7yuuwu/', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    })
+  ]).then(function() {
     document.getElementById('rsvpFormSection').style.display = 'none';
     document.getElementById('rsvpSuccess').classList.add('show');
     document.getElementById('rsvpSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
