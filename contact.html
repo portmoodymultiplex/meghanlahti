@@ -337,11 +337,18 @@ function handleContact(e) {
     '_captcha':   'false'
   };
 
-  fetch('https://formsubmit.co/ajax/sheri@zadagroup.ca', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify(data)
-  }).then(function(res){ return res.json(); }).then(function(){
+  data['Date'] = new Date().toLocaleString('en-CA', {timeZone:'America/Vancouver'});
+  Promise.all([
+    fetch('https://formsubmit.co/ajax/sheri@zadagroup.ca', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    }),
+    fetch('https://hooks.zapier.com/hooks/catch/27087516/u7y60l6/', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    })
+  ]).then(function(){
     form.style.display = 'none';
     document.getElementById('contactSuccess').style.display = 'block';
   }).catch(function(){
