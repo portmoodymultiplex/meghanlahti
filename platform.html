@@ -5,26 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Meghan Lahti for Mayor, Port Moody 2026. Thirty years of delivering for Port Moody.">
 <title>Platform &middot; Meghan Lahti for Port Moody 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <style>/* ── RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --navy:       #1B2A4A;
-  --forest:     #2A4068;
-  --gold:       #E24B8A;
-  --gold-pale:  #FDF2F6;
-  --cream:      #F0EDEA;
+  --navy:       #1B2D45;
+  --forest:     #2E5339;
+  --gold:       #C9A84C;
+  --gold-pale:  #F5EDD6;
+  --cream:      #EDE8DF;
   --warm-white: #F7F4EF;
   --slate:      #4A5568;
   --taupe:      #8B8272;
   --lforest:    #E8F0EA;
-  --font-head:  'Times New Roman', Georgia, serif;
-  --font-body:  'Inter', 'Helvetica Neue', Arial, sans-serif;
-  --rose:        #D63D7B;
-  --rose-deep:   #C02B65;
-  --rose-pale:   #FAEEF5;
-  --cobalt:      #2A4068;
-  --cobalt-pale: #EEF1F6;
+  --font-head:  'Playfair Display', Georgia, serif;
+  --font-body:  'Source Serif 4', Georgia, serif;
+  --rose:       #C4788A;
+  --rose-deep:  #A85C73;
+  --rose-pale:  #F9F0F2;
+  --rose-light: #F2DDE3;
 }
 body { font-family: var(--font-body); font-size: 17px; color: var(--navy); background: var(--warm-white); line-height: 1.75; }
 a { color: inherit; text-decoration: none; }
@@ -43,7 +42,7 @@ img { display: block; max-width: 100%; }
 .t-h3 { font-family: var(--font-head); font-size: clamp(18px,2vw,24px); font-weight: 900; line-height: 1.1; }
 .t-body { font-size: 17px; color: var(--slate); line-height: 1.82; }
 .t-body-light { color: rgba(214,221,232,0.72); }
-.t-divider { width: 60px; height: 3px; background: var(--rose); margin: 14px 0 22px; }
+.t-divider { width: 64px; height: 3px; background: linear-gradient(90deg, var(--rose), var(--gold)); margin: 14px 0 22px; }
 
 /* ── NAV ── */
 #site-nav {
@@ -51,7 +50,7 @@ img { display: block; max-width: 100%; }
   background: var(--navy); border-bottom: 3px solid var(--rose);
 }
 .nav-announce {
-  background: var(--forest); text-align: center;
+  background: var(--rose-deep); text-align: center;
   padding: 9px 20px; font-size: 12px; font-weight: 600;
   letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-white);
 }
@@ -72,16 +71,16 @@ img { display: block; max-width: 100%; }
 .nav-links a:hover, .nav-links a.active { color: var(--warm-white); }
 .nav-links a.active { color: var(--gold); }
 .nav-cta {
-  background: var(--gold); color: var(--navy) !important; font-size: 14px !important;
+  background: var(--rose); color: var(--navy) !important; font-size: 14px !important;
   font-weight: 700 !important; padding: 10px 20px !important;
   border-radius: 3px !important; white-space: nowrap; flex-shrink: 0;
 }
-.nav-cta:hover { background: #C93D75 !important; color: var(--warm-white) !important; }
+.nav-cta:hover { background: var(--rose-deep) !important; color: var(--warm-white) !important; }
 .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
 .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--warm-white); }
-.nav-mobile { display: none; background: #1E3350; }
+.nav-mobile { display: none; background: #16253a; }
 .nav-mobile a { display: block; font-size: 17px; font-weight: 600; color: var(--warm-white); padding: 13px 28px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-.nav-mobile a.nav-mobile-cta { background: var(--gold); color: var(--navy); text-align: center; font-weight: 700; margin: 12px 28px 16px; }
+.nav-mobile a.nav-mobile-cta { background: var(--rose); color: var(--navy); text-align: center; font-weight: 700; margin: 12px 28px 16px; }
 
 /* ── PAGE BANNER ── */
 .page-banner { background: var(--navy); padding: 56px 72px 48px; border-bottom: 4px solid var(--rose); text-align: center; }
@@ -101,9 +100,9 @@ img { display: block; max-width: 100%; }
 /* ── BUTTONS ── */
 .btn { font-family: var(--font-body); font-size: 16px; font-weight: 700; padding: 15px 28px; border-radius: 3px; display: inline-block; transition: all 0.18s; cursor: pointer; border: none; letter-spacing: 0.02em; }
 .btn-gold   { background: var(--gold); color: var(--navy); }
-.btn-gold:hover { background: #C93D75; color: var(--warm-white); }
+.btn-gold:hover { background: #b8962e; color: var(--warm-white); }
 .btn-navy   { background: var(--navy); color: var(--warm-white); }
-.btn-navy:hover { background: #13203A; }
+.btn-navy:hover { background: #0f1d2e; }
 .btn-outline { background: transparent; color: var(--warm-white); border: 2px solid rgba(247,244,239,0.32); }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 .btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
@@ -121,7 +120,7 @@ img { display: block; max-width: 100%; }
 .proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
 .proof-card { padding: 28px; }
 .proof-cream { background: var(--cream); }
-.proof-white { background: var(--warm-white); border: 1px solid #E5E2DE; }
+.proof-white { background: var(--warm-white); border: 1px solid #E0DBD0; }
 .proof-num { font-family: var(--font-head); font-size: 40px; font-weight: 900; color: var(--navy); line-height: 1; margin-bottom: 6px; }
 .proof-num span { color: var(--gold); }
 .proof-title { font-family: var(--font-head); font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.2; }
@@ -132,7 +131,7 @@ img { display: block; max-width: 100%; }
 .pullquote { background: var(--navy); padding: 52px 72px; text-align: center; }
 .pullquote-text { font-family: var(--font-head); font-size: clamp(19px,2.2vw,30px); font-weight: 700; font-style: italic; color: var(--warm-white); line-height: 1.35; max-width: 700px; margin: 0 auto 14px; }
 .pullquote-text em { color: var(--rose); font-style: normal; }
-.pullquote-source { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(214,61,123,0.55); }
+.pullquote-source { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); }
 
 /* ── DONATE STRIP ── */
 .donate-strip { background: var(--gold); padding: 48px 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
@@ -150,44 +149,47 @@ img { display: block; max-width: 100%; }
 /* ── TIMELINE ── */
 .timeline { display: flex; flex-direction: column; }
 .tl-item { display: grid; grid-template-columns: 72px 1fr; }
-.tl-year { font-family: var(--font-head); font-size: 16px; font-weight: 700; color: var(--gold); padding: 16px 0; border-right: 2px solid rgba(226,75,138,0.2); text-align: right; padding-right: 18px; }
+.tl-year { font-family: var(--font-head); font-size: 16px; font-weight: 700; color: var(--gold); padding: 16px 0; border-right: 2px solid rgba(201,168,76,0.2); text-align: right; padding-right: 18px; }
 .tl-text { padding: 16px 0 16px 22px; border-bottom: 1px solid rgba(247,244,239,0.07); font-size: 15px; color: rgba(214,221,232,0.7); line-height: 1.6; }
 .tl-text strong { display: block; color: var(--warm-white); font-size: 16px; margin-bottom: 2px; }
 
 /* ── FOOTER ── */
 #site-footer { font-family: var(--font-body); background: var(--navy); color: var(--warm-white); }
-.footer-cta { background: var(--forest); padding: 52px 72px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; border-top: 4px solid var(--rose); }
+.footer-cta { background: var(--forest); padding: 52px 72px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; border-top: 4px solid var(--rose); border-image: linear-gradient(90deg, var(--rose), var(--gold)) 1; }
 .footer-cta h2 { font-family: var(--font-head); font-size: clamp(22px,2.5vw,34px); font-weight: 900; color: var(--warm-white); margin-bottom: 8px; }
 .footer-cta p { font-size: 17px; color: rgba(214,221,232,0.65); max-width: 480px; line-height: 1.55; }
 .footer-cta-btns { display: flex; flex-direction: column; gap: 10px; }
 .footer-main { padding: 52px 72px 40px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 44px; }
 .footer-brand-name { font-family: var(--font-head); font-size: 24px; font-weight: 900; color: var(--warm-white); margin-bottom: 3px; }
 .footer-brand-title { font-size: 11px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-.footer-slogan { font-family: var(--font-head); font-size: 16px; font-weight: 700; font-style: italic; color: rgba(247,244,239,0.45); border-left: 3px solid rgba(214,61,123,0.38); padding-left: 14px; margin-bottom: 18px; line-height: 1.4; }
+.footer-slogan { font-family: var(--font-head); font-size: 16px; font-weight: 700; font-style: italic; color: rgba(247,244,239,0.45); border-left: 3px solid var(--rose); padding-left: 14px; margin-bottom: 18px; line-height: 1.4; }
 .footer-slogan em { color: var(--gold); font-style: normal; }
 .footer-origin { font-size: 13px; color: rgba(214,221,232,0.35); font-style: italic; line-height: 1.7; max-width: 300px; margin-bottom: 20px; }
-.footer-col h4 { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--warm-white); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid rgba(214,61,123,0.22); }
+.footer-col h4 { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--warm-white); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid rgba(196,120,138,0.35); }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
 .footer-col ul li a { font-size: 15px; color: rgba(214,221,232,0.55); transition: color 0.15s; }
 .footer-col ul li a:hover { color: var(--gold); }
-.footer-donate-box { background: rgba(226,75,138,0.08); border: 1px solid rgba(226,75,138,0.18); border-top: 3px solid var(--gold); padding: 16px; text-align: center; margin-top: 6px; }
+.footer-donate-box { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.18); border-top: 3px solid var(--rose); padding: 16px; text-align: center; margin-top: 6px; }
 .footer-donate-num { font-family: var(--font-head); font-size: 32px; font-weight: 900; color: var(--warm-white); line-height: 1; margin-bottom: 4px; }
 .footer-donate-num span { color: var(--gold); font-size: 22px; }
-.footer-donate-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(226,75,138,0.5); margin-bottom: 10px; }
-.footer-donate-btn { display: block; background: var(--gold); color: var(--navy); font-size: 13px; font-weight: 700; padding: 9px 0; text-align: center; border-radius: 2px; }
+.footer-donate-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 10px; }
+.footer-donate-btn { display: block; background: var(--rose); color: var(--navy); font-size: 13px; font-weight: 700; padding: 9px 0; text-align: center; border-radius: 2px; }
 .footer-bottom { border-top: 1px solid rgba(247,244,239,0.07); padding: 18px 72px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
 .footer-legal { font-size: 12px; color: rgba(214,221,232,0.28); line-height: 1.6; }
 .footer-tags { display: flex; gap: 14px; }
-.footer-tag { font-size: 12px; font-weight: 600; color: rgba(226,75,138,0.35); }
+.footer-tag { font-size: 12px; font-weight: 600; color: rgba(201,168,76,0.35); }
 .footer-ack { background: rgba(0,0,0,0.2); padding: 14px 72px; font-size: 12px; color: rgba(214,221,232,0.22); font-style: italic; line-height: 1.6; }
 
 
-/* ── V4 BRAND PALETTE UTILITIES ── */
-.btn-rose  { background: var(--rose); color: var(--warm-white); border: none; }
-.btn-rose:hover { background: var(--rose-deep); color: var(--warm-white); }
-.bg-rose-pale  { background: var(--rose-pale); }
-.bg-cobalt-pale { background: var(--cobalt-pale); }
+/* ── ROSE PRIMARY ── */
 .t-label-rose { color: var(--rose); }
+.t-divider-rose { background: linear-gradient(90deg, var(--rose), var(--gold)); width: 64px; }
+.btn-rose { background: var(--rose); color: var(--warm-white); }
+.btn-rose:hover { background: var(--rose-deep); color: var(--warm-white); }
+.btn-outline-rose { background: transparent; color: var(--rose); border: 2px solid var(--rose); }
+.btn-outline-rose:hover { background: var(--rose); color: var(--warm-white); }
+.bg-rose-pale { background: var(--rose-pale); }
+.bg-rose { background: var(--rose); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 920px) {
@@ -218,7 +220,7 @@ img { display: block; max-width: 100%; }
 .pillar-body { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:5fr 4fr; gap:4px; }
 .pillar-left { padding:40px 40px 40px 0; }
 .pillar-left p { font-size:17px; color:var(--slate); line-height:1.82; margin-bottom:18px; }
-.pillar-pq { border-left:4px solid var(--gold); padding:16px 20px; margin:24px 0; background:rgba(226,75,138,0.06); }
+.pillar-pq { border-left:4px solid var(--gold); padding:16px 20px; margin:24px 0; background:rgba(201,168,76,0.06); }
 .pillar-pq p { font-family:var(--font-head); font-size:17px; font-weight:700; font-style:italic; color:var(--navy); line-height:1.4; margin:0; }
 .pillar-pq cite { display:block; margin-top:7px; font-style:normal; font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--taupe); }
 .pillar-right { display:flex; flex-direction:column; gap:4px; }
@@ -233,9 +235,9 @@ img { display: block; max-width: 100%; }
 .proof-strip { background:var(--navy); padding:32px 72px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
 .proof-strip-q { font-family:var(--font-head); font-size:clamp(15px,1.8vw,21px); font-weight:700; font-style:italic; color:var(--warm-white); line-height:1.35; max-width:580px; }
 .proof-strip-q em { color:var(--rose); font-style:normal; }
-.jump-nav { background:rgba(27,45,69,0.96); padding:16px 72px; display:flex; gap:8px; flex-wrap:wrap; border-bottom:1px solid rgba(214,61,123,0.18); position:sticky; top:73px; z-index:90; }
+.jump-nav { background:rgba(27,45,69,0.96); padding:16px 72px; display:flex; gap:8px; flex-wrap:wrap; border-bottom:1px solid rgba(196,120,138,0.2); position:sticky; top:73px; z-index:90; }
 .jump-link { font-size:13px; font-weight:600; color:rgba(247,244,239,0.5); padding:7px 14px; border-radius:3px; border:1px solid rgba(247,244,239,0.08); transition:all 0.15s; white-space:nowrap; }
-.jump-link:hover,.jump-link.active { color:var(--rose); border-color:rgba(214,61,123,0.28); background:rgba(214,61,123,0.08); }
+.jump-link:hover,.jump-link.active { color:var(--rose); border-color:rgba(196,120,138,0.3); background:rgba(196,120,138,0.1); }
 @media(max-width:920px){
   .pillar-head{padding:40px 28px 32px;}
   .pillar-num{display:none;}
@@ -248,15 +250,17 @@ img { display: block; max-width: 100%; }
 </head>
 <body>
 <div id="site-nav">
-  <div class="nav-announce">Campaign Kick-Off: April 16, 2026 &nbsp;&middot;&nbsp; <a href="/rsvp.html" style="color:var(--gold);font-weight:600;">RSVP Now &rarr;</a></div>
+  <div class="nav-announce" style="background:var(--rose-deep);">Election Day: October 2026 &nbsp;&middot;&nbsp; <a href="/donate.html" style="color:var(--warm-white);">Support with $20.26 today</a></div>
   <div class="nav-inner">
     <a href="/index.html" class="nav-wordmark"><div class="nav-wordmark-name">Meghan Lahti</div><div class="nav-wordmark-sub">Mayor &middot; Port Moody &middot; 2026</div></a>
     <nav><ul class="nav-links"><li><a href="/index.html">Home</a></li><li><a href="/about.html">About</a></li><li><a href="/platform.html" class="active">Platform</a></li><li><a href="/the-record.html">The Record</a></li><li><a href="/volunteer.html">Volunteer</a></li><li><a href="/contact.html">Contact</a></li></ul></nav>
+    <a href="/donate.html" style="background:var(--rose);color:var(--warm-white);font-size:14px;font-weight:700;padding:10px 20px;border-radius:3px;white-space:nowrap;flex-shrink:0;font-family:var(--font-body);">Donate $20.26</a>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
   <div class="nav-mobile" id="navMobile">
     <a href="/index.html">Home</a><a href="/about.html">About</a><a href="/platform.html">Platform</a><a href="/the-record.html">The Record</a><a href="/volunteer.html">Volunteer</a><a href="/contact.html">Contact</a>
-    </div>
+    <a href="/donate.html" class="nav-mobile-cta" style="background:var(--rose);color:var(--warm-white);">Donate $20.26</a>
+  </div>
 </div>
 
 <div class="page-banner">
@@ -270,7 +274,6 @@ img { display: block; max-width: 100%; }
   <a href="#parks" class="jump-link">Parks &amp; Environment</a>
   <a href="#traffic" class="jump-link">Traffic &amp; Infrastructure</a>
   <a href="#economy" class="jump-link">Economy &amp; Jobs</a>
-  <a href="#governance" class="jump-link">Governance</a>
 </div>
 
 
@@ -304,7 +307,7 @@ img { display: block; max-width: 100%; }
 </div>
 <div class="proof-strip">
   <div class="proof-strip-q">"Growth on our terms means <em>daycares, parks, and grocery stores</em> in the same deal as the homes."</div>
-  <a href="/the-record.html" class="btn btn-navy" style="font-size:14px;padding:12px 22px;white-space:nowrap;">See the Full Record &rarr;</a>
+  <a href="/the-record.html" class="btn btn-rose" style="font-size:14px;padding:12px 22px;white-space:nowrap;background:var(--rose);color:var(--warm-white);">See the Full Record &rarr;</a>
 </div>
 
 
@@ -313,13 +316,13 @@ img { display: block; max-width: 100%; }
     <div class="pillar-head-inner">
       <div class="pillar-eyebrow" style="color:var(--rose);">Pillar 02 &middot; Parks &amp; Environment</div>
       <h2 class="pillar-h2" style="color:var(--warm-white);">She started with a park. She&rsquo;s not done.</h2>
-      <p class="pillar-sub" style="color:var(--warm-white);">Meghan entered politics in 1994 to protect Bert Flinn Park. Today, she negotiates a pedestrian overpass to Rocky Point Park into a developer deal.</p>
+      <p class="pillar-sub" style="color:var(--warm-white);">Meghan entered politics in 1994 to protect Bert Flynn Park. Today, she negotiates a pedestrian overpass to Rocky Point Park into a developer deal.</p>
     </div>
     <div class="pillar-num" style="color:var(--warm-white);"></div>
   </div>
   <div style="background:var(--lforest);padding:0 72px 64px;">
     <div class="pillar-body">
-      <div class="pillar-left"><p>The origin of Meghan&rsquo;s political career is a park. In 1994 she was a young mother who fought to protect Bert Flinn Park. She didn&rsquo;t start a petition &mdash; she ran for office. That determination carries her today: nearly thirty years on council, and since 2022, the mayoralty.</p>
+      <div class="pillar-left"><p>The origin of Meghan&rsquo;s political career is a park. In 1994 she was a young mother who fought to protect Bert Flynn Park. She didn&rsquo;t start a petition &mdash; she ran for office. That determination carries her today: nearly thirty years on council, and since 2022, the mayoralty.</p>
 <p>Port Moody&rsquo;s parks, trails, waterfront, and green corridors are what make this city different. Rocky Point Park is the heart of the community &mdash; and Meghan negotiated the pedestrian overpass connecting Moody Centre directly to it into a developer deal. The fund to purchase and expand that park is growing from community amenity contributions she negotiated into every major project that has been approved.</p>
 <p>The daylighting of Slaughterhouse Creek &mdash; buried underground for decades &mdash; is being restored as part of the PCI development. Rooftop green spaces. Creek-side trails. Riparian corridors. These are not amenities added at the end of a negotiation. They are conditions of approval.</p>
 <div class="pillar-pq" style="border-color:var(--forest);background:rgba(46,83,57,0.07);"><p style="color:var(--forest);">&ldquo;Port Moody&rsquo;s natural beauty is non-negotiable. The park was where this all started, and it&rsquo;s still what we&rsquo;re fighting for.&rdquo;</p><cite>Meghan Lahti</cite></div></div>
@@ -338,7 +341,7 @@ img { display: block; max-width: 100%; }
 </div>
 <div class="proof-strip">
   <div class="proof-strip-q">"She didn&rsquo;t just promise to fight for parks. She&rsquo;s been doing it since <em>1994.</em>"</div>
-  <a href="/about.html" class="btn btn-navy" style="font-size:14px;padding:12px 22px;white-space:nowrap;">Read Meghan&rsquo;s Story &rarr;</a>
+  <a href="/about.html" class="btn btn-rose" style="font-size:14px;padding:12px 22px;white-space:nowrap;background:var(--rose);color:var(--warm-white);">Read Meghan&rsquo;s Story &rarr;</a>
 </div>
 
 
@@ -372,7 +375,7 @@ img { display: block; max-width: 100%; }
 </div>
 <div class="proof-strip">
   <div class="proof-strip-q">"Infrastructure before density is not a slogan. It&rsquo;s <em>$43 million in conditions.</em>"</div>
-  <a href="/the-record.html" class="btn btn-navy" style="font-size:14px;padding:12px 22px;white-space:nowrap;">See the Numbers &rarr;</a>
+  <a href="/the-record.html" class="btn btn-rose" style="font-size:14px;padding:12px 22px;white-space:nowrap;background:var(--rose);color:var(--warm-white);">See the Numbers &rarr;</a>
 </div>
 
 
@@ -406,58 +409,22 @@ img { display: block; max-width: 100%; }
 </div>
 <div class="proof-strip">
   <div class="proof-strip-q">"The deals have to include <em>jobs, not just homes.</em> That&rsquo;s been Meghan&rsquo;s position since day one."</div>
-  <a href="/the-record.html" class="btn btn-navy" style="font-size:14px;padding:12px 22px;white-space:nowrap;">See the Record &rarr;</a>
+  <a href="/the-record.html" class="btn btn-rose" style="font-size:14px;padding:12px 22px;white-space:nowrap;background:var(--rose);color:var(--warm-white);">See the Record &rarr;</a>
 </div>
 
-<div class="pillar" id="governance" style="padding:0;">
-  <div class="pillar-head" style="background:var(--cobalt-pale);">
-    <div class="pillar-head-inner">
-      <div class="pillar-eyebrow" style="color:var(--forest);">Pillar 05 &middot; Governance</div>
-      <h2 class="pillar-h2" style="color:var(--navy);">Good governance isn&rsquo;t a promise. It&rsquo;s a practice.</h2>
-      <p class="pillar-sub" style="color:var(--navy);">Transparency, accountability, and collaboration aren&rsquo;t talking points for Meghan &mdash; they are how she has run the city from day one.</p>
-    </div>
-    <div class="pillar-num" style="color:var(--navy);"></div>
-  </div>
-  <div style="background:var(--warm-white);padding:0 72px 64px;">
-    <div class="pillar-body">
-      <div class="pillar-left">
-        <p>Effective leadership is rooted in transparency, accountability, and accessibility. As Mayor, Meghan has prioritized open communication with the community &mdash; ensuring residents are informed and genuinely engaged in the decisions that shape their lives. She fosters partnerships with local organizations, businesses, and citizens, because she knows that collaboration is essential to solving Port Moody&rsquo;s real challenges.</p>
-        <p>During her first term as Mayor, Meghan created new direct channels between City Hall and the community. She hosted Town Halls on snow removal, revenue diversification, park expansion, and the Official Community Plan. She also launched two Mayor&rsquo;s Youth Summits &mdash; making sure the voices of Port Moody&rsquo;s next generation are heard in City Hall, not just acknowledged.</p>
-        <p>Her commitment is to an inclusive environment where diverse voices are heard and valued &mdash; and where residents trust that their city is being run with integrity.</p>
-        <div class="pillar-pq"><p>&ldquo;Good governance means transparency, accountability, and collaboration. Together, we can create a thriving community where every voice matters and every person feels valued.&rdquo;</p><cite>Meghan Lahti</cite></div>
-      </div>
-      <div class="pillar-right">
-        <div class="pillar-commits">
-          <div style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Meghan&rsquo;s Commitments</div>
-          <div class="commit-list commit-dark">
-            <div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Transparency in every decision</strong>Open communication on major city decisions &mdash; residents informed before, not after.</div></div>
-            <div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Accountability to the community</strong>Governance that answers to residents, not special interests. Every vote, every deal, on the record.</div></div>
-            <div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Collaborative decision-making</strong>Partnerships with local organizations, businesses, and citizens built into how the city works &mdash; not added as an afterthought.</div></div>
-            <div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Accessible leadership</strong>An open door at City Hall. Meghan has always been approachable and responsive &mdash; that doesn&rsquo;t change.</div></div>
-          </div>
-        </div>
-        <div class="pillar-proof">
-          <div class="pillar-proof-label" style="color:var(--rose);">Already Delivered</div>
-          <div class="pillar-proof-item"><div class="pillar-proof-num">5</div><div class="pillar-proof-desc"><strong>Mayor&rsquo;s Town Halls</strong> on snow removal, revenue diversification, park expansion, and the Official Community Plan &mdash; direct dialogue, not press releases.</div></div>
-          <div class="pillar-proof-item"><div class="pillar-proof-num">2</div><div class="pillar-proof-desc"><strong>Mayor&rsquo;s Youth Summits</strong> launched to bring Port Moody&rsquo;s next generation into civic decision-making.</div></div>
-          <div class="pillar-proof-item"><div class="pillar-proof-num">30&nbsp;yrs</div><div class="pillar-proof-desc"><strong>Consistent public record</strong> &mdash; every vote, every position, available and accountable since 1996.</div></div>
-          <div class="pillar-proof-item"><div class="pillar-proof-num">2022</div><div class="pillar-proof-desc"><strong>First female Mayor of Port Moody</strong> &mdash; breaking barriers while maintaining the collaborative, community-first approach Port Moody expects.</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="donate-strip" style="background:var(--rose);">
+  <div><h2 style="color:var(--warm-white);">This is the platform. Thirty years built it.</h2><p>Support the campaign that has a record to show &mdash; not just a list of promises.</p></div>
+  <a href="/donate.html" class="btn btn-navy" style="font-size:17px;padding:16px 32px;white-space:nowrap;">Donate $20.26</a>
 </div>
-
-
 
 <script>
 (function(){
-  var pillars=['housing','parks','traffic','economy','governance'];
+  var pillars=['housing','parks','traffic','economy'];
   var links={};
   pillars.forEach(function(id){links[id]=document.querySelector('.jump-link[href="#'+id+'"]');});
   function update(){
     var sy=window.scrollY+140,active=pillars[0];
-    pillars.forEach(function(id){var el=document.getElementById(id);if(el&el.offsetTop<=sy)active=id;});
+    pillars.forEach(function(id){var el=document.getElementById(id);if(el&&el.offsetTop<=sy)active=id;});
     pillars.forEach(function(id){if(links[id]){links[id].classList.toggle('active',id===active);}});
   }
   window.addEventListener('scroll',update,{passive:true});
@@ -469,9 +436,9 @@ img { display: block; max-width: 100%; }
     <div>
       <h2>Ready to show up for Port Moody?</h2>
       <p>Thirty years of steady, experienced leadership. The record is real. And the work is far from over.</p>
-      <div class="btn-row" style="margin-top:18px;"><a href="/volunteer.html" class="btn btn-outline">Volunteer</a></div>
+      <div class="btn-row" style="margin-top:18px;"><a href="/donate.html" class="btn btn-gold">Donate $20.26</a><a href="/volunteer.html" class="btn btn-outline">Volunteer</a></div>
     </div>
-    <div style="font-family:'Times New Roman',Georgia,serif;font-size:clamp(30px,4vw,56px);font-weight:900;color:var(--warm-white);line-height:0.88;text-align:right;opacity:0.08;user-select:none;">Port&nbsp;Moody.<br><em style="color:var(--rose);font-style:italic;">Together.</em><br>Forward.</div>
+    <div style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(30px,4vw,56px);font-weight:900;color:var(--warm-white);line-height:0.88;text-align:right;opacity:0.08;user-select:none;">Port&nbsp;Moody.<br><em style="color:var(--rose);font-style:italic;">Together.</em><br>Forward.</div>
   </div>
   <div class="footer-main">
     <div>
@@ -482,37 +449,41 @@ img { display: block; max-width: 100%; }
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
         <a href="https://www.facebook.com" style="background:rgba(247,244,239,0.07);color:rgba(247,244,239,0.6);font-size:13px;font-weight:600;padding:7px 14px;border-radius:3px;border:1px solid rgba(247,244,239,0.1);">Facebook</a>
         <a href="https://www.instagram.com" style="background:rgba(247,244,239,0.07);color:rgba(247,244,239,0.6);font-size:13px;font-weight:600;padding:7px 14px;border-radius:3px;border:1px solid rgba(247,244,239,0.1);">Instagram</a>
-        <a href="mailto:info@lahti2026.com" style="background:rgba(247,244,239,0.07);color:rgba(247,244,239,0.6);font-size:13px;font-weight:600;padding:7px 14px;border-radius:3px;border:1px solid rgba(247,244,239,0.1);">Email</a>
+        <a href="mailto:info@lahti2026.ca" style="background:rgba(247,244,239,0.07);color:rgba(247,244,239,0.6);font-size:13px;font-weight:600;padding:7px 14px;border-radius:3px;border:1px solid rgba(247,244,239,0.1);">Email</a>
       </div>
     </div>
     <div class="footer-col"><h4>Pages</h4><ul>
       <li><a href="/index.html">Home</a></li><li><a href="/about.html">About Meghan</a></li>
       <li><a href="/platform.html">Platform</a></li><li><a href="/the-record.html">The Record</a></li>
-      <li><a href="/volunteer.html">Volunteer</a></li><li><a href="/contact.html">Contact</a></li>
+      <li><a href="/volunteer.html">Volunteer</a></li><li><a href="/donate.html">Donate</a></li>
+      <li><a href="/contact.html">Contact</a></li>
     </ul></div>
     <div class="footer-col"><h4>Platform</h4><ul>
       <li><a href="/platform.html#housing">Housing &amp; Growth</a></li>
       <li><a href="/platform.html#parks">Parks &amp; Environment</a></li>
       <li><a href="/platform.html#traffic">Traffic &amp; Infrastructure</a></li>
       <li><a href="/platform.html#economy">Economy &amp; Jobs</a></li>
-      <li><a href="/platform.html#governance">Governance</a></li>
       <li><a href="/the-record.html">What&rsquo;s Been Built</a></li>
     </ul></div>
     <div class="footer-col"><h4>Contact</h4>
       <p style="font-size:15px;color:rgba(214,221,232,0.55);line-height:1.7;margin-bottom:16px;">
-        <a href="mailto:info@lahti2026.com" style="color:var(--gold);">info@lahti2026.com</a><br>Port Moody, British Columbia<br>@Lahti2026
+        <a href="mailto:info@lahti2026.ca" style="color:var(--gold);">info@lahti2026.ca</a><br>Port Moody, British Columbia<br>@Lahti2026
       </p>
+      <div class="footer-donate-box">
+        <div class="footer-donate-num">$20<span style="color:var(--rose);">.26</span></div>
+        <div class="footer-donate-label">The year we&rsquo;re fighting for</div>
+        <a href="/donate.html" class="footer-donate-btn" style="background:var(--rose);">Donate Now</a>
       </div>
+    </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-legal">Authorized by Anthony Sandler, financial agent for Meghan Lahti 2026 Campaign. All donations subject to BC Municipal Elections Finance Rules. Maximum $1,429.70 per individual. BC residents only. &copy; 2026 Meghan Lahti Campaign.</div>
+    <div class="footer-legal">Authorized by [Financial Agent Name], financial agent for Meghan Lahti 2026 Campaign. All donations subject to BC Municipal Elections Finance Rules. Maximum $1,429.70 per individual. BC residents only. &copy; 2026 Meghan Lahti Campaign.</div>
     <div class="footer-tags"><span class="footer-tag">#Lahti2026</span><span class="footer-tag">#PortMoodyFirst</span><span class="footer-tag">#30YearsIn</span><span class="footer-tag">#BuiltForPM</span></div>
   </div>
   <div class="footer-ack">We acknowledge that Port Moody is located on the unceded and traditional territories of the K&#x02B7;ik&#x02B7;&#x0259;&#x019B;&#x0313;&#x0259;m (Kwikwetlem), x&#x02B7;m&#x0259;&#x03B8;kw&#x0259;y&#x0313;&#x0259;m (Musqueam), Skwxw&#xFA;7mesh (Squamish), and S&#x0259;l&#x0313;&#xED;lw&#x0259;ta&#x0294;/Selilwitulh (Tsleil-Waututh) Nations.</div>
 </footer>
-<script>(function(){var b=document.getElementById('navToggle'),m=document.getElementById('navMobile');if(b&m){b.addEventListener('click',function(){m.style.display=m.style.display==='block'?'none':'block';});}
+<script>(function(){var b=document.getElementById('navToggle'),m=document.getElementById('navMobile');if(b&&m){b.addEventListener('click',function(){m.style.display=m.style.display==='block'?'none':'block';});}
 document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
 }());</script>
-<script src="/password-gate.js"></script>
 </body>
 </html>
