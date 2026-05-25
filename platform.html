@@ -3,491 +3,341 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Meghan Lahti for Mayor, Port Moody 2026. Three decades of community leadership. Housing, transportation, governance, and the experience to deliver.">
-<title>Platform &middot; Meghan Lahti for Port Moody 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>/* ── RESET ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --navy:       #1B2A4A;
-  --forest:     #2A4068;
-  --gold:       #E24B8A;
-  --gold-pale:  #FDF2F6;
-  --cream:      #F0EDEA;
-  --warm-white: #F7F4EF;
-  --slate:      #4A5568;
-  --taupe:      #8B8272;
-  --lforest:    #E8F0EA;
-  --font-head:  'Times New Roman', Georgia, serif;
-  --font-body:  'Inter', 'Helvetica Neue', Arial, sans-serif;
-  --rose:        #D63D7B;
-  --rose-deep:   #C02B65;
-  --rose-pale:   #FAEEF5;
-  --cobalt:      #2A4068;
-  --cobalt-pale: #EEF1F6;
+<meta name="description" content="Meghan Lahti's platform for Port Moody Mayor 2026. Five pillars: transportation, housing and affordability, good governance and transparency, experience as an asset, fiscal responsibility.">
+<title>Platform &middot; Meghan Lahti for Port Moody Mayor 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+.pillar {
+  padding: 88px 72px;
+  border-bottom: 1px solid rgba(45,58,92,0.08);
 }
-body { font-family: var(--font-body); font-size: 17px; color: var(--navy); background: var(--warm-white); line-height: 1.75; }
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
-
-/* ── TYPOGRAPHY ── */
-.t-label {
-  font-family: var(--font-body); font-size: 12px; font-weight: 600;
-  letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold);
-  display: block; margin-bottom: 10px;
+.pillar:nth-child(odd)  { background: var(--ivory); }
+.pillar:nth-child(even) { background: var(--cream); }
+.pillar-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
+.pillar-label { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.pillar-label-num {
+  font-family: var(--font-head); font-size: 36px; font-weight: 600;
+  color: var(--rose); line-height: 1;
 }
-.t-label-forest { color: var(--forest); }
-.t-label-slate  { color: var(--taupe); }
-.t-h1 { font-family: var(--font-head); font-size: clamp(42px,5vw,78px); font-weight: 900; line-height: 0.9; }
-.t-h2 { font-family: var(--font-head); font-size: clamp(28px,3.2vw,46px); font-weight: 900; line-height: 1.0; }
-.t-h3 { font-family: var(--font-head); font-size: clamp(18px,2vw,24px); font-weight: 900; line-height: 1.1; }
-.t-body { font-size: 17px; color: var(--slate); line-height: 1.82; }
-.t-body-light { color: rgba(214,221,232,0.72); }
-.t-divider { width: 60px; height: 3px; background: var(--rose); margin: 14px 0 22px; }
-
-/* ── NAV ── */
-#site-nav {
-  position: sticky; top: 0; z-index: 1000;
-  background: var(--navy); border-bottom: 3px solid var(--rose);
+.pillar-label-text {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--rose-deep);
 }
-.nav-announce {
-  background: var(--forest); text-align: center;
-  padding: 9px 20px; font-size: 12px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-white);
+.pillar-h {
+  font-family: var(--font-head);
+  font-size: clamp(32px, 3.6vw, 52px);
+  font-weight: 700; line-height: 1.05;
+  color: var(--ink); letter-spacing: -0.01em;
+  margin-bottom: 18px;
 }
-.nav-announce a { color: var(--gold); font-weight: 700; text-decoration: underline; }
-.nav-inner {
-  max-width: 1200px; margin: 0 auto; padding: 0 32px;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 70px; gap: 20px;
+.pillar-tag {
+  font-family: var(--font-head); font-style: italic;
+  font-size: 18px; color: var(--slate); line-height: 1.5;
 }
-.nav-wordmark { display: flex; flex-direction: column; line-height: 1; flex-shrink: 0; }
-.nav-wordmark-name { font-family: var(--font-head); font-size: 21px; font-weight: 900; color: var(--warm-white); }
-.nav-wordmark-sub { font-size: 11px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold); margin-top: 3px; }
-.nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
-.nav-links a {
-  font-size: 15px; font-weight: 600; color: rgba(247,244,239,0.68);
-  padding: 6px 13px; border-radius: 3px; transition: all 0.15s; white-space: nowrap;
+.pillar-body p { font-size: 17px; color: var(--slate); line-height: 1.85; margin-bottom: 16px; }
+.pillar-body p:last-of-type { margin-bottom: 0; }
+.pillar-body strong { color: var(--ink); }
+.pillar-body h4 {
+  font-family: var(--font-head); font-size: 20px; font-weight: 700;
+  color: var(--ink); margin: 26px 0 10px;
 }
-.nav-links a:hover, .nav-links a.active { color: var(--warm-white); }
-.nav-links a.active { color: var(--gold); }
-.nav-cta {
-  background: var(--gold); color: var(--navy) !important; font-size: 14px !important;
-  font-weight: 700 !important; padding: 10px 20px !important;
-  border-radius: 3px !important; white-space: nowrap; flex-shrink: 0;
+.pillar-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin: 12px 0 4px; }
+.pillar-list li {
+  font-size: 16px; color: var(--slate); line-height: 1.65;
+  padding-left: 22px; position: relative;
 }
-.nav-cta:hover { background: #C93D75 !important; color: var(--warm-white) !important; }
-.nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
-.nav-toggle span { display: block; width: 24px; height: 2px; background: var(--warm-white); }
-.nav-mobile { display: none; background: #1E3350; }
-.nav-mobile a { display: block; font-size: 17px; font-weight: 600; color: var(--warm-white); padding: 13px 28px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-.nav-mobile a.nav-mobile-cta { background: var(--gold); color: var(--navy); text-align: center; font-weight: 700; margin: 12px 28px 16px; }
-
-/* ── PAGE BANNER ── */
-.page-banner { background: var(--navy); padding: 56px 72px 48px; border-bottom: 4px solid var(--rose); text-align: center; }
-.page-banner h1 { color: var(--warm-white); margin-bottom: 14px; }
-.page-banner p { font-size: 18px; font-style: italic; color: rgba(214,221,232,0.62); max-width: 560px; margin: 0 auto; }
-
-/* ── LAYOUT ── */
-.container { max-width: 1100px; margin: 0 auto; }
-.section { padding: 72px 72px; }
-.section-cream  { background: var(--cream); }
-.section-navy   { background: var(--navy); }
-.section-forest { background: var(--forest); }
-.section-white  { background: var(--warm-white); }
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-.section-head { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; align-items: start; margin-bottom: 48px; }
-
-/* ── BUTTONS ── */
-.btn { font-family: var(--font-body); font-size: 16px; font-weight: 700; padding: 15px 28px; border-radius: 3px; display: inline-block; transition: all 0.18s; cursor: pointer; border: none; letter-spacing: 0.02em; }
-.btn-gold   { background: var(--gold); color: var(--navy); }
-.btn-gold:hover { background: #C93D75; color: var(--warm-white); }
-.btn-navy   { background: var(--navy); color: var(--warm-white); }
-.btn-navy:hover { background: #13203A; }
-.btn-outline { background: transparent; color: var(--warm-white); border: 2px solid rgba(247,244,239,0.32); }
-.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-.btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
-
-/* ── COMMIT LIST ── */
-.commit-list { display: flex; flex-direction: column; gap: 10px; }
-.commit-item { display: flex; gap: 13px; align-items: flex-start; }
-.commit-check { width: 20px; height: 20px; border-radius: 50%; background: var(--forest); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-size: 11px; color: var(--warm-white); font-weight: 700; }
-.commit-text { font-size: 16px; color: var(--slate); line-height: 1.6; }
-.commit-text strong { display: block; color: var(--navy); margin-bottom: 2px; font-size: 15px; }
-.commit-dark .commit-text { color: rgba(214,221,232,0.8); }
-.commit-dark .commit-text strong { color: var(--warm-white); }
-
-/* ── PROOF CARDS ── */
-.proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
-.proof-card { padding: 28px; }
-.proof-cream { background: var(--cream); }
-.proof-white { background: var(--warm-white); border: 1px solid #E5E2DE; }
-.proof-num { font-family: var(--font-head); font-size: 40px; font-weight: 900; color: var(--navy); line-height: 1; margin-bottom: 6px; }
-.proof-num span { color: var(--gold); }
-.proof-title { font-family: var(--font-head); font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.2; }
-.proof-body { font-size: 15px; color: var(--slate); line-height: 1.7; }
-.proof-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--forest); margin-top: 10px; }
-
-/* ── PULLQUOTE ── */
-.pullquote { background: var(--navy); padding: 52px 72px; text-align: center; }
-.pullquote-text { font-family: var(--font-head); font-size: clamp(19px,2.2vw,30px); font-weight: 700; font-style: italic; color: var(--warm-white); line-height: 1.35; max-width: 700px; margin: 0 auto 14px; }
-.pullquote-text em { color: var(--rose); font-style: normal; }
-.pullquote-source { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(214,61,123,0.55); }
-
-/* ── DONATE STRIP ── */
-.donate-strip { background: var(--gold); padding: 48px 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-.donate-strip h2 { font-family: var(--font-head); font-size: clamp(22px,2.5vw,34px); font-weight: 900; color: var(--navy); margin-bottom: 8px; }
-.donate-strip p { font-size: 17px; color: rgba(27,45,69,0.72); max-width: 480px; line-height: 1.5; }
-
-/* ── STAT STRIP ── */
-.stat-strip { background: var(--forest); display: grid; grid-template-columns: repeat(4,1fr); }
-.stat { padding: 28px 16px; text-align: center; border-right: 1px solid rgba(247,244,239,0.1); }
-.stat:last-child { border-right: none; }
-.stat-num { font-family: var(--font-head); font-size: 40px; font-weight: 900; color: var(--warm-white); line-height: 1; margin-bottom: 5px; }
-.stat-num span { color: var(--gold); }
-.stat-label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.45); }
-
-/* ── TIMELINE ── */
-.timeline { display: flex; flex-direction: column; }
-.tl-item { display: grid; grid-template-columns: 72px 1fr; }
-.tl-year { font-family: var(--font-head); font-size: 16px; font-weight: 700; color: var(--gold); padding: 16px 0; border-right: 2px solid rgba(226,75,138,0.2); text-align: right; padding-right: 18px; }
-.tl-text { padding: 16px 0 16px 22px; border-bottom: 1px solid rgba(247,244,239,0.07); font-size: 15px; color: rgba(214,221,232,0.7); line-height: 1.6; }
-.tl-text strong { display: block; color: var(--warm-white); font-size: 16px; margin-bottom: 2px; }
-
-/* ── FOOTER ── */
-#site-footer { font-family: var(--font-body); background: var(--navy); color: var(--warm-white); }
-.footer-cta { background: var(--forest); padding: 52px 72px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; border-top: 4px solid var(--rose); }
-.footer-cta h2 { font-family: var(--font-head); font-size: clamp(22px,2.5vw,34px); font-weight: 900; color: var(--warm-white); margin-bottom: 8px; }
-.footer-cta p { font-size: 17px; color: rgba(214,221,232,0.65); max-width: 480px; line-height: 1.55; }
-.footer-cta-btns { display: flex; flex-direction: column; gap: 10px; }
-.footer-main { padding: 52px 72px 40px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 44px; }
-.footer-brand-name { font-family: var(--font-head); font-size: 24px; font-weight: 900; color: var(--warm-white); margin-bottom: 3px; }
-.footer-brand-title { font-size: 11px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-.footer-slogan { font-family: var(--font-head); font-size: 16px; font-weight: 700; font-style: italic; color: rgba(247,244,239,0.45); border-left: 3px solid rgba(214,61,123,0.38); padding-left: 14px; margin-bottom: 18px; line-height: 1.4; }
-.footer-slogan em { color: var(--gold); font-style: normal; }
-.footer-origin { font-size: 13px; color: rgba(214,221,232,0.35); font-style: italic; line-height: 1.7; max-width: 300px; margin-bottom: 20px; }
-.footer-col h4 { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--warm-white); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid rgba(214,61,123,0.22); }
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-.footer-col ul li a { font-size: 15px; color: rgba(214,221,232,0.55); transition: color 0.15s; }
-.footer-col ul li a:hover { color: var(--gold); }
-.footer-donate-box { background: rgba(226,75,138,0.08); border: 1px solid rgba(226,75,138,0.18); border-top: 3px solid var(--gold); padding: 16px; text-align: center; margin-top: 6px; }
-.footer-donate-num { font-family: var(--font-head); font-size: 32px; font-weight: 900; color: var(--warm-white); line-height: 1; margin-bottom: 4px; }
-.footer-donate-num span { color: var(--gold); font-size: 22px; }
-.footer-donate-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(226,75,138,0.5); margin-bottom: 10px; }
-.footer-donate-btn { display: block; background: var(--gold); color: var(--navy); font-size: 13px; font-weight: 700; padding: 9px 0; text-align: center; border-radius: 2px; }
-.footer-bottom { border-top: 1px solid rgba(247,244,239,0.07); padding: 18px 72px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-.footer-legal { font-size: 12px; color: rgba(214,221,232,0.28); line-height: 1.6; }
-.footer-tags { display: flex; gap: 14px; }
-.footer-tag { font-size: 12px; font-weight: 600; color: rgba(226,75,138,0.35); }
-.footer-ack { background: rgba(0,0,0,0.2); padding: 14px 72px; font-size: 12px; color: rgba(214,221,232,0.22); font-style: italic; line-height: 1.6; }
-
-
-/* ── V4 BRAND PALETTE UTILITIES ── */
-.btn-rose  { background: var(--rose); color: var(--warm-white); border: none; }
-.btn-rose:hover { background: var(--rose-deep); color: var(--warm-white); }
-.bg-rose-pale  { background: var(--rose-pale); }
-.bg-cobalt-pale { background: var(--cobalt-pale); }
-.t-label-rose { color: var(--rose); }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 920px) {
-  .nav-links, .nav-cta { display: none; }
-  .nav-toggle { display: flex; }
-  .section, .page-banner { padding: 48px 28px; }
-  .pullquote { padding: 40px 28px; }
-  .donate-strip { padding: 40px 28px; flex-direction: column; }
-  .two-col, .proof-grid, .section-head { grid-template-columns: 1fr; }
-  .stat-strip { grid-template-columns: repeat(2,1fr); }
-  .footer-cta { grid-template-columns: 1fr; padding: 40px 28px; }
-  .footer-main { grid-template-columns: 1fr 1fr; padding: 40px 28px; gap: 28px; }
-  .footer-bottom, .footer-ack { padding: 16px 28px; }
-  .footer-tags { display: none; }
+.pillar-list li::before {
+  content: ""; position: absolute; left: 0; top: 10px;
+  width: 8px; height: 8px; border-radius: 50%; background: var(--rose);
 }
-@media (max-width: 560px) {
-  .footer-main { grid-template-columns: 1fr; }
-  .stat-strip { grid-template-columns: 1fr 1fr; }
-}
-
-.pillar { scroll-margin-top: 80px; }
-.pillar-head { padding: 52px 72px 44px; position:relative; overflow:hidden; }
-.pillar-head-inner { max-width:1100px; margin:0 auto; }
-.pillar-num { position:absolute; right:72px; bottom:-10px; font-family:var(--font-head); font-size:160px; font-weight:900; opacity:0.06; line-height:1; user-select:none; pointer-events:none; }
-.pillar-eyebrow { font-size:12px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:12px; }
-.pillar-h2 { font-family:var(--font-head); font-size:clamp(28px,3.5vw,50px); font-weight:900; line-height:1; }
-.pillar-sub { font-size:17px; font-style:italic; margin-top:12px; line-height:1.6; max-width:480px; opacity:0.68; }
-.pillar-body { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:5fr 4fr; gap:4px; }
-.pillar-left { padding:40px 40px 40px 0; }
-.pillar-left p { font-size:17px; color:var(--slate); line-height:1.82; margin-bottom:18px; }
-.pillar-pq { border-left:4px solid var(--gold); padding:16px 20px; margin:24px 0; background:rgba(226,75,138,0.06); }
-.pillar-pq p { font-family:var(--font-head); font-size:17px; font-weight:700; font-style:italic; color:var(--navy); line-height:1.4; margin:0; }
-.pillar-pq cite { display:block; margin-top:7px; font-style:normal; font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--taupe); }
-.pillar-right { display:flex; flex-direction:column; gap:4px; }
-.pillar-commits { padding:28px 26px; background:var(--navy); }
-.pillar-proof { padding:24px 26px; background:var(--gold-pale); border-top:3px solid var(--gold); }
-.pillar-proof-label { font-size:11px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--forest); margin-bottom:12px; }
-.pillar-proof-item { display:flex; gap:12px; align-items:flex-start; margin-bottom:11px; }
-.pillar-proof-item:last-child { margin-bottom:0; }
-.pillar-proof-num { font-family:var(--font-head); font-size:21px; font-weight:900; color:var(--navy); line-height:1; flex-shrink:0; min-width:52px; text-align:right; }
-.pillar-proof-desc { font-size:14px; color:var(--slate); line-height:1.6; padding-top:2px; }
-.pillar-proof-desc strong { color:var(--navy); }
-.proof-strip { background:var(--navy); padding:32px 72px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
-.proof-strip-q { font-family:var(--font-head); font-size:clamp(15px,1.8vw,21px); font-weight:700; font-style:italic; color:var(--warm-white); line-height:1.35; max-width:580px; }
-.proof-strip-q em { color:var(--rose); font-style:normal; }
-.jump-nav { background:rgba(27,45,69,0.96); padding:16px 72px; display:flex; gap:8px; flex-wrap:wrap; border-bottom:1px solid rgba(214,61,123,0.18); position:sticky; top:73px; z-index:90; }
-.jump-link { font-size:13px; font-weight:600; color:rgba(247,244,239,0.5); padding:7px 14px; border-radius:3px; border:1px solid rgba(247,244,239,0.08); transition:all 0.15s; white-space:nowrap; }
-.jump-link:hover,.jump-link.active { color:var(--rose); border-color:rgba(214,61,123,0.28); background:rgba(214,61,123,0.08); }
-@media(max-width:920px){
-  .pillar-head{padding:40px 28px 32px;}
-  .pillar-num{display:none;}
-  .pillar-body{grid-template-columns:1fr;}
-  .pillar-left{padding:28px 0 0;}
-  .proof-strip{padding:24px 28px;flex-direction:column;}
-  .jump-nav{padding:12px 28px;top:70px;}
+.pillar-list li strong { color: var(--ink); }
+@media (max-width: 900px) {
+  .pillar { padding: 60px 28px; }
+  .pillar-inner { grid-template-columns: 1fr; gap: 28px; }
 }
 </style>
 </head>
 <body>
-<div id="site-nav">
+
+<header id="site-header">
+  <div class="topbar">Port Moody Municipal Election &middot; October 17, 2026</div>
   <div class="nav-inner">
-    <a href="/index.html" class="nav-wordmark"><div class="nav-wordmark-name">Meghan Lahti</div><div class="nav-wordmark-sub">Mayor &middot; Port Moody &middot; 2026</div></a>
-    <nav><ul class="nav-links"><li><a href="/index.html">Home</a></li><li><a href="/about.html">About</a></li><li><a href="/platform.html" class="active">Platform</a></li><li><a href="/the-record.html">The Record</a></li><li><a href="/donate.html">Donate</a></li><li><a href="/volunteer.html">Volunteer</a></li><li><a href="/contact.html">Contact</a></li><li><a href="/donate.html">Donate</a></li></ul></nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <a href="/index.html" class="wordmark">
+      <div class="wordmark-name">Meghan Lahti</div>
+      <div class="wordmark-sub">Mayor &middot; Port Moody &middot; 2026</div>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/platform.html" class="active">Platform</a></li>
+        <li><a href="/the-record.html">What We've Done</a></li>
+        <li><a href="/endorsements.html">Endorsements</a></li>
+        <li><a href="/volunteer.html">Volunteer</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="/donate.html" class="nav-cta">Donate</a>
+    <button class="hamburger" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
-  <div class="nav-mobile" id="navMobile">
-    <a href="/index.html">Home</a><a href="/about.html">About</a><a href="/platform.html">Platform</a><a href="/the-record.html">The Record</a><a href="/volunteer.html">Volunteer</a><a href="/contact.html">Contact</a><a href="/donate.html">Donate</a>
-    </div>
-</div>
+  <div class="mobile-menu" id="navMobile">
+    <a href="/index.html">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/platform.html">Platform</a>
+    <a href="/the-record.html">What We've Done</a>
+    <a href="/endorsements.html">Endorsements</a>
+    <a href="/volunteer.html">Volunteer</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/donate.html" class="mobile-cta">Donate</a>
+  </div>
+</header>
 
 <div class="page-banner">
-  <span class="t-label" style="display:block;text-align:center;">What Meghan Stands For</span>
-  <h1 class="t-h1" style="color:var(--warm-white);">The Platform.</h1>
-  <p>Built around the five issues Meghan has spent her career on: Housing, Transportation, Good Governance, Experience, and Fiscal Responsibility.</p>
+  <h1>The Platform.</h1>
+  <p>The five things I want to focus on over the next four years, and what we're actually doing about each one.</p>
 </div>
 
-<div class="jump-nav" id="jumpNav">
-  <a href="#housing" class="jump-link">Housing</a>
-  <a href="#transportation" class="jump-link">Transportation</a>
-  <a href="#governance" class="jump-link">Governance &amp; Transparency</a>
-  <a href="#experience" class="jump-link">Experience</a>
-  <a href="#fiscal" class="jump-link">Fiscal Responsibility</a>
+<div class="pillars-strip">
+  <div class="pillars-strip-item"><div class="pillars-strip-num">01</div><div class="pillars-strip-label">Transportation</div></div>
+  <div class="pillars-strip-item"><div class="pillars-strip-num">02</div><div class="pillars-strip-label">Housing &amp; Affordability</div></div>
+  <div class="pillars-strip-item"><div class="pillars-strip-num">03</div><div class="pillars-strip-label">Good Governance &amp; Transparency</div></div>
+  <div class="pillars-strip-item"><div class="pillars-strip-num">04</div><div class="pillars-strip-label">Experience as an Asset</div></div>
+  <div class="pillars-strip-item"><div class="pillars-strip-num">05</div><div class="pillars-strip-label">Fiscal Responsibility</div></div>
+</div>
 
-
-<div class="pillar" id="housing" style="padding:0;">
-  <div class="pillar-head" style="background:var(--navy);">
-    <div class="pillar-head-inner">
-      <div class="pillar-eyebrow" style="color:var(--rose);">Pillar 01 &middot; Housing</div>
-      <h2 class="pillar-h2" style="color:var(--warm-white);">Housing built for the people who live here.</h2>
-      <p class="pillar-sub" style="color:var(--warm-white);">Affordable, family-sized, and built into deals that include daycares, grocery stores, and the everyday things a neighbourhood needs.</p>
-    </div>
-    <div class="pillar-num" style="color:var(--warm-white);"></div>
-  </div>
-  <div style="background:var(--warm-white);padding:0 72px 64px;">
-    <div class="pillar-body">
-      <div class="pillar-left">
-        <img src="meghan-community-event.jpg" alt="Meghan with a Port Moody supporter at the campaign launch" style="width:100%;max-height:380px;object-fit:cover;object-position:center 30%;border-radius:4px;margin-bottom:28px;box-shadow:0 12px 32px rgba(27,42,74,0.15);display:block;">
-<p>Port Moody&rsquo;s housing affordability crisis is real, and Meghan has been clear that it is a nuanced and complex issue that does not get solved by a single policy lever. Rents are too high. Ownership is out of reach for most young families. Seniors who have owned their homes for thirty years cannot downsize and stay in the city. At the end of the day, her goal has always been to ensure that housing actually gets built. Built thoughtfully, with strong negotiation, and with the things a neighbourhood needs written into the deals as conditions.</p>
-<p>New provincial legislation has mandated small-scale multi-unit housing across British Columbia. In practice, that means duplexes, garden suites, side-by-side townhomes, and fourplexes are coming to every municipality, including Port Moody. Meghan sees this as an opportunity, not a problem, if it&rsquo;s introduced carefully.</p>
-<p>These are housing options Port Moody seniors haven&rsquo;t had in a long time: the chance to downsize without leaving the neighbourhood they&rsquo;ve lived in for decades, close to grandkids and familiar streets. They&rsquo;re options young families haven&rsquo;t had either, the kind that come with a yard and a real home at a price within reach. Whether this happens isn&rsquo;t really the question anymore, because the province has already decided that. The real question is how Port Moody shapes it: introducing it neighbourhood by neighbourhood, matching the scale and character of what&rsquo;s already there.</p><div class="pillar-pq"><p>&ldquo;It&rsquo;s not about giving developers whatever they want. It&rsquo;s about making sure that things are done on our terms.&rdquo;</p><cite>Meghan Lahti &middot; Tri-City News &middot; 2022</cite></div></div>
-      <div class="pillar-right">
-        <div class="pillar-commits">
-          <div style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Meghan&rsquo;s Commitments</div>
-          <div class="commit-list commit-dark"><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Affordability in every approval.</strong>Below-market rentals, family-sized homes, and senior-friendly options as requirements.</div></div><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Smart density, where it makes sense.</strong>Transit-area concentration near Moody Centre and Inlet Centre. Missing-middle introduced carefully, neighbourhood by neighbourhood.</div></div><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Daycares, grocery stores, and parks built in.</strong>Community amenities negotiated as conditions of approval.</div></div><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Tree retention, design standards, and infrastructure protection enforced.</strong>The character of the streetscape preserved.</div></div></div>
-        </div>
-        <div class="pillar-proof">
-          <div class="pillar-proof-label" style="color:var(--rose);">Already Delivered</div>
-          <div class="pillar-proof-item"><div class="pillar-proof-num">328</div><div class="pillar-proof-desc"><strong>Non-market rental apartments</strong> under construction at Portwood (The Creek, 296 Angela Dr), backed by senior-government funding through BC Housing and CMHC. Ground broke 2024.</div></div><div class="pillar-proof-item"><div class="pillar-proof-num">865</div><div class="pillar-proof-desc"><strong>Purpose-built rental homes</strong> negotiated at Moody Centre, including 44 below-market units, grocery store, and pedestrian overpass.</div></div><div class="pillar-proof-item"><div class="pillar-proof-num">Funded</div><div class="pillar-proof-desc"><strong>Senior-government funding secured</strong> from BC Housing and CMHC &mdash; unlocked because Meghan&rsquo;s council did the work, not voted no.</div></div><div class="pillar-proof-item"><div class="pillar-proof-num">12,300&nbsp;sq.ft.</div><div class="pillar-proof-desc"><strong>Childcare facility</strong> built into the Portwood development alongside a neighbourhood park and caf&eacute;.</div></div>
-        </div>
+<section class="pillar" id="transportation">
+  <div class="pillar-inner">
+    <div>
+      <div class="pillar-label">
+        <span class="pillar-label-num">01</span>
+        <span class="pillar-label-text">Transportation</span>
       </div>
+      <h2 class="pillar-h">Getting around Port Moody should be easier.</h2>
+      <p class="pillar-tag">More transit where it makes sense. Honest road improvements where the congestion actually is.</p>
     </div>
-  </div>
-</div>
-
-<div class="pillar" id="transportation" style="padding:0;">
-  <div class="pillar-head" style="background:var(--forest);">
-    <div class="pillar-head-inner">
-      <div class="pillar-eyebrow" style="color:var(--rose);">Pillar 02 &middot; Transportation</div>
-      <h2 class="pillar-h2" style="color:var(--warm-white);">Transportation that keeps up with the city.</h2>
-      <p class="pillar-sub" style="color:var(--warm-white);">Infrastructure built alongside growth. Regional advocacy on the issues no city solves alone.</p>
-    </div>
-    <div class="pillar-num" style="color:var(--warm-white);"></div>
-  </div>
-  <div style="background:var(--lforest);padding:0 72px 64px;">
     <div class="pillar-body">
-      <div class="pillar-left">
-        <img src="meghan-photo.jpg" alt="Meghan speaking at the campaign launch" style="width:100%;max-height:380px;object-fit:cover;object-position:center 30%;border-radius:4px;margin-bottom:28px;box-shadow:0 12px 32px rgba(27,42,74,0.15);display:block;">
-        <p>Traffic congestion is the issue Meghan hears about most consistently from residents. Barnet Highway, St. Johns Street, the Ioco Road corridor, these are the daily reality for Port Moody families. Her position on them has not changed since 1996: traffic is a regional problem that requires regional solutions, and Port Moody&rsquo;s job is to be at the table for them.</p>
-<p>That has meant working with TransLink and Metro Vancouver on Barnet Highway congestion, advocating for the Murray-Clark connector, and pushing for transit-on-demand programs that make SkyTrain and bus connections more usable for more residents. It has also meant insisting that infrastructure gets built before, or at minimum alongside, the density that demands it. Every major development approved under her leadership has included infrastructure contributions as a condition of approval. </p>
-<div class="pillar-pq"><p>&ldquo;People really wanted to see something different &mdash; a council that could work together and actually get things done. Not dig in. Not delay. Do the work.&rdquo;</p><cite>Meghan Lahti &middot; Election Night, 2022</cite></div></div>
-      <div class="pillar-right">
-        <div class="pillar-commits">
-          <div style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Meghan&rsquo;s Commitments</div>
-          <div class="commit-list commit-dark"><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Regional advocacy on Barnet Highway.</strong>Working with TransLink and Metro Vancouver on the solutions Port Moody cannot deliver alone.</div></div><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Infrastructure required from every development.</strong>Roads, servicing, and off-site works &mdash; built into every approval as conditions.</div></div><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Transit-oriented development that reduces car trips.</strong>Density near SkyTrain, with pedestrian and cycling connections.</div></div><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Better walking and cycling infrastructure.</strong>Sidewalk gaps closed. Bike lanes connected. Safe routes to school, transit, Murray Street, and Rocky Point Park.</div></div></div>
-        </div>
-        <div class="pillar-proof">
-          <div class="pillar-proof-label" style="color:var(--rose);">Already Delivered</div>
-          <div class="pillar-proof-item"><div class="pillar-proof-num">$43.2M</div><div class="pillar-proof-desc"><strong>Infrastructure upgrades</strong> negotiated into the Coronation Park approval &mdash; roads, servicing, and off-site works as conditions.</div></div><div class="pillar-proof-item"><div class="pillar-proof-num">Overpass</div><div class="pillar-proof-item"><div class="pillar-proof-num">$6.6M</div><div class="pillar-proof-desc"><strong>Off-site servicing</strong> committed by Beedie for the Spring Street development as part of their application requirements.</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+      <p>Port Moody has real congestion problems, and there isn't a single fix. We have to keep working on the transit that actually moves people, and on the road improvements that make rush hour bearable for everyone who has to drive. Both pieces matter, and the specifics matter more than the slogans.</p>
 
-<div class="pillar" id="governance" style="padding:0;">
-  <div class="pillar-head" style="background:var(--cream);">
-    <div class="pillar-head-inner">
-      <div class="pillar-eyebrow" style="color:var(--forest);">Pillar 03 &middot; Governance &amp; Transparency</div>
-      <h2 class="pillar-h2" style="color:var(--navy);">Transparency, accountability, and the open door.</h2>
-      <p class="pillar-sub" style="color:var(--navy);">Open communication, accessible leadership, and the daily practice of running a city in public.</p>
+      <h4>What's already in motion</h4>
+      <ul class="pillar-list">
+        <li><strong>The Shoreline Shuttle is coming back this summer.</strong> Reintroducing it was one of the commitments I ran on in 2022. It's happening.</li>
+        <li><strong>Last-mile transit is here.</strong> The e-bike and e-scooter program gives people a way to close the gap between transit and home.</li>
+        <li><strong>Multi-use path along St. Johns.</strong> Built, with more to come.</li>
+      </ul>
+
+      <h4>What's next</h4>
+      <ul class="pillar-list">
+        <li><strong>Widening the bridge at Barnet and Ioco.</strong> The congestion at that intersection won't fix itself.</li>
+        <li><strong>An HOV lane on St. Johns during rush hour.</strong> The bridge widening is the piece that has to come first, so the HOV lane works instead of bottlenecking.</li>
+        <li><strong>Smart growth near transit</strong>, so the density goes where the buses, the bikes, and the walking already are.</li>
+      </ul>
     </div>
-    <div class="pillar-num" style="color:var(--navy);"></div>
   </div>
-  <div style="background:var(--warm-white);padding:0 72px 64px;">
+</section>
+
+<section class="pillar" id="housing">
+  <div class="pillar-inner">
+    <div>
+      <div class="pillar-label">
+        <span class="pillar-label-num">02</span>
+        <span class="pillar-label-text">Housing &amp; Affordability</span>
+      </div>
+      <h2 class="pillar-h">Affordable housing comes in all forms.</h2>
+      <p class="pillar-tag">Below-market and deeply subsidized are part of it. They aren't all of it.</p>
+    </div>
     <div class="pillar-body">
-      <div class="pillar-left">
-        <img src="meghan-constable-nikolai.jpg" alt="Meghan with the Port Moody Police Chief at a swearing-in ceremony" style="width:100%;max-height:380px;object-fit:cover;object-position:center 30%;border-radius:4px;margin-bottom:28px;box-shadow:0 12px 32px rgba(27,42,74,0.15);display:block;">
-        <p>Effective leadership is rooted in transparency, accountability, and accessibility, and Meghan has built her first term as Mayor around that practice. She has prioritized open communication with the community, ensuring residents are informed before, not after, the decisions that shape their lives are made. She fosters partnerships with local organizations, businesses, and citizens because she has been consistent on this for thirty years: collaboration is essential to solving Port Moody&rsquo;s real challenges.</p>
-<p>During her first term, Meghan created new direct channels between City Hall and the community. She hosted Mayor&rsquo;s Town Halls on snow removal, revenue diversification, park expansion, and the Official Community Plan. She launched two Mayor&rsquo;s Youth Summits, making sure the voices of Port Moody&rsquo;s next generation are heard at City Hall. Her commitment is to an environment where diverse voices are heard, and where residents trust that their city is being run with integrity.</p>
-<div class="pillar-pq"><p>&ldquo;Good governance means transparency, accountability, and collaboration. Together, we can create a thriving community where every voice matters and every person feels valued.&rdquo;</p><cite>Meghan Lahti</cite></div></div>
-      <div class="pillar-right">
-        <div class="pillar-commits">
-          <div style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Meghan&rsquo;s Commitments</div>
-          <div class="commit-list commit-dark"><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Transparency in every decision.</strong>Open communication on major city decisions.</div></div><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Accountability to the community.</strong>Governance that answers to residents, not special interests.</div></div><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Collaborative decision-making.</strong>Partnerships with local organizations, businesses, and citizens built into how the city works.</div></div><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Accessible leadership.</strong>An open door at City Hall, residents can request a meeting with Meghan during her weekly open-door hours.</div></div></div>
-        </div>
-        <div class="pillar-proof">
-          <div class="pillar-proof-label" style="color:var(--rose);">Already Delivered</div>
-          <div class="pillar-proof-item"><div class="pillar-proof-num">5</div><div class="pillar-proof-desc"><strong>Mayor&rsquo;s Town Halls</strong> on snow removal, revenue diversification, park expansion, and the Official Community Plan &mdash; direct dialogue, not press releases.</div></div><div class="pillar-proof-item"><div class="pillar-proof-num">2</div><div class="pillar-proof-desc"><strong>Mayor&rsquo;s Youth Summits</strong> launched to bring Port Moody&rsquo;s next generation into civic decision-making.</div></div><div class="pillar-proof-item"><div class="pillar-proof-num">30&nbsp;yrs</div><div class="pillar-proof-desc"><strong>Consistent public record</strong> &mdash; every vote, every position, available and accountable since 1996.</div></div><div class="pillar-proof-item"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+      <p>Affordability isn't a single number. A first-time buyer needs something different from a renter, who needs something different from a family that's outgrown a one-bedroom, who needs something different from someone who wants to downsize and stay close to their grandkids. Seniors on fixed incomes are facing a different problem again. What's affordable for one person is out of reach for another, and a real housing plan has to respect that instead of pretending everyone fits one box.</p>
 
-<div class="pillar" id="experience" style="padding:0;">
-  <div class="pillar-head" style="background:var(--gold-pale);">
-    <div class="pillar-head-inner">
-      <div class="pillar-eyebrow" style="color:var(--forest);">Pillar 04 &middot; Experience</div>
-      <h2 class="pillar-h2" style="color:var(--navy);">The experience to actually deliver.</h2>
-      <p class="pillar-sub" style="color:var(--navy);">Thirty years of relationships, files, and the institutional knowledge that turns plans into projects.</p>
+      <h4>What I'm working toward</h4>
+      <ul class="pillar-list">
+        <li><strong>Seniors and affordable housing is a priority going into 2026.</strong> All forms. Respectful of where people are at.</li>
+        <li><strong>Smart growth means density near transit.</strong> That's where most of the new homes need to go, so we can keep mid-rise and low-rise housing away from transit corridors.</li>
+        <li><strong>Vibrant, walkable neighbourhoods</strong> connected to services and amenities. The grocery store you can walk to. The park around the corner. The transit two blocks away.</li>
+      </ul>
+
+      <h4>On Moody Centre</h4>
+      <p>People in Moody Centre have been asking for years for a grocery store and the ability to walk to basic services. It hasn't happened because the critical mass to support it wasn't there yet. With Moody Centre finally taking shape, we have a chance to build a neighbourhood that has real services in it. I remember when Suter Brook and Newport were proposed, plenty of people were dead set against them, and now those same neighbourhoods are full of people who love living there. The job is to keep listening, and to make sure what gets built is something the community ends up being proud of.</p>
     </div>
-    <div class="pillar-num" style="color:var(--navy);"></div>
   </div>
-  <div style="background:var(--warm-white);padding:0 72px 64px;">
+</section>
+
+<section class="pillar" id="governance">
+  <div class="pillar-inner">
+    <div>
+      <div class="pillar-label">
+        <span class="pillar-label-num">03</span>
+        <span class="pillar-label-text">Good Governance &amp; Transparency</span>
+      </div>
+      <h2 class="pillar-h">A council that works together.</h2>
+      <p class="pillar-tag">The boring stuff, done in public, by people who can disagree without making it personal.</p>
+    </div>
     <div class="pillar-body">
-      <div class="pillar-left">
-        <img src="meghan-zoe-royer.jpg" alt="Meghan at a community event" style="width:100%;max-height:380px;object-fit:cover;object-position:center 30%;border-radius:4px;margin-bottom:28px;box-shadow:0 12px 32px rgba(27,42,74,0.15);display:block;">
-        <p>Meghan&rsquo;s political career did not start with a campaign. It started in 1994, when she was a young mother of three and Bert Flinn Park came under threat. She did not write a letter &mdash; she ran for office. By 1996 she was on Port Moody City Council, and the same instinct that brought her there has carried her every year since: do the homework, build the relationships, and deliver.</p>
-<p>In the years since 1996, that has meant 15 consecutive years chairing Port Moody&rsquo;s Finance Committee, 16 years as a Metro Vancouver Director and Alternate Director representing Port Moody at the regional level, and a record of negotiating community amenity contributions, infrastructure dollars, and amenity packages into every major project that has been approved. In 2019, she was recognized with the national environmental Clements Award in the category of Most Outstanding Canadian Politician.</p>
-<p>Promises are easy. Negotiating more than $99 million across the Coronation Park project, and senior-government funding for 328 affordable homes at Portwood requires knowing the file, knowing the relationships, and knowing how to do the work.</p>
-<div class="pillar-pq"><p>&ldquo;This city doesn&rsquo;t happen by accident. It happens because people decide to show up.&rdquo;</p><cite>Meghan Lahti</cite></div></div>
-      <div class="pillar-right">
-        <div class="pillar-commits">
-          <div style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Meghan&rsquo;s Commitments</div>
-          <div class="commit-list commit-dark"><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Continuity.</strong>The relationships and institutional knowledge it takes to navigate Metro Vancouver, BC Housing, CMHC, and the province on Port Moody&rsquo;s behalf.</div></div><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Experience that delivers.</strong>Negotiation, not just advocacy.</div></div><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>A record that voters can audit.</strong>Every vote, every position, available since 1996.</div></div><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Leadership that knows the difference</strong>between a press release and an outcome.</div></div></div>
-        </div>
-        <div class="pillar-proof">
-          <div class="pillar-proof-label" style="color:var(--rose);">The Experience to Deliver</div>
-          <div class="pillar-proof-item"><div class="pillar-proof-num">1996</div><div class="pillar-proof-desc"><strong>First elected to council.</strong>Longest-serving members in Port Moody council history.</div></div><div class="pillar-proof-item"><div class="pillar-proof-num">15&nbsp;yrs</div><div class="pillar-proof-desc"><strong>Chair, Finance Committee.</strong> Multi-million-dollar municipal budget management.</div></div><div class="pillar-proof-item"><div class="pillar-proof-num">16&nbsp;yrs</div><div class="pillar-proof-desc"><strong>Metro Vancouver Director</strong> and Alternate Director (2002&ndash;2018) representing Port Moody regionally.</div></div><div class="pillar-proof-item"><div class="pillar-proof-num">2019</div><div class="pillar-proof-desc"><strong>National environmental Clements Award</strong> &mdash; Most Outstanding Canadian Politician.</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+      <p>When this council came in after 2022, there was real repair work to do, both inside the room and outside of it. The first job was getting council back on the same page. Nearly every member of this council supported the same strategic plan, and we followed it. That isn't an accident. It's what happens when you do the work in public, on the record, and you build the kind of working relationships where people can disagree without burning the room down.</p>
 
-<div class="pillar" id="fiscal" style="padding:0;">
-  <div class="pillar-head" style="background:var(--cobalt-pale);">
-    <div class="pillar-head-inner">
-      <div class="pillar-eyebrow" style="color:var(--forest);">Pillar 05 &middot; Fiscal</div>
-      <h2 class="pillar-h2" style="color:var(--navy);">Fiscal responsibility, line by line.</h2>
-      <p class="pillar-sub" style="color:var(--navy);">Growth pays for growth. A commercial tax base reduces the burden on homeowners. Every dollar accounted for.</p>
+      <h4>What we've done</h4>
+      <ul class="pillar-list">
+        <li><strong>Adopted a Strategic Plan</strong> the whole council could agree on, and followed it through.</li>
+        <li><strong>Adopted a Land Management Strategy</strong>, a first for Port Moody. It sets a strategic vision for how city-owned land is managed, instead of doing it piece by piece.</li>
+        <li><strong>Repaired relationships</strong> with the business community, non-profits, the school district, and neighbouring municipalities.</li>
+        <li><strong>Two Youth Summits</strong> to bring the youth voice directly to council.</li>
+        <li><strong>Mayor's Task Force on Arts and Business</strong>, now moving toward an arm's-length Arts and Business Council that brings the two together. The city will support it with seed funding and space to start.</li>
+      </ul>
+
+      <h4>The standard</h4>
+      <p>My standard is pretty simple: an open door, decisions made in public rather than behind them, and a mayor who returns the call and works with people instead of around them.</p>
     </div>
-    <div class="pillar-num" style="color:var(--navy);"></div>
   </div>
-  <div style="background:var(--warm-white);padding:0 72px 64px;">
+</section>
+
+<section class="pillar" id="experience">
+  <div class="pillar-inner">
+    <div>
+      <div class="pillar-label">
+        <span class="pillar-label-num">04</span>
+        <span class="pillar-label-text">Experience as an Asset</span>
+      </div>
+      <h2 class="pillar-h">Experience is a good thing.</h2>
+      <p class="pillar-tag">The depth a city this complicated actually needs takes more than one term to build.</p>
+    </div>
     <div class="pillar-body">
-      <div class="pillar-left">
-        <img src="meghan-share-gala.jpg" alt="Meghan addressing the room at the campaign launch" style="width:100%;max-height:380px;object-fit:cover;object-position:center 30%;border-radius:4px;margin-bottom:28px;box-shadow:0 12px 32px rgba(27,42,74,0.15);display:block;">
-        <p>Fiscal responsibility, requires experience. Experience is fifteen years of chairing Port Moody&rsquo;s Finance Committee, multi-million-dollar budgets managed through a twenty-year career in post-secondary education before public office, and the daily practice of negotiating community amenity contributions, development cost charges, and infrastructure dollars into every major project approved.</p>
-<p>That is also where the commercial tax base comes in. Coronation Park alone delivered more than $99 million in community amenity contributions, infrastructure upgrades, public art, and parkland dedications. These are the dollars that reduce the burden on existing homeowners over time, and they exist because the experience to negotiate for them was delivered.</p>
-<p>Murray Street is Port Moody&rsquo;s most distinctive economic asset. The Burrard Thermal site represents a generational opportunity for good jobs on the waterfront. Meghan&rsquo;s position has been consistent: protect what works, push for the jobs the city is missing, and never let fiscal mismanagement become the reason a service has to be cut.</p>
-<div class="pillar-pq"><p>&ldquo;Growth has to pay for growth. The negotiation is the difference between a project that gives back and one that just shows up.&rdquo;</p><cite>Meghan Lahti</cite></div></div>
-      <div class="pillar-right">
-        <div class="pillar-commits">
-          <div style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Meghan&rsquo;s Commitments</div>
-          <div class="commit-list commit-dark"><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Growth pays for growth.</strong>Community amenity contributions and development cost charges negotiated into every major project.</div></div><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>A commercial tax base that lowers the burden on homeowners.</strong>Employment space in Moody Centre developments. Burrard Thermal as a jobs hub. Murray Street protected.</div></div><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Conservative, audited budget management.</strong>The Finance Committee discipline applied at the Mayor&rsquo;s office.</div></div><div class="commit-item"><div class="commit-check">&#10003;</div><div class="commit-text"><strong>Every line item defensible.</strong>No surprise tax increases. Predictable, transparent budgeting.</div></div></div>
-        </div>
-        <div class="pillar-proof">
-          <div class="pillar-proof-label" style="color:var(--rose);">Already Delivered</div>
-          <div class="pillar-proof-item"><div class="pillar-proof-num">15&nbsp;yrs</div><div class="pillar-proof-desc"><strong>Chair, Port Moody Finance Committee.</strong></div></div><div class="pillar-proof-item"><div class="pillar-proof-item"><div class="pillar-proof-num">$99M+</div><div class="pillar-proof-desc"><strong>In community contributions</strong> at Coronation Park alone &mdash; amenity, infrastructure, DCCs, and public art combined.</div></div>
-        </div>
-      </div>
+      <p>I've heard the line that I've been around too long. I see it the other way. A lot of the work of running a city is invisible until you've done it. The parliamentary procedure, the relationships you build with other mayors and with the province and TransLink and Metro Vancouver and the school district, the institutional memory that tells you why a decision eight years ago was made the way it was. None of that comes in a first term, and not a lot of it can be taught on a deadline.</p>
+
+      <h4>The track record</h4>
+      <ul class="pillar-list">
+        <li><strong>First elected to Port Moody Council in 1996.</strong> One of the longest-serving members in the city's history.</li>
+        <li><strong>15 years chairing the Finance Committee.</strong></li>
+        <li><strong>16 years on the Metro Vancouver Board</strong> representing Port Moody.</li>
+        <li><strong>2019 Clements Award</strong> for environmental leadership.</li>
+        <li><strong>Port Moody's first female mayor</strong>, elected in 2022.</li>
+        <li><strong>Nearly 20 years in post-secondary education</strong>, as an educator, College Director, and Provincial Director responsible for hundreds of employees.</li>
+      </ul>
+
+      <h4>Why it matters in this election</h4>
+      <p>Port Moody has a habit of electing mayors who only end up serving one term, and honestly, it has cost us. Continuity matters in this job. The same agenda, the same relationships, and the same person who knows where things actually sit will always get more done than starting from scratch every four years.</p>
     </div>
   </div>
+</section>
+
+<section style="padding: 0;" aria-hidden="true">
+  <img src="meghan-community-event.jpg" alt="Meghan Lahti at a community event" style="width:100%; max-height:460px; object-fit:cover; display:block;">
+</section>
+
+<section class="pillar" id="fiscal">
+  <div class="pillar-inner">
+    <div>
+      <div class="pillar-label">
+        <span class="pillar-label-num">05</span>
+        <span class="pillar-label-text">Fiscal Responsibility</span>
+      </div>
+      <h2 class="pillar-h">Spending that protects services.</h2>
+      <p class="pillar-tag">When the easy answer is to cut a service, the better question is whether there's another way.</p>
+    </div>
+    <div class="pillar-body">
+      <p>Being responsible with the city's money means making decisions that hold up over time. It means looking for new revenue before reaching for the easy answer of cutting services, and being honest with people about what things cost, even when the honest answer isn't the popular one.</p>
+
+      <h4>How it shows up</h4>
+      <ul class="pillar-list">
+        <li><strong>Pay parking in the busy areas.</strong> Not everyone loved it, and I get that. But it brought in revenue so we didn't have to cut services, and it helped with congestion at Rocky Point at the same time.</li>
+        <li><strong>Growth has to pay for its own infrastructure.</strong> When new development comes in, the supporting amenities have to come with it.</li>
+        <li><strong>Think before you act.</strong> The Land Management Strategy is a good example. Decide the principles up front, then make the case-by-case calls.</li>
+        <li><strong>Conservative, audited budgets.</strong> Fifteen years chairing the Finance Committee is what I bring to every line in the budget.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="pullquote">
+  <p class="pullquote-text">&ldquo;We have the opportunity to create a <em>vibrant neighbourhood</em> that will change the city in a positive way.&rdquo;</p>
+  <div class="pullquote-source">Meghan Lahti</div>
 </div>
 
-
-<script>
-(function(){
-  var pillars=['housing','transportation','governance','experience','fiscal'];
-  var links={};
-  pillars.forEach(function(id){links[id]=document.querySelector('.jump-link[href="#'+id+'"]');});
-  function update(){
-    var sy=window.scrollY+140,active=pillars[0];
-    pillars.forEach(function(id){var el=document.getElementById(id);if(el&el.offsetTop<=sy)active=id;});
-    pillars.forEach(function(id){if(links[id]){links[id].classList.toggle('active',id===active);}});
-  }
-  window.addEventListener('scroll',update,{passive:true});
-})();
-</script>
+<section class="section bg-cream-deep">
+  <div class="container" style="max-width:920px;text-align:center;">
+    <span style="color: var(--rose-deep); letter-spacing: 0.18em; font-size: 12px; font-weight: 600; text-transform: uppercase; display:block; margin-bottom:10px;">Get Involved</span>
+    <h2 class="t-h2" style="margin-bottom:16px;">If this sounds like the Port Moody you want, help me get there.</h2>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:18px;">
+      <a href="/volunteer.html" class="btn btn-rose">Volunteer</a>
+      <a href="/contact.html" class="btn btn-outline-ink">Get in touch</a>
+    </div>
+  </div>
+</section>
 
 <footer id="site-footer">
-  <div class="footer-cta">
+  <div class="footer-cta-strip">
     <div>
-      <h2>Ready to show up for Port Moody?</h2>
-      <p>Thirty years of steady, experienced leadership. The record is real. And the work is far from over.</p>
-      <div class="btn-row" style="margin-top:18px;"><a href="/volunteer.html" class="btn btn-outline">Volunteer</a></div>
+      <h2>Three decades in, and I'm still not done.</h2>
+      <p>This campaign comes out of a deep love for Port Moody and a real pride in being part of how it has grown. There's still a lot to do.</p>
     </div>
-    <div style="font-family:'Times New Roman',Georgia,serif;font-size:clamp(30px,4vw,56px);font-weight:900;color:var(--warm-white);line-height:0.88;text-align:right;opacity:0.08;user-select:none;">Port&nbsp;Moody.<br><em style="color:var(--rose);font-style:italic;">Together.</em><br>Forward.</div>
+    <div class="footer-cta-btns">
+      <a href="/volunteer.html" class="btn btn-rose">Volunteer</a>
+      <a href="/contact.html" class="btn btn-outline">Get in touch</a>
+    </div>
   </div>
   <div class="footer-main">
     <div>
-      <div class="footer-brand-name">Meghan Lahti</div>
-      <div class="footer-brand-title">Mayor &middot; Port Moody &middot; 2026</div>
-      <div class="footer-slogan">Port Moody. <em>Together.</em> Forward.</div>
-      <p class="footer-origin">&ldquo;She entered politics in 1994 to save a park &mdash; and she&rsquo;s leading the fight forward today.&rdquo;</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <a href="https://www.facebook.com" style="background:rgba(247,244,239,0.07);color:rgba(247,244,239,0.6);font-size:13px;font-weight:600;padding:7px 14px;border-radius:3px;border:1px solid rgba(247,244,239,0.1);">Facebook</a>
-        <a href="https://www.instagram.com" style="background:rgba(247,244,239,0.07);color:rgba(247,244,239,0.6);font-size:13px;font-weight:600;padding:7px 14px;border-radius:3px;border:1px solid rgba(247,244,239,0.1);">Instagram</a>
-        <a href="mailto:info@lahti2026.com" style="background:rgba(247,244,239,0.07);color:rgba(247,244,239,0.6);font-size:13px;font-weight:600;padding:7px 14px;border-radius:3px;border:1px solid rgba(247,244,239,0.1);">Email</a>
+      <div class="footer-name">Meghan Lahti</div>
+      <div class="footer-title">Mayor &middot; Port Moody &middot; 2026</div>
+      <p class="footer-slogan">&ldquo;Port Moody is a passion for me. I've spent most of my adult life in service to this city.&rdquo;</p>
+      <div class="footer-social">
+        <a href="https://facebook.com/MeghanLahtiPortMoody" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://instagram.com/meghanlahti" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:hello@lahti2026.com">Email</a>
       </div>
     </div>
-    <div class="footer-col"><h4>Pages</h4><ul>
-      <li><a href="/index.html">Home</a></li><li><a href="/about.html">About Meghan</a></li>
-      <li><a href="/platform.html">Platform</a></li><li><a href="/the-record.html">The Record</a></li>
-      <li><a href="/volunteer.html">Volunteer</a></li><li><a href="/contact.html">Contact</a></li><li><a href="/donate.html">Donate</a></li>
-    </ul></div>
-    <div class="footer-col"><h4>Platform</h4><ul>
-      <li><a href="/platform.html#housing">Housing &amp; Growth</a></li>
-      <li><a href="/platform.html#parks">Parks &amp; Environment</a></li>
-      <li><a href="/platform.html#traffic">Traffic &amp; Infrastructure</a></li>
-      <li><a href="/platform.html#economy">Economy &amp; Jobs</a></li>
-      <li><a href="/platform.html#governance">Governance</a></li>
-      <li><a href="/the-record.html">What&rsquo;s Been Built</a></li>
-    </ul></div>
-    <div class="footer-col"><h4>Contact</h4>
-      <p style="font-size:15px;color:rgba(214,221,232,0.55);line-height:1.7;margin-bottom:16px;">
-        <a href="mailto:info@lahti2026.com" style="color:var(--gold);">info@lahti2026.com</a><br>Port Moody, British Columbia<br>@Lahti2026
-      </p>
+    <div class="footer-col">
+      <h4>The Campaign</h4>
+      <ul>
+        <li><a href="/about.html">About Meghan</a></li>
+        <li><a href="/platform.html">Platform</a></li>
+        <li><a href="/the-record.html">What We've Done</a></li>
+        <li><a href="/endorsements.html">Endorsements</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="/volunteer.html">Volunteer</a></li>
+        <li><a href="/donate.html">Donate</a></li>
+        <li><a href="/contact.html#newsletter">Newsletter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-pillars-box">
+        <div class="footer-pillars-title">Five pillars.</div>
+        <ul>
+          <li>Transportation</li>
+          <li>Housing &amp; Affordability</li>
+          <li>Good Governance &amp; Transparency</li>
+          <li>Experience as an Asset</li>
+          <li>Fiscal Responsibility</li>
+        </ul>
       </div>
+    </div>
   </div>
   <div class="footer-bottom">
     <div class="footer-legal">Authorized by Anthony Sandler, financial agent for Meghan Lahti 2026 Campaign. All donations subject to BC Municipal Elections Finance Rules. Maximum $1,429.70 per individual. BC residents only. &copy; 2026 Meghan Lahti Campaign.</div>
-    <div class="footer-tags"><span class="footer-tag">#Lahti2026</span><span class="footer-tag">#PortMoodyFirst</span><span class="footer-tag">#30YearsIn</span><span class="footer-tag">#BuiltForPM</span></div>
+    <div class="footer-tags">
+      <div class="footer-tag">Port Moody</div>
+      <div class="footer-tag">2026</div>
+    </div>
   </div>
-  <div class="footer-ack">We acknowledge that Port Moody is located on the unceded and traditional territories of the K&#x02B7;ik&#x02B7;&#x0259;&#x019B;&#x0313;&#x0259;m (Kwikwetlem), x&#x02B7;m&#x0259;&#x03B8;kw&#x0259;y&#x0313;&#x0259;m (Musqueam), Skwxw&#xFA;7mesh (Squamish), and S&#x0259;l&#x0313;&#xED;lw&#x0259;ta&#x0294;/Selilwitulh (Tsleil-Waututh) Nations.</div>
+  <div class="footer-ack">
+    Port Moody is situated on the unceded traditional territories of the k&#695;ik&#695;&#601;&#643;&#601;m (Kwikwetlem), s&#601;l&#769;ilw&#601;ta&#660;&#7491; (Tsleil-Waututh), x&#695;m&#601;&#952;k&#695;&#601;y&#769;&#601;m (Musqueam), and S&#7811;&#x1E8F;w&#x1E8F;&#769;u7mesh (Squamish) Nations.
+  </div>
 </footer>
-<script>(function(){var b=document.getElementById('navToggle'),m=document.getElementById('navMobile');if(b&&m){b.addEventListener('click',function(){m.style.display=m.style.display==='block'?'none':'block';});}
-document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
-}());</script>
-<script src="/password-gate.js"></script>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navMobile = document.getElementById('navMobile');
+  if (navToggle && navMobile) {
+    navToggle.addEventListener('click', () => {
+      navMobile.style.display = navMobile.style.display === 'block' ? 'none' : 'block';
+    });
+  }
+</script>
+<script src="password-gate.js"></script>
 </body>
 </html>

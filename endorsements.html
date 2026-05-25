@@ -3,58 +3,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Volunteer for the Meghan Lahti for Mayor 2026 campaign. Door knocking, phone banking, signs, events. There's a place for you here.">
-<title>Volunteer &middot; Meghan Lahti for Port Moody Mayor 2026</title>
+<meta name="description" content="Organizations and community leaders supporting Meghan Lahti for Mayor of Port Moody, 2026.">
+<title>Endorsements &middot; Meghan Lahti for Port Moody Mayor 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
-.role-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
+.endorse-section {
+  padding: 80px 72px;
+  border-bottom: 1px solid rgba(45,58,92,0.08);
 }
-.role-card {
-  background: var(--ivory);
+.endorse-section:nth-child(odd)  { background: var(--ivory); }
+.endorse-section:nth-child(even) { background: var(--cream); }
+.endorse-row {
+  max-width: 1080px; margin: 0 auto;
+  display: grid; grid-template-columns: 280px 1fr; gap: 56px;
+  align-items: start;
+}
+.endorse-logo-block {
+  background: white;
   border: 1px solid rgba(45,58,92,0.1);
-  border-top: 3px solid var(--rose);
-  padding: 30px 28px;
-  border-radius: 4px;
+  border-radius: 10px;
+  padding: 32px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 220px;
 }
-.role-card-tag {
-  font-size: 11px; font-weight: 600;
+.endorse-logo-block img { max-width: 100%; max-height: 200px; object-fit: contain; }
+.endorse-logo-fallback {
+  font-family: var(--font-head);
+  font-size: 26px; font-weight: 700;
+  color: var(--ink); text-align: center; line-height: 1.2;
+}
+.endorse-logo-fallback span {
+  display: block; font-size: 12px; font-weight: 600;
   letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--rose-deep); margin-bottom: 12px;
+  color: var(--rose-deep); margin-top: 10px;
 }
-.role-card-title {
+.endorse-content .eyebrow {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--rose-deep); display: block; margin-bottom: 10px;
+}
+.endorse-content h2 {
   font-family: var(--font-head);
-  font-size: 22px; font-weight: 700;
-  color: var(--ink); line-height: 1.2; margin-bottom: 10px;
+  font-size: clamp(28px, 3.4vw, 42px);
+  font-weight: 700; line-height: 1.1;
+  color: var(--ink); letter-spacing: -0.005em;
+  margin-bottom: 22px;
 }
-.role-card-body { font-size: 15px; color: var(--slate); line-height: 1.7; }
-.cta-box {
-  background: var(--rose-pale);
-  border: 1px solid rgba(199,125,161,0.3);
-  border-top: 3px solid var(--rose);
-  padding: 44px 36px;
-  text-align: center;
-  border-radius: 4px;
-  margin-top: 44px;
-}
-.cta-box h3 {
+.endorse-quote {
   font-family: var(--font-head);
-  font-size: clamp(24px, 2.4vw, 32px);
-  font-weight: 700; color: var(--ink); line-height: 1.18;
-  margin-bottom: 12px; letter-spacing: -0.005em;
+  font-size: clamp(20px, 1.8vw, 24px);
+  font-weight: 500; font-style: italic;
+  color: var(--ink); line-height: 1.5;
+  margin-bottom: 22px;
+  border-left: 3px solid var(--rose);
+  padding-left: 22px;
 }
-.cta-box p {
-  font-size: 17px; color: var(--slate); line-height: 1.6;
-  max-width: 480px; margin: 0 auto 22px;
+.endorse-attr {
+  font-size: 15px; color: var(--slate); line-height: 1.5;
 }
-.section-head {
-  display: grid; grid-template-columns: 1fr 1.6fr;
-  gap: 56px; align-items: start; margin-bottom: 44px;
-}
+.endorse-attr strong { color: var(--ink); display: block; font-weight: 600; font-size: 16px; margin-bottom: 2px; }
+
 @media (max-width: 900px) {
-  .section-head { grid-template-columns: 1fr; gap: 18px; margin-bottom: 28px; }
+  .endorse-section { padding: 52px 28px; }
+  .endorse-row { grid-template-columns: 1fr; gap: 28px; }
+  .endorse-logo-block { min-height: 160px; padding: 24px; }
 }
 </style>
 </head>
@@ -73,8 +86,8 @@
         <li><a href="/about.html">About</a></li>
         <li><a href="/platform.html">Platform</a></li>
         <li><a href="/the-record.html">What We've Done</a></li>
-        <li><a href="/endorsements.html">Endorsements</a></li>
-        <li><a href="/volunteer.html" class="active">Volunteer</a></li>
+        <li><a href="/endorsements.html" class="active">Endorsements</a></li>
+        <li><a href="/volunteer.html">Volunteer</a></li>
         <li><a href="/contact.html">Contact</a></li>
       </ul>
     </nav>
@@ -94,70 +107,61 @@
 </header>
 
 <div class="page-banner">
-  <h1>Volunteer.</h1>
-  <p>Cities are shaped by the people who decide to show up. We'd love it if that's you.</p>
+  <h1>Endorsements.</h1>
+  <p>Organizations and community leaders who are standing with Meghan in this campaign.</p>
 </div>
 
-<section class="section bg-ivory">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <span class="t-label">There's a Place for You</span>
-        <h2 class="t-h2">Pick whatever fits your life.</h2>
-        <div class="t-divider"></div>
-      </div>
-      <p class="t-body">You don't need political experience or a lot of time. A couple of hours and the feeling that this city is worth showing up for is honestly enough. Have a look at the options below, or just tell us you want to help and we'll find something that works for you.</p>
+<section class="endorse-section">
+  <div class="endorse-row">
+    <div class="endorse-logo-block">
+      <img src="pm-firefighters-logo.png" alt="Port Moody Firefighters IAFF Local 2399" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="endorse-logo-fallback" style="display:none;">Port Moody Firefighters<span>IAFF Local 2399</span></div>
     </div>
-
-    <div class="role-grid">
-      <div class="role-card">
-        <div class="role-card-tag">Door Knocking</div>
-        <div class="role-card-title">Knock on doors with us.</div>
-        <p class="role-card-body">It's the most effective thing you can do in a municipal race. We'll pair you up with a partner, hand you a walk list, and walk you through what to say. Shifts run from summer right through to election day.</p>
+    <div class="endorse-content">
+      <span class="eyebrow">Public Safety</span>
+      <h2>Port Moody Firefighters, IAFF Local 2399.</h2>
+      <blockquote class="endorse-quote">&ldquo;Over the last four years as Mayor, Meghan has consistently shown support for public safety, and as such Port Moody Firefighters Local 2399 is proud to support Mayor Lahti in the upcoming election.&rdquo;</blockquote>
+      <div class="endorse-attr">
+        <strong>Local President</strong>
+        Port Moody Firefighters, IAFF Local 2399
       </div>
-      <div class="role-card">
-        <div class="role-card-tag">Phone Banking</div>
-        <div class="role-card-title">Make a few calls from your couch.</div>
-        <p class="role-card-body">Calling supporters, reminding people about advance voting, checking in on the folks who pledged. It's especially helpful in the last two weeks of the race.</p>
-      </div>
-      <div class="role-card">
-        <div class="role-card-tag">Signs</div>
-        <div class="role-card-title">Put a sign up. Help a neighbour put one up too.</div>
-        <p class="role-card-body">Help us install and look after lawn signs around the city once the campaign officially launches.</p>
-      </div>
-      <div class="role-card">
-        <div class="role-card-tag">Events</div>
-        <div class="role-card-title">Lend a hand at events.</div>
-        <p class="role-card-body">Town halls, community events, the campaign launch. If you like being around people, this is a good fit.</p>
-      </div>
-      <div class="role-card">
-        <div class="role-card-tag">Think Tank</div>
-        <div class="role-card-title">Come to a Thursday session. Bring a few friends.</div>
-        <p class="role-card-body">Small-group conversations with Meghan about the issues people are actually living with. Single moms, seniors, small business owners, young families. The voices that usually get missed are the ones we most want in the room.</p>
-      </div>
-      <div class="role-card">
-        <div class="role-card-tag">Word of Mouth</div>
-        <div class="role-card-title">Talk to your neighbours.</div>
-        <p class="role-card-body">Honestly, this is the simplest and most effective thing on the list. Talk to the people you already know, in your own words, about why this race matters to you.</p>
-      </div>
-    </div>
-
-    <div class="cta-box">
-      <h3>Ready to jump in?</h3>
-      <p>Fill out the short form on the contact page and someone from the team will be in touch within a day or two.</p>
-      <a href="/contact.html" class="btn btn-rose">Sign up to volunteer</a>
     </div>
   </div>
 </section>
 
-<section style="padding: 0;" aria-hidden="true">
-  <img src="ML-63.jpg" alt="Meghan Lahti at her campaign launch" style="width:100%; max-height:480px; object-fit:cover; display:block;">
+<section class="endorse-section">
+  <div class="endorse-row">
+    <div class="endorse-logo-block">
+      <img src="nwdic.jpg" alt="New Westminster &amp; District Labour Council">
+    </div>
+    <div class="endorse-content">
+      <span class="eyebrow">Labour</span>
+      <h2>New Westminster &amp; District Labour Council.</h2>
+      <blockquote class="endorse-quote">&ldquo;Endorsed by the New Westminster &amp; District Labour Council.&rdquo;</blockquote>
+      <div class="endorse-attr">
+        <strong>New Westminster &amp; District Labour Council</strong>
+        Representing working people across the region
+      </div>
+    </div>
+  </div>
 </section>
 
 <div class="pullquote">
-  <p class="pullquote-text">&ldquo;Port Moody is a passion for me. I've <em>spent most of my adult life</em> in service to this city.&rdquo;</p>
+  <p class="pullquote-text">&ldquo;The work has always been about <em>this community.</em>&rdquo;</p>
   <div class="pullquote-source">Meghan Lahti</div>
 </div>
+
+<section class="section bg-cream-deep">
+  <div class="container" style="max-width:920px;text-align:center;">
+    <span style="color: var(--rose-deep); letter-spacing: 0.18em; font-size: 12px; font-weight: 600; text-transform: uppercase; display:block; margin-bottom:10px;">More to Come</span>
+    <h2 class="t-h2" style="margin-bottom:16px;">More endorsements rolling in.</h2>
+    <p class="t-body" style="max-width:660px;margin:0 auto 28px;">This page will be updated as more organizations, community leaders, and residents add their names to the campaign. If you'd like to add your voice, please get in touch.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+      <a href="/contact.html" class="btn btn-rose">Endorse the campaign</a>
+      <a href="/platform.html" class="btn btn-outline-ink">Read the platform</a>
+    </div>
+  </div>
+</section>
 
 <footer id="site-footer">
   <div class="footer-cta-strip">
