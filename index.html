@@ -199,6 +199,68 @@
   width: 100%; max-height: 520px; object-fit: cover; display: block;
 }
 
+/* SLOGAN REVEAL (fades in as you scroll into it) */
+.slogan-reveal {
+  background: var(--ink);
+  padding: clamp(100px, 14vw, 180px) 32px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.slogan-reveal::before {
+  content: ""; position: absolute;
+  top: -200px; left: 50%;
+  width: 700px; height: 700px;
+  border-radius: 50%; transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(199,125,161,0.16) 0%, transparent 65%);
+  pointer-events: none;
+}
+.slogan-reveal-inner {
+  position: relative;
+  display: flex; flex-direction: column;
+  gap: clamp(6px, 0.6vw, 12px);
+  align-items: center;
+  max-width: 1200px; margin: 0 auto;
+}
+.slogan-reveal-word {
+  font-family: var(--font-head);
+  font-size: clamp(56px, 9vw, 140px);
+  font-weight: 700;
+  color: var(--ivory);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.1s cubic-bezier(0.22, 0.61, 0.36, 1), transform 1.1s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.slogan-reveal-word em {
+  color: var(--rose);
+  font-style: italic;
+  font-weight: 600;
+}
+.slogan-reveal.is-visible .slogan-reveal-word { opacity: 1; transform: translateY(0); }
+.slogan-reveal.is-visible .slogan-reveal-word:nth-child(1) { transition-delay: 0.05s; }
+.slogan-reveal.is-visible .slogan-reveal-word:nth-child(2) { transition-delay: 0.35s; }
+.slogan-reveal.is-visible .slogan-reveal-word:nth-child(3) { transition-delay: 0.65s; }
+
+.slogan-reveal-tagline {
+  margin-top: clamp(28px, 4vw, 48px);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(199,125,161,0.85);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.0s cubic-bezier(0.22, 0.61, 0.36, 1) 1.0s, transform 1.0s cubic-bezier(0.22, 0.61, 0.36, 1) 1.0s;
+}
+.slogan-reveal.is-visible .slogan-reveal-tagline { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .slogan-reveal-word,
+  .slogan-reveal-tagline { opacity: 1; transform: none; transition: none; }
+}
+
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; min-height: auto; }
   .hero-left { padding: 56px 28px 44px; }
@@ -250,7 +312,7 @@
     <h1 class="hero-title">I love this town.</h1>
     <div class="hero-bar"></div>
     <p class="hero-sub">Port Moody is a passion for me. I've spent most of my adult life in service to this city.</p>
-    <p class="hero-meta">My first campaign sign, back in 1996, said &ldquo;I love this town.&rdquo; I had three small kids, Bert Flinn Park was under threat, and I figured someone had to do something. Three decades on, the feeling hasn't changed.</p>
+    <p class="hero-meta">My first campaign sign, back in 1996, just said &ldquo;I love this town.&rdquo; Three decades and a lot of work later, that's still the message.</p>
     <div class="hero-btn-row">
       <a href="/platform.html" class="btn btn-rose">See what I stand for</a>
       <a href="/volunteer.html" class="btn btn-outline-ink">Volunteer</a>
@@ -332,7 +394,7 @@
       <div class="plat-card plat-card-sage">
         <span class="plat-card-eyebrow">03 &middot; Good Governance &amp; Transparency</span>
         <h3 class="plat-card-title">A council that works together.</h3>
-        <p class="plat-card-body">When this council came together in 2022, we sat down and built a strategic plan nearly all of us could agree on, and then we actually followed it. It sounds simple, but it isn't always how city hall works.</p>
+        <p class="plat-card-body">When this council came together in 2022, we sat down and built a strategic plan nearly all of us could agree on, and then we followed it.</p>
         <ul class="plat-card-list">
           <li>Strategic Plan adopted and followed through.</li>
           <li>Land Management Strategy adopted, so growth is planned, not piecemealed.</li>
@@ -345,7 +407,7 @@
       <div class="plat-card plat-card-ivory">
         <span class="plat-card-eyebrow">04 &middot; Experience as an Asset</span>
         <h3 class="plat-card-title">Experience is a good thing.</h3>
-        <p class="plat-card-body">There's a lot you only learn after years at the council table. The relationships, the institutional memory, the sense of which decisions are reversible and which aren't. I bring three decades of that, including 16 years on the Metro Vancouver Board and 15 years chairing the Finance Committee.</p>
+        <p class="plat-card-body">There's a lot you only learn after years at the council table. The relationships and the institutional memory take time to build. Meghan brings nearly three decades of that, including 16 years on the Metro Vancouver Board and 15 years chairing the Finance Committee.</p>
         <ul class="plat-card-list">
           <li>Relationships across the region and across the country.</li>
           <li>Context from years of decisions at the table.</li>
@@ -357,7 +419,7 @@
       <div class="plat-card plat-card-cobalt plat-card-full">
         <span class="plat-card-eyebrow">05 &middot; Fiscal Responsibility</span>
         <h3 class="plat-card-title">Spending that protects services.</h3>
-        <p class="plat-card-body">Being responsible with the city's money usually means looking for new revenue before reaching for the scissors. Pay parking is a good example. Not everyone loved it, but it brought in revenue so services didn't have to be cut, and it helped with congestion at Rocky Point at the same time. That's the kind of trade-off I look for on every budget.</p>
+        <p class="plat-card-body">Being responsible with the city's money usually means looking for new revenue before cutting services. Pay parking in the busy areas is a good example. Not everyone loved it, but it brought in new revenue so services didn't have to be cut, and it helped with congestion at the same time.</p>
         <a href="/platform.html#fiscal" class="plat-card-link">Read more &rsaquo;</a>
       </div>
 
@@ -382,7 +444,7 @@
         <img src="pm-firefighters-logo.png" alt="Port Moody Firefighters IAFF Local 2399" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
         <div class="logo-fallback" style="display:none;">Port Moody Firefighters<br><span style="font-size:14px;color:var(--rose-deep);letter-spacing:0.1em;text-transform:uppercase;">IAFF Local 2399</span></div>
       </div>
-      <p class="endorse-card-quote">&ldquo;Over the last four years as Mayor, Meghan has consistently shown support for public safety, and as such Port Moody Firefighters Local 2399 is proud to support Mayor Lahti in the upcoming election.&rdquo;</p>
+      <p class="endorse-card-quote">&ldquo;Over the last four years as Mayor, Meghan has consistently shown support for public safety and as such Port Moody Firefighters Local 2399 is proud to support Mayor Lahti in the upcoming election.&rdquo;</p>
       <div class="endorse-card-source">
         <strong>Local President, IAFF Local 2399</strong>
         Port Moody Firefighters
@@ -393,7 +455,7 @@
       <div class="endorse-card-logo">
         <img src="nwdic.jpg" alt="New Westminster &amp; District Labour Council">
       </div>
-      <p class="endorse-card-quote">&ldquo;Endorsed by the New Westminster &amp; District Labour Council.&rdquo;</p>
+      <p class="endorse-card-quote">Officially endorsed by the New Westminster &amp; District Labour Council.</p>
       <div class="endorse-card-source">
         <strong>New Westminster &amp; District Labour Council</strong>
         Representing working people across the region
@@ -408,6 +470,15 @@
 
 <section class="photo-break" aria-hidden="true">
   <img src="ML-63.jpg" alt="Meghan Lahti at her campaign launch">
+</section>
+
+<section class="slogan-reveal" id="sloganReveal" aria-label="Port Moody, Together, Forward">
+  <div class="slogan-reveal-inner">
+    <div class="slogan-reveal-word">Port Moody.</div>
+    <div class="slogan-reveal-word"><em>Together.</em></div>
+    <div class="slogan-reveal-word">Forward.</div>
+    <div class="slogan-reveal-tagline">Meghan Lahti for Mayor &middot; 2026</div>
+  </div>
 </section>
 
 <section class="section bg-cream">
@@ -481,8 +552,8 @@
 </section>
 
 <div class="pullquote" style="background: var(--ivory);">
-  <p class="pullquote-text">&ldquo;It's about how we make sure the community is <em>proud</em> of what happens here.&rdquo;</p>
-  <div class="pullquote-source">Meghan Lahti</div>
+  <p class="pullquote-text">&ldquo;I <em>love</em> this town.&rdquo;</p>
+  <div class="pullquote-source">Meghan Lahti &middot; Campaign sign, 1996</div>
 </div>
 
 <section class="section bg-cream-deep">
@@ -551,7 +622,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-legal">Authorized by Anthony Sandler, financial agent for Meghan Lahti 2026 Campaign. All donations subject to BC Municipal Elections Finance Rules. Maximum $1,429.70 per individual. BC residents only. &copy; 2026 Meghan Lahti Campaign.</div>
+    <div class="footer-legal">Authorized by Anthony Sandler, financial agent for the Meghan Lahti 2026 Campaign. Contact: anthony@lahti2026.com. All contributions subject to the BC Local Elections Campaign Financing Act. Maximum $1,429.70 per individual for 2026. Contributions accepted only from BC residents who are Canadian citizens or permanent residents. &copy; 2026 Meghan Lahti Campaign.</div>
     <div class="footer-tags">
       <div class="footer-tag">Port Moody</div>
       <div class="footer-tag">2026</div>
@@ -569,6 +640,22 @@
     navToggle.addEventListener('click', () => {
       navMobile.style.display = navMobile.style.display === 'block' ? 'none' : 'block';
     });
+  }
+
+  // Slogan reveal on scroll
+  const sloganReveal = document.getElementById('sloganReveal');
+  if (sloganReveal && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          sloganReveal.classList.add('is-visible');
+          observer.unobserve(sloganReveal);
+        }
+      });
+    }, { threshold: 0.35 });
+    observer.observe(sloganReveal);
+  } else if (sloganReveal) {
+    sloganReveal.classList.add('is-visible');
   }
 </script>
 <script src="password-gate.js"></script>
