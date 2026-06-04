@@ -21,53 +21,193 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
-.done-section { padding: 72px 72px; }
-.done-section:nth-child(odd) { background: var(--ivory); }
-.done-section:nth-child(even) { background: var(--cream); }
-.done-head { max-width: 1100px; margin: 0 auto 32px; display: grid; grid-template-columns: 1fr 1.6fr; gap: 48px; align-items: start; }
-.done-head-left { display: flex; flex-direction: column; gap: 6px; }
-.done-eyebrow {
+/* Record intro stat strip */
+.record-stats {
+  background: var(--ink);
+  padding: 56px 32px;
+  text-align: center;
+}
+.record-stats-grid {
+  max-width: 980px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 32px;
+}
+.record-stat-num {
+  font-family: var(--font-head);
+  font-size: clamp(40px, 4.4vw, 64px);
+  font-weight: 700; color: var(--rose);
+  line-height: 1;
+}
+.record-stat-label {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(251,247,240,0.78);
+  margin-top: 10px;
+}
+
+/* Category cards (collapsible) */
+.record-wrap {
+  padding: 80px 32px 88px;
+  background: var(--ivory);
+}
+.record-stack {
+  max-width: 1080px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.record-card {
+  background: var(--cream);
+  border: 1px solid rgba(199,125,161,0.22);
+  border-left: 4px solid var(--rose);
+  border-radius: 10px;
+  list-style: none;
+  transition: box-shadow 0.22s, border-color 0.22s, background 0.22s;
+}
+.record-card[open] {
+  background: var(--ivory);
+  border-color: rgba(199,125,161,0.42);
+  border-left-color: var(--rose-deep);
+  box-shadow: 0 20px 48px rgba(45,58,92,0.08);
+}
+.record-card summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 32px 40px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+  outline: none;
+}
+.record-card summary::-webkit-details-marker { display: none; }
+.record-card summary::marker { display: none; }
+.record-card-head { display: flex; flex-direction: column; gap: 6px; }
+.record-card-eyebrow {
   font-size: 12px; font-weight: 600;
   letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--rose-deep);
 }
-.done-h {
+.record-card-title {
   font-family: var(--font-head);
-  font-size: clamp(28px, 3.4vw, 42px);
-  font-weight: 700; line-height: 1.1; color: var(--ink);
-  letter-spacing: -0.005em;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 700; color: var(--ink);
+  line-height: 1.18; letter-spacing: -0.005em;
 }
-.done-tag { font-family: var(--font-head); font-size: 17px; font-style: italic; color: var(--slate); line-height: 1.5; }
-.done-intro { font-size: 16px; color: var(--slate); line-height: 1.75; }
-.done-grid {
-  max-width: 1100px; margin: 0 auto;
+.record-card-tag {
+  font-family: var(--font-head); font-style: italic;
+  font-size: 16px; color: var(--slate); line-height: 1.5;
+  margin-top: 2px;
+}
+.record-card-count {
+  font-family: var(--font-head); font-size: 15px;
+  color: var(--rose-deep); font-weight: 600;
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+}
+.record-card-toggle {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--rose-pale);
+  border: 1px solid rgba(199,125,161,0.32);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.22s, transform 0.22s;
+  position: relative;
+}
+.record-card-toggle::before {
+  content: ""; width: 14px; height: 2px; background: var(--rose-deep);
+  position: absolute;
+}
+.record-card-toggle::after {
+  content: ""; width: 2px; height: 14px; background: var(--rose-deep);
+  position: absolute;
+  transition: opacity 0.22s;
+}
+.record-card[open] .record-card-toggle { background: var(--rose); transform: rotate(180deg); }
+.record-card[open] .record-card-toggle::before { background: white; }
+.record-card[open] .record-card-toggle::after { opacity: 0; }
+
+.record-card-body {
+  padding: 0 40px 36px 40px;
+  border-top: 1px solid rgba(199,125,161,0.25);
+  margin-top: 4px;
+  padding-top: 28px;
+}
+.record-card-intro {
+  font-size: 15px; color: var(--slate); line-height: 1.78;
+  margin-bottom: 22px;
+  max-width: 760px;
+}
+.record-items {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 18px;
+  gap: 16px;
 }
-.done-item {
-  background: var(--ivory);
-  border: 1px solid rgba(45,58,92,0.1);
+.record-item {
+  background: var(--cream);
+  border: 1px solid rgba(45,58,92,0.08);
   border-left: 3px solid var(--rose);
-  padding: 28px 26px; border-radius: 4px;
+  padding: 22px 22px;
+  border-radius: 6px;
 }
-.done-section:nth-child(odd) .done-item { background: var(--cream); }
-.done-item-title {
-  font-family: var(--font-head); font-size: 20px; font-weight: 700;
-  color: var(--ink); line-height: 1.25; margin-bottom: 10px;
-}
-.done-item-body { font-size: 15px; color: var(--slate); line-height: 1.7; }
-.done-item-status {
+.record-card[open] .record-item { background: var(--ivory); border-color: rgba(45,58,92,0.08); }
+.record-item-status {
   display: inline-block;
   font-size: 11px; font-weight: 600;
   letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--rose-deep);
   background: var(--rose-pale);
   padding: 4px 10px; border-radius: 999px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
+.record-item-title {
+  font-family: var(--font-head);
+  font-size: 17px; font-weight: 700;
+  color: var(--ink); line-height: 1.22; margin-bottom: 8px;
+}
+.record-item-body { font-size: 14px; color: var(--slate); line-height: 1.68; }
+
+/* Inset photo (small, controlled crop) */
+.photo-inset {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  max-width: 1080px; margin: 80px auto;
+  background: var(--ivory);
+  border: 1px solid rgba(45,58,92,0.08);
+  border-radius: 12px; overflow: hidden;
+}
+.photo-inset-img {
+  background: var(--cream); min-height: 320px;
+  background-position: center 22%;
+  background-size: cover; background-repeat: no-repeat;
+}
+.photo-inset-text {
+  padding: 48px 44px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.photo-inset-eyebrow {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--rose-deep); margin-bottom: 12px;
+}
+.photo-inset-text h3 {
+  font-family: var(--font-head);
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 700; color: var(--ink);
+  line-height: 1.18; letter-spacing: -0.005em;
+  margin-bottom: 14px;
+}
+.photo-inset-text p {
+  font-family: var(--font-head); font-style: italic;
+  font-size: 18px; color: var(--slate); line-height: 1.5;
+}
+
 @media (max-width: 900px) {
-  .done-section { padding: 52px 28px; }
-  .done-head { grid-template-columns: 1fr; gap: 18px; margin-bottom: 24px; }
+  .record-wrap { padding: 56px 18px 72px; }
+  .record-card summary { padding: 26px 22px; gap: 16px; }
+  .record-card-body { padding: 0 22px 28px; padding-top: 22px; }
+  .photo-inset { grid-template-columns: 1fr; margin: 56px 18px; }
+  .photo-inset-img { min-height: 240px; }
+  .photo-inset-text { padding: 36px 28px; }
+  .record-stats { padding: 44px 24px; }
+  .record-stats-grid { gap: 24px; }
 }
 </style>
 </head>
@@ -107,166 +247,218 @@
 </header>
 
 <div class="page-banner">
-  <h1>What We've Done.</h1>
-  <p>A look at what this council has built, started, or kept moving over the last four years.</p>
+  <h1 class="reveal">What We've Done.</h1>
+  <p class="reveal" data-delay="1">A look at what this council has built, started, or kept moving over the last four years.</p>
 </div>
 
-<section class="done-section">
-  <div class="done-head">
-    <div class="done-head-left">
-      <div class="done-eyebrow">Transportation</div>
-      <h2 class="done-h">Getting people around the city.</h2>
-      <p class="done-tag">Density where the transit already is, last-mile options for the rest of the trip, and honest plans for the roads.</p>
+<section class="record-stats">
+  <div class="record-stats-grid">
+    <div class="reveal" data-delay="1">
+      <div class="record-stat-num">5</div>
+      <div class="record-stat-label">Categories of Work</div>
     </div>
-    <p class="done-intro">Transportation was one of the main things I ran on in 2022, and it's stayed at the top of the list. Some of what we promised is done, some is happening this year, and some is still in the planning stages. All of it is specific, and none of it stops in October.</p>
-  </div>
-  <div class="done-grid">
-    <div class="done-item">
-      <span class="done-item-status">Returning Summer 2026</span>
-      <div class="done-item-title">The Shoreline Shuttle is coming back.</div>
-      <p class="done-item-body">Bringing it back was something I committed to in 2022, and after a lot of work, the buses are returning this summer.</p>
+    <div class="reveal" data-delay="2">
+      <div class="record-stat-num">15+</div>
+      <div class="record-stat-label">Concrete Projects</div>
     </div>
-    <div class="done-item">
-      <span class="done-item-status">In Place</span>
-      <div class="done-item-title">E-bike and e-scooter program.</div>
-      <p class="done-item-body">A real last-mile option for the trip between transit and home, brought in by this council and being used every day.</p>
+    <div class="reveal" data-delay="3">
+      <div class="record-stat-num">4</div>
+      <div class="record-stat-label">Years on the Job</div>
     </div>
-    <div class="done-item">
-      <span class="done-item-status">Built</span>
-      <div class="done-item-title">Multi-use path along St. Johns.</div>
-      <p class="done-item-body">The first stretch is in. More of it is coming as the city grows.</p>
-    </div>
-    <div class="done-item">
-      <span class="done-item-status">In Planning</span>
-      <div class="done-item-title">Widening the bridge at Barnet and Ioco.</div>
-      <p class="done-item-body">It's a real congestion problem at that intersection, and there's a real plan to take it on.</p>
-    </div>
-    <div class="done-item">
-      <span class="done-item-status">In Planning</span>
-      <div class="done-item-title">HOV lane on St. Johns during rush hour.</div>
-      <p class="done-item-body">It has to be paired with the bridge widening, otherwise it just creates a new bottleneck. The two go together.</p>
+    <div class="reveal" data-delay="4">
+      <div class="record-stat-num">1</div>
+      <div class="record-stat-label">Strategic Plan, Followed</div>
     </div>
   </div>
 </section>
 
-<section class="done-section">
-  <div class="done-head">
-    <div class="done-head-left">
-      <div class="done-eyebrow">Community Builds</div>
-      <h2 class="done-h">Places people actually use.</h2>
-      <p class="done-tag">The kind of community spaces you only really notice when they aren't there.</p>
-    </div>
-    <p class="done-intro">Honestly, this council got more built in the last four years than the two terms before us put together. It wasn't luck. It came from staying focused, agreeing on a plan, and sticking to it even when things got hard.</p>
-  </div>
-  <div class="done-grid">
-    <div class="done-item">
-      <span class="done-item-status">Built</span>
-      <div class="done-item-title">The new boardwalk.</div>
-      <p class="done-item-body">Done, open, and being used by everyone from morning runners to families on a Saturday.</p>
-    </div>
-    <div class="done-item">
-      <span class="done-item-status">Completed</span>
-      <div class="done-item-title">Inlet Field, dedicated to Bob Favell.</div>
-      <p class="done-item-body">Finally finished after years of waiting, and named for someone who put a lot into this community.</p>
-    </div>
-    <div class="done-item">
-      <span class="done-item-status">Ground Broken</span>
-      <div class="done-item-title">New field house, under construction.</div>
-      <p class="done-item-body">It had been in planning for years. Ground broke in 2024 and it's now being built.</p>
-    </div>
-    <div class="done-item">
-      <span class="done-item-status">Phase 2 in Progress</span>
-      <div class="done-item-title">Kyle Centre redevelopment.</div>
-      <p class="done-item-body">The next phase of the redevelopment is happening now.</p>
-    </div>
+<section class="record-wrap">
+  <div class="record-stack">
+
+    <details class="record-card reveal" open>
+      <summary>
+        <div class="record-card-head">
+          <span class="record-card-eyebrow">Transportation</span>
+          <h3 class="record-card-title">Getting people around the city.</h3>
+          <p class="record-card-tag">Density where the transit already is, last-mile options for the rest of the trip, and honest plans for the roads.</p>
+          <div class="record-card-count">5 items</div>
+        </div>
+        <span class="record-card-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="record-card-body">
+        <p class="record-card-intro">Transportation was one of the main things I ran on in 2022, and it's stayed at the top of the list. Some of what we promised is done, some is happening this year, and some is still in the planning stages.</p>
+        <div class="record-items">
+          <div class="record-item">
+            <span class="record-item-status">Returning Summer 2026</span>
+            <div class="record-item-title">The Shoreline Shuttle is coming back.</div>
+            <p class="record-item-body">Bringing it back was something I committed to in 2022, and the buses are returning this summer.</p>
+          </div>
+          <div class="record-item">
+            <span class="record-item-status">In Place</span>
+            <div class="record-item-title">E-bike and e-scooter program.</div>
+            <p class="record-item-body">A real last-mile option for the trip between transit and home, brought in by this council and being used every day.</p>
+          </div>
+          <div class="record-item">
+            <span class="record-item-status">Built</span>
+            <div class="record-item-title">Multi-use path along St. Johns.</div>
+            <p class="record-item-body">The first stretch is in. More of it is coming as the city grows.</p>
+          </div>
+          <div class="record-item">
+            <span class="record-item-status">In Planning</span>
+            <div class="record-item-title">Widening the bridge at Barnet and Ioco.</div>
+            <p class="record-item-body">It's a real congestion problem at that intersection, and there's a real plan to take it on.</p>
+          </div>
+          <div class="record-item">
+            <span class="record-item-status">In Planning</span>
+            <div class="record-item-title">HOV lane on St. Johns during rush hour.</div>
+            <p class="record-item-body">It has to be paired with the bridge widening, otherwise it just creates a new bottleneck. The two go together.</p>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="record-card reveal">
+      <summary>
+        <div class="record-card-head">
+          <span class="record-card-eyebrow">Community Builds</span>
+          <h3 class="record-card-title">Places people actually use.</h3>
+          <p class="record-card-tag">The kind of community spaces you only really notice when they aren't there.</p>
+          <div class="record-card-count">4 items</div>
+        </div>
+        <span class="record-card-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="record-card-body">
+        <p class="record-card-intro">Honestly, this council got more built in the last four years than the two terms before us put together. It wasn't luck. It came from staying focused, agreeing on a plan, and sticking to it.</p>
+        <div class="record-items">
+          <div class="record-item">
+            <span class="record-item-status">Built</span>
+            <div class="record-item-title">The new boardwalk.</div>
+            <p class="record-item-body">Done, open, and being used by everyone from morning runners to families on a Saturday.</p>
+          </div>
+          <div class="record-item">
+            <span class="record-item-status">Completed</span>
+            <div class="record-item-title">Inlet Field, dedicated to Bob Favelle.</div>
+            <p class="record-item-body">Finally finished after years of waiting, and named for someone who put a lot into this community.</p>
+          </div>
+          <div class="record-item">
+            <span class="record-item-status">Ground Broken</span>
+            <div class="record-item-title">New field house, under construction.</div>
+            <p class="record-item-body">It had been in planning for years. Ground broke in 2024 and it's now being built.</p>
+          </div>
+          <div class="record-item">
+            <span class="record-item-status">Phase 2 in Progress</span>
+            <div class="record-item-title">Kyle Centre redevelopment.</div>
+            <p class="record-item-body">The next phase of the redevelopment is happening now.</p>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="record-card reveal">
+      <summary>
+        <div class="record-card-head">
+          <span class="record-card-eyebrow">Governance</span>
+          <h3 class="record-card-title">The boring stuff that actually matters.</h3>
+          <p class="record-card-tag">A plan you can hold council to, and a strategy for how the city grows.</p>
+          <div class="record-card-count">3 items</div>
+        </div>
+        <span class="record-card-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="record-card-body">
+        <p class="record-card-intro">A lot of the most important work in city government is invisible until you don't have it. The pieces this council got into place make the next decade easier to manage.</p>
+        <div class="record-items">
+          <div class="record-item">
+            <span class="record-item-status">Adopted</span>
+            <div class="record-item-title">Council Strategic Plan.</div>
+            <p class="record-item-body">Four big priorities, all agreed to by nearly every member of council, and actually followed through on: sustainable core services, healthy community development, a resilient natural environment, and a vibrant, prosperous community.</p>
+          </div>
+          <div class="record-item">
+            <span class="record-item-status">Adopted</span>
+            <div class="record-item-title">Land Management Strategy.</div>
+            <p class="record-item-body">A first for Port Moody. It gives the city a real plan for how city-owned land is managed, instead of figuring it out one parcel at a time.</p>
+          </div>
+          <div class="record-item">
+            <span class="record-item-status">Repaired</span>
+            <div class="record-item-title">Relationships across the region.</div>
+            <p class="record-item-body">A lot of working relationships had frayed before 2022. The ones with the business community, with non-profits, with the school district, and with our neighbouring municipalities have all been put back together.</p>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="record-card reveal">
+      <summary>
+        <div class="record-card-head">
+          <span class="record-card-eyebrow">Engagement</span>
+          <h3 class="record-card-title">Getting more voices into the room.</h3>
+          <p class="record-card-tag">Especially the ones that usually get missed.</p>
+          <div class="record-card-count">2 items</div>
+        </div>
+        <span class="record-card-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="record-card-body">
+        <p class="record-card-intro">Council decisions are better when more people are part of them. A couple of concrete things have happened over the last few years to actually make that real.</p>
+        <div class="record-items">
+          <div class="record-item">
+            <span class="record-item-status">Hosted</span>
+            <div class="record-item-title">Two Youth Summits.</div>
+            <p class="record-item-body">We brought the youth voice directly to council, twice. It worked, and it's something I want to keep doing.</p>
+          </div>
+          <div class="record-item">
+            <span class="record-item-status">Established</span>
+            <div class="record-item-title">Mayor's Task Force on Arts and Business.</div>
+            <p class="record-item-body">It's now turning into an arm's-length Arts and Business Council that brings the two communities together. The city is helping it get on its feet with seed funding and a space to work from.</p>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="record-card reveal">
+      <summary>
+        <div class="record-card-head">
+          <span class="record-card-eyebrow">Fiscal Responsibility</span>
+          <h3 class="record-card-title">Protecting the services people count on.</h3>
+          <p class="record-card-tag">Being smart with money isn't really about cutting. It's about asking whether there's another way first.</p>
+          <div class="record-card-count">2 items</div>
+        </div>
+        <span class="record-card-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="record-card-body">
+        <p class="record-card-intro">When the easy answer is to cut a service that people rely on, the harder and better question is whether there's a way to bring in new revenue instead.</p>
+        <div class="record-items">
+          <div class="record-item">
+            <span class="record-item-status">In Place</span>
+            <div class="record-item-title">Pay parking in the busiest areas.</div>
+            <p class="record-item-body">Not everyone was happy about it, and I understand that. But it brought in revenue so we didn't have to cut services, and it took some of the pressure off the parking situation at the same time.</p>
+          </div>
+          <div class="record-item">
+            <span class="record-item-status">Ongoing</span>
+            <div class="record-item-title">Conservative, audited budgets.</div>
+            <p class="record-item-body">Fifteen years chairing the Finance Committee is what Meghan brings to every line of the budget.</p>
+          </div>
+        </div>
+      </div>
+    </details>
+
   </div>
 </section>
 
-<section class="done-section">
-  <div class="done-head">
-    <div class="done-head-left">
-      <div class="done-eyebrow">Governance</div>
-      <h2 class="done-h">The boring stuff that actually matters.</h2>
-      <p class="done-tag">A plan you can hold council to, and a strategy for how the city grows.</p>
-    </div>
-    <p class="done-intro">A lot of the most important work in city government is invisible until you don't have it. The big pieces this council got into place are the kind of thing that makes the next decade easier to manage, and that's worth holding onto.</p>
+<section class="photo-inset reveal">
+  <div class="photo-inset-img" style="background-image: url('port-moody-pier.jpg'); background-position: center center;"></div>
+  <div class="photo-inset-text">
+    <span class="photo-inset-eyebrow">The Place Itself</span>
+    <h3>This is what we're working for.</h3>
+    <p>The inlet, the pier, the mountains, the trails. Every decision council makes either protects this or chips away at it. The work is worth doing because the place is worth keeping.</p>
   </div>
-  <div class="done-grid">
-    <div class="done-item">
-      <span class="done-item-status">Adopted</span>
-      <div class="done-item-title">Council Strategic Plan.</div>
-      <p class="done-item-body">Four big priorities, all agreed to by nearly every member of council, and then actually followed through on: sustainable core services, healthy community development, a resilient natural environment, and a vibrant, prosperous community.</p>
-    </div>
-    <div class="done-item">
-      <span class="done-item-status">Adopted</span>
-      <div class="done-item-title">Land Management Strategy.</div>
-      <p class="done-item-body">A first for Port Moody. It gives the city a real plan for how city-owned land is managed instead of figuring it out one parcel at a time.</p>
-    </div>
-    <div class="done-item">
-      <span class="done-item-status">Repaired</span>
-      <div class="done-item-title">Relationships across the region.</div>
-      <p class="done-item-body">A lot of working relationships had frayed before 2022. The ones with the business community, with non-profits, with the school district, and with our neighbouring municipalities have all been put back together.</p>
-    </div>
-  </div>
-</section>
-
-<section class="done-section">
-  <div class="done-head">
-    <div class="done-head-left">
-      <div class="done-eyebrow">Engagement</div>
-      <h2 class="done-h">Getting more voices into the room.</h2>
-      <p class="done-tag">Especially the ones that usually get missed.</p>
-    </div>
-    <p class="done-intro">Council decisions are better when more people are part of them. A couple of concrete things have happened over the last few years to actually make that real.</p>
-  </div>
-  <div class="done-grid">
-    <div class="done-item">
-      <span class="done-item-status">Hosted</span>
-      <div class="done-item-title">Two Youth Summits.</div>
-      <p class="done-item-body">We brought the youth voice directly to council, twice. It worked, and it's something I want to keep doing.</p>
-    </div>
-    <div class="done-item">
-      <span class="done-item-status">Established</span>
-      <div class="done-item-title">Mayor's Task Force on Arts and Business.</div>
-      <p class="done-item-body">It's now turning into an arm's-length Arts and Business Council that brings the two communities together. The city is helping it get on its feet with seed funding and a space to work from.</p>
-    </div>
-  </div>
-</section>
-
-<section class="done-section">
-  <div class="done-head">
-    <div class="done-head-left">
-      <div class="done-eyebrow">Fiscal Responsibility</div>
-      <h2 class="done-h">Protecting the services people count on.</h2>
-      <p class="done-tag">Being smart with money isn't really about cutting. It's about asking whether there's another way first.</p>
-    </div>
-    <p class="done-intro">When the easy answer is to cut a service that people rely on, the harder and better question is whether there's a way to bring in new revenue instead. That's the kind of budget thinking I try to bring to every decision.</p>
-  </div>
-  <div class="done-grid">
-    <div class="done-item">
-      <span class="done-item-status">In Place</span>
-      <div class="done-item-title">Pay parking in the busiest areas.</div>
-      <p class="done-item-body">Not everyone was happy about it, and I understand that. But it brought in revenue so we didn't have to cut services, and it took some of the pressure off the parking situation at Rocky Point at the same time.</p>
-    </div>
-    <div class="done-item">
-      <span class="done-item-status">Ongoing</span>
-      <div class="done-item-title">Conservative, audited budgets.</div>
-      <p class="done-item-body">Fifteen years chairing the Finance Committee is what Meghan brings to every line of the budget.</p>
-    </div>
-  </div>
-</section>
-
-<section style="padding: 0;" aria-hidden="true">
-  <img src="meghan-share-gala.jpg" alt="Meghan Lahti at a community event" style="width:100%; max-height:480px; object-fit:cover; display:block;">
 </section>
 
 <div class="pullquote">
-  <p class="pullquote-text">&ldquo;We did more in the last four years than the previous two terms put <em>together.</em>&rdquo;</p>
-  <div class="pullquote-source">Meghan Lahti</div>
+  <p class="pullquote-text reveal">&ldquo;We did more in the last four years than the previous two terms put <em>together.</em>&rdquo;</p>
+  <div class="pullquote-source reveal" data-delay="1">Meghan Lahti</div>
 </div>
 
 <section class="section bg-cream-deep">
-  <div class="container" style="max-width:920px;text-align:center;">
+  <div class="container reveal" style="max-width:920px;text-align:center;">
     <span style="color: var(--rose-deep); letter-spacing: 0.18em; font-size: 12px; font-weight: 600; text-transform: uppercase; display:block; margin-bottom:10px;">Keep It Going</span>
     <h2 class="t-h2" style="margin-bottom:16px;">There's still a lot to finish.</h2>
     <p class="t-body" style="max-width:660px;margin:0 auto 28px;">The shuttle is coming back. The bridge widening is in planning. So is the HOV lane. The field house is being built. The Arts and Business Council is just getting off the ground. The housing work is in motion. All of it needs continuity to actually land, and that's what I'm asking voters for.</p>
@@ -296,7 +488,7 @@
       <div class="footer-social">
         <a href="https://facebook.com/MeghanLahtiPortMoody" target="_blank" rel="noopener">Facebook</a>
         <a href="https://instagram.com/meghanlahti" target="_blank" rel="noopener">Instagram</a>
-        <a href="mailto:hello@lahti2026.com">Email</a>
+        <a href="mailto:info@lahti2026.com">Email</a>
       </div>
     </div>
     <div class="footer-col">
@@ -342,15 +534,7 @@
   </div>
 </footer>
 
-<script>
-  const navToggle = document.getElementById('navToggle');
-  const navMobile = document.getElementById('navMobile');
-  if (navToggle && navMobile) {
-    navToggle.addEventListener('click', () => {
-      navMobile.style.display = navMobile.style.display === 'block' ? 'none' : 'block';
-    });
-  }
-</script>
+<script src="shared.js"></script>
 <script src="password-gate.js"></script>
 </body>
 </html>

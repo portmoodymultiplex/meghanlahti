@@ -21,54 +21,204 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
-.pillar {
-  padding: 88px 72px;
-  border-bottom: 1px solid rgba(45,58,92,0.08);
+/* Platform overview */
+.platform-intro {
+  padding: 80px 72px 56px;
+  background: var(--ivory);
+  text-align: center;
 }
-.pillar:nth-child(odd)  { background: var(--ivory); }
-.pillar:nth-child(even) { background: var(--cream); }
-.pillar-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
-.pillar-label { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
-.pillar-label-num {
-  font-family: var(--font-head); font-size: 36px; font-weight: 600;
-  color: var(--rose); line-height: 1;
+.platform-intro-inner { max-width: 760px; margin: 0 auto; }
+.platform-intro p {
+  font-family: var(--font-head); font-style: italic;
+  font-size: clamp(20px, 2.2vw, 28px);
+  color: var(--slate); line-height: 1.45;
 }
-.pillar-label-text {
+
+/* Pillar cards (collapsible) */
+.pillars-wrap {
+  padding: 40px 32px 88px;
+  background: var(--ivory);
+}
+.pillars-stack {
+  max-width: 1080px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.pillar-card {
+  background: var(--cream);
+  border: 1px solid rgba(199,125,161,0.22);
+  border-left: 4px solid var(--rose);
+  border-radius: 10px;
+  padding: 0;
+  list-style: none;
+  transition: box-shadow 0.22s, border-color 0.22s, background 0.22s;
+}
+.pillar-card[open] {
+  background: var(--ivory);
+  border-color: rgba(199,125,161,0.42);
+  border-left-color: var(--rose-deep);
+  box-shadow: 0 20px 48px rgba(45,58,92,0.08);
+}
+.pillar-card summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 36px 40px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 28px;
+  align-items: center;
+  outline: none;
+}
+.pillar-card summary::-webkit-details-marker { display: none; }
+.pillar-card summary::marker { display: none; }
+.pillar-card-num {
+  font-family: var(--font-head);
+  font-size: clamp(46px, 4vw, 64px);
+  font-weight: 600;
+  color: var(--rose);
+  line-height: 1;
+  transition: color 0.22s;
+}
+.pillar-card[open] .pillar-card-num { color: var(--rose-deep); }
+.pillar-card-content { display: flex; flex-direction: column; gap: 8px; }
+.pillar-card-label {
   font-size: 12px; font-weight: 600;
   letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--rose-deep);
 }
-.pillar-h {
+.pillar-card-title {
   font-family: var(--font-head);
-  font-size: clamp(32px, 3.6vw, 52px);
-  font-weight: 700; line-height: 1.05;
-  color: var(--ink); letter-spacing: -0.01em;
-  margin-bottom: 18px;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.18; letter-spacing: -0.005em;
 }
-.pillar-tag {
+.pillar-card-tag {
+  font-family: var(--font-head); font-style: italic;
+  font-size: 16px; color: var(--slate); line-height: 1.5;
+  margin-top: 2px;
+}
+.pillar-card-toggle {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--rose-pale);
+  border: 1px solid rgba(199,125,161,0.32);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.22s, transform 0.22s;
+}
+.pillar-card-toggle::before {
+  content: ""; width: 14px; height: 2px; background: var(--rose-deep);
+  position: relative;
+}
+.pillar-card-toggle::after {
+  content: ""; width: 2px; height: 14px; background: var(--rose-deep);
+  position: absolute;
+  transition: opacity 0.22s, transform 0.22s;
+}
+.pillar-card[open] .pillar-card-toggle { background: var(--rose); transform: rotate(180deg); }
+.pillar-card[open] .pillar-card-toggle::before { background: white; }
+.pillar-card[open] .pillar-card-toggle::after { opacity: 0; }
+
+.pillar-card-body {
+  padding: 0 40px 40px 40px;
+  display: grid; grid-template-columns: 1fr 1.6fr; gap: 48px;
+  align-items: start;
+}
+.pillar-card-body .body-intro {
+  font-size: 16px; color: var(--slate); line-height: 1.78;
+  border-top: 1px solid rgba(199,125,161,0.25); padding-top: 24px;
+}
+.pillar-card-body .body-detail {
+  border-top: 1px solid rgba(199,125,161,0.25); padding-top: 24px;
+}
+.pillar-card-body h4 {
+  font-family: var(--font-head); font-size: 18px; font-weight: 700;
+  color: var(--ink); margin: 0 0 12px;
+  display: flex; align-items: center; gap: 10px;
+}
+.pillar-card-body h4::before {
+  content: ""; width: 28px; height: 2px; background: var(--rose);
+  display: inline-block;
+}
+.pillar-card-body h4:not(:first-of-type) { margin-top: 22px; }
+.pillar-card-body p { font-size: 15px; color: var(--slate); line-height: 1.78; margin-bottom: 14px; }
+.pillar-card-body p:last-child { margin-bottom: 0; }
+.pillar-card-body strong { color: var(--ink); }
+.pillar-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin: 4px 0 0; }
+.pillar-list li {
+  font-size: 15px; color: var(--slate); line-height: 1.65;
+  padding-left: 20px; position: relative;
+}
+.pillar-list li::before {
+  content: ""; position: absolute; left: 0; top: 9px;
+  width: 7px; height: 7px; border-radius: 50%; background: var(--rose);
+}
+.pillar-list li strong { color: var(--ink); }
+
+/* Subtle vision strip between pillars */
+.vision-strip {
+  background: var(--cream-deep);
+  padding: 64px 32px;
+  text-align: center;
+}
+.vision-strip-inner { max-width: 720px; margin: 0 auto; }
+.vision-strip .eyebrow {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--rose-deep); margin-bottom: 14px; display: block;
+}
+.vision-strip h3 {
+  font-family: var(--font-head);
+  font-size: clamp(24px, 2.8vw, 36px);
+  font-weight: 700; color: var(--ink); line-height: 1.2;
+  letter-spacing: -0.005em;
+}
+.vision-strip h3 em { color: var(--rose-deep); font-style: italic; font-weight: 600; }
+
+/* Inset landscape photo */
+.platform-photo-inset {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 0;
+  max-width: 1080px; margin: 64px auto;
+  background: var(--ivory);
+  border: 1px solid rgba(45,58,92,0.08);
+  border-radius: 12px; overflow: hidden;
+}
+.platform-photo-inset-img {
+  background-size: cover; background-position: center;
+  background-repeat: no-repeat;
+  min-height: 360px;
+}
+.platform-photo-inset-text {
+  padding: 48px 44px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.platform-photo-inset-eyebrow {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--rose-deep); margin-bottom: 12px;
+}
+.platform-photo-inset-text h3 {
+  font-family: var(--font-head);
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 700; color: var(--ink);
+  line-height: 1.18; letter-spacing: -0.005em;
+  margin-bottom: 14px;
+}
+.platform-photo-inset-text p {
   font-family: var(--font-head); font-style: italic;
   font-size: 18px; color: var(--slate); line-height: 1.5;
 }
-.pillar-body p { font-size: 17px; color: var(--slate); line-height: 1.85; margin-bottom: 16px; }
-.pillar-body p:last-of-type { margin-bottom: 0; }
-.pillar-body strong { color: var(--ink); }
-.pillar-body h4 {
-  font-family: var(--font-head); font-size: 20px; font-weight: 700;
-  color: var(--ink); margin: 26px 0 10px;
-}
-.pillar-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin: 12px 0 4px; }
-.pillar-list li {
-  font-size: 16px; color: var(--slate); line-height: 1.65;
-  padding-left: 22px; position: relative;
-}
-.pillar-list li::before {
-  content: ""; position: absolute; left: 0; top: 10px;
-  width: 8px; height: 8px; border-radius: 50%; background: var(--rose);
-}
-.pillar-list li strong { color: var(--ink); }
+
 @media (max-width: 900px) {
-  .pillar { padding: 60px 28px; }
-  .pillar-inner { grid-template-columns: 1fr; gap: 28px; }
+  .platform-intro { padding: 52px 28px 36px; }
+  .pillars-wrap { padding: 28px 18px 56px; }
+  .pillar-card summary { padding: 28px 22px; grid-template-columns: auto 1fr auto; gap: 18px; }
+  .pillar-card-num { font-size: 40px; }
+  .pillar-card-body { padding: 0 22px 28px; grid-template-columns: 1fr; gap: 22px; }
+  .pillar-card-toggle { width: 38px; height: 38px; }
+  .platform-photo-inset { grid-template-columns: 1fr; margin: 48px 18px; }
+  .platform-photo-inset-img { min-height: 220px; }
+  .platform-photo-inset-text { padding: 32px 24px; }
 }
 </style>
 </head>
@@ -108,11 +258,11 @@
 </header>
 
 <div class="page-banner">
-  <h1>The Platform.</h1>
-  <p>The five things I want to focus on over the next four years, and what we're actually doing about each one.</p>
+  <h1 class="reveal">The Platform.</h1>
+  <p class="reveal" data-delay="1">Five pillars, side by side. Tap any of them to see the details.</p>
 </div>
 
-<div class="pillars-strip">
+<div class="pillars-strip reveal">
   <div class="pillars-strip-item"><div class="pillars-strip-num">01</div><div class="pillars-strip-label">Transportation</div></div>
   <div class="pillars-strip-item"><div class="pillars-strip-num">02</div><div class="pillars-strip-label">Housing &amp; Affordability</div></div>
   <div class="pillars-strip-item"><div class="pillars-strip-num">03</div><div class="pillars-strip-label">Good Governance &amp; Transparency</div></div>
@@ -120,154 +270,184 @@
   <div class="pillars-strip-item"><div class="pillars-strip-num">05</div><div class="pillars-strip-label">Fiscal Responsibility</div></div>
 </div>
 
-<section class="pillar" id="transportation">
-  <div class="pillar-inner">
-    <div>
-      <div class="pillar-label">
-        <span class="pillar-label-num">01</span>
-        <span class="pillar-label-text">Transportation</span>
-      </div>
-      <h2 class="pillar-h">Getting around Port Moody should be easier.</h2>
-      <p class="pillar-tag">More transit where it makes sense. Honest road improvements where the congestion actually is.</p>
-    </div>
-    <div class="pillar-body">
-      <p>Port Moody has real congestion problems, and there isn't a single fix. We have to keep working on the transit that actually moves people, and on the road improvements that make rush hour bearable for everyone who has to drive. Both pieces matter, and the specifics matter more than the slogans.</p>
-
-      <h4>What's already in motion</h4>
-      <ul class="pillar-list">
-        <li><strong>The Shoreline Shuttle is coming back this summer.</strong> Reintroducing it was one of the commitments I ran on in 2022. It's happening.</li>
-        <li><strong>Last-mile transit is here.</strong> The e-bike and e-scooter program gives people a way to close the gap between transit and home.</li>
-        <li><strong>Multi-use path along St. Johns.</strong> Built, with more to come.</li>
-      </ul>
-
-      <h4>What's next</h4>
-      <ul class="pillar-list">
-        <li><strong>Widening the bridge at Barnet and Ioco.</strong> The congestion at that intersection won't fix itself.</li>
-        <li><strong>An HOV lane on St. Johns during rush hour.</strong> The bridge widening is the piece that has to come first, so the HOV lane works instead of bottlenecking.</li>
-        <li><strong>Smart growth near transit</strong>, so the density goes where the buses, the bikes, and the walking already are.</li>
-      </ul>
-    </div>
+<section class="platform-intro">
+  <div class="platform-intro-inner">
+    <p class="reveal">The same five things I've spent my career on, said simply. Pick a pillar to open it.</p>
   </div>
 </section>
 
-<section class="pillar" id="housing">
-  <div class="pillar-inner">
-    <div>
-      <div class="pillar-label">
-        <span class="pillar-label-num">02</span>
-        <span class="pillar-label-text">Housing &amp; Affordability</span>
+<section class="pillars-wrap">
+  <div class="pillars-stack">
+
+    <details class="pillar-card reveal" id="transportation">
+      <summary>
+        <div class="pillar-card-num">01</div>
+        <div class="pillar-card-content">
+          <span class="pillar-card-label">Transportation</span>
+          <h3 class="pillar-card-title">Getting around Port Moody should be easier.</h3>
+          <p class="pillar-card-tag">More transit where it makes sense. Honest road improvements where the congestion actually is.</p>
+        </div>
+        <span class="pillar-card-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="pillar-card-body">
+        <div class="body-intro">
+          <p>Port Moody has real congestion problems, and there isn't a single fix. We have to keep working on the transit that actually moves people, and on the road improvements that make rush hour bearable for everyone who has to drive. Both pieces matter, and the specifics matter more than the slogans.</p>
+        </div>
+        <div class="body-detail">
+          <h4>What's already in motion</h4>
+          <ul class="pillar-list">
+            <li><strong>The Shoreline Shuttle is coming back this summer.</strong> Reintroducing it was one of the commitments I ran on in 2022. It's happening.</li>
+            <li><strong>Last-mile transit is here.</strong> The e-bike and e-scooter program gives people a way to close the gap between transit and home.</li>
+            <li><strong>Multi-use path along St. Johns.</strong> Built, with more to come.</li>
+          </ul>
+          <h4>What's next</h4>
+          <ul class="pillar-list">
+            <li><strong>Widening the bridge at Barnet and Ioco.</strong> The congestion at that intersection won't fix itself.</li>
+            <li><strong>An HOV lane on St. Johns during rush hour.</strong> The bridge widening is the piece that has to come first, so the HOV lane works instead of bottlenecking.</li>
+            <li><strong>Smart growth near transit</strong>, so the density goes where the buses, the bikes, and the walking already are.</li>
+          </ul>
+        </div>
       </div>
-      <h2 class="pillar-h">Affordable housing comes in all forms.</h2>
-      <p class="pillar-tag">Below-market and deeply subsidized are part of it. They aren't all of it.</p>
-    </div>
-    <div class="pillar-body">
-      <p>Affordability isn't a single number. A first-time buyer needs something different from a renter, who needs something different from a family that's outgrown a one-bedroom, who needs something different from someone who wants to downsize and stay close to their grandkids. Seniors on fixed incomes are facing a different problem again. What's affordable for one person is out of reach for another, and a real housing plan has to respect that instead of pretending everyone fits one box.</p>
+    </details>
 
-      <h4>What I'm working toward</h4>
-      <ul class="pillar-list">
-        <li><strong>Seniors and affordable housing is a priority going into 2026.</strong> All forms. Respectful of where people are at.</li>
-        <li><strong>Smart growth means density near transit.</strong> That's where most of the new homes need to go, so we can keep mid-rise and low-rise housing away from transit corridors.</li>
-        <li><strong>Vibrant, walkable neighbourhoods</strong> connected to services and amenities. The grocery store you can walk to. The park around the corner. The transit two blocks away.</li>
-      </ul>
+    <details class="pillar-card reveal" id="housing">
+      <summary>
+        <div class="pillar-card-num">02</div>
+        <div class="pillar-card-content">
+          <span class="pillar-card-label">Housing &amp; Affordability</span>
+          <h3 class="pillar-card-title">Affordable housing comes in all forms.</h3>
+          <p class="pillar-card-tag">Below-market and deeply subsidized are part of it. They aren't all of it.</p>
+        </div>
+        <span class="pillar-card-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="pillar-card-body">
+        <div class="body-intro">
+          <p>Affordability isn't a single number. A first-time buyer needs something different from a renter, who needs something different from a family that's outgrown a one-bedroom, who needs something different from someone who wants to downsize and stay close to their grandkids. Seniors on fixed incomes are facing a different problem again. What's affordable for one person is out of reach for another, and a real housing plan has to respect that instead of pretending everyone fits one box.</p>
+        </div>
+        <div class="body-detail">
+          <h4>What I'm working toward</h4>
+          <ul class="pillar-list">
+            <li><strong>Seniors and affordable housing is a priority going into 2026.</strong> All forms. Respectful of where people are at.</li>
+            <li><strong>Smart growth means density near transit.</strong> That's where most of the new homes need to go, so we can keep mid-rise and low-rise housing away from transit corridors.</li>
+            <li><strong>Vibrant, walkable neighbourhoods</strong> connected to services and amenities. The grocery store you can walk to. The park around the corner. The transit two blocks away.</li>
+          </ul>
+          <h4>On Moody Centre</h4>
+          <p>People in Moody Centre have been asking for years for a grocery store and the ability to walk to basic services. It hasn't happened because the critical mass to support it wasn't there yet. With Moody Centre finally taking shape, we have a chance to build a neighbourhood that has real services in it. I remember when Suter Brook and Newport were proposed, plenty of people were dead set against them, and now those same neighbourhoods are full of people who love living there. The job is to keep listening, and to make sure what gets built is something the community ends up being proud of.</p>
+        </div>
+      </div>
+    </details>
 
-      <h4>On Moody Centre</h4>
-      <p>People in Moody Centre have been asking for years for a grocery store and the ability to walk to basic services. It hasn't happened because the critical mass to support it wasn't there yet. With Moody Centre finally taking shape, we have a chance to build a neighbourhood that has real services in it. I remember when Suter Brook and Newport were proposed, plenty of people were dead set against them, and now those same neighbourhoods are full of people who love living there. The job is to keep listening, and to make sure what gets built is something the community ends up being proud of.</p>
-    </div>
+    <details class="pillar-card reveal" id="governance">
+      <summary>
+        <div class="pillar-card-num">03</div>
+        <div class="pillar-card-content">
+          <span class="pillar-card-label">Good Governance &amp; Transparency</span>
+          <h3 class="pillar-card-title">A council that works together.</h3>
+          <p class="pillar-card-tag">The boring stuff, done in public, by people who can disagree without making it personal.</p>
+        </div>
+        <span class="pillar-card-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="pillar-card-body">
+        <div class="body-intro">
+          <p>When this council came in after 2022, there was real repair work to do, both inside the room and outside of it. The first job was getting council back on the same page. Nearly every member of this council supported the same strategic plan, and we followed it. That isn't an accident. It's what happens when you do the work in public, on the record, and you build the kind of working relationships where people can disagree without burning the room down.</p>
+        </div>
+        <div class="body-detail">
+          <h4>What we've done</h4>
+          <ul class="pillar-list">
+            <li><strong>Adopted a Strategic Plan</strong> the whole council could agree on, and followed it through.</li>
+            <li><strong>Adopted a Land Management Strategy</strong>, a first for Port Moody. It sets a strategic vision for how city-owned land is managed, instead of doing it piece by piece.</li>
+            <li><strong>Repaired relationships</strong> with the business community, non-profits, the school district, and neighbouring municipalities.</li>
+            <li><strong>Two Youth Summits</strong> to bring the youth voice directly to council.</li>
+            <li><strong>Mayor's Task Force on Arts and Business</strong>, now moving toward an arm's-length Arts and Business Council that brings the two together. The city will support it with seed funding and space to start.</li>
+          </ul>
+          <h4>An open door</h4>
+          <p>As mayor, Meghan holds weekly open-door meetings at City Hall, where residents can sit down with her one-on-one. That commitment to direct access is part of the same approach she has brought to council for nearly three decades.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="pillar-card reveal" id="experience">
+      <summary>
+        <div class="pillar-card-num">04</div>
+        <div class="pillar-card-content">
+          <span class="pillar-card-label">Experience as an Asset</span>
+          <h3 class="pillar-card-title">Experience is a good thing.</h3>
+          <p class="pillar-card-tag">The depth a city this complicated actually needs takes more than one term to build.</p>
+        </div>
+        <span class="pillar-card-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="pillar-card-body">
+        <div class="body-intro">
+          <p>I've heard the line that I've been around too long. I see it the other way. A lot of the work of running a city is invisible until you've done it. Parliamentary procedure. Relationships built with other mayors, with the province, with TransLink and Metro Vancouver and the school district. The institutional memory that tells you why a decision was made the way it was. None of that comes in a first term.</p>
+        </div>
+        <div class="body-detail">
+          <h4>The track record</h4>
+          <ul class="pillar-list">
+            <li><strong>First elected to Port Moody Council in 1996.</strong> One of the longest-serving members in the city's history.</li>
+            <li><strong>15 years chairing the Finance Committee.</strong></li>
+            <li><strong>16 years on the Metro Vancouver Board</strong> representing Port Moody.</li>
+            <li><strong>2019 Clements Award</strong> for environmental leadership.</li>
+            <li><strong>Port Moody's first female mayor</strong>, elected in 2022.</li>
+            <li><strong>Nearly 20 years in post-secondary education</strong>, as an educator, College Director, and Provincial Director responsible for hundreds of employees.</li>
+          </ul>
+          <h4>Why it matters in this election</h4>
+          <p>Port Moody has a habit of electing mayors who only end up serving one term, and honestly, it has cost us. Continuity matters in this job. The same agenda, the same relationships, and the same person who knows where things actually sit will always get more done than starting from scratch every four years.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="pillar-card reveal" id="fiscal">
+      <summary>
+        <div class="pillar-card-num">05</div>
+        <div class="pillar-card-content">
+          <span class="pillar-card-label">Fiscal Responsibility</span>
+          <h3 class="pillar-card-title">Spending that protects services.</h3>
+          <p class="pillar-card-tag">When the easy answer is to cut a service, the better question is whether there's another way.</p>
+        </div>
+        <span class="pillar-card-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="pillar-card-body">
+        <div class="body-intro">
+          <p>Being responsible with the city's money means making decisions that hold up over time. It means looking for new revenue before reaching for the easy answer of cutting services, and being honest with people about what things cost, even when the honest answer isn't the popular one.</p>
+        </div>
+        <div class="body-detail">
+          <h4>How it shows up</h4>
+          <ul class="pillar-list">
+            <li><strong>Pay parking in the busy areas.</strong> Not everyone loved it. It brought in revenue so we didn't have to cut services, and it helped with congestion at the same time.</li>
+            <li><strong>Growth has to pay for its own infrastructure.</strong> When new development comes in, the supporting amenities have to come with it.</li>
+            <li><strong>Think before you act.</strong> The Land Management Strategy is a good example. Decide the principles up front, then make the case-by-case calls.</li>
+            <li><strong>Conservative, audited budgets.</strong> Fifteen years chairing the Finance Committee is what I bring to every line in the budget.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
   </div>
 </section>
 
-<section class="pillar" id="governance">
-  <div class="pillar-inner">
-    <div>
-      <div class="pillar-label">
-        <span class="pillar-label-num">03</span>
-        <span class="pillar-label-text">Good Governance &amp; Transparency</span>
-      </div>
-      <h2 class="pillar-h">A council that works together.</h2>
-      <p class="pillar-tag">The boring stuff, done in public, by people who can disagree without making it personal.</p>
-    </div>
-    <div class="pillar-body">
-      <p>When this council came in after 2022, there was real repair work to do, both inside the room and outside of it. The first job was getting council back on the same page. Nearly every member of this council supported the same strategic plan, and we followed it. That isn't an accident. It's what happens when you do the work in public, on the record, and you build the kind of working relationships where people can disagree without burning the room down.</p>
-
-      <h4>What we've done</h4>
-      <ul class="pillar-list">
-        <li><strong>Adopted a Strategic Plan</strong> the whole council could agree on, and followed it through.</li>
-        <li><strong>Adopted a Land Management Strategy</strong>, a first for Port Moody. It sets a strategic vision for how city-owned land is managed, instead of doing it piece by piece.</li>
-        <li><strong>Repaired relationships</strong> with the business community, non-profits, the school district, and neighbouring municipalities.</li>
-        <li><strong>Two Youth Summits</strong> to bring the youth voice directly to council.</li>
-        <li><strong>Mayor's Task Force on Arts and Business</strong>, now moving toward an arm's-length Arts and Business Council that brings the two together. The city will support it with seed funding and space to start.</li>
-      </ul>
-
-      <h4>An open door</h4>
-      <p>As mayor, Meghan holds weekly open-door meetings at City Hall, where residents can sit down with her one-on-one. That commitment to direct access is part of the same approach she has brought to council for nearly three decades.</p>
-    </div>
+<section class="platform-photo-inset reveal">
+  <div class="platform-photo-inset-img" style="background-image: url('port-moody-aerial.jpg');"></div>
+  <div class="platform-photo-inset-text">
+    <span class="platform-photo-inset-eyebrow">The Place We're Shaping</span>
+    <h3>Five pillars, one Port Moody.</h3>
+    <p>Every decision council makes either protects this view or chips away at it. The platform is about keeping what we love and building what we still need.</p>
   </div>
 </section>
 
-<section class="pillar" id="experience">
-  <div class="pillar-inner">
-    <div>
-      <div class="pillar-label">
-        <span class="pillar-label-num">04</span>
-        <span class="pillar-label-text">Experience as an Asset</span>
-      </div>
-      <h2 class="pillar-h">Experience is a good thing.</h2>
-      <p class="pillar-tag">The depth a city this complicated actually needs takes more than one term to build.</p>
-    </div>
-    <div class="pillar-body">
-      <p>I've heard the line that I've been around too long. I see it the other way. A lot of the work of running a city is invisible until you've done it. Parliamentary procedure. Relationships built with other mayors, with the province, with TransLink and Metro Vancouver and the school district. The institutional memory that tells you why a decision was made the way it was. None of that comes in a first term.</p>
-
-      <h4>The track record</h4>
-      <ul class="pillar-list">
-        <li><strong>First elected to Port Moody Council in 1996.</strong> One of the longest-serving members in the city's history.</li>
-        <li><strong>15 years chairing the Finance Committee.</strong></li>
-        <li><strong>16 years on the Metro Vancouver Board</strong> representing Port Moody.</li>
-        <li><strong>2019 Clements Award</strong> for environmental leadership.</li>
-        <li><strong>Port Moody's first female mayor</strong>, elected in 2022.</li>
-        <li><strong>Nearly 20 years in post-secondary education</strong>, as an educator, College Director, and Provincial Director responsible for hundreds of employees.</li>
-      </ul>
-
-      <h4>Why it matters in this election</h4>
-      <p>Port Moody has a habit of electing mayors who only end up serving one term, and honestly, it has cost us. Continuity matters in this job. The same agenda, the same relationships, and the same person who knows where things actually sit will always get more done than starting from scratch every four years.</p>
-    </div>
+<div class="vision-strip">
+  <div class="vision-strip-inner reveal">
+    <span class="eyebrow">The Through-Line</span>
+    <h3>Every pillar comes back to the same thing. A Port Moody we can all be <em>proud</em> of.</h3>
   </div>
-</section>
-
-<section style="padding: 0;" aria-hidden="true">
-  <img src="meghan-community-event.jpg" alt="Meghan Lahti at a community event" style="width:100%; max-height:460px; object-fit:cover; display:block;">
-</section>
-
-<section class="pillar" id="fiscal">
-  <div class="pillar-inner">
-    <div>
-      <div class="pillar-label">
-        <span class="pillar-label-num">05</span>
-        <span class="pillar-label-text">Fiscal Responsibility</span>
-      </div>
-      <h2 class="pillar-h">Spending that protects services.</h2>
-      <p class="pillar-tag">When the easy answer is to cut a service, the better question is whether there's another way.</p>
-    </div>
-    <div class="pillar-body">
-      <p>Being responsible with the city's money means making decisions that hold up over time. It means looking for new revenue before reaching for the easy answer of cutting services, and being honest with people about what things cost, even when the honest answer isn't the popular one.</p>
-
-      <h4>How it shows up</h4>
-      <ul class="pillar-list">
-        <li><strong>Pay parking in the busy areas.</strong> Not everyone loved it. It brought in revenue so we didn't have to cut services, and it helped with congestion at the same time.</li>
-        <li><strong>Growth has to pay for its own infrastructure.</strong> When new development comes in, the supporting amenities have to come with it.</li>
-        <li><strong>Think before you act.</strong> The Land Management Strategy is a good example. Decide the principles up front, then make the case-by-case calls.</li>
-        <li><strong>Conservative, audited budgets.</strong> Fifteen years chairing the Finance Committee is what I bring to every line in the budget.</li>
-      </ul>
-    </div>
-  </div>
-</section>
+</div>
 
 <div class="pullquote">
-  <p class="pullquote-text">&ldquo;We have the opportunity to create a <em>vibrant neighbourhood</em> that will change the city in a positive way.&rdquo;</p>
-  <div class="pullquote-source">Meghan Lahti</div>
+  <p class="pullquote-text reveal">&ldquo;We have the opportunity to create a <em>vibrant neighbourhood</em> that will change the city in a positive way.&rdquo;</p>
+  <div class="pullquote-source reveal" data-delay="1">Meghan Lahti</div>
 </div>
 
 <section class="section bg-cream-deep">
-  <div class="container" style="max-width:920px;text-align:center;">
+  <div class="container reveal" style="max-width:920px;text-align:center;">
     <span style="color: var(--rose-deep); letter-spacing: 0.18em; font-size: 12px; font-weight: 600; text-transform: uppercase; display:block; margin-bottom:10px;">Get Involved</span>
     <h2 class="t-h2" style="margin-bottom:16px;">If this sounds like the Port Moody you want, help me get there.</h2>
     <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:18px;">
@@ -296,7 +476,7 @@
       <div class="footer-social">
         <a href="https://facebook.com/MeghanLahtiPortMoody" target="_blank" rel="noopener">Facebook</a>
         <a href="https://instagram.com/meghanlahti" target="_blank" rel="noopener">Instagram</a>
-        <a href="mailto:hello@lahti2026.com">Email</a>
+        <a href="mailto:info@lahti2026.com">Email</a>
       </div>
     </div>
     <div class="footer-col">
@@ -342,15 +522,7 @@
   </div>
 </footer>
 
-<script>
-  const navToggle = document.getElementById('navToggle');
-  const navMobile = document.getElementById('navMobile');
-  if (navToggle && navMobile) {
-    navToggle.addEventListener('click', () => {
-      navMobile.style.display = navMobile.style.display === 'block' ? 'none' : 'block';
-    });
-  }
-</script>
+<script src="shared.js"></script>
 <script src="password-gate.js"></script>
 </body>
 </html>
