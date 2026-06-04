@@ -72,10 +72,43 @@
   border-left: 3px solid var(--rose);
   padding-left: 22px;
 }
+.endorse-quote-compact {
+  font-size: clamp(17px, 1.4vw, 20px);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
 .endorse-attr {
   font-size: 15px; color: var(--slate); line-height: 1.5;
 }
 .endorse-attr strong { color: var(--ink); display: block; font-weight: 600; font-size: 16px; margin-bottom: 2px; }
+
+.letter-expand {
+  margin-bottom: 22px;
+  border-top: 1px solid rgba(199,125,161,0.18);
+  padding-top: 14px;
+}
+.letter-expand summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--rose-deep);
+  outline: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 4px 0;
+}
+.letter-expand summary::-webkit-details-marker { display: none; }
+.letter-expand summary::marker { display: none; }
+.letter-expand summary::after { content: "+"; font-size: 16px; font-weight: 400; }
+.letter-expand[open] summary::after { content: "\2212"; }
+.letter-expand .letter-expand-label-close { display: none; }
+.letter-expand[open] .letter-expand-label-open { display: none; }
+.letter-expand[open] .letter-expand-label-close { display: inline; }
+.letter-expand-body { padding: 14px 0 4px; }
+.letter-expand-body p {
+  font-size: 15px; color: var(--slate); line-height: 1.78; margin-bottom: 12px;
+}
+.letter-expand-body p:last-child { margin-bottom: 0; }
 
 @media (max-width: 900px) {
   .endorse-section { padding: 52px 28px; }
@@ -258,8 +291,15 @@
     <div class="endorse-content">
       <span class="eyebrow">Youth Sport</span>
       <h2>Port Moody Soccer Club.</h2>
-      <blockquote class="endorse-quote">&ldquo;As President of the Port Moody Soccer Club, I am proud to endorse Meghan Lahti for Mayor of Port Moody. Meghan has been a steadfast friend and champion of our club for many years, consistently showing up for our players, families, and volunteers. Her leadership was instrumental in bringing the Inlet Field redevelopment project across the finish line. A transformative investment in youth sport and community space that will benefit Port Moody for generations. She also led the effort to name the new pitch Bob Favelle Field, honouring one of our club's most dedicated and long-serving members, and demonstrating the kind of thoughtful recognition that makes our community special.&rdquo;</blockquote>
-      <blockquote class="endorse-quote">&ldquo;Beyond infrastructure, Meghan has been a consistent advocate for our programs at City Hall, working to ensure that soccer, and youth sport more broadly, has the facilities, support, and visibility it deserves in Port Moody. She understands that strong recreational programs build strong neighbourhoods, and her record reflects a genuine commitment to the families who call this city home. I encourage residents to join me in supporting Meghan Lahti for Mayor.&rdquo;</blockquote>
+      <blockquote class="endorse-quote endorse-quote-compact">&ldquo;Meghan has been a steadfast friend and champion of our club for many years. Her leadership was instrumental in bringing the Inlet Field redevelopment project across the finish line, and she led the effort to name the new pitch Bob Favelle Field.&rdquo;</blockquote>
+      <details class="letter-expand">
+        <summary><span class="letter-expand-label-open">Read the full letter</span><span class="letter-expand-label-close">Hide the full letter</span></summary>
+        <div class="letter-expand-body">
+          <p>&ldquo;As President of the Port Moody Soccer Club, I am proud to endorse Meghan Lahti for Mayor of Port Moody. Meghan has been a steadfast friend and champion of our club for many years, consistently showing up for our players, families, and volunteers.&rdquo;</p>
+          <p>&ldquo;Her leadership was instrumental in bringing the Inlet Field redevelopment project across the finish line. A transformative investment in youth sport and community space that will benefit Port Moody for generations. She also led the effort to name the new pitch Bob Favelle Field, honouring one of our club's most dedicated and long-serving members, and demonstrating the kind of thoughtful recognition that makes our community special.&rdquo;</p>
+          <p>&ldquo;Beyond infrastructure, Meghan has been a consistent advocate for our programs at City Hall, working to ensure that soccer, and youth sport more broadly, has the facilities, support, and visibility it deserves in Port Moody. She understands that strong recreational programs build strong neighbourhoods, and her record reflects a genuine commitment to the families who call this city home. I encourage residents to join me in supporting Meghan Lahti for Mayor.&rdquo;</p>
+        </div>
+      </details>
       <div class="endorse-attr">
         <strong>Matthew Campbell</strong>
         President, Port Moody Soccer Club
@@ -523,6 +563,7 @@
     });
   }
 </script>
+<script src="shared.js"></script>
 <script src="password-gate.js"></script>
 </body>
 </html>

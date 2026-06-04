@@ -88,7 +88,11 @@
   display: flex; flex-direction: column; gap: 16px;
   transition: transform 0.18s, box-shadow 0.18s;
 }
-.plat-card:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(45,58,92,0.08); }
+.plat-card:hover { transform: translateY(-6px); box-shadow: 0 22px 48px rgba(45,58,92,0.12); }
+.done-card { transition: transform 0.22s, box-shadow 0.22s, border-left-color 0.22s; }
+.done-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(45,58,92,0.10); border-left-color: var(--rose-deep); }
+.endorse-card { transition: transform 0.24s, box-shadow 0.24s; }
+.endorse-card:hover { transform: translateY(-4px); box-shadow: 0 20px 44px rgba(45,58,92,0.10); }
 .plat-card-cream { background: var(--cream); border: 1px solid rgba(199,125,161,0.18); }
 .plat-card-rose  { background: var(--rose-pale); border: 1px solid rgba(199,125,161,0.22); }
 .plat-card-sage  { background: var(--sage-pale); border: 1px solid rgba(91,122,107,0.18); }
@@ -197,10 +201,20 @@
 .endorse-card-source strong { color: var(--ink); font-weight: 600; display: block; }
 .endorse-cta { text-align: center; margin-top: 36px; }
 
-/* HOMEPAGE PHOTO BREAK */
-.photo-break { padding: 0; }
+/* HOMEPAGE PHOTO BREAK with subtle Ken Burns zoom */
+.photo-break { padding: 0; overflow: hidden; position: relative; }
 .photo-break img {
   width: 100%; max-height: 520px; object-fit: cover; display: block;
+  animation: kenburns 28s ease-out infinite alternate;
+  transform-origin: center 30%;
+  will-change: transform;
+}
+@keyframes kenburns {
+  0%   { transform: scale(1.0) translateY(0); }
+  100% { transform: scale(1.08) translateY(-12px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .photo-break img { animation: none; }
 }
 
 /* SLOGAN REVEAL (fades in as you scroll into it) */
@@ -312,12 +326,12 @@
 
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">Mayor of Port Moody &middot; Re-Election 2026</div>
-    <h1 class="hero-title">I love this town.</h1>
-    <div class="hero-bar"></div>
-    <p class="hero-sub">Port Moody is a passion for me. I've spent most of my adult life in service to this city.</p>
-    <p class="hero-meta">My first campaign sign, back in 1996, just said &ldquo;I love this town.&rdquo; Three decades and a lot of work later, that's still the message.</p>
-    <div class="hero-btn-row">
+    <div class="hero-eyebrow reveal">Mayor of Port Moody &middot; Re-Election 2026</div>
+    <h1 class="hero-title reveal" data-delay="1">I love this town.</h1>
+    <div class="hero-bar reveal" data-delay="2"></div>
+    <p class="hero-sub reveal" data-delay="2">Port Moody is a passion for me. I've spent most of my adult life in service to this city.</p>
+    <p class="hero-meta reveal" data-delay="3">My first campaign sign, back in 1996, just said &ldquo;I love this town.&rdquo; Three decades and a lot of work later, that's still the message.</p>
+    <div class="hero-btn-row reveal" data-delay="4">
       <a href="/platform.html" class="btn btn-rose">See what I stand for</a>
       <a href="/volunteer.html" class="btn btn-outline-ink">Volunteer</a>
     </div>
@@ -354,23 +368,23 @@
 </div>
 
 <div class="intro-strip">
-  <p class="intro-strip-text">Born out of <em>love</em> for this community, and out of <em>pride</em> in helping shape it.</p>
+  <p class="intro-strip-text reveal">Born out of <em>love</em> for this community, and out of <em>pride</em> in helping shape it.</p>
 </div>
 
 <section class="section bg-ivory">
   <div class="container">
     <div class="section-head">
-      <div>
+      <div class="reveal">
         <span class="section-head-eyebrow">The Platform</span>
         <h2 class="t-h2">What I'm running on.</h2>
         <div class="t-divider"></div>
       </div>
-      <p class="t-body">There are five things I want to focus on over the next four years. They're the same things I've been working on for most of my time on council, and they're the issues people in Port Moody actually talk to me about at the grocery store and on the trails.</p>
+      <p class="t-body reveal" data-delay="1">There are five things I want to focus on over the next four years. They're the same things I've been working on for most of my time on council, and they're the issues people in Port Moody actually talk to me about at the grocery store and on the trails.</p>
     </div>
 
     <div class="platform-grid">
 
-      <div class="plat-card plat-card-cream">
+      <div class="plat-card plat-card-cream reveal">
         <span class="plat-card-eyebrow">01 &middot; Transportation</span>
         <h3 class="plat-card-title">Getting around Port Moody should be easier.</h3>
         <p class="plat-card-body">More transit options where they make sense, and honest road improvements where the congestion actually is. Both pieces matter, and we're working on both.</p>
@@ -383,7 +397,7 @@
         <a href="/platform.html#transportation" class="plat-card-link">Read more &rsaquo;</a>
       </div>
 
-      <div class="plat-card plat-card-rose">
+      <div class="plat-card plat-card-rose reveal" data-delay="1">
         <span class="plat-card-eyebrow">02 &middot; Housing &amp; Affordability</span>
         <h3 class="plat-card-title">Affordable housing comes in all forms.</h3>
         <p class="plat-card-body">Affordability isn't one thing. A first-time buyer, a family trying to upsize, someone wanting to downsize and stay close to their grandkids, a renter, a senior on a fixed income, they all need something different. A real housing plan respects that.</p>
@@ -395,7 +409,7 @@
         <a href="/platform.html#housing" class="plat-card-link">Read more &rsaquo;</a>
       </div>
 
-      <div class="plat-card plat-card-sage">
+      <div class="plat-card plat-card-sage reveal" data-delay="2">
         <span class="plat-card-eyebrow">03 &middot; Good Governance &amp; Transparency</span>
         <h3 class="plat-card-title">A council that works together.</h3>
         <p class="plat-card-body">When this council came together in 2022, we sat down and built a strategic plan nearly all of us could agree on, and then we followed it.</p>
@@ -408,7 +422,7 @@
         <a href="/platform.html#governance" class="plat-card-link">Read more &rsaquo;</a>
       </div>
 
-      <div class="plat-card plat-card-ivory">
+      <div class="plat-card plat-card-ivory reveal" data-delay="3">
         <span class="plat-card-eyebrow">04 &middot; Experience as an Asset</span>
         <h3 class="plat-card-title">Experience is a good thing.</h3>
         <p class="plat-card-body">There's a lot you only learn after years at the council table. The relationships and the institutional memory take time to build. Meghan brings nearly three decades of that, including 16 years on the Metro Vancouver Board and 15 years chairing the Finance Committee.</p>
@@ -420,7 +434,7 @@
         <a href="/platform.html#experience" class="plat-card-link">Read more &rsaquo;</a>
       </div>
 
-      <div class="plat-card plat-card-cobalt plat-card-full">
+      <div class="plat-card plat-card-cobalt plat-card-full reveal" data-delay="4">
         <span class="plat-card-eyebrow">05 &middot; Fiscal Responsibility</span>
         <h3 class="plat-card-title">Spending that protects services.</h3>
         <p class="plat-card-body">Being responsible with the city's money usually means looking for new revenue before cutting services. Pay parking in the busy areas is a good example. Not everyone loved it, but it brought in new revenue so services didn't have to be cut, and it helped with congestion at the same time.</p>
@@ -432,18 +446,18 @@
 </section>
 
 <div class="pullquote">
-  <p class="pullquote-text">&ldquo;Experience is <em>a good thing.</em>&rdquo;</p>
-  <div class="pullquote-source">Meghan Lahti</div>
+  <p class="pullquote-text reveal">&ldquo;Experience is <em>a good thing.</em>&rdquo;</p>
+  <div class="pullquote-source reveal" data-delay="1">Meghan Lahti</div>
 </div>
 
 <section class="endorse-strip">
-  <div class="endorse-head">
+  <div class="endorse-head reveal">
     <span class="eyebrow">Endorsed By</span>
     <h2>Voices from across the community.</h2>
   </div>
   <div class="endorse-grid">
 
-    <div class="endorse-card">
+    <div class="endorse-card reveal">
       <div class="endorse-card-logo">
         <img src="pm-firefighters-logo.png" alt="Port Moody Firefighters IAFF Local 2399" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
         <div class="logo-fallback" style="display:none;">Port Moody Firefighters<br><span style="font-size:14px;color:var(--rose-deep);letter-spacing:0.1em;text-transform:uppercase;">IAFF Local 2399</span></div>
@@ -455,7 +469,7 @@
       </div>
     </div>
 
-    <div class="endorse-card">
+    <div class="endorse-card reveal" data-delay="1">
       <div class="endorse-card-logo">
         <img src="pm-soccer-logo.png" alt="Port Moody Soccer Club" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
         <div class="logo-fallback" style="display:none;">Port Moody Soccer Club<br><span style="font-size:14px;color:var(--rose-deep);letter-spacing:0.1em;text-transform:uppercase;">Est. 1960</span></div>
@@ -467,7 +481,7 @@
       </div>
     </div>
 
-    <div class="endorse-card">
+    <div class="endorse-card reveal" data-delay="2">
       <div class="endorse-card-logo">
         <img src="nwdic.jpg" alt="New Westminster &amp; District Labour Council">
       </div>
@@ -479,7 +493,7 @@
     </div>
 
   </div>
-  <div class="endorse-cta">
+  <div class="endorse-cta reveal" data-delay="3">
     <a href="/endorsements.html" class="btn btn-outline-ink">Read all endorsements</a>
   </div>
 </section>
@@ -500,80 +514,80 @@
 <section class="section bg-cream">
   <div class="container">
     <div class="section-head">
-      <div>
+      <div class="reveal">
         <span class="section-head-eyebrow">What We've Done</span>
         <h2 class="t-h2">A few of the things this council got done.</h2>
         <div class="t-divider"></div>
       </div>
-      <p class="t-body">Some of these are finished. Some are just getting going. All of them are things this council has either built, started, or kept moving over the last four years. There's more, and the longer version with the context lives on the <a href="/the-record.html" style="color:var(--rose-deep);text-decoration:underline;text-underline-offset:3px;">What We've Done</a> page.</p>
+      <p class="t-body reveal" data-delay="1">Some of these are finished. Some are just getting going. All of them are things this council has either built, started, or kept moving over the last four years. There's more, and the longer version with the context lives on the <a href="/the-record.html" style="color:var(--rose-deep);text-decoration:underline;text-underline-offset:3px;">What We've Done</a> page.</p>
     </div>
 
     <div class="done-grid">
-      <div class="done-card">
+      <div class="done-card reveal">
         <div class="done-card-tag">Transportation</div>
         <div class="done-card-title">The Shoreline Shuttle is coming back.</div>
         <p class="done-card-body">It's been off the road for years. We're bringing it back this summer.</p>
       </div>
-      <div class="done-card">
+      <div class="done-card reveal" data-delay="1">
         <div class="done-card-tag">Transportation</div>
         <div class="done-card-title">E-bike and e-scooter program.</div>
         <p class="done-card-body">A real last-mile option for the trip between transit and home, in place and being used.</p>
       </div>
-      <div class="done-card">
+      <div class="done-card reveal" data-delay="2">
         <div class="done-card-tag">Transportation</div>
         <div class="done-card-title">Multi-use path along St. Johns.</div>
         <p class="done-card-body">Built, and there's more of it on the way.</p>
       </div>
-      <div class="done-card">
+      <div class="done-card reveal" data-delay="3">
         <div class="done-card-tag">Governance</div>
         <div class="done-card-title">Land Management Strategy.</div>
         <p class="done-card-body">The first of its kind for Port Moody. It gives us a real plan for how city-owned land gets managed, instead of figuring it out one parcel at a time.</p>
       </div>
-      <div class="done-card">
+      <div class="done-card reveal">
         <div class="done-card-tag">Community</div>
         <div class="done-card-title">The new boardwalk.</div>
         <p class="done-card-body">Built, open, and being used.</p>
       </div>
-      <div class="done-card">
+      <div class="done-card reveal" data-delay="1">
         <div class="done-card-tag">Community</div>
         <div class="done-card-title">Inlet Field, finished and dedicated to Bob Favelle.</div>
         <p class="done-card-body">A long-overdue project, completed and named for someone who put a lot into this community.</p>
       </div>
-      <div class="done-card">
+      <div class="done-card reveal" data-delay="2">
         <div class="done-card-tag">Community</div>
         <div class="done-card-title">New field house, under construction.</div>
         <p class="done-card-body">After years in planning, ground has broken and the build is happening.</p>
       </div>
-      <div class="done-card">
+      <div class="done-card reveal" data-delay="3">
         <div class="done-card-tag">Community</div>
         <div class="done-card-title">Kyle Centre, Phase 2.</div>
         <p class="done-card-body">The next phase of the redevelopment is under way.</p>
       </div>
-      <div class="done-card">
+      <div class="done-card reveal">
         <div class="done-card-tag">Engagement</div>
         <div class="done-card-title">Two Youth Summits.</div>
         <p class="done-card-body">We brought the youth voice directly to council, twice, and it's something I want to keep doing.</p>
       </div>
-      <div class="done-card">
+      <div class="done-card reveal" data-delay="1">
         <div class="done-card-tag">Arts &amp; Business</div>
         <div class="done-card-title">Mayor's Task Force on Arts and Business.</div>
         <p class="done-card-body">It's now turning into an arm's-length Arts and Business Council that brings the two communities together. The city will help it get on its feet with seed funding and space.</p>
       </div>
     </div>
 
-    <div style="margin-top:34px; text-align:center;">
+    <div class="reveal" style="margin-top:34px; text-align:center;">
       <a href="/the-record.html" class="btn btn-ink">See the full list</a>
     </div>
   </div>
 </section>
 
 <div class="pullquote" style="background: var(--ivory);">
-  <p class="pullquote-text">&ldquo;I <em>love</em> this town.&rdquo;</p>
-  <div class="pullquote-source">Meghan Lahti &middot; Campaign sign, 1996</div>
+  <p class="pullquote-text reveal">&ldquo;I <em>love</em> this town.&rdquo;</p>
+  <div class="pullquote-source reveal" data-delay="1">Meghan Lahti &middot; Campaign sign, 1996</div>
 </div>
 
 <section class="section bg-cream-deep">
-  <div class="container" style="max-width:920px;text-align:center;">
+  <div class="container reveal" style="max-width:920px;text-align:center;">
     <span class="section-head-eyebrow">Get Involved</span>
     <h2 class="t-h2" style="margin-bottom:16px;">There's a place for you here.</h2>
     <p class="t-body" style="max-width:660px;margin:0 auto 28px;">You can knock on doors with us, make a few phone calls, put a sign on your lawn, bring a couple of friends to a Thursday think tank, or just have honest conversations about Meghan with the neighbours you already talk to. Whatever fits your life is what we need.</p>
@@ -649,16 +663,9 @@
   </div>
 </footer>
 
+<script src="shared.js"></script>
 <script>
-  const navToggle = document.getElementById('navToggle');
-  const navMobile = document.getElementById('navMobile');
-  if (navToggle && navMobile) {
-    navToggle.addEventListener('click', () => {
-      navMobile.style.display = navMobile.style.display === 'block' ? 'none' : 'block';
-    });
-  }
-
-  // Slogan reveal on scroll
+  // Slogan reveal on scroll (homepage-specific, higher threshold)
   const sloganReveal = document.getElementById('sloganReveal');
   if (sloganReveal && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
