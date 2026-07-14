@@ -315,11 +315,15 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
 }
 .footer-legal { font-size: 13px; color: var(--taupe); line-height: 1.7; max-width: 860px; }
 .footer-ack {
-  padding: 18px 72px 26px;
+  padding: 18px 72px 16px;
   font-size: 13px; color: var(--taupe);
   line-height: 1.7;
   border-top: 1px solid var(--line);
   max-width: 980px;
+}
+.footer-credit {
+  padding: 8px 72px 24px;
+  font-size: 12px; color: var(--taupe); letter-spacing: 0.02em;
 }
 
 /* ── SIMPLE LIST ── */
