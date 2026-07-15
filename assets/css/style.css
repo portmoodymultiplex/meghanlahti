@@ -2593,3 +2593,7 @@ footer .container { padding: 0; }
   color: var(--green-deepest) !important;
 }
 .mrp-brand img { border-radius: 0 !important; }
+
+/* Board rules: sold prices never shown. Belt-and-suspenders for the solds
+   showcase; the authoritative switch lives in the MyRealPage dashboard. */
+#past-sales [class*="price"], #past-sales [class*="Price"] { display: none !important; }
