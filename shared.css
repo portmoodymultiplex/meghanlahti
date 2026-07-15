@@ -102,7 +102,18 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
 .t-body-light { color: rgba(251,247,240,0.86); }
 .t-lead { font-size: 20px; color: var(--slate); line-height: 1.7; }
 .t-caption { font-size: 13px; color: var(--taupe); line-height: 1.5; }
-.t-rule { width: 48px; height: 3px; background: var(--rose); margin: 18px 0 24px; border: 0; }
+.t-rule { width: 44px; height: 2px; background: var(--rose); margin: 18px 0 24px; border: 0; }
+
+/* Editorial flourish: hairline with a small rose diamond. Use sparingly. */
+.flourish {
+  position: relative; height: 1px; background: var(--line);
+  max-width: 200px; margin: 0 auto; border: 0;
+}
+.flourish::after {
+  content: ""; position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 7px; height: 7px; background: var(--rose);
+}
 
 /* Prose blocks: single-column reading measure, underlined links */
 .prose { max-width: var(--measure); }
@@ -186,18 +197,18 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
   padding: 0 28px;
   display: flex; align-items: center;
   justify-content: space-between;
-  height: 74px; gap: 16px;
+  height: 78px; gap: 16px;
 }
 .wordmark { display: flex; flex-direction: column; line-height: 1; flex-shrink: 0; }
 .wordmark-name {
   font-family: var(--font-head);
-  font-size: 22px; font-weight: 700; color: var(--ink);
-  letter-spacing: -0.01em;
+  font-size: 23px; font-weight: 700; color: var(--ink);
+  letter-spacing: -0.005em;
 }
 .wordmark-sub {
-  font-size: 11px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--slate); margin-top: 4px;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--taupe); margin-top: 6px;
 }
 .nav-links { display: flex; gap: 4px; list-style: none; flex-wrap: nowrap; }
 .nav-links a {
@@ -237,32 +248,45 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
   border-radius: 2px; border-bottom: none;
 }
 
-/* ── PAGE BANNER (plain, no gradient orb) ── */
+/* ── PAGE BANNER (interior hero: homepage gradient language) ── */
 .page-banner {
-  background: var(--cream);
-  padding: 88px 72px 72px;
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #FDF8F4 0%, #FBF1F5 46%, #F6E4EC 100%);
+  padding: 56px 72px 64px;
   border-bottom: 1px solid var(--line);
 }
-.page-banner .banner-inner { max-width: 1120px; margin: 0 auto; }
+/* Soft pink light, upper right. Subtle depth, never decoration for its own sake. */
+.page-banner::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(640px 340px at 88% -12%, rgba(199,125,161,0.16), transparent 70%);
+}
+.page-banner .banner-inner { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; }
 .page-banner h1 {
   font-family: var(--font-head);
-  font-size: clamp(34px, 4.6vw, 56px);
+  font-size: clamp(38px, 4.8vw, 60px);
   font-weight: 700; color: var(--ink);
-  line-height: 1.08; margin-bottom: 16px;
-  letter-spacing: -0.01em;
+  line-height: 1.08; margin-bottom: 18px;
+  letter-spacing: -0.015em; max-width: 20ch;
 }
+.page-banner h1 em { font-style: italic; color: var(--rose-deep); }
 .page-banner p {
   font-size: 19px; color: var(--slate);
-  max-width: 60ch; line-height: 1.55;
+  max-width: 60ch; line-height: 1.6;
 }
 
-/* ── PULLQUOTE (plain, attributed, no colour accent) ── */
+/* ── PULLQUOTE (attributed, on the campaign's soft gradient) ── */
 .pullquote {
-  background: var(--cream);
-  padding: 84px 72px;
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #FDF8F4 0%, #FBF1F5 46%, #F6E4EC 100%);
+  padding: 92px 72px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
+.pullquote::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(560px 300px at 10% 110%, rgba(199,125,161,0.13), transparent 70%);
+}
+.pullquote-inner { position: relative; z-index: 1; }
 .pullquote-inner { max-width: 860px; margin: 0 auto; }
 .pullquote-text {
   font-family: var(--font-head);
@@ -294,6 +318,12 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
 .footer-min {
   max-width: 1120px; margin: 0 auto;
   padding: 64px 72px 56px;
+}
+/* Quiet rose accent opening the footer, echoing the section rules. */
+.footer-min::before {
+  content: ""; display: block;
+  width: 44px; height: 2px; background: var(--rose);
+  margin-bottom: 30px;
 }
 .footer-legal {
   font-size: 13px; color: var(--taupe);
@@ -330,8 +360,8 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
 @media (max-width: 900px) {
   .section { padding: 84px 26px; }
   .section-sm { padding: 56px 26px; }
-  .page-banner { padding: 56px 26px 44px; }
-  .pullquote { padding: 56px 26px; }
+  .page-banner { padding: 40px 26px 44px; }
+  .pullquote { padding: 60px 26px; }
   .footer-min { padding: 48px 26px 40px; }
   body { font-size: 17px; }
 }
