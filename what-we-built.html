@@ -67,7 +67,6 @@
 <body>
 
 <header id="site-header">
-  <div class="topbar">Port Moody municipal election &middot; Election Day October 17, 2026</div>
   <div class="nav-inner">
     <a href="/index.html" class="wordmark" aria-label="Meghan Lahti for Mayor, home">
       <span class="wordmark-name">Meghan Lahti</span>
@@ -251,7 +250,7 @@
     <!-- VERIFY authorization wording with Anthony / Elections BC before launch. Full contribution limits and eligibility live on the Donate page, not the global footer. -->
     <p class="footer-legal">Authorized by Anthony Sandler, financial agent for the Meghan Lahti 2026 Campaign, anthony@lahti2026.com. &copy; 2026 Meghan Lahti Campaign.</p>
     <p class="footer-ack">Port Moody is situated on the unceded traditional territories of the k&#695;ik&#695;&#601;&#643;&#601;m (Kwikwetlem), s&#601;l&#769;ilw&#601;ta&#660;&#7491; (Tsleil-Waututh), x&#695;m&#601;&#952;k&#695;&#601;y&#769;&#601;m (Musqueam), and S&#7811;&#x1E8F;w&#x1E8F;&#769;u7mesh (Squamish) Nations.</p>
-    <p class="footer-credit">Creative by Sheri Zada</p>
+    <p class="footer-credit">Website designed and developed by Sheri Zada, Campaign Manager.</p>
   </div>
 </footer>
 
@@ -283,5 +282,14 @@
 })();
 </script>
 <script src="password-gate.js"></script>
+<script>
+/* Sticky nav: tiny shadow once the page scrolls. */
+(function () {
+  var header = document.getElementById('site-header');
+  var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 4); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
 </body>
 </html>

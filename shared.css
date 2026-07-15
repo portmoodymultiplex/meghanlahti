@@ -123,14 +123,19 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
 .link-arrow.on-dark { color: var(--ivory); }
 .link-arrow.on-dark:hover { color: var(--rose-pale); }
 
-/* ── BUTTONS (two styles: solid + outline, rectangular) ── */
+/* ── BUTTONS (two styles: solid + outline, rectangular) ──
+   Hover: background transition, a very tiny lift, a very slight
+   shadow. Nothing bouncy. */
 .btn {
   font-family: var(--font-body); font-size: 15px; font-weight: 600;
   padding: 14px 26px; border-radius: 2px; cursor: pointer;
   border: 1.5px solid transparent; display: inline-block;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease,
+              transform 0.18s ease, box-shadow 0.18s ease;
   line-height: 1; text-align: center;
 }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(45,58,92,0.14); }
+@media (prefers-reduced-motion: reduce) { .btn:hover { transform: none; } }
 /* Solid primary */
 .btn-rose, .btn-gold, .btn-primary {
   background: var(--rose); color: #fff; border-color: var(--rose);
@@ -157,8 +162,8 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
 /* ── LAYOUT (generous, intentionally separated sections) ── */
 .container { max-width: 1120px; margin: 0 auto; }
 .container-narrow { max-width: 760px; margin: 0 auto; }
-.section    { padding: 112px 72px; }
-.section-sm { padding: 64px 72px; }
+.section    { padding: 136px 72px; }
+.section-sm { padding: 72px 72px; }
 .bg-ink        { background: var(--ink); }
 .bg-navy       { background: var(--ink); }
 .bg-sage       { background: var(--sage); }
@@ -168,19 +173,14 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
 .bg-ivory      { background: var(--ivory); }
 .hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
 
-/* ── NAV ── */
+/* ── NAV (sticky; tiny shadow appears on scroll via .scrolled) ── */
 #site-header {
   position: sticky; top: 0; z-index: 1000;
   background: var(--ivory);
   border-bottom: 1px solid var(--line);
+  transition: box-shadow 0.25s ease;
 }
-.topbar {
-  background: var(--ink);
-  padding: 9px 24px; text-align: center;
-  font-size: 12px; font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--ivory);
-}
+#site-header.scrolled { box-shadow: 0 2px 14px rgba(31,42,69,0.09); }
 .nav-inner {
   max-width: 1280px; margin: 0 auto;
   padding: 0 28px;
@@ -213,9 +213,10 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
   background: var(--rose); color: #fff !important;
   font-weight: 600 !important; padding: 11px 20px !important;
   border-radius: 2px; white-space: nowrap; flex-shrink: 0;
-  font-size: 15px !important; transition: background 0.15s !important;
+  font-size: 15px !important;
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease !important;
 }
-.nav-cta:hover { background: var(--rose-deep) !important; }
+.nav-cta:hover { background: var(--rose-deep) !important; transform: translateY(-1px); box-shadow: 0 5px 14px rgba(168,98,138,0.28); }
 
 /* hamburger */
 .hamburger {
@@ -327,8 +328,8 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
   .hamburger { display: flex; }
 }
 @media (max-width: 900px) {
-  .section { padding: 68px 26px; }
-  .section-sm { padding: 48px 26px; }
+  .section { padding: 84px 26px; }
+  .section-sm { padding: 56px 26px; }
   .page-banner { padding: 56px 26px 44px; }
   .pullquote { padding: 56px 26px; }
   .footer-min { padding: 48px 26px 40px; }
