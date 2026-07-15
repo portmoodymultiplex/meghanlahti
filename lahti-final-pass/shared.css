@@ -1,0 +1,337 @@
+/* ============================================================
+   LAHTI 2026 SHARED STYLESHEET
+   Final art direction pass. Established campaign palette kept.
+   One workhorse sans (Inter) + a restrained serif (Playfair) for
+   headings only. No motion. No card grids. Editorial hierarchy:
+   hero heading, major section heading (t-display), page/section
+   heading (t-h2), subheading (t-h3), body, caption. Each scale
+   clearly its own. No em dashes. No en dashes.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Established campaign palette (kept, applied sparingly) */
+  --ink:         #2D3A5C;
+  --ink-deep:    #1F2A45;
+  --navy:        #2D3A5C;   /* legacy alias */
+  --sage:        #5B7A6B;
+  --sage-pale:   #E8EEE7;
+  --forest:      #5B7A6B;   /* legacy alias */
+  --rose:        #C77DA1;
+  --rose-deep:   #A8628A;
+  --rose-pale:   #FBF1F5;
+  --gold:        #C77DA1;   /* legacy alias */
+  --gold-pale:   #FBF1F5;
+  --cream:       #F5EFE6;
+  --cream-deep:  #EFE7DA;
+  --ivory:       #FBF7F0;
+  --warm-white:  #FBF7F0;
+  --slate:       #4C566B;   /* body text, nudged darker for contrast */
+  --taupe:       #8A7F70;   /* darkened for legible small print */
+  --line:        rgba(45,58,92,0.14);
+  --mist:        #DDE2EC;
+  --cobalt:      #3F5577;
+
+  --font-head: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+  --measure: 68ch;          /* comfortable reading width */
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--ink);
+  background: var(--ivory);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* Neutralize any legacy scroll-reveal: content is always visible. */
+.reveal { opacity: 1 !important; transform: none !important; }
+
+/* Visible keyboard focus everywhere */
+a:focus-visible, button:focus-visible, input:focus-visible,
+textarea:focus-visible, select:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--rose-deep);
+  outline-offset: 2px;
+}
+
+/* ── TYPOGRAPHY (one clear scale) ──
+   Hero h1 (index only) ............... 46 to 88
+   .t-display (major section) ........ 34 to 52
+   .t-h2 (page/section heading) ...... 27 to 38
+   .t-h3 (subheading) ................ 20 to 25
+   body ............................... 18
+   caption / small print .............. 13           */
+.t-h1 {
+  font-family: var(--font-head);
+  font-size: clamp(40px, 5.4vw, 64px);
+  font-weight: 700; line-height: 1.06; color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.t-display {
+  font-family: var(--font-head);
+  font-size: clamp(34px, 4.2vw, 52px);
+  font-weight: 700; line-height: 1.08; color: var(--ink);
+  letter-spacing: -0.015em;
+}
+.t-h2 {
+  font-family: var(--font-head);
+  font-size: clamp(27px, 3vw, 38px);
+  font-weight: 700; line-height: 1.14; color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.t-h3 {
+  font-family: var(--font-head);
+  font-size: clamp(20px, 2vw, 25px);
+  font-weight: 700; line-height: 1.2; color: var(--ink);
+}
+.t-kicker {
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--rose-deep);
+  margin-bottom: 16px;
+}
+.t-body { font-size: 18px; color: var(--slate); line-height: 1.75; }
+.t-body-light { color: rgba(251,247,240,0.86); }
+.t-lead { font-size: 20px; color: var(--slate); line-height: 1.7; }
+.t-caption { font-size: 13px; color: var(--taupe); line-height: 1.5; }
+.t-rule { width: 48px; height: 3px; background: var(--rose); margin: 18px 0 24px; border: 0; }
+
+/* Prose blocks: single-column reading measure, underlined links */
+.prose { max-width: var(--measure); }
+.prose p { font-size: 18px; color: var(--slate); line-height: 1.78; margin-bottom: 20px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose a, a.link {
+  color: var(--rose-deep); text-decoration: underline; text-underline-offset: 3px;
+}
+.prose a:hover, a.link:hover { color: var(--ink); }
+.prose strong { color: var(--ink); font-weight: 600; }
+
+/* Understated editorial text link with arrow */
+.link-arrow {
+  font-size: 16px; font-weight: 600; color: var(--rose-deep);
+  text-decoration: underline; text-underline-offset: 4px;
+}
+.link-arrow:hover { color: var(--ink); }
+.link-arrow.on-dark { color: var(--ivory); }
+.link-arrow.on-dark:hover { color: var(--rose-pale); }
+
+/* ── BUTTONS (two styles: solid + outline, rectangular) ──
+   Hover: background transition, a very tiny lift, a very slight
+   shadow. Nothing bouncy. */
+.btn {
+  font-family: var(--font-body); font-size: 15px; font-weight: 600;
+  padding: 14px 26px; border-radius: 2px; cursor: pointer;
+  border: 1.5px solid transparent; display: inline-block;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease,
+              transform 0.18s ease, box-shadow 0.18s ease;
+  line-height: 1; text-align: center;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(45,58,92,0.14); }
+@media (prefers-reduced-motion: reduce) { .btn:hover { transform: none; } }
+/* Solid primary */
+.btn-rose, .btn-gold, .btn-primary {
+  background: var(--rose); color: #fff; border-color: var(--rose);
+}
+.btn-rose:hover, .btn-gold:hover, .btn-primary:hover {
+  background: var(--rose-deep); border-color: var(--rose-deep);
+}
+.btn-ink, .btn-navy {
+  background: var(--ink); color: var(--ivory); border-color: var(--ink);
+}
+.btn-ink:hover, .btn-navy:hover { background: var(--ink-deep); border-color: var(--ink-deep); }
+/* Outline secondary */
+.btn-outline-ink, .btn-outline-navy, .btn-cream {
+  background: transparent; color: var(--ink); border-color: rgba(45,58,92,0.35);
+}
+.btn-outline-ink:hover, .btn-outline-navy:hover, .btn-cream:hover {
+  background: var(--ink); color: var(--ivory); border-color: var(--ink);
+}
+.btn-outline {
+  background: transparent; color: var(--ivory); border-color: rgba(251,247,240,0.5);
+}
+.btn-outline:hover { background: var(--ivory); color: var(--ink); border-color: var(--ivory); }
+
+/* ── LAYOUT (generous, intentionally separated sections) ── */
+.container { max-width: 1120px; margin: 0 auto; }
+.container-narrow { max-width: 760px; margin: 0 auto; }
+.section    { padding: 136px 72px; }
+.section-sm { padding: 72px 72px; }
+.bg-ink        { background: var(--ink); }
+.bg-navy       { background: var(--ink); }
+.bg-sage       { background: var(--sage); }
+.bg-cream      { background: var(--cream); }
+.bg-cream-deep { background: var(--cream-deep); }
+.bg-white      { background: var(--ivory); }
+.bg-ivory      { background: var(--ivory); }
+.hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+/* ── NAV (sticky; tiny shadow appears on scroll via .scrolled) ── */
+#site-header {
+  position: sticky; top: 0; z-index: 1000;
+  background: var(--ivory);
+  border-bottom: 1px solid var(--line);
+  transition: box-shadow 0.25s ease;
+}
+#site-header.scrolled { box-shadow: 0 2px 14px rgba(31,42,69,0.09); }
+.nav-inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 28px;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  height: 74px; gap: 16px;
+}
+.wordmark { display: flex; flex-direction: column; line-height: 1; flex-shrink: 0; }
+.wordmark-name {
+  font-family: var(--font-head);
+  font-size: 22px; font-weight: 700; color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.wordmark-sub {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--slate); margin-top: 4px;
+}
+.nav-links { display: flex; gap: 4px; list-style: none; flex-wrap: nowrap; }
+.nav-links a {
+  font-size: 15px; font-weight: 500;
+  color: var(--slate);
+  padding: 8px 12px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s; white-space: nowrap;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.active { color: var(--ink); border-bottom-color: var(--rose); }
+.nav-cta {
+  background: var(--rose); color: #fff !important;
+  font-weight: 600 !important; padding: 11px 20px !important;
+  border-radius: 2px; white-space: nowrap; flex-shrink: 0;
+  font-size: 15px !important;
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease !important;
+}
+.nav-cta:hover { background: var(--rose-deep) !important; transform: translateY(-1px); box-shadow: 0 5px 14px rgba(168,98,138,0.28); }
+
+/* hamburger */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 8px;
+}
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); }
+.mobile-menu { display: none; background: var(--ivory); padding: 8px 0 16px; border-top: 1px solid var(--line); }
+.mobile-menu a {
+  display: block; font-size: 17px; font-weight: 500;
+  color: var(--ink); padding: 14px 32px;
+  border-bottom: 1px solid var(--line);
+}
+.mobile-menu .mobile-cta {
+  background: var(--rose); color: #fff !important;
+  margin: 14px 32px 0; text-align: center;
+  padding: 14px 32px !important; font-weight: 600 !important;
+  border-radius: 2px; border-bottom: none;
+}
+
+/* ── PAGE BANNER (plain, no gradient orb) ── */
+.page-banner {
+  background: var(--cream);
+  padding: 88px 72px 72px;
+  border-bottom: 1px solid var(--line);
+}
+.page-banner .banner-inner { max-width: 1120px; margin: 0 auto; }
+.page-banner h1 {
+  font-family: var(--font-head);
+  font-size: clamp(34px, 4.6vw, 56px);
+  font-weight: 700; color: var(--ink);
+  line-height: 1.08; margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.page-banner p {
+  font-size: 19px; color: var(--slate);
+  max-width: 60ch; line-height: 1.55;
+}
+
+/* ── PULLQUOTE (plain, attributed, no colour accent) ── */
+.pullquote {
+  background: var(--cream);
+  padding: 84px 72px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.pullquote-inner { max-width: 860px; margin: 0 auto; }
+.pullquote-text {
+  font-family: var(--font-head);
+  font-size: clamp(23px, 2.6vw, 32px);
+  font-weight: 500;
+  color: var(--ink); line-height: 1.34;
+  margin-bottom: 16px;
+}
+.pullquote-source {
+  font-size: 15px; font-weight: 600;
+  color: var(--slate);
+}
+
+/* ── FIGURE / PHOTO ── */
+.figure { margin: 0; }
+.figure img { width: 100%; display: block; }
+.figure figcaption {
+  font-size: 13px; color: var(--taupe);
+  padding: 10px 4px 0; line-height: 1.5;
+}
+.photo-band img { width: 100%; max-height: 560px; object-fit: cover; display: block; }
+
+/* ── FOOTER (minimal: authorization, acknowledgement, credit) ── */
+#site-footer {
+  background: var(--cream);
+  color: var(--ink);
+  border-top: 1px solid var(--line);
+}
+.footer-min {
+  max-width: 1120px; margin: 0 auto;
+  padding: 64px 72px 56px;
+}
+.footer-legal {
+  font-size: 13px; color: var(--taupe);
+  line-height: 1.7; max-width: 72ch;
+}
+.footer-ack {
+  font-size: 13px; color: var(--taupe);
+  line-height: 1.7; max-width: 72ch;
+  margin-top: 20px; padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.footer-credit {
+  font-size: 12px; color: var(--taupe);
+  letter-spacing: 0.04em; margin-top: 28px;
+}
+
+/* ── SIMPLE LIST ── */
+.lahti-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.lahti-list li {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 17px; color: var(--slate); line-height: 1.6;
+}
+.lahti-list li::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--rose); flex-shrink: 0; margin-top: 10px;
+}
+.lahti-list li strong { color: var(--ink); font-weight: 600; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1040px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+}
+@media (max-width: 900px) {
+  .section { padding: 84px 26px; }
+  .section-sm { padding: 56px 26px; }
+  .page-banner { padding: 56px 26px 44px; }
+  .pullquote { padding: 56px 26px; }
+  .footer-min { padding: 48px 26px 40px; }
+  body { font-size: 17px; }
+}

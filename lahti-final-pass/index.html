@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Meghan Lahti is running for re-election as Mayor of Port Moody. Experience that brings people together, a shared plan that Council followed, and work that is worth finishing.">
+<title>Meghan Lahti for Mayor of Port Moody, 2026</title>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lahti2026.com/">
+<meta property="og:title" content="Meghan Lahti for Mayor of Port Moody, 2026">
+<meta property="og:description" content="Experience that brings people together. Meghan Lahti is running for re-election as Mayor of Port Moody.">
+<meta property="og:image" content="https://lahti2026.com/og-hero.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Meghan Lahti for Mayor 2026">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Meghan Lahti for Mayor of Port Moody, 2026">
+<meta name="twitter:description" content="Experience that brings people together. Meghan Lahti is running for re-election as Mayor of Port Moody.">
+<meta name="twitter:image" content="https://lahti2026.com/og-hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ============================================================
+   HOMEPAGE. Premium polish pass.
+   Motion budget: two tasteful moments only.
+   1) Hero entrance (fade, headline rises, buttons follow 150ms).
+   2) "Four Priorities" heading appears on scroll.
+   Nothing else moves. Photography breaks up the reading.
+   ============================================================ */
+
+/* ── HERO (bright, positive; quiet entrance) ── */
+@keyframes heroFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes heroRise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+.hero {
+  display: grid; grid-template-columns: 1.02fr 0.98fr;
+  min-height: calc(100vh - 74px);
+  background: linear-gradient(135deg, #FDF8F4 0%, #FBF1F5 46%, #F6E4EC 100%);
+  overflow: hidden;
+  animation: heroFade 700ms ease both;
+}
+.hero h1 { animation: heroRise 700ms cubic-bezier(0.22, 0.61, 0.36, 1) 120ms both; }
+.hero-actions { animation: heroFade 600ms ease 270ms both; }
+@media (prefers-reduced-motion: reduce) {
+  .hero, .hero h1, .hero-actions { animation: none; }
+}
+.hero-copy {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 96px 48px 96px 72px;
+}
+.hero h1 {
+  font-family: var(--font-head);
+  font-size: clamp(48px, 5.6vw, 84px);
+  font-weight: 700; line-height: 1.04; color: var(--ink);
+  letter-spacing: -0.02em; max-width: 12ch;
+}
+.hero h1 em { font-style: italic; color: var(--rose-deep); }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 48px; align-items: center; }
+.hero .btn-hero {
+  font-family: var(--font-body); font-weight: 600; font-size: 16px;
+  padding: 16px 32px; border-radius: 2px; border: 1.5px solid transparent;
+  display: inline-block; line-height: 1;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease,
+              transform 0.18s ease, box-shadow 0.18s ease;
+}
+.hero .btn-hero:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(45,58,92,0.14); }
+@media (prefers-reduced-motion: reduce) { .hero .btn-hero:hover { transform: none; } }
+.hero .btn-hero-primary { background: var(--rose-deep); color: #fff; border-color: var(--rose-deep); }
+.hero .btn-hero-primary:hover { background: #8d5375; border-color: #8d5375; }
+.hero .btn-hero-outline { background: transparent; color: var(--ink); border: 1.5px solid rgba(45,58,92,0.35); }
+.hero .btn-hero-outline:hover { background: var(--ink); color: var(--ivory); border-color: var(--ink); }
+.hero-photo { position: relative; min-height: 520px; }
+.hero-photo img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 42% 18%;
+  display: block;
+}
+/* Soft blend so the photo sits on the gradient instead of against a hard edge. */
+.hero-photo::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to right, #FBF1F5 0%, rgba(251,241,245,0) 22%);
+}
+
+/* ── MEET MEGHAN (pink band, typography only, no photos) ── */
+.meet-band {
+  background: linear-gradient(155deg, var(--rose) 0%, var(--rose-deep) 100%);
+  padding: 160px 72px;
+}
+.meet-inner { max-width: 880px; margin: 0 auto; }
+.meet-band .t-kicker { color: rgba(255,255,255,0.9); }
+.meet-lead {
+  font-family: var(--font-head);
+  font-size: clamp(25px, 2.8vw, 36px);
+  font-weight: 600; color: #fff; line-height: 1.42;
+  margin-bottom: 32px;
+}
+.meet-support {
+  font-size: clamp(18px, 1.6vw, 20px); color: rgba(255,255,255,0.94);
+  line-height: 1.75; max-width: 62ch;
+}
+
+/* ── PHOTO BREAKS (moments, not galleries) ── */
+.photo-break { margin: 0; background: var(--ivory); }
+.photo-break img { width: 100%; max-height: 640px; object-fit: cover; object-position: center 28%; display: block; }
+.photo-break figcaption {
+  max-width: 1120px; margin: 0 auto;
+  padding: 16px 72px 0;
+  font-size: 14px; color: var(--taupe); line-height: 1.5;
+}
+.photo-break figcaption strong { color: var(--slate); font-weight: 600; }
+
+/* ── FOUR PRIORITIES (cards, Apple-FAQ expand) ── */
+.appear { opacity: 0; transform: translateY(18px); transition: opacity 500ms ease, transform 500ms ease; }
+.appear.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .appear { opacity: 1; transform: none; transition: none; } }
+
+.pri-intro { margin-bottom: 56px; }
+.pri-card {
+  background: var(--ivory);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 60px 64px;
+  max-width: 980px;
+  transition: box-shadow 0.25s ease;
+}
+.pri-card + .pri-card { margin-top: 30px; }
+.pri-card:hover { box-shadow: 0 12px 34px rgba(45,58,92,0.08); }
+.pri-num {
+  font-family: var(--font-head); font-size: 22px; font-weight: 700;
+  color: var(--rose); line-height: 1; margin-bottom: 20px;
+}
+.pri-card h3 {
+  font-family: var(--font-head);
+  font-size: clamp(26px, 2.8vw, 36px);
+  font-weight: 700; color: var(--ink); line-height: 1.1;
+  letter-spacing: -0.005em; margin-bottom: 18px;
+}
+.pri-lede { font-size: 19px; color: var(--slate); font-weight: 400; line-height: 1.66; max-width: 58ch; }
+
+/* Learn more: the card expands in place, nothing else moves */
+.pri-more { margin-top: 26px; }
+.pri-more > summary {
+  list-style: none; cursor: pointer; display: inline-block;
+  font-size: 15px; font-weight: 600; color: var(--rose-deep);
+  transition: color 0.18s ease;
+}
+.pri-more > summary::-webkit-details-marker { display: none; }
+.pri-more > summary:hover { color: var(--ink); }
+.pri-more > summary .more::before { content: "Learn more \2192"; }
+.pri-more[open] > summary .more::before { content: "Show less \2191"; }
+.pri-detail { margin-top: 28px; border-top: 1px solid var(--line); padding-top: 28px; }
+.pri-more[open] .pri-detail { animation: heroRise 350ms ease both; }
+@media (prefers-reduced-motion: reduce) { .pri-more[open] .pri-detail { animation: none; } }
+.pri-detail p { font-size: 17px; color: var(--slate); line-height: 1.75; margin-bottom: 16px; max-width: 60ch; }
+.pri-detail p:last-child { margin-bottom: 0; }
+
+/* ── ENDORSEMENTS (huge photo, dark overlay, floating glass) ── */
+.endorse-band { position: relative; background: var(--ink); padding: 152px 72px; overflow: hidden; }
+.endorse-bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 45%;
+}
+.endorse-band::before {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to bottom, rgba(31,42,69,0.6) 0%, rgba(31,42,69,0.74) 55%, rgba(31,42,69,0.84) 100%);
+}
+.endorse-inner { position: relative; z-index: 2; max-width: 1120px; margin: 0 auto; }
+.endorse-inner .t-kicker { color: var(--rose); }
+.endorse-inner h2 {
+  font-family: var(--font-head);
+  font-size: clamp(34px, 4.2vw, 52px);
+  font-weight: 700; color: var(--ivory); line-height: 1.08;
+  letter-spacing: -0.015em; margin-bottom: 64px; max-width: 18ch;
+  text-shadow: 0 2px 18px rgba(0,0,0,0.35);
+}
+.end-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.end-panel {
+  background: rgba(251,247,240,0.09);
+  border: 1px solid rgba(251,247,240,0.22);
+  border-radius: 6px;
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  padding: 42px 38px;
+  display: flex; flex-direction: column; gap: 22px;
+  box-shadow: 0 18px 48px rgba(10,14,22,0.28);
+}
+.end-logo {
+  min-height: 76px; display: inline-flex; align-items: center;
+  background: #fff; border-radius: 4px; padding: 10px 16px;
+  align-self: flex-start;
+}
+.end-logo img { max-height: 54px; max-width: 140px; object-fit: contain; }
+.end-q { font-size: 16px; color: rgba(251,247,240,0.95); line-height: 1.65; flex: 1; }
+.end-attr { font-size: 14px; color: rgba(251,247,240,0.72); }
+.end-attr strong { color: var(--ivory); font-weight: 600; }
+.endorse-all { margin-top: 56px; }
+
+/* ── WHAT THIS COUNCIL BUILT (annual-report checklist) ── */
+.built-intro { max-width: 760px; }
+.built-list { list-style: none; margin-top: 56px; border-top: 1px solid var(--line); max-width: 980px; }
+.built-list li {
+  display: grid; grid-template-columns: 34px 1fr auto;
+  gap: 20px; align-items: start;
+  padding: 26px 0; border-bottom: 1px solid var(--line);
+}
+.built-icon { width: 22px; height: 22px; margin-top: 2px; }
+.built-icon svg { display: block; width: 100%; height: 100%; }
+.built-what { font-size: 17px; color: var(--slate); line-height: 1.65; }
+.built-what strong { font-family: var(--font-head); font-size: 19px; font-weight: 700; color: var(--ink); }
+.built-status { font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; margin-top: 4px; }
+.built-status.done { color: var(--sage); }
+.built-status.going { color: var(--rose-deep); }
+.built-status.next { color: var(--taupe); }
+.built-all { margin-top: 48px; }
+
+/* ── VOLUNTEER (one photograph, one headline, one sentence, one button) ── */
+.vol-cta { position: relative; background: var(--ink); padding: 176px 72px; text-align: center; overflow: hidden; }
+.vol-bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 30%;
+}
+.vol-cta::before {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to bottom, rgba(31,42,69,0.62) 0%, rgba(31,42,69,0.84) 100%);
+}
+.vol-inner { position: relative; z-index: 2; max-width: 780px; margin: 0 auto; }
+.vol-inner h2 {
+  font-family: var(--font-head);
+  font-size: clamp(30px, 3.8vw, 48px);
+  font-weight: 700; color: var(--ivory); line-height: 1.14;
+  letter-spacing: -0.01em; margin-bottom: 20px;
+  text-shadow: 0 2px 18px rgba(0,0,0,0.35);
+}
+.vol-inner p { font-size: 18px; color: var(--rose-pale); font-weight: 600; letter-spacing: 0.02em; margin-bottom: 44px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; min-height: 0; }
+  .hero-photo { order: -1; min-height: 54vh; }
+  .hero-photo::after { background: linear-gradient(to top, #FBF1F5 0%, rgba(251,241,245,0) 18%); }
+  .hero-copy { padding: 44px 26px 72px; }
+  .hero-actions { margin-top: 32px; }
+  .hero .btn-hero { padding: 15px 28px; font-size: 15px; }
+  .meet-band { padding: 100px 26px; }
+  .photo-break figcaption { padding: 14px 26px 0; }
+  .pri-card { padding: 36px 26px; }
+  .pri-card + .pri-card { margin-top: 20px; }
+  .endorse-band { padding: 88px 26px; }
+  .endorse-inner h2 { margin-bottom: 40px; }
+  .end-grid { grid-template-columns: 1fr; }
+  .built-list li { grid-template-columns: 28px 1fr; }
+  .built-status { display: none; }
+  .vol-cta { padding: 112px 26px; }
+}
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="nav-inner">
+    <a href="/index.html" class="wordmark" aria-label="Meghan Lahti for Mayor, home">
+      <span class="wordmark-name">Meghan Lahti</span>
+      <span class="wordmark-sub">Mayor &middot; Port Moody</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="/index.html" class="active" aria-current="page">Home</a></li>
+        <li><a href="/endorsements.html">Endorsements</a></li>
+        <li><a href="/what-we-built.html">What We Built</a></li>
+        <li><a href="/volunteer.html">Volunteer</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="/donate.html" class="nav-cta">Donate</a>
+    <button class="hamburger" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="navMobile">
+    <a href="/index.html">Home</a>
+    <a href="/endorsements.html">Endorsements</a>
+    <a href="/what-we-built.html">What We Built</a>
+    <a href="/volunteer.html">Volunteer</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/donate.html" class="mobile-cta">Donate</a>
+  </div>
+</header>
+
+<main>
+
+<!-- 1. HERO (headshot 58 on a bright gradient, quiet entrance) -->
+<section class="hero">
+  <div class="hero-copy">
+    <h1>Experience that brings people <em>together</em>.</h1>
+    <div class="hero-actions">
+      <a href="#priorities" class="btn-hero btn-hero-primary">See the priorities</a>
+      <a href="/volunteer.html" class="btn-hero btn-hero-outline">Volunteer</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <!-- Picture 58 of Meghan's headshots. Save the file as meghan-headshot-58.jpg beside index.html. -->
+    <img src="meghan-headshot-58.jpg" alt="Mayor Meghan Lahti, smiling with her arms crossed in front of greenery" width="2600" height="1733" fetchpriority="high">
+  </div>
+</section>
+
+<!-- 2. MEET MEGHAN (pink band, no photos, no timeline) -->
+<section class="meet-band">
+  <div class="meet-inner">
+    <p class="t-kicker">Meet Meghan</p>
+    <p class="meet-lead">Nearly thirty years of service means knowing the people, the files, and the work already underway. But experience only matters when it helps people work together, make sound decisions, and keep the community at the centre.</p>
+    <p class="meet-support">Outside the council chamber, I spent close to twenty years in post-secondary education. Most of what I know about this place, though, I learned the ordinary way: by raising my three kids here, school pick ups, drop offs, at the soccer field and in service to our community.</p>
+  </div>
+</section>
+
+<!-- Photo moment: collaboration -->
+<figure class="photo-break">
+  <!-- VERIFY: photo understood to be Meghan with Coquitlam Mayor Richard Stewart. Confirm identity and event, then the caption can name him. -->
+  <img src="meghan-coquitlam.jpg" alt="Meghan Lahti laughing with the mayor of a neighbouring municipality at a Port Moody event" width="1280" height="854" loading="lazy">
+  <figcaption><strong>Collaboration matters.</strong></figcaption>
+</figure>
+
+<!-- 3. FOUR PRIORITIES (cards; each expands in place) -->
+<section class="section bg-cream" id="priorities">
+  <div class="container">
+    <div class="pri-intro appear">
+      <p class="t-kicker">The plan</p>
+      <h2 class="t-display">Four Priorities</h2>
+    </div>
+
+    <!-- Priority 1 -->
+    <article class="pri-card" id="p-move">
+      <div class="pri-num" aria-hidden="true">01</div>
+      <h3>A City That Moves</h3>
+      <p class="pri-lede">Getting around Port Moody is the number one thing people raise with me, and I do not blame them.</p>
+      <details class="pri-more">
+        <summary><span class="more"></span></summary>
+        <div class="pri-detail">
+          <p>The Shoreline Shuttle is back on the road this summer, the e-bike and e-scooter program is in place, and the multi-use path on St. Johns is built, with more to come.</p>
+          <p>Next is the congestion itself. We widen the bridge at Barnet and Ioco first, then add the rush-hour lane on St. Johns, in that order, because the bridge has to come first or the lane simply moves the bottleneck.</p>
+          <p>Anyone promising a quick fix for St. Johns has not read the file.</p>
+        </div>
+      </details>
+    </article>
+
+    <!-- Priority 2 -->
+    <article class="pri-card" id="p-growth">
+      <div class="pri-num" aria-hidden="true">02</div>
+      <h3>Growth We Can Be Proud Of</h3>
+      <p class="pri-lede">I am not interested in growth for the sake of growth.</p>
+      <details class="pri-more">
+        <summary><span class="more"></span></summary>
+        <div class="pri-detail">
+          <p>I watched Newport Village and Suter Brook go from contentious to beloved, and the lesson stayed with me: building something the community is proud of requires active listening, a commitment to putting people first and genuine collaboration.</p>
+          <p>Moody Centre now has the critical mass needed to support the grocery store and walkable services residents have asked for over many years.</p>
+          <p>Moderate growth means density near transit. Most new homes go where the buses and trains already run, so low-rise neighbourhoods stay low-rise. Housing has to work for the whole range, from first-time buyers to seniors sizing down near their grandkids.</p>
+        </div>
+      </details>
+    </article>
+
+    <!-- Priority 3 -->
+    <article class="pri-card" id="p-value">
+      <div class="pri-num" aria-hidden="true">03</div>
+      <h3>Value for Every Tax Dollar</h3>
+      <p class="pri-lede">Responsible financial management is about more than keeping one year's property tax increase down.</p>
+      <details class="pri-more">
+        <summary><span class="more"></span></summary>
+        <div class="pri-detail">
+          <p>It means protecting the services people rely on while preparing Port Moody for a sound financial future.</p>
+          <p>That requires aligning service levels with financial planning, planning for asset lifecycle and renewal costs, and making sure the City can maintain the infrastructure and facilities residents depend on.</p>
+          <p>We look for revenue and savings before cutting core services. That same discipline helped bring this year's budget increase down from where it began and resulted in the lowest increase of the term.</p>
+          <p>It is also a priority to keep diversifying City revenues by attracting business and growing our commercial and industrial tax base, so homeowners are not carrying the City's needs on their own.</p>
+        </div>
+      </details>
+    </article>
+
+    <!-- Priority 4 -->
+    <article class="pri-card" id="p-lead">
+      <div class="pri-num" aria-hidden="true">04</div>
+      <h3>Good Governance That Works</h3>
+      <p class="pri-lede">When I became mayor, there was important work to do rebuilding relationships with the business community, local, provincial and federal partners, non-profits and neighbouring municipalities.</p>
+      <details class="pri-more">
+        <summary><span class="more"></span></summary>
+        <div class="pri-detail">
+          <p>That work came first.</p>
+          <p>Council is made up of people with different perspectives. I created an environment where those voices could be heard, and we worked together to agree on one strategic plan, revisit it every year and follow it.</p>
+          <p>We do not always agree on how to get there, but disagreement is not division.</p>
+          <p>Municipal leadership is not a solo exercise. It is about understanding what people are saying, creating space for them to articulate their positions, bringing people together and driving consensus.</p>
+          <p>We make decisions together, in public, and my door stays open to any resident who wants to sit down.</p>
+          <p>That is what good governance looks like.</p>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+<!-- Photo moment: listening -->
+<figure class="photo-break">
+  <!-- VERIFY: photo rights. Candid of Meghan in conversation; other people kept in frame so it reads as a real exchange. -->
+  <img src="meghan-conversation.jpg" alt="Meghan Lahti in conversation with residents at a Port Moody event" width="1280" height="854" loading="lazy">
+  <figcaption><strong>Leadership begins with listening.</strong></figcaption>
+</figure>
+
+<!-- 4. ENDORSEMENTS (huge photo, dark overlay, floating glass cards) -->
+<section class="endorse-band">
+  <img class="endorse-bg" src="pm-hero-aerial.jpg" alt="" width="2600" height="1952" loading="lazy" aria-hidden="true">
+  <div class="endorse-inner">
+    <p class="t-kicker">Endorsements</p>
+    <h2>The community stands with Mayor Lahti.</h2>
+
+    <div class="end-grid">
+      <div class="end-panel">
+        <div class="end-logo">
+          <img src="pm-firefighters-logo.png" alt="Port Moody Firefighters, IAFF Local 2399" onerror="this.parentElement.style.display='none';">
+        </div>
+        <p class="end-q">&ldquo;Over the last four years as Mayor, Meghan has consistently shown support for public safety, and Port Moody Firefighters Local 2399 is proud to support Mayor Lahti in the upcoming election.&rdquo;</p>
+        <p class="end-attr"><strong>Port Moody Firefighters</strong>, IAFF Local 2399</p>
+      </div>
+      <div class="end-panel">
+        <div class="end-logo">
+          <img src="pm-soccer-logo.png" alt="Port Moody Soccer Club" onerror="this.parentElement.style.display='none';">
+        </div>
+        <p class="end-q">&ldquo;Meghan has been a steadfast friend and champion of our club for many years, consistently showing up for our players, families, and volunteers.&rdquo;</p>
+        <p class="end-attr"><strong>Matthew Campbell</strong>, President, Port Moody Soccer Club</p>
+      </div>
+      <div class="end-panel">
+        <div class="end-logo">
+          <img src="nwdic.jpg" alt="New Westminster and District Labour Council" onerror="this.parentElement.style.display='none';">
+        </div>
+        <p class="end-q">&ldquo;Mayor Meghan Lahti is officially endorsed by the New Westminster and District Labour Council.&rdquo;</p>
+        <p class="end-attr"><strong>New Westminster and District Labour Council</strong></p>
+      </div>
+    </div>
+
+    <p class="endorse-all">
+      <a href="/endorsements.html" class="btn btn-outline">Read community endorsements for Meghan</a>
+    </p>
+  </div>
+</section>
+
+<!-- 5. WHAT THIS COUNCIL BUILT (annual-report checklist) -->
+<section class="section bg-ivory">
+  <div class="container">
+    <div class="built-intro">
+      <p class="t-kicker">The record</p>
+      <h2 class="t-display">What this Council built.</h2>
+      <hr class="t-rule">
+      <p class="t-lead">None of it was done alone. Council agreed on a plan, some of the work is finished, more is underway, and some is still ahead. The work isn't finished, and it is all public record.</p>
+    </div>
+
+    <ul class="built-list">
+      <li>
+        <span class="built-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="10" stroke="#5B7A6B" stroke-width="1.5"/><path d="M6.5 11.4 9.6 14.4 15.5 8" stroke="#5B7A6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="built-what"><strong>The new boardwalk.</strong> A waterfront walk that gets used every day, from morning runners to weekend families.</span>
+        <span class="built-status done">Completed</span>
+      </li>
+      <li>
+        <!-- VERIFY: Inlet Field completion + "Bob Favelle Field" naming. -->
+        <span class="built-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="10" stroke="#5B7A6B" stroke-width="1.5"/><path d="M6.5 11.4 9.6 14.4 15.5 8" stroke="#5B7A6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="built-what"><strong>Bob Favelle Field.</strong> The rebuilt Inlet Field, finished and named for a long-serving member of the community.</span>
+        <span class="built-status done">Completed</span>
+      </li>
+      <li>
+        <span class="built-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="10" stroke="#5B7A6B" stroke-width="1.5"/><path d="M6.5 11.4 9.6 14.4 15.5 8" stroke="#5B7A6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="built-what"><strong>Council Strategic Plan.</strong> One shared plan for the term, agreed to by nearly all of Council and followed through.</span>
+        <span class="built-status done">Completed</span>
+      </li>
+      <li>
+        <span class="built-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="10" stroke="#A8628A" stroke-width="1.5" stroke-dasharray="3.2 3.2" stroke-linecap="round"/><path d="M11 6.6V11l3 2" stroke="#A8628A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="built-what"><strong>The new field house.</strong> In planning for years, now being built.</span>
+        <span class="built-status going">Underway</span>
+      </li>
+      <li>
+        <!-- VERIFY: Shoreline Shuttle returning summer 2026. -->
+        <span class="built-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="10" stroke="#A8628A" stroke-width="1.5" stroke-dasharray="3.2 3.2" stroke-linecap="round"/><path d="M11 6.6V11l3 2" stroke="#A8628A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="built-what"><strong>The Shoreline Shuttle.</strong> Local shuttle service coming back after years off the road.</span>
+        <span class="built-status going">Underway</span>
+      </li>
+      <li>
+        <!-- VERIFY: Barnet/Ioco bridge widening status. -->
+        <span class="built-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="10" stroke="#8A7F70" stroke-width="1.5"/><path d="M7.5 11h7m0 0-2.8-2.8M14.5 11l-2.8 2.8" stroke="#8A7F70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="built-what"><strong>Barnet and Ioco bridge widening.</strong> The next major piece of the transportation plan, still ahead.</span>
+        <span class="built-status next">Coming next</span>
+      </li>
+    </ul>
+
+    <p class="built-all">
+      <a href="/what-we-built.html" class="link-arrow">See the full record &rarr;</a>
+    </p>
+  </div>
+</section>
+
+<!-- 6. VOLUNTEER (one photograph, one headline, one sentence, one button) -->
+<section class="vol-cta">
+  <img class="vol-bg" src="ML-63.jpg" alt="" width="1600" height="480" loading="lazy" aria-hidden="true">
+  <div class="vol-inner">
+    <h2>We shaped this town together, and the work isn&rsquo;t finished.</h2>
+    <p>Port Moody. Together. Forward.</p>
+    <a href="/volunteer.html" class="btn btn-rose">Volunteer</a>
+  </div>
+</section>
+
+</main>
+
+<!-- 7. FOOTER (minimal: authorization, acknowledgement, credit) -->
+<footer id="site-footer">
+  <div class="footer-min">
+    <!-- VERIFY authorization wording with Anthony / Elections BC before launch. Full contribution limits and eligibility live on the Donate page, not the global footer. -->
+    <p class="footer-legal">Authorized by Anthony Sandler, financial agent for the Meghan Lahti 2026 Campaign, anthony@lahti2026.com. &copy; 2026 Meghan Lahti Campaign.</p>
+    <p class="footer-ack">Port Moody is situated on the unceded traditional territories of the k&#695;ik&#695;&#601;&#643;&#601;m (Kwikwetlem), s&#601;l&#769;ilw&#601;ta&#660;&#7491; (Tsleil-Waututh), x&#695;m&#601;&#952;k&#695;&#601;y&#769;&#601;m (Musqueam), and S&#7811;&#x1E8F;w&#x1E8F;&#769;u7mesh (Squamish) Nations.</p>
+    <p class="footer-credit">Website designed and developed by Sheri Zada, Campaign Manager.</p>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+/* Homepage-only. Motion budget: hero entrance (CSS) + one scroll appear on the
+   Four Priorities heading. Plus the shared sticky-nav shadow. */
+(function () {
+  var header = document.getElementById('site-header');
+  var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 4); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.appear');
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.3 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
+<script src="password-gate.js"></script>
+</body>
+</html>
