@@ -23,9 +23,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
-/* ── HERO (full-bleed aerial) ── */
+/* ============================================================
+   HOMEPAGE. Final art direction pass.
+   Sequence: Hero, Meet Meghan, Priorities, Listening,
+   Endorsements, What This Council Built, Volunteer, Footer.
+   Vision, then humanity, then proof. No motion. No cards.
+   Photography does the emotional work.
+   ============================================================ */
+
+/* ── HERO (full-bleed aerial, roughly one screen) ── */
 .hero {
-  position: relative; min-height: 84vh;
+  position: relative; min-height: calc(100vh - 109px);
   display: flex; align-items: flex-end;
   background: var(--ink); overflow: hidden;
 }
@@ -46,14 +54,15 @@
 .hero-inner {
   position: relative; z-index: 2;
   width: 100%; max-width: 1280px; margin: 0 auto;
-  padding: 0 72px 96px;
+  padding: 0 72px 110px;
 }
+/* The script line reads as an introduction, separated from the headline. */
 .hero-quote {
   font-family: var(--font-head);
   font-style: italic; font-weight: 400;
-  font-size: clamp(23px, 2.3vw, 31px);
+  font-size: clamp(22px, 2.2vw, 29px);
   color: var(--rose); line-height: 1.3;
-  margin-bottom: 16px;
+  margin-bottom: 38px;
   text-shadow: 0 2px 14px rgba(0,0,0,0.55);
 }
 .hero h1 {
@@ -65,14 +74,14 @@
 }
 .hero-sub {
   font-size: clamp(18px, 1.7vw, 21px); color: #fff;
-  line-height: 1.6; margin-top: 24px; max-width: 40ch;
+  line-height: 1.6; margin-top: 26px; max-width: 40ch;
   text-wrap: balance;
   text-shadow: 0 1px 16px rgba(0,0,0,0.6);
 }
-.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; align-items: center; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 44px; align-items: center; }
 .hero .btn-hero {
-  font-family: var(--font-body); font-weight: 600; font-size: 17px;
-  padding: 17px 36px; border-radius: 2px; border: 1.5px solid transparent;
+  font-family: var(--font-body); font-weight: 600; font-size: 16px;
+  padding: 16px 32px; border-radius: 2px; border: 1.5px solid transparent;
   display: inline-block; line-height: 1;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
@@ -81,77 +90,62 @@
 .hero .btn-hero-outline { background: rgba(10,14,22,0.32); color: #fff; border: 2px solid #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
 .hero .btn-hero-outline:hover { background: #fff; color: var(--ink); border-color: #fff; text-shadow: none; }
 
-/* ── SCROLL REVEAL (restrained, headings + major groups only) ── */
-.appear { opacity: 0; transform: translateY(16px); transition: opacity 320ms ease, transform 320ms ease; }
-.appear.is-in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .appear { opacity: 1; transform: none; transition: none; } }
-
-/* ── INTRO PROSE ── */
-.intro-block { max-width: 720px; }
-.intro-block h2 { margin-bottom: 20px; }
-
-/* ── MEET MEGHAN ── */
+/* ── MEET MEGHAN (trust: large photo one side, quiet copy the other) ── */
 .meet {
-  display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 0;
-  border: 1px solid var(--line); border-radius: 3px; overflow: hidden;
-  background: var(--ivory);
+  display: grid; grid-template-columns: 0.92fr 1.08fr;
+  gap: clamp(48px, 6vw, 88px); align-items: center;
 }
-.meet-photo { background: var(--cream); }
-.meet-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; min-height: 380px; display: block; }
-.meet-text { padding: 48px 48px; display: flex; flex-direction: column; justify-content: center; }
-.meet-text p { font-size: 18px; color: var(--slate); line-height: 1.75; }
-.meet-text p + p { margin-top: 16px; }
-.meet-facts { list-style: none; display: flex; flex-direction: column; gap: 0; margin-top: 26px; }
-.meet-facts li { display: flex; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line); font-size: 15px; color: var(--slate); }
+.meet-photo { margin: 0; }
+.meet-photo img {
+  width: 100%; height: 100%;
+  min-height: 480px; max-height: 640px;
+  object-fit: cover; object-position: center 25%;
+  border-radius: 3px; display: block;
+}
+.meet-text .t-display { margin-bottom: 30px; }
+.meet-lead { font-size: 20px; color: var(--ink); font-weight: 500; line-height: 1.62; margin-bottom: 18px; }
+.meet-support { font-size: 17px; color: var(--slate); line-height: 1.75; }
+.meet-facts { list-style: none; display: flex; flex-direction: column; gap: 0; margin-top: 36px; }
+.meet-facts li { display: flex; gap: 16px; padding: 13px 0; border-top: 1px solid var(--line); font-size: 15px; color: var(--slate); }
 .meet-facts li:last-child { border-bottom: 1px solid var(--line); }
 .meet-facts .yr { font-family: var(--font-head); font-weight: 700; color: var(--rose-deep); width: 62px; flex-shrink: 0; }
 .meet-facts .yr.na { color: var(--ink); }
 
-/* ── LEADERSHIP BEGINS WITH LISTENING ── */
-.listen { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; }
-.listen-photo { margin: 0; }
-.listen-photo img { width: 100%; border-radius: 3px; display: block; }
-
-/* ── GOOD GOVERNANCE extras ── */
-.gov-photo { margin: 24px 0; }
-.gov-photo img { width: 100%; border-radius: 3px; display: block; }
-.gov-photo figcaption { font-size: 13px; color: var(--taupe); padding-top: 8px; line-height: 1.5; }
-.gov-statement {
-  border-left: 3px solid var(--rose); padding-left: 22px; margin: 24px 0;
-  font-family: var(--font-head); font-size: clamp(20px, 2vw, 26px);
-  color: var(--ink); line-height: 1.4;
+/* ── PRIORITIES (editorial index: number, headline, one line, learn more) ── */
+.pri-intro { max-width: 760px; margin-bottom: 40px; }
+.pri {
+  display: grid; grid-template-columns: 96px 1fr;
+  gap: clamp(24px, 4vw, 48px);
+  padding: 64px 0; border-top: 1px solid var(--line);
 }
-
-/* ── WHAT THIS COUNCIL BUILT statuses ── */
-.wb-legend { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 22px; font-size: 14px; font-weight: 600; }
-.wb-status { font-size: 13px; font-weight: 600; white-space: nowrap; }
-.s-complete { color: var(--sage); }
-.s-underway { color: var(--rose-deep); }
-.s-next { color: var(--taupe); }
-
-/* ── PRIORITIES: guided scroll ── */
-.pri-intro { max-width: 720px; margin-bottom: 44px; }
-.pri-layout { display: grid; grid-template-columns: 250px 1fr; gap: 64px; align-items: start; }
-.pri-nav { position: sticky; top: 96px; align-self: start; }
-.pri-nav ol { list-style: none; counter-reset: p; }
-.pri-nav a {
-  display: block; padding: 13px 0 13px 18px;
-  border-left: 2px solid var(--line);
-  color: var(--slate); font-family: var(--font-head);
-  font-size: 17px; font-weight: 700; line-height: 1.25;
-  transition: color 0.2s, border-color 0.2s;
+.pri:last-of-type { padding-bottom: 8px; }
+.pri-num {
+  font-family: var(--font-head); font-size: 30px; font-weight: 700;
+  color: var(--rose); line-height: 1; padding-top: 10px;
 }
-.pri-nav a:hover { color: var(--ink); }
-.pri-nav a.active { color: var(--ink); border-left-color: var(--rose); }
-.pri-nav a .n { font-size: 12px; font-weight: 600; color: var(--rose-deep); display: block; margin-bottom: 2px; letter-spacing: 0.02em; }
+.pri h3 {
+  font-family: var(--font-head);
+  font-size: clamp(27px, 3vw, 38px);
+  font-weight: 700; color: var(--ink); line-height: 1.1;
+  letter-spacing: -0.005em; margin-bottom: 16px;
+}
+.pri-lede { font-size: 19px; color: var(--slate); line-height: 1.62; max-width: 56ch; }
 
-.pri-block { padding: 8px 0 52px; scroll-margin-top: 96px; }
-.pri-block + .pri-block { border-top: 1px solid var(--line); padding-top: 44px; }
-.pri-block h3 { font-family: var(--font-head); font-size: clamp(25px, 2.6vw, 32px); font-weight: 700; color: var(--ink); line-height: 1.14; margin-bottom: 12px; }
-.pri-lede { font-size: 20px; color: var(--ink); font-weight: 500; line-height: 1.5; margin-bottom: 14px; max-width: 60ch; }
-.pri-block p.body { font-size: 17px; color: var(--slate); line-height: 1.72; margin-bottom: 8px; max-width: 64ch; }
+/* Learn more: native details, styled as an understated text control */
+.pri-more { margin-top: 24px; }
+.pri-more > summary {
+  list-style: none; cursor: pointer; display: inline-block;
+  font-size: 15px; font-weight: 600; color: var(--rose-deep);
+  text-decoration: underline; text-underline-offset: 4px;
+}
+.pri-more > summary::-webkit-details-marker { display: none; }
+.pri-more > summary:hover { color: var(--ink); }
+.pri-more > summary .more::before { content: "Learn more"; }
+.pri-more[open] > summary .more::before { content: "Show less"; }
+.pri-detail { margin-top: 30px; }
+.pri-detail p.body { font-size: 17px; color: var(--slate); line-height: 1.72; margin-bottom: 8px; max-width: 64ch; }
 
-/* device: transportation steps */
+/* detail device: transportation steps */
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 24px; }
 .step { border: 1px solid var(--line); border-radius: 3px; padding: 18px 18px; background: var(--ivory); position: relative; }
 .step .tag { font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--rose-deep); margin-bottom: 8px; }
@@ -159,7 +153,7 @@
 .step p { font-size: 15px; color: var(--slate); line-height: 1.55; margin: 0; }
 .step p strong { color: var(--ink); font-weight: 600; }
 
-/* device: growth pull quote + continuum */
+/* detail device: growth pull quote + continuum */
 .growth-def {
   border-left: 3px solid var(--rose); padding: 4px 0 4px 22px; margin: 24px 0;
   font-family: var(--font-head); font-size: clamp(21px, 2.2vw, 26px);
@@ -169,7 +163,7 @@
 .continuum { display: flex; flex-wrap: wrap; gap: 8px; }
 .continuum span { border: 1px solid var(--line); border-radius: 3px; padding: 9px 15px; font-size: 15px; color: var(--ink); background: var(--ivory); }
 
-/* device: value three ideas + evidence */
+/* detail device: value three ideas + evidence */
 .ideas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 22px 0; }
 .idea { padding-top: 14px; border-top: 2px solid var(--rose); }
 .idea h4 { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--ink); line-height: 1.2; margin-bottom: 8px; }
@@ -179,53 +173,120 @@
 .evidence p { font-size: 17px; color: var(--slate); line-height: 1.65; margin: 0; max-width: 64ch; }
 .evidence strong { color: var(--ink); font-weight: 600; }
 
-/* device: leadership relationships */
+/* detail device: leadership relationships */
 .rel-label { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--taupe); margin: 6px 0 12px; }
 .rel-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
 .rel { border: 1px solid var(--line); border-radius: 3px; padding: 10px 16px; font-size: 15px; font-weight: 500; color: var(--ink); background: var(--ivory); }
 .rel.center { border-color: rgba(168,98,138,0.5); color: var(--rose-deep); font-weight: 600; }
+.gov-photo { margin: 24px 0; max-width: 720px; }
+.gov-photo img { width: 100%; height: auto; border-radius: 3px; display: block; }
+.gov-photo figcaption { font-size: 13px; color: var(--taupe); padding-top: 8px; line-height: 1.5; }
+.gov-statement {
+  border-left: 3px solid var(--rose); padding-left: 22px; margin: 24px 0;
+  font-family: var(--font-head); font-size: clamp(20px, 2vw, 26px);
+  color: var(--ink); line-height: 1.4;
+}
 
-/* ── WHAT WE BUILT: flat cards ── */
-.wb-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 26px; }
-.wb-card { border: 1px solid var(--line); border-radius: 3px; padding: 22px 22px; background: var(--ivory); }
-.wb-top { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; }
-.wb-name { font-family: var(--font-head); font-size: 19px; font-weight: 700; color: var(--ink); line-height: 1.2; }
-.wb-status { font-size: 13px; font-weight: 600; color: var(--rose-deep); white-space: nowrap; }
-.wb-why { font-size: 15px; color: var(--slate); line-height: 1.55; margin-top: 10px; }
+/* ── LEADERSHIP BEGINS WITH LISTENING (quiet editorial pause) ── */
+.listen {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 6vw, 88px); align-items: center;
+  max-width: 1060px; margin: 0 auto;
+}
+.listen-text .t-display { margin-bottom: 26px; }
+.listen-text p { font-size: 18px; color: var(--slate); line-height: 1.8; }
+.listen-text p + p { margin-top: 20px; }
+.listen-photo { margin: 0; }
+.listen-photo img { width: 100%; height: auto; border-radius: 3px; display: block; }
+.listen-photo figcaption { font-size: 13px; color: var(--taupe); padding-top: 10px; line-height: 1.5; }
 
-/* ── ENDORSEMENTS: 3, varied ── */
-.end-grid { display: grid; grid-template-columns: 1.3fr 1fr; grid-template-rows: auto auto; gap: 16px; margin-top: 26px; }
-.end-card { border: 1px solid var(--line); border-radius: 3px; padding: 26px 26px; background: var(--ivory); display: flex; flex-direction: column; gap: 14px; }
-.end-feature { grid-column: 1; grid-row: 1 / span 2; padding: 32px 30px; justify-content: space-between; }
-.end-feature .end-q { font-family: var(--font-head); font-size: 22px; line-height: 1.4; color: var(--ink); }
-.end-logo img { max-height: 66px; max-width: 150px; object-fit: contain; }
-.end-q { font-size: 18px; color: var(--ink); line-height: 1.55; }
+/* ── ENDORSEMENTS (confidence: full-width photo, subtle overlay) ── */
+.endorse-band { position: relative; background: var(--ink); padding: 128px 72px; overflow: hidden; }
+.endorse-bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 60%;
+}
+.endorse-band::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(rgba(31,42,69,0.74), rgba(31,42,69,0.74));
+}
+.endorse-inner { position: relative; z-index: 2; max-width: 1120px; margin: 0 auto; }
+.endorse-inner .t-kicker { color: var(--rose); }
+.endorse-inner h2 {
+  font-family: var(--font-head);
+  font-size: clamp(34px, 4.2vw, 52px);
+  font-weight: 700; color: var(--ivory); line-height: 1.08;
+  letter-spacing: -0.015em; margin-bottom: 56px; max-width: 18ch;
+}
+.end-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.end-panel {
+  background: var(--ivory); border-radius: 3px;
+  padding: 38px 34px; display: flex; flex-direction: column; gap: 20px;
+}
+.end-logo { min-height: 64px; display: flex; align-items: center; }
+.end-logo img { max-height: 60px; max-width: 150px; object-fit: contain; }
+.end-q { font-size: 16px; color: var(--ink); line-height: 1.6; flex: 1; }
 .end-attr { font-size: 14px; color: var(--slate); }
 .end-attr strong { color: var(--ink); font-weight: 600; }
+.endorse-all { margin-top: 44px; }
 
-/* ── CLOSE ── */
-.close-band { background: var(--ink); padding: 84px 72px; text-align: center; }
-.close-band h2 { font-family: var(--font-head); font-size: clamp(27px, 3vw, 40px); font-weight: 700; color: var(--ivory); line-height: 1.2; margin-bottom: 10px; }
-.close-band .close-slogan { font-size: 18px; color: var(--rose-pale); font-weight: 600; letter-spacing: 0.02em; margin-bottom: 30px; }
-.close-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+/* ── WHAT THIS COUNCIL BUILT (proof: editorial checklist) ── */
+.built-intro { max-width: 760px; }
+.built-list { list-style: none; margin-top: 48px; border-top: 1px solid var(--line); max-width: 980px; }
+.built-list li {
+  display: grid; grid-template-columns: 30px 1fr auto;
+  gap: 18px; align-items: baseline;
+  padding: 20px 0; border-bottom: 1px solid var(--line);
+}
+.built-mark { font-size: 16px; font-weight: 700; line-height: 1; }
+.built-mark.done { color: var(--sage); }
+.built-mark.going { color: var(--rose-deep); }
+.built-mark.next { color: var(--taupe); }
+.built-what { font-size: 17px; color: var(--slate); line-height: 1.6; }
+.built-what strong { font-family: var(--font-head); font-size: 19px; font-weight: 700; color: var(--ink); }
+.built-status { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; white-space: nowrap; }
+.built-status.done { color: var(--sage); }
+.built-status.going { color: var(--rose-deep); }
+.built-status.next { color: var(--taupe); }
+.built-all { margin-top: 40px; }
 
+/* ── VOLUNTEER (one photograph, one headline, one sentence, one button) ── */
+.vol-cta { position: relative; background: var(--ink); padding: 148px 72px; text-align: center; overflow: hidden; }
+.vol-bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 30%;
+}
+.vol-cta::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(rgba(31,42,69,0.72), rgba(31,42,69,0.72));
+}
+.vol-inner { position: relative; z-index: 2; max-width: 780px; margin: 0 auto; }
+.vol-inner h2 {
+  font-family: var(--font-head);
+  font-size: clamp(30px, 3.8vw, 48px);
+  font-weight: 700; color: var(--ivory); line-height: 1.14;
+  letter-spacing: -0.01em; margin-bottom: 20px;
+}
+.vol-inner p { font-size: 18px; color: var(--rose-pale); font-weight: 600; letter-spacing: 0.02em; margin-bottom: 40px; }
+
+/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .hero { min-height: 80vh; }
-  .hero-inner { padding: 0 26px 52px; }
-  .hero .btn-hero { padding: 15px 28px; font-size: 16px; }
-  .meet { grid-template-columns: 1fr; }
-  .meet-photo img { min-height: 300px; }
-  .meet-text { padding: 32px 26px; }
-  .pri-layout { grid-template-columns: 1fr; gap: 0; }
-  .pri-nav { display: none; }
-  .pri-block { padding-bottom: 36px; }
-  .pri-block + .pri-block { padding-top: 32px; }
+  .hero { min-height: 82vh; }
+  .hero-inner { padding: 0 26px 60px; }
+  .hero-quote { margin-bottom: 26px; }
+  .hero .btn-hero { padding: 15px 28px; font-size: 15px; }
+  .meet { grid-template-columns: 1fr; gap: 32px; }
+  .meet-photo img { min-height: 340px; max-height: 440px; }
+  .pri { grid-template-columns: 1fr; gap: 10px; padding: 44px 0; }
+  .pri-num { padding-top: 0; font-size: 24px; }
   .steps, .ideas { grid-template-columns: 1fr; }
-  .listen { grid-template-columns: 1fr; gap: 24px; }
-  .wb-grid { grid-template-columns: 1fr; }
-  .end-grid { grid-template-columns: 1fr; grid-template-rows: none; }
-  .end-feature { grid-column: auto; grid-row: auto; }
-  .close-band { padding: 52px 26px; }
+  .listen { grid-template-columns: 1fr; gap: 32px; }
+  .endorse-band { padding: 72px 26px; }
+  .endorse-inner h2 { margin-bottom: 36px; }
+  .end-grid { grid-template-columns: 1fr; }
+  .built-list li { grid-template-columns: 24px 1fr; }
+  .built-status { display: none; }
+  .vol-cta { padding: 96px 26px; }
 }
 </style>
 </head>
@@ -262,7 +323,7 @@
 
 <main>
 
-<!-- SECTION 1: HERO (full-bleed aerial) -->
+<!-- 1. HERO (full-bleed aerial; composition kept, breathing room increased) -->
 <section class="hero">
   <img class="hero-bg" src="pm-hero-aerial.jpg" alt="Aerial view of Port Moody, the inlet, and the North Shore mountains on a clear day" width="2600" height="1952" fetchpriority="high">
   <div class="hero-inner">
@@ -276,22 +337,20 @@
   </div>
 </section>
 
-<!-- SECTION 2: MEET MEGHAN (immediately after hero) -->
+<!-- 2. MEET MEGHAN (trust, not accomplishments) -->
 <section class="section bg-cream">
   <div class="container">
-    <div class="appear" style="margin-bottom:26px;">
-      <p class="t-kicker">Meet Meghan</p>
-      <h2 class="t-h2">Experience that brings people together.</h2>
-    </div>
-    <div class="meet appear">
-      <div class="meet-photo">
+    <div class="meet">
+      <figure class="meet-photo">
         <!-- Studio headshot in use. NOTE: Sheri asked for the facing-camera hydrangea headshot here. That file was not in the asset folder or on disk; the only hydrangea shot available is the hand-on-hip one Sheri said NOT to use in Meet Meghan. Swap in the correct headshot when provided. -->
-        <img src="about-meghan.jpg" alt="Portrait of Mayor Meghan Lahti" width="1157" height="1157" style="object-position:center 30%;">
-      </div>
+        <img src="about-meghan.jpg" alt="Portrait of Mayor Meghan Lahti" width="1157" height="1157">
+      </figure>
       <div class="meet-text">
+        <p class="t-kicker">Meet Meghan</p>
+        <h2 class="t-display">Experience that brings people together.</h2>
         <!-- VERIFY: 1996 first ran; 2022 elected Mayor. Confirm against public record. -->
-        <p>Nearly thirty years of service means knowing the people, the files, and the work already underway. But experience only matters when it helps people work together, make sound decisions, and keep the community at the centre.</p>
-        <p>Outside the council chamber, I spent close to twenty years in post-secondary education. Most of what I know about this place, though, I learned the ordinary way: on the sidelines, at the food bank, and at a lot of kitchen tables.</p>
+        <p class="meet-lead">Nearly thirty years of service means knowing the people, the files, and the work already underway. But experience only matters when it helps people work together, make sound decisions, and keep the community at the centre.</p>
+        <p class="meet-support">Outside the council chamber, I spent close to twenty years in post-secondary education. Most of what I know about this place, though, I learned the ordinary way: on the sidelines, at the food bank, and at a lot of kitchen tables.</p>
         <ul class="meet-facts">
           <li><span class="yr">1996</span><span>First ran for Port Moody Council. Her sign said, &ldquo;I love this town.&rdquo;</span></li>
           <li><span class="yr">2022</span><span>Elected Mayor of Port Moody.</span></li>
@@ -302,207 +361,166 @@
   </div>
 </section>
 
-<!-- SECTION 3: LEADERSHIP BEGINS WITH LISTENING (short + visual) -->
-<section class="section bg-ivory">
+<!-- 3. FOUR PRIORITIES (editorial index: headline, one line, learn more) -->
+<section class="section bg-ivory" id="priorities">
+  <div class="container">
+    <div class="pri-intro">
+      <p class="t-kicker">The priorities</p>
+      <h2 class="t-display">Four things that guide the work.</h2>
+      <hr class="t-rule">
+      <p class="t-lead">Not new ideas invented for a campaign. They are the continuation of a plan this Council built together and reported on in public. Here is where each one stands.</p>
+    </div>
+
+    <!-- Priority 1 -->
+    <article class="pri" id="p-move">
+      <div class="pri-num" aria-hidden="true">01</div>
+      <div>
+        <h3>A City That Moves</h3>
+        <p class="pri-lede">Getting around Port Moody should be easier, and the plan for it has an order.</p>
+        <details class="pri-more">
+          <summary><span class="more"></span></summary>
+          <div class="pri-detail">
+            <p class="body">Traffic is real, and there is no single fix. The credible part is the sequence, so each piece makes the next one work instead of moving the bottleneck down the road.</p>
+            <div class="steps">
+              <div class="step">
+                <div class="tag done">Completed</div>
+                <!-- VERIFY: shuttle returning summer 2026; last-mile program + path in place. -->
+                <p><strong>Shuttle and last mile.</strong> The Shoreline Shuttle returns this summer. The e-bike and e-scooter program and the St. Johns multi-use path are in place.</p>
+              </div>
+              <div class="step">
+                <div class="tag">Next</div>
+                <!-- VERIFY: Barnet/Ioco bridge widening status. -->
+                <p><strong>The bridge at Barnet and Ioco.</strong> Widening it comes first, because it is the real congestion point.</p>
+              </div>
+              <div class="step">
+                <div class="tag">Then</div>
+                <!-- VERIFY: St. Johns rush-hour lane status. -->
+                <p><strong>A rush-hour lane on St. Johns.</strong> It works once the bridge is done, not before.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </article>
+
+    <!-- Priority 2 -->
+    <article class="pri" id="p-growth">
+      <div class="pri-num" aria-hidden="true">02</div>
+      <div>
+        <h3>Growth We Can Be Proud Of</h3>
+        <p class="pri-lede">Growth should give us neighbourhoods people are glad to live in.</p>
+        <details class="pri-more">
+          <summary><span class="more"></span></summary>
+          <div class="pri-detail">
+            <p class="body">This is not development for the sake of development. People in Moody Centre have asked for a grocery store and walkable services for years. Newport Village and Suter Brook were contentious when they were proposed, and now they are places much of Port Moody is happy to call home.</p>
+            <blockquote class="growth-def">Moderate growth means putting most new homes near transit, so established low-rise neighbourhoods can remain low-rise.</blockquote>
+            <div class="continuum-label">Housing that works for</div>
+            <div class="continuum">
+              <span>Renters</span>
+              <span>First-time buyers</span>
+              <span>Families sizing up</span>
+              <span>Seniors downsizing near family</span>
+              <span>Below-market and affordable</span>
+            </div>
+            <p class="body" style="margin-top:18px;">What is affordable to one person is out of reach for another, and no single type of housing answers every need.</p>
+          </div>
+        </details>
+      </div>
+    </article>
+
+    <!-- Priority 3 -->
+    <article class="pri" id="p-value">
+      <div class="pri-num" aria-hidden="true">03</div>
+      <div>
+        <h3>Value for Every Tax Dollar</h3>
+        <p class="pri-lede">Being careful with money starts with protecting what people count on.</p>
+        <details class="pri-more">
+          <summary><span class="more"></span></summary>
+          <div class="pri-detail">
+            <div class="ideas">
+              <div class="idea">
+                <h4>Protect core services</h4>
+                <p>Keep the services residents rely on reliable, and look for revenue and savings before cutting them.</p>
+              </div>
+              <div class="idea">
+                <h4>Plan for maintenance and renewal</h4>
+                <p>Account for the long-term cost of roads, pipes, and buildings before they turn into emergencies.</p>
+              </div>
+              <div class="idea">
+                <h4>Broaden the tax base</h4>
+                <p>Grow the business and appropriate industrial base, so homeowners are not carrying the city alone.</p>
+              </div>
+            </div>
+            <div class="evidence">
+              <span class="tag">The proof, in one number</span>
+              <!-- VERIFIED in facts ledger: 2026 increase 3.95%, lowest of term, down from proposed 8.65%. -->
+              <p><strong>The 2026 tax increase came in at 3.95 percent, the lowest of this Council's term, brought down from a proposed 8.65 percent through savings and new revenue.</strong></p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </article>
+
+    <!-- Priority 4 -->
+    <article class="pri" id="p-lead">
+      <div class="pri-num" aria-hidden="true">04</div>
+      <div>
+        <h3>Good Governance That Works</h3>
+        <p class="pri-lede">Different perspectives. Public decisions. One shared plan.</p>
+        <details class="pri-more">
+          <summary><span class="more"></span></summary>
+          <div class="pri-detail">
+            <p class="body">Good governance starts with relationships, and over this term the working relationships a city depends on were rebuilt and strengthened.</p>
+            <div class="rel-label">Relationships this Council worked to strengthen</div>
+            <div class="rel-grid">
+              <span class="rel center">Residents</span>
+              <span class="rel">Businesses</span>
+              <span class="rel">Community organizations</span>
+              <span class="rel">Neighbouring municipalities</span>
+              <span class="rel">Provincial and federal partners</span>
+            </div>
+            <figure class="gov-photo">
+              <!-- VERIFY: photo is lahti-richardstuart.jpg, understood to be Meghan with Coquitlam Mayor Richard Stewart. Confirm identity and event, then a specific caption can name him. Caption kept on-theme (neighbouring municipalities) until confirmed. -->
+              <img src="meghan-coquitlam.jpg" alt="Meghan Lahti with the mayor of a neighbouring municipality at a Port Moody event" width="1280" height="854" loading="lazy">
+              <figcaption>Working with our neighbouring municipalities.</figcaption>
+            </figure>
+            <!-- If this wording matches Meghan's filmed line, format it as a quotation attributed to her. Kept unquoted until confirmed against the video. -->
+            <p class="gov-statement">The mayor is one vote. The job is to create the conditions for good decisions to be made.</p>
+            <p class="body">Council is made up of different people with different views, and they do not always agree. That is healthy. Disagreement is not division. Everyone deserves room at the table, and out of that work this Council agreed on a shared direction and made its decisions in public. Good governance depends on trust, fairness, experience, and collaboration, not on any one person deciding alone.</p>
+          </div>
+        </details>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- 4. LEADERSHIP BEGINS WITH LISTENING (quiet editorial pause) -->
+<section class="section bg-cream">
   <div class="container">
     <div class="listen">
-      <div class="listen-text appear">
-        <h2 class="t-h2" style="margin-bottom:18px;">Leadership begins with listening.</h2>
-        <p class="t-body" style="margin-bottom:16px;">People can disagree without the community being divided. Good leadership creates room for different perspectives, helps people understand one another, and keeps decisions focused on the people who live here.</p>
-        <p class="t-body">The mayor's role is not to make every decision alone. It is to bring people together, build working relationships, and help Council find a responsible path forward.</p>
+      <div class="listen-text">
+        <h2 class="t-display">Leadership begins with listening.</h2>
+        <p>People can disagree without the community being divided. Good leadership creates room for different perspectives, helps people understand one another, and keeps decisions focused on the people who live here.</p>
+        <p>The mayor's role is not to make every decision alone. It is to bring people together, build working relationships, and help Council find a responsible path forward.</p>
       </div>
-      <figure class="listen-photo appear">
+      <figure class="listen-photo">
         <!-- VERIFY: photo rights. Candid of Meghan in conversation; other people kept in frame so it reads as a real exchange. -->
-        <img src="meghan-conversation.jpg" alt="Meghan Lahti in conversation with residents at a Port Moody event" width="1280" height="854">
+        <img src="meghan-conversation.jpg" alt="Meghan Lahti in conversation with residents at a Port Moody event" width="1280" height="854" loading="lazy">
       </figure>
     </div>
   </div>
 </section>
 
-<!-- SECTION 3: FOUR PRIORITIES (guided scroll) -->
-<section class="section bg-ivory" id="priorities">
-  <div class="container">
-    <div class="pri-intro appear">
-      <p class="t-kicker">The priorities</p>
-      <h2 class="t-h2">Four things that guide the work.</h2>
-      <hr class="t-rule">
-      <p class="t-body">Not new ideas invented for a campaign. They are the continuation of a plan this Council built together and reported on in public. Here is where each one stands.</p>
-    </div>
+<!-- 5. COMMUNITY ENDORSEMENTS (confidence: full-width Port Moody photo, subtle overlay) -->
+<section class="endorse-band">
+  <img class="endorse-bg" src="port-moody-pier.jpg" alt="" width="1600" height="560" loading="lazy" aria-hidden="true">
+  <div class="endorse-inner">
+    <p class="t-kicker">Endorsements</p>
+    <h2>The community stands with Meghan.</h2>
 
-    <div class="pri-layout">
-      <nav class="pri-nav" aria-label="Priorities">
-        <ol>
-          <li><a href="#p-move"><span class="n">Priority one</span>A City That Moves</a></li>
-          <li><a href="#p-growth"><span class="n">Priority two</span>Growth We Can Be Proud Of</a></li>
-          <li><a href="#p-value"><span class="n">Priority three</span>Value for Every Tax Dollar</a></li>
-          <li><a href="#p-lead"><span class="n">Priority four</span>Good Governance That Works</a></li>
-        </ol>
-      </nav>
-
-      <div class="pri-content">
-
-        <!-- Priority 1 -->
-        <article class="pri-block appear" id="p-move">
-          <h3>A City That Moves</h3>
-          <p class="pri-lede">Getting around Port Moody should be easier, and the plan for it has an order.</p>
-          <p class="body">Traffic is real, and there is no single fix. The credible part is the sequence, so each piece makes the next one work instead of moving the bottleneck down the road.</p>
-          <div class="steps">
-            <div class="step">
-              <div class="tag done">Completed</div>
-              <!-- VERIFY: shuttle returning summer 2026; last-mile program + path in place. -->
-              <p><strong>Shuttle and last mile.</strong> The Shoreline Shuttle returns this summer. The e-bike and e-scooter program and the St. Johns multi-use path are in place.</p>
-            </div>
-            <div class="step">
-              <div class="tag">Next</div>
-              <!-- VERIFY: Barnet/Ioco bridge widening status. -->
-              <p><strong>The bridge at Barnet and Ioco.</strong> Widening it comes first, because it is the real congestion point.</p>
-            </div>
-            <div class="step">
-              <div class="tag">Then</div>
-              <!-- VERIFY: St. Johns rush-hour lane status. -->
-              <p><strong>A rush-hour lane on St. Johns.</strong> It works once the bridge is done, not before.</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Priority 2 -->
-        <article class="pri-block appear" id="p-growth">
-          <h3>Growth We Can Be Proud Of</h3>
-          <p class="pri-lede">Growth should give us neighbourhoods people are glad to live in.</p>
-          <p class="body">This is not development for the sake of development. People in Moody Centre have asked for a grocery store and walkable services for years. Newport Village and Suter Brook were contentious when they were proposed, and now they are places much of Port Moody is happy to call home.</p>
-          <blockquote class="growth-def">Moderate growth means putting most new homes near transit, so established low-rise neighbourhoods can remain low-rise.</blockquote>
-          <div class="continuum-label">Housing that works for</div>
-          <div class="continuum">
-            <span>Renters</span>
-            <span>First-time buyers</span>
-            <span>Families sizing up</span>
-            <span>Seniors downsizing near family</span>
-            <span>Below-market and affordable</span>
-          </div>
-          <p class="body" style="margin-top:18px;">What is affordable to one person is out of reach for another, and no single type of housing answers every need.</p>
-        </article>
-
-        <!-- Priority 3 -->
-        <article class="pri-block appear" id="p-value">
-          <h3>Value for Every Tax Dollar</h3>
-          <p class="pri-lede">Being careful with money starts with protecting what people count on.</p>
-          <div class="ideas">
-            <div class="idea">
-              <h4>Protect core services</h4>
-              <p>Keep the services residents rely on reliable, and look for revenue and savings before cutting them.</p>
-            </div>
-            <div class="idea">
-              <h4>Plan for maintenance and renewal</h4>
-              <p>Account for the long-term cost of roads, pipes, and buildings before they turn into emergencies.</p>
-            </div>
-            <div class="idea">
-              <h4>Broaden the tax base</h4>
-              <p>Grow the business and appropriate industrial base, so homeowners are not carrying the city alone.</p>
-            </div>
-          </div>
-          <div class="evidence">
-            <span class="tag">The proof, in one number</span>
-            <!-- VERIFIED in facts ledger: 2026 increase 3.95%, lowest of term, down from proposed 8.65%. -->
-            <p><strong>The 2026 tax increase came in at 3.95 percent, the lowest of this Council's term, brought down from a proposed 8.65 percent through savings and new revenue.</strong></p>
-          </div>
-        </article>
-
-        <!-- Priority 4 -->
-        <article class="pri-block appear" id="p-lead">
-          <h3>Good Governance That Works</h3>
-          <p class="pri-lede">Different perspectives. Public decisions. One shared plan.</p>
-          <p class="body">Good governance starts with relationships, and over this term the working relationships a city depends on were rebuilt and strengthened.</p>
-          <div class="rel-label">Relationships this Council worked to strengthen</div>
-          <div class="rel-grid">
-            <span class="rel center">Residents</span>
-            <span class="rel">Businesses</span>
-            <span class="rel">Community organizations</span>
-            <span class="rel">Neighbouring municipalities</span>
-            <span class="rel">Provincial and federal partners</span>
-          </div>
-          <figure class="gov-photo">
-            <!-- VERIFY: photo is lahti-richardstuart.jpg, understood to be Meghan with Coquitlam Mayor Richard Stewart. Confirm identity and event, then a specific caption can name him. Caption kept on-theme (neighbouring municipalities) until confirmed. -->
-            <img src="meghan-coquitlam.jpg" alt="Meghan Lahti with the mayor of a neighbouring municipality at a Port Moody event" width="1280" height="854">
-            <figcaption>Working with our neighbouring municipalities.</figcaption>
-          </figure>
-          <!-- If this wording matches Meghan's filmed line, format it as a quotation attributed to her. Kept unquoted until confirmed against the video. -->
-          <p class="gov-statement">The mayor is one vote. The job is to create the conditions for good decisions to be made.</p>
-          <p class="body">Council is made up of different people with different views, and they do not always agree. That is healthy. Disagreement is not division. Everyone deserves room at the table, and out of that work this Council agreed on a shared direction and made its decisions in public. Good governance depends on trust, fairness, experience, and collaboration, not on any one person deciding alone.</p>
-        </article>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Full-width Port Moody photo (preserved) -->
-<figure class="figure photo-band appear">
-  <img src="port-moody-pier.jpg" alt="The pier and inlet at Rocky Point in Port Moody on a clear day" width="1600" height="560">
-  <figcaption>Rocky Point, Port Moody.</figcaption>
-</figure>
-
-<!-- SECTION 4: WHAT WE BUILT PREVIEW (flat cards) -->
-<section class="section bg-cream">
-  <div class="container">
-    <div class="appear" style="max-width:760px;">
-      <p class="t-kicker">The record</p>
-      <h2 class="t-h2">What this Council built.</h2>
-      <hr class="t-rule">
-      <p class="t-body">None of it was done alone. Council agreed on a plan, some of the work is finished, more is underway, and some is still ahead. The work isn't finished, and it is all public record.</p>
-      <div class="wb-legend">
-        <span class="s-complete">&#10003; Complete</span>
-        <span class="s-underway">&rarr; Underway</span>
-        <span class="s-next">&#9711; Next</span>
-      </div>
-    </div>
-
-    <div class="wb-grid appear">
-      <div class="wb-card">
-        <div class="wb-top"><span class="wb-name">The new boardwalk</span><span class="wb-status s-complete">&#10003; Complete</span></div>
-        <p class="wb-why">A waterfront walk that gets used every day, from morning runners to weekend families.</p>
-      </div>
-      <div class="wb-card">
-        <!-- VERIFY: Inlet Field completion + "Bob Favelle Field" naming. -->
-        <div class="wb-top"><span class="wb-name">Bob Favelle Field</span><span class="wb-status s-complete">&#10003; Complete</span></div>
-        <p class="wb-why">The rebuilt Inlet Field, finished and named for a long-serving member of the community.</p>
-      </div>
-      <div class="wb-card">
-        <div class="wb-top"><span class="wb-name">Council Strategic Plan</span><span class="wb-status s-complete">&#10003; Complete</span></div>
-        <p class="wb-why">One shared plan for the term, agreed to by nearly all of Council and followed through.</p>
-      </div>
-      <div class="wb-card">
-        <div class="wb-top"><span class="wb-name">The new field house</span><span class="wb-status s-underway">&rarr; Underway</span></div>
-        <p class="wb-why">In planning for years, now being built.</p>
-      </div>
-      <div class="wb-card">
-        <!-- VERIFY: Shoreline Shuttle returning summer 2026. -->
-        <div class="wb-top"><span class="wb-name">The Shoreline Shuttle</span><span class="wb-status s-underway">&rarr; Underway</span></div>
-        <p class="wb-why">Local shuttle service coming back after years off the road.</p>
-      </div>
-      <div class="wb-card">
-        <!-- VERIFY: Barnet/Ioco bridge widening status. -->
-        <div class="wb-top"><span class="wb-name">Barnet and Ioco bridge widening</span><span class="wb-status s-next">&#9711; Next</span></div>
-        <p class="wb-why">The next major piece of the transportation plan, still ahead.</p>
-      </div>
-    </div>
-
-    <p style="margin-top:28px;">
-      <a href="/what-we-built.html" class="btn btn-outline-ink">See the full record</a>
-    </p>
-  </div>
-</section>
-
-<!-- SECTION 5: ENDORSEMENTS PREVIEW (three, varied) -->
-<section class="section bg-ivory">
-  <div class="container">
-    <div class="appear" style="max-width:720px;">
-      <p class="t-kicker">Endorsements</p>
-      <h2 class="t-h2">The community stands with Meghan.</h2>
-      <hr class="t-rule">
-    </div>
-
-    <div class="end-grid appear">
-      <div class="end-card end-feature">
+    <div class="end-grid">
+      <div class="end-panel">
         <div class="end-logo">
           <img src="pm-firefighters-logo.png" alt="Port Moody Firefighters, IAFF Local 2399" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
           <div class="end-attr" style="display:none;"><strong>Port Moody Firefighters, IAFF Local 2399</strong></div>
@@ -510,116 +528,104 @@
         <p class="end-q">&ldquo;Over the last four years as Mayor, Meghan has consistently shown support for public safety, and Port Moody Firefighters Local 2399 is proud to support Mayor Lahti in the upcoming election.&rdquo;</p>
         <p class="end-attr"><strong>Port Moody Firefighters</strong>, IAFF Local 2399</p>
       </div>
-      <div class="end-card">
+      <div class="end-panel">
         <div class="end-logo">
-          <img src="pm-soccer-logo.png" alt="Port Moody Soccer Club" style="max-height:54px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <img src="pm-soccer-logo.png" alt="Port Moody Soccer Club" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
           <div class="end-attr" style="display:none;"><strong>Port Moody Soccer Club</strong></div>
         </div>
         <p class="end-q">&ldquo;Meghan has been a steadfast friend and champion of our club for many years, consistently showing up for our players, families, and volunteers.&rdquo;</p>
         <p class="end-attr"><strong>Matthew Campbell</strong>, President, Port Moody Soccer Club</p>
       </div>
-      <div class="end-card">
+      <div class="end-panel">
         <div class="end-logo">
-          <img src="nwdic.jpg" alt="New Westminster and District Labour Council" style="max-height:54px;">
+          <img src="nwdic.jpg" alt="New Westminster and District Labour Council">
         </div>
         <p class="end-q">&ldquo;Mayor Meghan Lahti is officially endorsed by the New Westminster and District Labour Council.&rdquo;</p>
         <p class="end-attr"><strong>New Westminster and District Labour Council</strong></p>
       </div>
     </div>
 
-    <p style="margin-top:28px;">
-      <a href="/endorsements.html" class="btn btn-outline-ink">See all endorsements</a>
+    <p class="endorse-all">
+      <a href="/endorsements.html" class="link-arrow on-dark">View all endorsements &rarr;</a>
     </p>
   </div>
 </section>
 
-<!-- SECTION 6: CLOSING INVITATION (single final CTA) -->
-<section class="close-band appear">
-  <h2>We shaped this town together, and the work isn&rsquo;t finished.</h2>
-  <p class="close-slogan">Port Moody. Together. Forward.</p>
-  <div class="close-actions">
+<!-- 6. WHAT THIS COUNCIL BUILT (proof: clean editorial checklist) -->
+<section class="section bg-ivory">
+  <div class="container">
+    <div class="built-intro">
+      <p class="t-kicker">The record</p>
+      <h2 class="t-display">What this Council built.</h2>
+      <hr class="t-rule">
+      <p class="t-lead">None of it was done alone. Council agreed on a plan, some of the work is finished, more is underway, and some is still ahead. The work isn't finished, and it is all public record.</p>
+    </div>
+
+    <ul class="built-list">
+      <li>
+        <span class="built-mark done" aria-hidden="true">&#10003;</span>
+        <span class="built-what"><strong>The new boardwalk.</strong> A waterfront walk that gets used every day, from morning runners to weekend families.</span>
+        <span class="built-status done">Complete</span>
+      </li>
+      <li>
+        <!-- VERIFY: Inlet Field completion + "Bob Favelle Field" naming. -->
+        <span class="built-mark done" aria-hidden="true">&#10003;</span>
+        <span class="built-what"><strong>Bob Favelle Field.</strong> The rebuilt Inlet Field, finished and named for a long-serving member of the community.</span>
+        <span class="built-status done">Complete</span>
+      </li>
+      <li>
+        <span class="built-mark done" aria-hidden="true">&#10003;</span>
+        <span class="built-what"><strong>Council Strategic Plan.</strong> One shared plan for the term, agreed to by nearly all of Council and followed through.</span>
+        <span class="built-status done">Complete</span>
+      </li>
+      <li>
+        <span class="built-mark going" aria-hidden="true">&rarr;</span>
+        <span class="built-what"><strong>The new field house.</strong> In planning for years, now being built.</span>
+        <span class="built-status going">Underway</span>
+      </li>
+      <li>
+        <!-- VERIFY: Shoreline Shuttle returning summer 2026. -->
+        <span class="built-mark going" aria-hidden="true">&rarr;</span>
+        <span class="built-what"><strong>The Shoreline Shuttle.</strong> Local shuttle service coming back after years off the road.</span>
+        <span class="built-status going">Underway</span>
+      </li>
+      <li>
+        <!-- VERIFY: Barnet/Ioco bridge widening status. -->
+        <span class="built-mark next" aria-hidden="true">&#9711;</span>
+        <span class="built-what"><strong>Barnet and Ioco bridge widening.</strong> The next major piece of the transportation plan, still ahead.</span>
+        <span class="built-status next">Next</span>
+      </li>
+    </ul>
+
+    <p class="built-all">
+      <a href="/what-we-built.html" class="link-arrow">See the full record &rarr;</a>
+    </p>
+  </div>
+</section>
+
+<!-- 7. VOLUNTEER (one photograph, one headline, one sentence, one button) -->
+<section class="vol-cta">
+  <img class="vol-bg" src="ML-63.jpg" alt="" width="1600" height="480" loading="lazy" aria-hidden="true">
+  <div class="vol-inner">
+    <h2>We shaped this town together, and the work isn&rsquo;t finished.</h2>
+    <p>Port Moody. Together. Forward.</p>
     <a href="/volunteer.html" class="btn btn-rose">Volunteer</a>
-    <a href="/endorsements.html" class="btn btn-outline">Add your endorsement</a>
-    <a href="/contact.html" class="btn btn-outline">Get in touch</a>
   </div>
 </section>
 
 </main>
 
+<!-- 8. FOOTER (minimal: authorization, acknowledgement, credit) -->
 <footer id="site-footer">
-  <div class="footer-main">
-    <div>
-      <div class="footer-name">Meghan Lahti</div>
-      <div class="footer-title">Mayor &middot; Port Moody</div>
-      <p class="footer-blurb">&ldquo;Port Moody is a passion for me. I have spent most of my adult life in service to this city.&rdquo;</p>
-      <div class="footer-social">
-        <a href="https://facebook.com/MeghanLahtiPortMoody" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://instagram.com/meghanlahti" target="_blank" rel="noopener">Instagram</a>
-        <a href="mailto:info@lahti2026.com">Email</a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>The campaign</h4>
-      <ul>
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/what-we-built.html">What We Built</a></li>
-        <li><a href="/endorsements.html">Endorsements</a></li>
-        <li><a href="/contact.html">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Get involved</h4>
-      <ul>
-        <li><a href="/volunteer.html">Volunteer</a></li>
-        <li><a href="/donate.html">Donate</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
+  <div class="footer-min">
     <!-- VERIFY authorization wording with Anthony / Elections BC before launch. Full contribution limits and eligibility live on the Donate page, not the global footer. -->
     <p class="footer-legal">Authorized by Anthony Sandler, financial agent for the Meghan Lahti 2026 Campaign, anthony@lahti2026.com. &copy; 2026 Meghan Lahti Campaign.</p>
+    <p class="footer-ack">Port Moody is situated on the unceded traditional territories of the k&#695;ik&#695;&#601;&#643;&#601;m (Kwikwetlem), s&#601;l&#769;ilw&#601;ta&#660;&#7491; (Tsleil-Waututh), x&#695;m&#601;&#952;k&#695;&#601;y&#769;&#601;m (Musqueam), and S&#7811;&#x1E8F;w&#x1E8F;&#769;u7mesh (Squamish) Nations.</p>
+    <p class="footer-credit">Creative by Sheri Zada</p>
   </div>
-  <div class="footer-ack">
-    Port Moody is situated on the unceded traditional territories of the k&#695;ik&#695;&#601;&#643;&#601;m (Kwikwetlem), s&#601;l&#769;ilw&#601;ta&#660;&#7491; (Tsleil-Waututh), x&#695;m&#601;&#952;k&#695;&#601;y&#769;&#601;m (Musqueam), and S&#7811;&#x1E8F;w&#x1E8F;&#769;u7mesh (Squamish) Nations.
-  </div>
-  <div class="footer-credit">Site by Sheri Zada</div>
 </footer>
 
 <script src="shared.js"></script>
-<script>
-/* Homepage-only: restrained reveals + guided-priority highlight. Accessible and reduced-motion aware. */
-(function () {
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var appears = document.querySelectorAll('.appear');
-  if (reduce || !('IntersectionObserver' in window)) {
-    appears.forEach(function (el) { el.classList.add('is-in'); });
-  } else {
-    var ao = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('is-in'); ao.unobserve(e.target); }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-    appears.forEach(function (el) { ao.observe(el); });
-  }
-
-  // Guided priorities: highlight the active priority in the sticky list as it scrolls.
-  var links = Array.prototype.slice.call(document.querySelectorAll('.pri-nav a'));
-  var blocks = document.querySelectorAll('.pri-block');
-  if (links.length && blocks.length && 'IntersectionObserver' in window) {
-    var map = {};
-    links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
-    var setActive = function (id) {
-      links.forEach(function (a) { a.classList.remove('active'); a.removeAttribute('aria-current'); });
-      if (map[id]) { map[id].classList.add('active'); map[id].setAttribute('aria-current', 'true'); }
-    };
-    setActive('p-move');
-    var po = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { setActive(e.target.id); } });
-    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
-    blocks.forEach(function (b) { po.observe(b); });
-  }
-})();
-</script>
 <script src="password-gate.js"></script>
 </body>
 </html>
