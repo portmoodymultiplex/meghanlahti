@@ -356,6 +356,15 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
 }
 .lahti-list li strong { color: var(--ink); font-weight: 600; }
 
+/* ── SCROLL REVEALS (soft, slow; reduced-motion aware) ── */
+.appear {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 700ms ease, transform 800ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--d, 0ms);
+}
+.appear.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .appear { opacity: 1; transform: none; transition: none; } }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1040px) {
   .nav-links, .nav-cta { display: none; }

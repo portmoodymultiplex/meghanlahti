@@ -28,31 +28,40 @@
 .wb-filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
 .wb-filter button {
   font-family: var(--font-body); font-size: 14px; font-weight: 600;
-  padding: 9px 16px; border: 1.5px solid var(--line); background: #fff;
-  color: var(--slate); border-radius: 2px; cursor: pointer; transition: 0.15s;
+  padding: 10px 20px; border: 1.5px solid var(--line); background: var(--ivory);
+  color: var(--slate); border-radius: 999px; cursor: pointer; transition: 0.18s ease;
 }
 .wb-filter button:hover { color: var(--ink); border-color: rgba(45,58,92,0.4); }
 .wb-filter button.active { background: var(--ink); color: var(--ivory); border-color: var(--ink); }
 
-.cat { border-top: 1px solid var(--line); }
-.cat > summary { list-style: none; cursor: pointer; padding: 26px 0 6px; display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.cat { border: 1px solid var(--line); border-radius: 6px; background: var(--ivory); margin-top: 26px; padding: 0 44px; }
+.cat > summary { list-style: none; cursor: pointer; padding: 34px 0 26px; display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
 .cat > summary::-webkit-details-marker { display: none; }
 .cat > summary::marker { content: ""; }
-.cat-title { font-family: var(--font-head); font-size: clamp(22px, 2.4vw, 28px); font-weight: 700; color: var(--ink); line-height: 1.16; }
+.cat-title {
+  font-family: var(--font-head); font-size: clamp(26px, 2.8vw, 34px);
+  font-weight: 700; color: var(--ink); line-height: 1.14;
+  padding-left: 18px; border-left: 3px solid var(--rose);
+}
 .cat-toggle { font-family: var(--font-body); font-size: 26px; font-weight: 400; color: var(--rose-deep); line-height: 1; flex-shrink: 0; }
 .cat[open] .cat-toggle::before { content: "\2212"; }
 .cat:not([open]) .cat-toggle::before { content: "+"; }
-.cat-intro { font-size: 16px; color: var(--slate); line-height: 1.65; max-width: 72ch; margin: 0 0 8px; }
+.cat-intro { font-size: 16px; color: var(--slate); line-height: 1.65; max-width: 72ch; margin: 0 0 12px; }
 
-.rec-list { border-top: 1px solid var(--line); }
-.rec { padding: 22px 0; border-bottom: 1px solid var(--line); }
-.rec-top { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-.rec-name { font-family: var(--font-head); font-size: 21px; font-weight: 700; color: var(--ink); line-height: 1.2; }
-.rec-status { font-size: 14px; font-weight: 600; color: var(--rose-deep); white-space: nowrap; }
-.rec[data-status="complete"] .rec-status { color: var(--sage); }
-.rec[data-status="underway"] .rec-status { color: var(--rose-deep); }
-.rec[data-status="planning"] .rec-status { color: var(--taupe); }
-.rec-desc { font-size: 16px; color: var(--slate); line-height: 1.65; margin-top: 8px; max-width: 74ch; }
+.rec-list { border-top: 1px solid var(--line); padding-bottom: 18px; }
+.rec { padding: 24px 0; border-bottom: 1px solid var(--line); }
+.rec:last-child { border-bottom: 0; }
+.rec-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.rec-name { font-family: var(--font-head); font-size: clamp(20px, 2vw, 24px); font-weight: 700; color: var(--ink); line-height: 1.22; }
+.rec-status {
+  font-size: 11.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  white-space: nowrap; padding: 6px 13px; border-radius: 999px;
+  color: var(--rose-deep); background: var(--rose-pale);
+}
+.rec[data-status="complete"] .rec-status { color: var(--sage); background: var(--sage-pale); }
+.rec[data-status="underway"] .rec-status { color: var(--rose-deep); background: var(--rose-pale); }
+.rec[data-status="planning"] .rec-status { color: var(--taupe); background: var(--cream-deep); }
+.rec-desc { font-size: 16px; color: var(--slate); line-height: 1.68; margin-top: 9px; max-width: 72ch; }
 .rec[hidden], .cat[hidden] { display: none; }
 
 .attributed { max-width: 780px; margin: 0 auto; }
@@ -60,7 +69,8 @@
 .attributed-note { font-size: 15px; color: var(--slate); }
 .attributed-note strong { color: var(--ink); font-weight: 600; }
 @media (max-width: 900px) {
-  .cat > summary { padding: 22px 0 6px; }
+  .cat { padding: 0 22px; }
+  .cat > summary { padding: 26px 0 20px; }
 }
 </style>
 </head>
@@ -97,14 +107,14 @@
 <main>
 
 <div class="page-banner">
-  <div class="banner-inner">
+  <div class="banner-inner appear is-in">
     <h1>The <em>Record</em>.</h1>
     <hr class="t-rule">
     <p>One plan, followed in public, and a list you can check. Council agreed on a plan, some of the work is finished, some is underway, and some is still in planning. None of it was done alone, and it is all public record.</p>
   </div>
 </div>
 
-<section class="section bg-ivory">
+<section class="section bg-cream">
   <div class="container">
 
     <div class="wb-filter-label">Filter by status</div>
@@ -115,7 +125,7 @@
       <button type="button" data-filter="planning" aria-pressed="false">In planning</button>
     </div>
 
-    <details class="cat" open>
+    <details class="cat appear" open>
       <summary><span class="cat-title">Getting around the city</span><span class="cat-toggle" aria-hidden="true"></span></summary>
       <p class="cat-intro">Transportation was one of the main things Meghan ran on in 2022, and it has stayed at the top of the list.</p>
       <div class="rec-list">
@@ -145,7 +155,7 @@
       </div>
     </details>
 
-    <details class="cat" open>
+    <details class="cat appear" open>
       <summary><span class="cat-title">Places people use</span><span class="cat-toggle" aria-hidden="true"></span></summary>
       <p class="cat-intro">The kind of community spaces you only really notice when they are not there. Most of these had been talked about for years before this term.</p>
       <div class="rec-list">
@@ -179,7 +189,7 @@
       </div>
     </details>
 
-    <details class="cat" open>
+    <details class="cat appear" open>
       <summary><span class="cat-title">How the city is run</span><span class="cat-toggle" aria-hidden="true"></span></summary>
       <p class="cat-intro">A lot of the most important work in city government is invisible until you do not have it. These pieces make the next decade easier to manage.</p>
       <div class="rec-list">
@@ -199,7 +209,7 @@
       </div>
     </details>
 
-    <details class="cat" open>
+    <details class="cat appear" open>
       <summary><span class="cat-title">More voices at the table</span><span class="cat-toggle" aria-hidden="true"></span></summary>
       <p class="cat-intro">Council decisions are better when more people are part of them, especially the voices that usually get missed.</p>
       <div class="rec-list">
@@ -214,7 +224,7 @@
       </div>
     </details>
 
-    <details class="cat" open>
+    <details class="cat appear" open>
       <summary><span class="cat-title">Plans, strategies and bylaws</span><span class="cat-toggle" aria-hidden="true"></span></summary>
       <div class="rec-list">
         <div class="rec" data-status="complete">
@@ -268,7 +278,7 @@
       </div>
     </details>
 
-    <details class="cat" open>
+    <details class="cat appear" open>
       <summary><span class="cat-title">Mayor-Led Initiatives and Public Engagement</span><span class="cat-toggle" aria-hidden="true"></span></summary>
       <div class="rec-list">
         <div class="rec" data-status="complete">
@@ -289,7 +299,7 @@
       </div>
     </details>
 
-    <details class="cat" open>
+    <details class="cat appear" open>
       <summary><span class="cat-title">Careful with money</span><span class="cat-toggle" aria-hidden="true"></span></summary>
       <p class="cat-intro">Being smart with money is less about cutting and more about asking whether there is another way first.</p>
       <div class="rec-list">
@@ -368,6 +378,19 @@
   var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 4); };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.appear');
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  }
 })();
 </script>
 </body>

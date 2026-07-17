@@ -93,7 +93,7 @@ textarea.field { resize: vertical; }
 <main>
 
 <div class="page-banner">
-  <div class="banner-inner">
+  <div class="banner-inner appear is-in">
     <p class="t-kicker">Contact</p>
     <h1>Let&rsquo;s start the <em>conversation</em>.</h1>
     <hr class="t-rule">
@@ -103,7 +103,7 @@ textarea.field { resize: vertical; }
 
 <section class="section bg-ivory">
   <div class="container">
-    <div class="contact-grid">
+    <div class="contact-grid appear">
       <div>
         <p class="t-kicker">Message the campaign</p>
         <h2 class="t-h2" style="margin-bottom:12px;">We try to write back within a day or two.</h2>
@@ -167,10 +167,6 @@ textarea.field { resize: vertical; }
           <div class="side-row">
             <span class="tag">Media inquiries</span>
             <span class="val"><a href="mailto:sheri@lahti2026.com">sheri@lahti2026.com</a></span>
-          </div>
-          <div class="side-row">
-            <span class="tag">Media</span>
-            <span class="val">Email <a href="mailto:info@lahti2026.com">info@lahti2026.com</a> with &ldquo;Media&rdquo; in the subject line.</span>
           </div>
           <div class="side-row">
             <span class="tag">Location</span>
@@ -256,6 +252,19 @@ textarea.field { resize: vertical; }
   var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 4); };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.appear');
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  }
 })();
 </script>
 </body>

@@ -89,31 +89,40 @@
     linear-gradient(to right, rgba(251,241,245,0.55) 0%, rgba(251,241,245,0.18) 30%, rgba(251,241,245,0) 58%);
 }
 
-/* ── MEET MEGHAN (pink band, typography only, no photos) ── */
+/* ── MEET MEGHAN (rose band; photo anchored full-bleed to the right edge) ── */
 .meet-band {
+  display: grid; grid-template-columns: 1.08fr 0.92fr;
   background: linear-gradient(155deg, var(--rose) 0%, var(--rose-deep) 100%);
-  padding: 160px 72px;
+  overflow: hidden;
 }
-.meet-inner {
-  max-width: 1120px; margin: 0 auto;
-  display: grid; grid-template-columns: 1.15fr 0.85fr;
-  gap: clamp(48px, 6vw, 88px); align-items: center;
-}
-.meet-photo { margin: 0; }
-.meet-photo img {
-  width: 100%; height: auto; border-radius: 6px; display: block;
-  box-shadow: 0 26px 60px rgba(31,42,69,0.28);
+.meet-text {
+  padding: clamp(88px, 10vw, 150px) clamp(40px, 5vw, 88px) clamp(88px, 10vw, 150px) 72px;
+  max-width: 720px; justify-self: end;
 }
 .meet-band .t-kicker { color: rgba(255,255,255,0.9); }
 .meet-lead {
   font-family: var(--font-head);
-  font-size: clamp(25px, 2.8vw, 36px);
+  font-size: clamp(24px, 2.6vw, 34px);
   font-weight: 600; color: #fff; line-height: 1.42;
-  margin-bottom: 32px;
+  margin-bottom: 30px;
 }
 .meet-support {
-  font-size: clamp(18px, 1.6vw, 20px); color: rgba(255,255,255,0.94);
-  line-height: 1.75; max-width: 62ch;
+  font-size: clamp(17px, 1.5vw, 19px); color: rgba(255,255,255,0.94);
+  line-height: 1.75; max-width: 60ch;
+}
+.meet-photo { position: relative; margin: 0; min-height: 560px; }
+.meet-photo img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 55% 35%;
+  display: block;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.7) 14%, #000 30%);
+          mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.7) 14%, #000 30%);
+}
+/* rose wash ties the photo into the band, echoing the hero blend */
+.meet-photo::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to right, rgba(183,109,146,0.55) 0%, rgba(183,109,146,0.12) 34%, rgba(183,109,146,0) 60%);
 }
 
 /* ── SCROLL REVEALS (slow, soft, luxurious; reduced-motion aware) ── */
@@ -317,8 +326,14 @@
   .hero-copy { padding: 24px 26px 72px; }
   .hero-actions { margin-top: 32px; }
   .hero .btn-hero { padding: 15px 28px; font-size: 15px; }
-  .meet-band { padding: 88px 26px; }
-  .meet-inner { grid-template-columns: 1fr; gap: 40px; }
+  .meet-band { grid-template-columns: 1fr; }
+  .meet-text { padding: 72px 26px; max-width: none; justify-self: stretch; }
+  .meet-photo { min-height: 52vh; }
+  .meet-photo img {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 12%, #000 26%);
+            mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 12%, #000 26%);
+  }
+  .meet-photo::after { background: linear-gradient(to bottom, rgba(183,109,146,0.5) 0%, rgba(183,109,146,0) 40%); }
   .plat-wrap { grid-template-columns: 1fr; gap: 64px; }
   .plat-rail { position: static; }
   .pri-block { padding: 38px 0 42px; }
@@ -381,17 +396,15 @@
 
 <!-- 2. MEET MEGHAN (pink band, no photos, no timeline) -->
 <section class="meet-band">
-  <div class="meet-inner">
-    <div class="meet-text appear">
+  <div class="meet-text appear">
     <p class="t-kicker">Meet Meghan</p>
     <p class="meet-lead">Nearly thirty years of service means knowing the people, the issues, and the work already underway. But experience only matters when it helps people work together, make sound decisions, and keep the community at the centre.</p>
     <p class="meet-support">Outside the council chamber, I have spent my time working in post-secondary education and as a business owner. Most of what I know about this place, though, I learned the ordinary way: as a community volunteer, Girl Guide leader, soccer mom and Rotarian.</p>
     <p class="meet-support" style="margin-top:18px;">I love Port Moody. That is why I have spent most of my adult life in service to this community. It is where my husband and I chose to raise our family, and it is a place I am proud to have had the opportunity to help shape into the community we all know and love.</p>
-    </div>
-    <figure class="meet-photo appear" style="--d:150ms">
-      <img src="ML-162.jpg" alt="Meghan Lahti holding her granddaughter" width="1400" height="933" loading="lazy">
-    </figure>
   </div>
+  <figure class="meet-photo">
+    <img src="ML-162.jpg" alt="Meghan Lahti holding her granddaughter" width="1400" height="933" loading="lazy">
+  </figure>
 </section>
 
 <!-- 3. THE PLATFORM AREA: commitments on the left, next-term deliverables on a sticky rail -->
@@ -471,7 +484,6 @@
           <li class="appear" style="--d:400ms"><span class="nt-num" aria-hidden="true">4</span><span class="nt-item">Arts and business expansion</span></li>
           <li class="appear" style="--d:500ms"><span class="nt-num" aria-hidden="true">5</span><span class="nt-item">Kyle Centre rebuild and the creation of a new park in Moody Centre</span></li>
         </ol>
-        <a href="/commit-to-vote.html" class="btn btn-rose appear" style="--d:600ms">Commit to vote</a>
       </aside>
     </div>
   </div>
@@ -591,7 +603,10 @@
     <div class="vol-content appear">
       <h2>We shaped this town together, and the work isn&rsquo;t finished.</h2>
       <p class="vol-slogan">Port Moody. <em>Together.</em> Forward.</p>
-      <a href="/volunteer.html" class="btn btn-rose">Volunteer</a>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="/volunteer.html" class="btn btn-rose">Volunteer</a>
+        <a href="/commit-to-vote.html" class="btn btn-outline">Commit to vote</a>
+      </div>
     </div>
   </div>
 </section>

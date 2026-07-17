@@ -82,6 +82,59 @@ textarea.field { resize: vertical; }
 .feat-org, .voice-name { color: var(--rose-deep); }
 .end-cta { display: flex; gap: 14px; flex-wrap: wrap; }
 @media (max-width: 900px) { .end-hero { padding: 72px 26px 64px; } }
+
+/* Vertical organization cards */
+.org-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; align-items: start; }
+.org-card {
+  background: var(--ivory); border: 1px solid var(--line); border-radius: 6px;
+  padding: 40px 36px; display: flex; flex-direction: column;
+  transition: box-shadow 0.25s ease;
+}
+.org-card:hover { box-shadow: 0 14px 40px rgba(45,58,92,0.08); }
+.org-logo { min-height: 84px; display: flex; align-items: center; margin-bottom: 24px; }
+.org-logo img { max-height: 76px; max-width: 150px; object-fit: contain; }
+.org-pull {
+  font-family: var(--font-head); font-size: 19px; font-weight: 500;
+  color: var(--ink); line-height: 1.5; margin-bottom: 18px;
+}
+.org-attr { font-size: 14px; color: var(--slate); margin-top: auto; padding-top: 14px; }
+.org-attr strong { color: var(--ink); font-weight: 600; }
+
+/* Community voices: two-column cards, pull quote first, full letter on demand */
+.voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 44px; align-items: start; }
+.voice-card {
+  background: var(--ivory); border: 1px solid var(--line); border-radius: 6px;
+  padding: 36px 34px;
+  transition: box-shadow 0.25s ease;
+}
+.voice-card:hover { box-shadow: 0 14px 40px rgba(45,58,92,0.08); }
+.voice-card .voice-name { font-family: var(--font-head); font-size: 23px; font-weight: 700; color: var(--rose-deep); line-height: 1.2; }
+.voice-card .voice-cred { font-size: 13px; font-weight: 600; color: var(--taupe); margin: 6px 0 18px; }
+.voice-pull {
+  font-family: var(--font-head); font-size: 19px; font-weight: 500;
+  color: var(--ink); line-height: 1.52;
+}
+
+/* Full letter dropdown (the entire original letter, verbatim) */
+.letter { margin-top: 18px; }
+.letter > summary {
+  list-style: none; cursor: pointer; display: inline-block;
+  font-size: 14px; font-weight: 600; color: var(--rose-deep);
+  transition: color 0.18s ease;
+}
+.letter > summary::-webkit-details-marker { display: none; }
+.letter > summary:hover { color: var(--ink); }
+.letter > summary .lbl::before { content: "Read the full endorsement \2193"; }
+.letter[open] > summary .lbl::before { content: "Hide the full endorsement \2191"; }
+.letter-body { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 16px; }
+.letter-body p { font-size: 15px; color: var(--slate); line-height: 1.7; margin-bottom: 12px; }
+.letter-body p:last-child { margin-bottom: 0; }
+.org-card .letter > summary .lbl::before { content: "Read the full letter \2193"; }
+.org-card .letter[open] > summary .lbl::before { content: "Hide the full letter \2191"; }
+
+@media (max-width: 900px) {
+  .org-grid, .voice-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -118,7 +171,7 @@ textarea.field { resize: vertical; }
 
 <div class="end-hero">
   <img class="end-hero-bg" src="rocky-point-sunset.jpg" alt="" width="1000" height="563" aria-hidden="true">
-  <div class="end-hero-inner">
+  <div class="end-hero-inner appear is-in">
     <p class="t-kicker" style="color:var(--rose);">Endorsements</p>
     <h1>The community endorses Meghan Lahti.</h1>
     <p>Organizations, community leaders, and neighbours who know Meghan and are standing with her in this campaign. These are their own words.</p>
@@ -128,40 +181,44 @@ textarea.field { resize: vertical; }
 <!-- Featured organizational endorsements -->
 <section class="section bg-ivory">
   <div class="container">
-    <p class="t-kicker">Organizations</p>
-    <h2 class="t-h2" style="margin-bottom:8px;">Groups that work with Meghan.</h2>
-
-    <div class="feat">
-      <div class="feat-logo">
-        <img src="pm-firefighters-logo.png" alt="Port Moody Firefighters, IAFF Local 2399" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-        <div class="feat-org" style="display:none;">Port Moody Firefighters<div class="feat-role">IAFF Local 2399</div></div>
-      </div>
-      <div class="feat-body">
-        <p class="feat-lead">&ldquo;Over the last four years as Mayor, Meghan has consistently shown support for public safety and as such Port Moody Firefighters Local 2399 is proud to support Mayor Lahti in the upcoming election.&rdquo;</p>
-        <p class="feat-attr"><strong>Local President</strong>, Port Moody Firefighters, IAFF Local 2399</p>
-      </div>
+    <div class="appear">
+      <p class="t-kicker">Organizations</p>
+      <h2 class="t-h2" style="margin-bottom:8px;">Groups that work with Meghan.</h2>
     </div>
 
-    <div class="feat">
-      <div class="feat-logo">
-        <img src="pm-soccer-logo.png" alt="Port Moody Soccer Club" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-        <div class="feat-org" style="display:none;">Port Moody Soccer Club</div>
+    <div class="org-grid">
+      <div class="org-card appear">
+        <div class="org-logo">
+          <img src="pm-firefighters-logo.png" alt="Port Moody Firefighters, IAFF Local 2399" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <div class="feat-org" style="display:none;">Port Moody Firefighters<div class="feat-role">IAFF Local 2399</div></div>
+        </div>
+        <p class="org-pull">&ldquo;Over the last four years as Mayor, Meghan has consistently shown support for public safety and as such Port Moody Firefighters Local 2399 is proud to support Mayor Lahti in the upcoming election.&rdquo;</p>
+        <p class="org-attr"><strong>Local President</strong>, Port Moody Firefighters, IAFF Local 2399</p>
       </div>
-      <div class="feat-body">
-        <p class="feat-lead">&ldquo;As President of the Port Moody Soccer Club, I am proud to endorse Meghan Lahti for Mayor of Port Moody. Meghan has been a steadfast friend and champion of our club for many years, consistently showing up for our players, families, and volunteers.&rdquo;</p>
-        <p>&ldquo;Her leadership was instrumental in bringing the Inlet Field redevelopment project across the finish line. A transformative investment in youth sport and community space that will benefit Port Moody for generations. She also led the effort to name the new pitch Bob Favelle Field, honouring one of our club's most dedicated and long-serving members, and demonstrating the kind of thoughtful recognition that makes our community special.&rdquo;</p>
-        <p>&ldquo;Beyond infrastructure, Meghan has been a consistent advocate for our programs at City Hall, working to ensure that soccer, and youth sport more broadly, has the facilities, support, and visibility it deserves in Port Moody. She understands that strong recreational programs build strong neighbourhoods, and her record reflects a genuine commitment to the families who call this city home. I encourage residents to join me in supporting Meghan Lahti for Mayor.&rdquo;</p>
-        <p class="feat-attr"><strong>Matthew Campbell</strong>, President, Port Moody Soccer Club</p>
-      </div>
-    </div>
 
-    <div class="feat">
-      <div class="feat-logo">
-        <img src="nwdic.jpg" alt="New Westminster and District Labour Council">
+      <div class="org-card appear" style="--d:120ms">
+        <div class="org-logo">
+          <img src="pm-soccer-logo.png" alt="Port Moody Soccer Club" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <div class="feat-org" style="display:none;">Port Moody Soccer Club</div>
+        </div>
+        <p class="org-pull">&ldquo;As President of the Port Moody Soccer Club, I am proud to endorse Meghan Lahti for Mayor of Port Moody.&rdquo;</p>
+        <details class="letter">
+          <summary><span class="lbl"></span></summary>
+          <div class="letter-body">
+            <p>&ldquo;As President of the Port Moody Soccer Club, I am proud to endorse Meghan Lahti for Mayor of Port Moody. Meghan has been a steadfast friend and champion of our club for many years, consistently showing up for our players, families, and volunteers.&rdquo;</p>
+            <p>&ldquo;Her leadership was instrumental in bringing the Inlet Field redevelopment project across the finish line. A transformative investment in youth sport and community space that will benefit Port Moody for generations. She also led the effort to name the new pitch Bob Favelle Field, honouring one of our club's most dedicated and long-serving members, and demonstrating the kind of thoughtful recognition that makes our community special.&rdquo;</p>
+            <p>&ldquo;Beyond infrastructure, Meghan has been a consistent advocate for our programs at City Hall, working to ensure that soccer, and youth sport more broadly, has the facilities, support, and visibility it deserves in Port Moody. She understands that strong recreational programs build strong neighbourhoods, and her record reflects a genuine commitment to the families who call this city home. I encourage residents to join me in supporting Meghan Lahti for Mayor.&rdquo;</p>
+          </div>
+        </details>
+        <p class="org-attr"><strong>Matthew Campbell</strong>, President, Port Moody Soccer Club</p>
       </div>
-      <div class="feat-body">
-        <p class="feat-lead">&ldquo;Mayor Meghan Lahti is officially endorsed by the New Westminster &amp; District Labour Council, representing working people across the region.&rdquo;</p>
-        <p class="feat-attr"><strong>New Westminster &amp; District Labour Council</strong></p>
+
+      <div class="org-card appear" style="--d:240ms">
+        <div class="org-logo">
+          <img src="nwdic.jpg" alt="New Westminster and District Labour Council">
+        </div>
+        <p class="org-pull">&ldquo;Mayor Meghan Lahti is officially endorsed by the New Westminster &amp; District Labour Council, representing working people across the region.&rdquo;</p>
+        <p class="org-attr"><strong>New Westminster &amp; District Labour Council</strong></p>
       </div>
     </div>
   </div>
@@ -170,118 +227,161 @@ textarea.field { resize: vertical; }
 <!-- Individual community endorsements -->
 <section class="section bg-cream">
   <div class="container">
-    <p class="t-kicker">Community voices</p>
-    <h2 class="t-h2" style="margin-bottom:6px;">Neighbours, colleagues, and former officials.</h2>
-
-    <div class="voice">
-      <div class="voice-name">Joe Trasolini</div>
-      <div class="voice-cred">Former Mayor of Port Moody</div>
-      <div class="voice-body">
-        <p class="lead">&ldquo;I worked with Meghan on City Council from 1996 to 2011, and was always impressed with her solution-oriented approach and passion for Port Moody and the people who live here. Her commitment to the community continues in her role as Mayor where she has shown good governance through thoughtful and collaborative leadership.&rdquo;</p>
-        <p>&ldquo;Meghan has reestablished pride and respect for the City of Port Moody during her first term as Mayor. Once again, I am proud to walk the streets of our beautiful city.&rdquo;</p>
-      </div>
+    <div class="appear">
+      <p class="t-kicker">Community voices</p>
+      <h2 class="t-h2" style="margin-bottom:6px;">Neighbours, colleagues, and former officials.</h2>
     </div>
 
-    <div class="voice">
-      <div class="voice-name">Sandy Liles</div>
-      <div class="voice-cred">Former Port Moody City Councillor &middot; 40-year resident</div>
-      <div class="voice-body">
-        <p class="lead">&ldquo;In the 20+ years I've known her, Meghan has always demonstrated a sincere, devoted commitment to this city, its residents, and our beautiful natural surroundings. A natural leader, Meghan is consistently open to all views, is a keen listener, and as a result, has created a cohesive, functioning council again.&rdquo;</p>
-        <p>&ldquo;Her commitment to this community is long and deep, and evidenced by her stellar record of accomplishments as councillor and mayor. Her weekly open door policy at City Hall for residents to meet her one-on-one is just one example of her receptiveness to the needs and concerns of PoMo residents.&rdquo;</p>
-        <p>&ldquo;I am pleased to endorse her to bid to lead our city over the next 4 years.&rdquo;</p>
+    <div class="voice-grid">
+      <div class="voice-card appear" style="--d:0ms">
+        <div class="voice-name">Joe Trasolini</div>
+        <div class="voice-cred">Former Mayor of Port Moody</div>
+        <p class="voice-pull">&ldquo;Meghan has reestablished pride and respect for the City of Port Moody during her first term as Mayor. Once again, I am proud to walk the streets of our beautiful city.&rdquo;</p>
+        <details class="letter">
+          <summary><span class="lbl"></span></summary>
+          <div class="letter-body">
+          <p>&ldquo;I worked with Meghan on City Council from 1996 to 2011, and was always impressed with her solution-oriented approach and passion for Port Moody and the people who live here. Her commitment to the community continues in her role as Mayor where she has shown good governance through thoughtful and collaborative leadership.&rdquo;</p>
+          <p>&ldquo;Meghan has reestablished pride and respect for the City of Port Moody during her first term as Mayor. Once again, I am proud to walk the streets of our beautiful city.&rdquo;</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="voice-card appear" style="--d:120ms">
+        <div class="voice-name">Sandy Liles</div>
+        <div class="voice-cred">Former Port Moody City Councillor &middot; 40-year resident</div>
+        <p class="voice-pull">&ldquo;A natural leader, Meghan is consistently open to all views, is a keen listener, and as a result, has created a cohesive, functioning council again.&rdquo;</p>
+        <details class="letter">
+          <summary><span class="lbl"></span></summary>
+          <div class="letter-body">
+          <p>&ldquo;In the 20+ years I've known her, Meghan has always demonstrated a sincere, devoted commitment to this city, its residents, and our beautiful natural surroundings. A natural leader, Meghan is consistently open to all views, is a keen listener, and as a result, has created a cohesive, functioning council again.&rdquo;</p>
+          <p>&ldquo;Her commitment to this community is long and deep, and evidenced by her stellar record of accomplishments as councillor and mayor. Her weekly open door policy at City Hall for residents to meet her one-on-one is just one example of her receptiveness to the needs and concerns of PoMo residents.&rdquo;</p>
+          <p>&ldquo;I am pleased to endorse her to bid to lead our city over the next 4 years.&rdquo;</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="voice-card appear" style="--d:0ms">
+        <div class="voice-name">Gerry Nuttal</div>
+        <div class="voice-cred">50+ year resident &middot; Freedom of the City Recipient &middot; Former City Councillor</div>
+        <p class="voice-pull">&ldquo;I fully endorse Meghan to carry on for another four years and look forward to a Council that can speak freely at the council table.&rdquo;</p>
+        <details class="letter">
+          <summary><span class="lbl"></span></summary>
+          <div class="letter-body">
+          <p>&ldquo;My wife Barbara and I have lived in Port Moody for over 50 years. That being said, I have seen a lot of Mayors come and go. I have seen the best as well as the worst. I also spent 9 years on council which gives me a pretty good perspective on what it takes to make a good mayor.&rdquo;</p>
+          <p>&ldquo;In my opinion the best Mayors Port Moody has seen all have the same two attributes, a history of community involvement followed by years (at least 2 terms) serving as a City Councillor. Meghan Lahti is one of those people.&rdquo;</p>
+          <p>&ldquo;I first met Meghan over 25 years ago when she was involved with girl guides as well as the president of Golden Spike Days. She has gained knowledge and experience through her many years on Council as well as this past term as Mayor.&rdquo;</p>
+          <p>&ldquo;As the leader of Council the Mayor must bring together a council of independent thinkers who, while able to get their point across, do so in a respectful manner. Meghan has done an exceptional job in this regard. I fully endorse Meghan to carry on for another four years and look forward to a Council that can speak freely at the council table.&rdquo;</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="voice-card appear" style="--d:120ms">
+        <div class="voice-name">Roshni Naik</div>
+        <div class="voice-cred">Community volunteer &middot; Board Member, Port Moody Arts Centre &middot; Arts, Culture and Heritage Committee</div>
+        <p class="voice-pull">&ldquo;What stands out most about Meghan is that she genuinely cares about people.&rdquo;</p>
+        <details class="letter">
+          <summary><span class="lbl"></span></summary>
+          <div class="letter-body">
+          <p>&ldquo;I am honoured to offer my wholehearted endorsement of Mayor Meghan Lahti.&rdquo;</p>
+          <p>&ldquo;I have known Meghan for many years. First as a neighbour after my family moved to Port Moody in 2009, then as a friend, and ultimately as a Mayor whose leadership I have deeply admired and appreciated. Over the years, I have witnessed firsthand her unwavering commitment to the people of Port Moody and the integrity with which she approaches public service.&rdquo;</p>
+          <p>&ldquo;What stands out most about Meghan is that she genuinely cares about people. She listens carefully, makes time for residents, and treats everyone with respect and dignity regardless of their background or perspective. In an era where political discourse at every level has become increasingly polarized and adversarial, Meghan has consistently brought a calm, thoughtful, and steady presence to our community.&rdquo;</p>
+          <p>&ldquo;Port Moody has faced significant tensions surrounding growth, development, and the future direction of our city. Through these challenges, Meghan has worked hard to encourage respectful dialogue, civility, and meaningful communication between differing viewpoints. She understands that communities thrive not when everyone agrees, but when people feel heard, respected, and included in the conversation.&rdquo;</p>
+          <p>&ldquo;I have also been especially impressed by her connection to youth in our community. I witnessed this at a Community Leader Appreciation event at Seaview Elementary, where she engaged with students with remarkable patience, kindness, and attentiveness. She answered every student's question thoughtfully and spoke to children with the same respect she offers long-standing community members. That ability to make people feel valued, regardless of age or status, speaks volumes about her character.&rdquo;</p>
+          <p>&ldquo;Beyond her leadership, I deeply appreciate Meghan's love for Port Moody itself: its history, natural beauty, and unique sense of community. She thinks long-term, balancing present needs with the responsibility we hold toward future generations. At a time when many leaders are swept up in division, fear, and reactionary politics, Meghan remains grounded, compassionate, and future-focused.&rdquo;</p>
+          <p>&ldquo;As a long-standing community volunteer, philanthropist, parent, business owner, Board Member of the Port Moody Arts Centre (2024-2026), and member of the City of Port Moody's Arts, Culture and Heritage Committee, I do not offer this endorsement lightly. I believe Meghan Lahti represents the kind of leadership our community needs: thoughtful, honest, kind, and deeply committed to the well-being of Port Moody and its people.&rdquo;</p>
+          <p>&ldquo;I am proud to endorse Mayor Meghan Lahti and strongly support her continued leadership for our city.&rdquo;</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="voice-card appear" style="--d:0ms">
+        <div class="voice-name">Rick DeHart</div>
+        <div class="voice-cred">Port Moody resident, 29 years &middot; Owner, Stonehouse PCS Ltd.</div>
+        <p class="voice-pull">&ldquo;Meghan possesses the exact blend of experience, leadership, and integrity necessary to move Port Moody forward.&rdquo;</p>
+        <details class="letter">
+          <summary><span class="lbl"></span></summary>
+          <div class="letter-body">
+          <p>&ldquo;As a long-time resident and local business owner of Port Moody, I am writing to enthusiastically endorse Meghan Lahti for re-election to the office of Mayor.&rdquo;</p>
+          <p>&ldquo;Throughout their career in public service, I have had the opportunity to directly observe Meghan's dedication, integrity, and unwavering commitment to serving our community. They have consistently demonstrated a profound ability to listen to constituents' concerns and translate them into effective, actionable policies.&rdquo;</p>
+          <p>&ldquo;Their vision for our city strongly aligns with the needs of our families and neighbors. Meghan has been a steadfast champion for sustainable economic growth, improving local parks and recreation and ensuring reasonable residential developments.&rdquo;</p>
+          <p>&ldquo;I have personally witnessed their hands-on leadership over the past three years. This experience underscores their transparency, inclusivity, and genuine passion for public service.&rdquo;</p>
+          <p>&ldquo;Meghan possesses the exact blend of experience, leadership, and integrity necessary to move Port Moody forward. Therefore, I confidently recommend them for re-election as Mayor.&rdquo;</p>
+          <p>&ldquo;I urge all members of our community to join me in supporting Meghan in the upcoming election. Together, we can shape a brighter, more prosperous future for our city.&rdquo;</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="voice-card appear" style="--d:120ms">
+        <div class="voice-name">Chris Chong</div>
+        <div class="voice-cred">Port Moody Resident &middot; Business Owner</div>
+        <p class="voice-pull">&ldquo;Common sense and sensibility is what Port Moody needs, and that's why I'm voting for Mayor Lahti.&rdquo;</p>
+        <details class="letter">
+          <summary><span class="lbl"></span></summary>
+          <div class="letter-body">
+          <p>&ldquo;As a resident of Port Moody I am happy to endorse Meghan Lahti towards a new term as Mayor of the City of Port Moody. Mayor Lahti has proven to lead city council with a sensible approach that encourages a steady and moderate growth a small city needs in the current economic and social climate.&rdquo;</p>
+          <p>&ldquo;Growth of every city is inevitable and Port Moody is no exception. It is time to re-establish the city as the City of the Arts once again and encourage small business sustainability while recreating the charm of the city, which I have confidence in Meghan to do so.&rdquo;</p>
+          <p>&ldquo;Encouraging our younger generation to participate brings new possibility and this is also something that Meghan has championed. Common sense and sensibility is what Port Moody needs, and that's why I'm voting for Mayor Lahti.&rdquo;</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="voice-card appear" style="--d:0ms">
+        <div class="voice-name">Sharon McRae</div>
+        <div class="voice-cred">Port Moody resident for 28 years</div>
+        <p class="voice-pull">&ldquo;Mayor Lahti is a person of exceptional kindness, generosity, and sincere caring.&rdquo;</p>
+        <details class="letter">
+          <summary><span class="lbl"></span></summary>
+          <div class="letter-body">
+          <p>&ldquo;I am pleased to offer my full support for Mayor Meghan Lahti in her bid for re-election as Mayor of Port Moody.&rdquo;</p>
+          <p>&ldquo;As a resident of Port Moody for over 28 years, I have personally witnessed Mayor Meghan Lahti's dedication, responsiveness and general commitment to those she serves. She is always willing to listen to resident's concerns privately, in her office, or at council meetings, and most importantly, she acts not just in words but through concrete results. She is improving our safety, strengthening our neighbourhoods, and has done an incredible job having the pressure of our provincial government dictating growth directives with transparency, and commitment to both the province and Port Moody residents.&rdquo;</p>
+          <p>&ldquo;She has always demonstrated her commitment to serving the community with integrity, transparency, and a clear vision not just for now, but for our future. She has not only addressed immediate challenges but is constantly laying the groundwork for long-term growth and sustainability. Our current mayor's collaborative approach with local businesses, organizations, and residents has strengthened our community during her terms as our mayor.&rdquo;</p>
+          <p>&ldquo;In a time when strong, intellectual leadership is needed to run our council and city, Mayor Meghan Lahti has proven herself not only capable but deserving of our votes for continued leadership of our community.&rdquo;</p>
+          <p>&ldquo;Mayor Lahti is a person of exceptional kindness, generosity, and sincere caring. This is evident in every interaction and initiative she takes on. Always present at our community events or representing our community with her knowledge and concerns at functions at all levels of government.&rdquo;</p>
+          <p>&ldquo;Lastly, what sets Mayor Meghan Lahti apart is her unwavering dedication to putting the needs of Port Moody first. She leads with transparency, integrity, empathy, and has for over 28 years of public service shown a strength in logic of financial responsibilities, making decisions carefully to ensure fiscal accountability for long-term sustainability.&rdquo;</p>
+          <p>&ldquo;I am happy to endorse Mayor Meghan Lahti, one of the longest serving council members in Port Moody's history, for re-election to lead us all with her experience, compassion, accountability, and transparency. We would continue to benefit from her leadership of our council.&rdquo;</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="voice-card appear" style="--d:120ms">
+        <div class="voice-name">Cynthia Gillanders, RHIP</div>
+        <div class="voice-cred">Founder, Inlet Hearing Inc. &middot; Port Moody resident</div>
+        <p class="voice-pull">&ldquo;As Port Moody continues to grow and evolve, Meghan has worked hard to ensure the city maintains the character, culture, and sense of community that make it so special.&rdquo;</p>
+        <details class="letter">
+          <summary><span class="lbl"></span></summary>
+          <div class="letter-body">
+          <p>&ldquo;As both a resident of Port Moody and someone who has known Meghan Lahti for many years, I am proud to support her as Mayor of our city. Meghan genuinely cares about Port Moody and the people who call it home. She leads with transparency, compassion, and responsiveness, and she has shown time and again that she is willing to step up, listen, and take action when it matters most.&rdquo;</p>
+          <p>&ldquo;As Port Moody continues to grow and evolve, Meghan has worked hard to ensure the city maintains the character, culture, and sense of community that make it so special. Her leadership reflects a thoughtful balance of progress and preservation, always with the best interests of residents at heart. She is dedicated, hardworking, and deeply invested in the future of this community, and I believe Port Moody is stronger because of her leadership.&rdquo;</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="voice-card appear" style="--d:0ms">
+        <div class="voice-name">Jasmine Pilling</div>
+        <div class="voice-cred">Port Moody resident &middot; Educator</div>
+        <p class="voice-pull">&ldquo;She is approachable and listens respectfully to the concerns of residents. That is exactly what a city needs: a mayor who remains connected to the people she serves and who is truly one of us.&rdquo;</p>
+        <details class="letter">
+          <summary><span class="lbl"></span></summary>
+          <div class="letter-body">
+          <p>&ldquo;Meghan Lahti has always come across to me as a respectful, thoughtful, and dedicated leader with a genuine passion for serving our community. Her commitment to strengthening the role of mayor and working to make Port Moody an even better place to live is evident in the care and dedication she brings to her work.&rdquo;</p>
+          <p>&ldquo;She is approachable and listens respectfully to the concerns of residents. That is exactly what a city needs: a mayor who remains connected to the people she serves and who is truly one of us.&rdquo;</p>
+          <p>&ldquo;As a resident of Port Moody, I feel fortunate to have her leading our city. It is clear that she genuinely loves this community, and that passion shines through in all that she does.&rdquo;</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="voice-card appear" style="--d:120ms">
+        <div class="voice-name">Vanessa Wideski</div>
+        <div class="voice-cred">Founder, Low Entropy Foundation</div>
+        <p class="voice-pull">&ldquo;Mayor Meghan Lahti has been a positive and inspiring presence in our community.&rdquo;</p>
+        <details class="letter">
+          <summary><span class="lbl"></span></summary>
+          <div class="letter-body">
+          <p>&ldquo;Mayor Meghan Lahti has been a positive and inspiring presence in our community. We were honoured to have her as a guest speaker at our inaugural Women Rising event last year, where she shared thoughtful insights on leadership, community, and creating opportunities for women to thrive. Her dedication to service, collaboration, and building a stronger community continues to make a meaningful impact.&rdquo;</p>
+          </div>
+        </details>
       </div>
     </div>
-
-    <div class="voice">
-      <div class="voice-name">Gerry Nuttal</div>
-      <div class="voice-cred">50+ year resident &middot; Freedom of the City Recipient &middot; Former City Councillor</div>
-      <div class="voice-body">
-        <p class="lead">&ldquo;My wife Barbara and I have lived in Port Moody for over 50 years. That being said, I have seen a lot of Mayors come and go. I have seen the best as well as the worst. I also spent 9 years on council which gives me a pretty good perspective on what it takes to make a good mayor.&rdquo;</p>
-        <p>&ldquo;In my opinion the best Mayors Port Moody has seen all have the same two attributes, a history of community involvement followed by years (at least 2 terms) serving as a City Councillor. Meghan Lahti is one of those people.&rdquo;</p>
-        <p>&ldquo;I first met Meghan over 25 years ago when she was involved with girl guides as well as the president of Golden Spike Days. She has gained knowledge and experience through her many years on Council as well as this past term as Mayor.&rdquo;</p>
-        <p>&ldquo;As the leader of Council the Mayor must bring together a council of independent thinkers who, while able to get their point across, do so in a respectful manner. Meghan has done an exceptional job in this regard. I fully endorse Meghan to carry on for another four years and look forward to a Council that can speak freely at the council table.&rdquo;</p>
-      </div>
-    </div>
-
-    <div class="voice">
-      <div class="voice-name">Roshni Naik</div>
-      <div class="voice-cred">Community volunteer &middot; Board Member, Port Moody Arts Centre &middot; Arts, Culture and Heritage Committee</div>
-      <div class="voice-body">
-        <p class="lead">&ldquo;I am honoured to offer my wholehearted endorsement of Mayor Meghan Lahti.&rdquo;</p>
-        <p>&ldquo;I have known Meghan for many years. First as a neighbour after my family moved to Port Moody in 2009, then as a friend, and ultimately as a Mayor whose leadership I have deeply admired and appreciated. Over the years, I have witnessed firsthand her unwavering commitment to the people of Port Moody and the integrity with which she approaches public service.&rdquo;</p>
-        <p>&ldquo;What stands out most about Meghan is that she genuinely cares about people. She listens carefully, makes time for residents, and treats everyone with respect and dignity regardless of their background or perspective. In an era where political discourse at every level has become increasingly polarized and adversarial, Meghan has consistently brought a calm, thoughtful, and steady presence to our community.&rdquo;</p>
-        <p>&ldquo;Port Moody has faced significant tensions surrounding growth, development, and the future direction of our city. Through these challenges, Meghan has worked hard to encourage respectful dialogue, civility, and meaningful communication between differing viewpoints. She understands that communities thrive not when everyone agrees, but when people feel heard, respected, and included in the conversation.&rdquo;</p>
-        <p>&ldquo;I have also been especially impressed by her connection to youth in our community. I witnessed this at a Community Leader Appreciation event at Seaview Elementary, where she engaged with students with remarkable patience, kindness, and attentiveness. She answered every student's question thoughtfully and spoke to children with the same respect she offers long-standing community members. That ability to make people feel valued, regardless of age or status, speaks volumes about her character.&rdquo;</p>
-        <p>&ldquo;Beyond her leadership, I deeply appreciate Meghan's love for Port Moody itself: its history, natural beauty, and unique sense of community. She thinks long-term, balancing present needs with the responsibility we hold toward future generations. At a time when many leaders are swept up in division, fear, and reactionary politics, Meghan remains grounded, compassionate, and future-focused.&rdquo;</p>
-        <p>&ldquo;As a long-standing community volunteer, philanthropist, parent, business owner, Board Member of the Port Moody Arts Centre (2024-2026), and member of the City of Port Moody's Arts, Culture and Heritage Committee, I do not offer this endorsement lightly. I believe Meghan Lahti represents the kind of leadership our community needs: thoughtful, honest, kind, and deeply committed to the well-being of Port Moody and its people.&rdquo;</p>
-        <p>&ldquo;I am proud to endorse Mayor Meghan Lahti and strongly support her continued leadership for our city.&rdquo;</p>
-      </div>
-    </div>
-
-    <div class="voice">
-      <div class="voice-name">Rick DeHart</div>
-      <div class="voice-cred">Port Moody resident, 29 years &middot; Owner, Stonehouse PCS Ltd.</div>
-      <div class="voice-body">
-        <p class="lead">&ldquo;As a long-time resident and local business owner of Port Moody, I am writing to enthusiastically endorse Meghan Lahti for re-election to the office of Mayor.&rdquo;</p>
-        <p>&ldquo;Throughout their career in public service, I have had the opportunity to directly observe Meghan's dedication, integrity, and unwavering commitment to serving our community. They have consistently demonstrated a profound ability to listen to constituents' concerns and translate them into effective, actionable policies.&rdquo;</p>
-        <p>&ldquo;Their vision for our city strongly aligns with the needs of our families and neighbors. Meghan has been a steadfast champion for sustainable economic growth, improving local parks and recreation and ensuring reasonable residential developments.&rdquo;</p>
-        <p>&ldquo;I have personally witnessed their hands-on leadership over the past three years. This experience underscores their transparency, inclusivity, and genuine passion for public service.&rdquo;</p>
-        <p>&ldquo;Meghan possesses the exact blend of experience, leadership, and integrity necessary to move Port Moody forward. Therefore, I confidently recommend them for re-election as Mayor.&rdquo;</p>
-        <p>&ldquo;I urge all members of our community to join me in supporting Meghan in the upcoming election. Together, we can shape a brighter, more prosperous future for our city.&rdquo;</p>
-      </div>
-    </div>
-
-    <div class="voice">
-      <div class="voice-name">Chris Chong</div>
-      <div class="voice-cred">Port Moody Resident &middot; Business Owner</div>
-      <div class="voice-body">
-        <p class="lead">&ldquo;As a resident of Port Moody I am happy to endorse Meghan Lahti towards a new term as Mayor of the City of Port Moody. Mayor Lahti has proven to lead city council with a sensible approach that encourages a steady and moderate growth a small city needs in the current economic and social climate.&rdquo;</p>
-        <p>&ldquo;Growth of every city is inevitable and Port Moody is no exception. It is time to re-establish the city as the City of the Arts once again and encourage small business sustainability while recreating the charm of the city, which I have confidence in Meghan to do so.&rdquo;</p>
-        <p>&ldquo;Encouraging our younger generation to participate brings new possibility and this is also something that Meghan has championed. Common sense and sensibility is what Port Moody needs, and that's why I'm voting for Mayor Lahti.&rdquo;</p>
-      </div>
-    </div>
-
-    <div class="voice">
-      <div class="voice-name">Sharon McRae</div>
-      <div class="voice-cred">Port Moody resident for 28 years</div>
-      <div class="voice-body">
-        <p class="lead">&ldquo;I am pleased to offer my full support for Mayor Meghan Lahti in her bid for re-election as Mayor of Port Moody.&rdquo;</p>
-        <p>&ldquo;As a resident of Port Moody for over 28 years, I have personally witnessed Mayor Meghan Lahti's dedication, responsiveness and general commitment to those she serves. She is always willing to listen to resident's concerns privately, in her office, or at council meetings, and most importantly, she acts not just in words but through concrete results. She is improving our safety, strengthening our neighbourhoods, and has done an incredible job having the pressure of our provincial government dictating growth directives with transparency, and commitment to both the province and Port Moody residents.&rdquo;</p>
-        <p>&ldquo;She has always demonstrated her commitment to serving the community with integrity, transparency, and a clear vision not just for now, but for our future. She has not only addressed immediate challenges but is constantly laying the groundwork for long-term growth and sustainability. Our current mayor's collaborative approach with local businesses, organizations, and residents has strengthened our community during her terms as our mayor.&rdquo;</p>
-        <p>&ldquo;In a time when strong, intellectual leadership is needed to run our council and city, Mayor Meghan Lahti has proven herself not only capable but deserving of our votes for continued leadership of our community.&rdquo;</p>
-        <p>&ldquo;Mayor Lahti is a person of exceptional kindness, generosity, and sincere caring. This is evident in every interaction and initiative she takes on. Always present at our community events or representing our community with her knowledge and concerns at functions at all levels of government.&rdquo;</p>
-        <p>&ldquo;Lastly, what sets Mayor Meghan Lahti apart is her unwavering dedication to putting the needs of Port Moody first. She leads with transparency, integrity, empathy, and has for over 28 years of public service shown a strength in logic of financial responsibilities, making decisions carefully to ensure fiscal accountability for long-term sustainability.&rdquo;</p>
-        <p>&ldquo;I am happy to endorse Mayor Meghan Lahti, one of the longest serving council members in Port Moody's history, for re-election to lead us all with her experience, compassion, accountability, and transparency. We would continue to benefit from her leadership of our council.&rdquo;</p>
-      </div>
-    </div>
-
-    <div class="voice">
-      <div class="voice-name">Cynthia Gillanders, RHIP</div>
-      <div class="voice-cred">Founder, Inlet Hearing Inc. &middot; Port Moody resident</div>
-      <div class="voice-body">
-        <p class="lead">&ldquo;As both a resident of Port Moody and someone who has known Meghan Lahti for many years, I am proud to support her as Mayor of our city. Meghan genuinely cares about Port Moody and the people who call it home. She leads with transparency, compassion, and responsiveness, and she has shown time and again that she is willing to step up, listen, and take action when it matters most.&rdquo;</p>
-        <p>&ldquo;As Port Moody continues to grow and evolve, Meghan has worked hard to ensure the city maintains the character, culture, and sense of community that make it so special. Her leadership reflects a thoughtful balance of progress and preservation, always with the best interests of residents at heart. She is dedicated, hardworking, and deeply invested in the future of this community, and I believe Port Moody is stronger because of her leadership.&rdquo;</p>
-      </div>
-    </div>
-
-    <div class="voice">
-      <div class="voice-name">Jasmine Pilling</div>
-      <div class="voice-cred">Port Moody resident &middot; Educator</div>
-      <div class="voice-body">
-        <p class="lead">&ldquo;Meghan Lahti has always come across to me as a respectful, thoughtful, and dedicated leader with a genuine passion for serving our community. Her commitment to strengthening the role of mayor and working to make Port Moody an even better place to live is evident in the care and dedication she brings to her work.&rdquo;</p>
-        <p>&ldquo;She is approachable and listens respectfully to the concerns of residents. That is exactly what a city needs: a mayor who remains connected to the people she serves and who is truly one of us.&rdquo;</p>
-        <p>&ldquo;As a resident of Port Moody, I feel fortunate to have her leading our city. It is clear that she genuinely loves this community, and that passion shines through in all that she does.&rdquo;</p>
-      </div>
-    </div>
-
-    <div class="voice">
-      <div class="voice-name">Vanessa Wideski</div>
-      <div class="voice-cred">Founder, Low Entropy Foundation</div>
-      <div class="voice-body">
-        <p class="lead">&ldquo;Mayor Meghan Lahti has been a positive and inspiring presence in our community. We were honoured to have her as a guest speaker at our inaugural Women Rising event last year, where she shared thoughtful insights on leadership, community, and creating opportunities for women to thrive. Her dedication to service, collaboration, and building a stronger community continues to make a meaningful impact.&rdquo;</p>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -398,6 +498,19 @@ textarea.field { resize: vertical; }
   var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 4); };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.appear');
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  }
 })();
 </script>
 </body>
