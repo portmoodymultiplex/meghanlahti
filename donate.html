@@ -91,7 +91,7 @@
 <main>
 
 <div class="page-banner">
-  <div class="banner-inner">
+  <div class="banner-inner appear is-in">
     <p class="t-kicker">Donate</p>
     <h1>Chip in for the <em>campaign</em>.</h1>
     <hr class="t-rule">
@@ -105,7 +105,7 @@
     <h2 class="t-h2" style="margin-bottom:14px;">$20.26 for 2026.</h2>
     <p class="t-body" style="max-width:60ch; margin-bottom:32px;">A small amount with a big meaning. Chip in $20.26 to help power the campaign, or choose an amount that works for you.</p>
 
-    <div class="amounts" role="group" aria-label="Choose a donation amount">
+    <div class="amounts appear" role="group" aria-label="Choose a donation amount">
       <button type="button" class="amount featured" data-amount="20.26">$20.26</button>
       <button type="button" class="amount" data-amount="50">$50</button>
       <button type="button" class="amount" data-amount="100">$100</button>
@@ -123,7 +123,7 @@
   <div class="container">
     <p class="t-kicker">BC campaign finance rules</p>
     <h2 class="t-h2" style="margin-bottom:24px;">When donations open, here is how it will work.</h2>
-    <div class="rules-box">
+    <div class="rules-box appear">
       <h3>The rules, in plain terms.</h3>
       <ul class="rules-list">
         <li><strong>Maximum contribution: $1,429.70 per individual for 2026.</strong> Updated by Elections BC every January 1st.</li>
@@ -159,6 +159,19 @@
   var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 4); };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.appear');
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  }
 })();
 </script>
 <script>
