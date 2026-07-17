@@ -94,7 +94,16 @@
   background: linear-gradient(155deg, var(--rose) 0%, var(--rose-deep) 100%);
   padding: 160px 72px;
 }
-.meet-inner { max-width: 880px; margin: 0 auto; }
+.meet-inner {
+  max-width: 1120px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(48px, 6vw, 88px); align-items: center;
+}
+.meet-photo { margin: 0; }
+.meet-photo img {
+  width: 100%; height: auto; border-radius: 6px; display: block;
+  box-shadow: 0 26px 60px rgba(31,42,69,0.28);
+}
 .meet-band .t-kicker { color: rgba(255,255,255,0.9); }
 .meet-lead {
   font-family: var(--font-head);
@@ -116,34 +125,50 @@
 .appear.is-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .appear { opacity: 1; transform: none; transition: none; } }
 
-/* ── THE PLATFORM AREA (one sheet: the four commitments and the
-     next-term deliverables, presented as a single document) ── */
-.plat-sheet {
-  background: var(--ivory);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 72px 76px 80px;
-  box-shadow: 0 30px 70px rgba(45,58,92,0.07);
+/* ── THE PLATFORM AREA (commitments left, next-term rail right) ── */
+.plat-wrap {
+  display: grid; grid-template-columns: 1.55fr 1fr;
+  gap: clamp(56px, 7vw, 110px); align-items: start;
 }
-.plat-head { margin-bottom: 8px; }
-.pri-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  border-top: 1px solid var(--line); margin-top: 44px;
-}
-.pri-card { padding: 48px 52px 52px 0; }
-.pri-card:nth-child(even) { padding: 48px 0 52px 52px; border-left: 1px solid var(--line); }
-.pri-card:nth-child(n+3) { border-top: 1px solid var(--line); }
+.plat-main .t-display { margin-bottom: 10px; }
+.pri-block { padding: 46px 0 50px; border-top: 1px solid var(--line); }
+.plat-main .t-display + .pri-block { border-top: 0; margin-top: 22px; }
 .pri-num {
   font-family: var(--font-head); font-size: 20px; font-weight: 700;
-  color: var(--rose); line-height: 1; margin-bottom: 16px;
+  color: var(--rose); line-height: 1; margin-bottom: 14px;
 }
-.pri-card h3 {
+.pri-block h3 {
   font-family: var(--font-head);
-  font-size: clamp(24px, 2.2vw, 30px);
+  font-size: clamp(25px, 2.4vw, 32px);
   font-weight: 700; color: var(--ink); line-height: 1.12;
   letter-spacing: -0.005em; margin-bottom: 14px;
 }
-.pri-lede { font-size: 17px; color: var(--slate); font-weight: 400; line-height: 1.66; }
+.pri-lede { font-size: 18px; color: var(--ink); font-weight: 500; line-height: 1.6; max-width: 58ch; }
+.pri-body { font-size: 17px; color: var(--slate); line-height: 1.72; margin-top: 14px; max-width: 60ch; }
+
+/* The next-term rail: sticky, items rise in one after another */
+.plat-rail { position: sticky; top: 122px; }
+.nt-title {
+  font-family: var(--font-head);
+  font-size: clamp(23px, 2.2vw, 29px);
+  font-weight: 700; color: var(--ink); line-height: 1.16;
+  letter-spacing: -0.005em;
+}
+.nt-list { list-style: none; margin-top: 26px; border-top: 1px solid var(--line); }
+.nt-list li {
+  display: grid; grid-template-columns: 42px 1fr; gap: 16px;
+  align-items: baseline; padding: 19px 0;
+  border-bottom: 1px solid var(--line);
+}
+.nt-num {
+  font-family: var(--font-head); font-size: 21px; font-weight: 700;
+  color: var(--rose); line-height: 1;
+}
+.nt-item {
+  font-family: var(--font-head); font-size: 19px;
+  font-weight: 600; color: var(--ink); line-height: 1.4;
+}
+.plat-rail .btn { margin-top: 30px; }
 
 /* Learn more: the card expands in place, nothing else moves */
 .pri-more { margin-top: 20px; }
@@ -154,7 +179,7 @@
 }
 .pri-more > summary::-webkit-details-marker { display: none; }
 .pri-more > summary:hover { color: var(--ink); }
-.pri-more > summary .more::before { content: "Learn more \2192"; }
+.pri-more > summary .more::before { content: "Read more \2192"; }
 .pri-more[open] > summary .more::before { content: "Show less \2191"; }
 .pri-detail { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 24px; }
 .pri-more[open] .pri-detail { animation: heroRise 350ms ease both; }
@@ -254,7 +279,7 @@
 .built-all { margin-top: 52px; }
 
 /* ── VOLUNTEER (one photograph, one headline, one sentence, one button) ── */
-.vol-cta { position: relative; background: var(--ink); padding: 176px 72px; text-align: center; overflow: hidden; }
+.vol-cta { position: relative; background: var(--ink); padding: 176px 72px; overflow: hidden; }
 .vol-bg {
   position: absolute; left: 0; right: 0; top: -9%; width: 100%; height: 118%;
   object-fit: cover; object-position: center 30%;
@@ -264,7 +289,8 @@
   content: ""; position: absolute; inset: 0; z-index: 1;
   background: linear-gradient(to bottom, rgba(31,42,69,0.62) 0%, rgba(31,42,69,0.84) 100%);
 }
-.vol-inner { position: relative; z-index: 2; max-width: 780px; margin: 0 auto; }
+.vol-inner { position: relative; z-index: 2; max-width: 1120px; margin: 0 auto; }
+.vol-content { max-width: 560px; margin-left: auto; text-align: left; }
 .vol-inner h2 {
   font-family: var(--font-head);
   font-size: clamp(30px, 3.8vw, 48px);
@@ -272,7 +298,12 @@
   letter-spacing: -0.01em; margin-bottom: 20px;
   text-shadow: 0 2px 18px rgba(0,0,0,0.35);
 }
-.vol-inner p { font-size: 18px; color: var(--rose-pale); font-weight: 600; letter-spacing: 0.02em; margin-bottom: 44px; }
+.vol-slogan {
+  font-family: var(--font-head);
+  font-size: clamp(21px, 2.2vw, 28px); font-weight: 600;
+  color: var(--ivory); margin-bottom: 44px;
+}
+.vol-slogan em { font-style: italic; color: var(--rose); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
@@ -286,12 +317,13 @@
   .hero-copy { padding: 24px 26px 72px; }
   .hero-actions { margin-top: 32px; }
   .hero .btn-hero { padding: 15px 28px; font-size: 15px; }
-  .meet-band { padding: 100px 26px; }
-  .plat-sheet { padding: 40px 26px 48px; }
-  .plat-split { margin: 44px auto 40px; }
-  .pri-grid { grid-template-columns: 1fr; }
-  .pri-card { padding: 36px 0; }
-  .pri-card:nth-child(even) { padding: 36px 0; border-left: 0; border-top: 1px solid var(--line); }
+  .meet-band { padding: 88px 26px; }
+  .meet-inner { grid-template-columns: 1fr; gap: 40px; }
+  .plat-wrap { grid-template-columns: 1fr; gap: 64px; }
+  .plat-rail { position: static; }
+  .pri-block { padding: 38px 0 42px; }
+  .vol-cta { padding: 112px 26px; }
+  .vol-content { max-width: none; }
   .endorse-band { padding: 88px 26px; }
   .endorse-inner h2 { margin-bottom: 40px; }
   .end-grid { grid-template-columns: 1fr; }
@@ -349,102 +381,98 @@
 
 <!-- 2. MEET MEGHAN (pink band, no photos, no timeline) -->
 <section class="meet-band">
-  <div class="meet-inner appear">
+  <div class="meet-inner">
+    <div class="meet-text appear">
     <p class="t-kicker">Meet Meghan</p>
-    <p class="meet-lead">Nearly thirty years of service means knowing the people, the files, and the work already underway. But experience only matters when it helps people work together, make sound decisions, and keep the community at the centre.</p>
+    <p class="meet-lead">Nearly thirty years of service means knowing the people, the issues, and the work already underway. But experience only matters when it helps people work together, make sound decisions, and keep the community at the centre.</p>
     <p class="meet-support">Outside the council chamber, I have spent my time working in post-secondary education and as a business owner. Most of what I know about this place, though, I learned the ordinary way: as a community volunteer, Girl Guide leader, soccer mom and Rotarian.</p>
     <p class="meet-support" style="margin-top:18px;">I love Port Moody. That is why I have spent most of my adult life in service to this community. It is where my husband and I chose to raise our family, and it is a place I am proud to have had the opportunity to help shape into the community we all know and love.</p>
+    </div>
+    <figure class="meet-photo appear" style="--d:150ms">
+      <img src="ML-162.jpg" alt="Meghan Lahti holding her granddaughter" width="1400" height="933" loading="lazy">
+    </figure>
   </div>
 </section>
 
-<!-- 3. THE PLATFORM AREA: one sheet holding the four commitments and the next-term deliverables -->
+<!-- 3. THE PLATFORM AREA: commitments on the left, next-term deliverables on a sticky rail -->
 <section class="section bg-cream" id="priorities">
   <div class="container">
-    <div class="plat-sheet">
-      <div class="plat-head appear">
-        <h2 class="t-display">Four Priorities</h2>
-      </div>
+    <div class="plat-wrap">
+      <div class="plat-main">
+        <h2 class="t-display appear">Four Priorities</h2>
 
-      <div class="pri-grid">
+        <article class="pri-block appear" id="p-move">
+          <div class="pri-num" aria-hidden="true">01</div>
+          <h3>A City That Moves</h3>
+          <p class="pri-lede">Getting around Port Moody is the number one thing people raise with me, and I do not blame them.</p>
+          <p class="pri-body">The Shoreline Shuttle is back on the road this summer, the e-bike and e-scooter program is in place, and the multi-use path on St. Johns is built, with more to come.</p>
+          <details class="pri-more">
+            <summary><span class="more"></span></summary>
+            <div class="pri-detail">
+              <p>Next is the congestion itself. We widen the bridge at Barnet and Ioco first, then add the rush-hour lane on St. Johns, in that order, because the bridge has to come first or the lane simply moves the bottleneck.</p>
+              <p>Anyone promising a quick fix for St. Johns has not studied the issue.</p>
+            </div>
+          </details>
+        </article>
 
-    <!-- Priority 1 -->
-    <article class="pri-card appear" id="p-move">
-      <div class="pri-num" aria-hidden="true">01</div>
-      <h3>A City That Moves</h3>
-      <p class="pri-lede">Getting around Port Moody is the number one thing people raise with me, and I do not blame them.</p>
-      <details class="pri-more">
-        <summary><span class="more"></span></summary>
-        <div class="pri-detail">
-          <p>The Shoreline Shuttle is back on the road this summer, the e-bike and e-scooter program is in place, and the multi-use path on St. Johns is built, with more to come.</p>
-          <p>Next is the congestion itself. We widen the bridge at Barnet and Ioco first, then add the rush-hour lane on St. Johns, in that order, because the bridge has to come first or the lane simply moves the bottleneck.</p>
-          <p>Anyone promising a quick fix for St. Johns has not read the file.</p>
-        </div>
-      </details>
-    </article>
+        <article class="pri-block appear" id="p-growth">
+          <div class="pri-num" aria-hidden="true">02</div>
+          <h3>Growth We Can Be Proud Of</h3>
+          <p class="pri-lede">I am not interested in growth for the sake of growth.</p>
+          <p class="pri-body">I watched Newport Village and Suter Brook go from contentious to beloved, and the lesson stayed with me: building something the community is proud of requires active listening, a commitment to putting people first and genuine collaboration.</p>
+          <details class="pri-more">
+            <summary><span class="more"></span></summary>
+            <div class="pri-detail">
+              <p>I believe in moderate growth. To me, that means placing density near transit and ensuring that other forms of housing, such as townhomes, low-rise housing and infill development, can take place throughout the rest of the city.</p>
+              <p>Housing has to work for everyone, from first-time buyers to seniors sizing down near their grandkids.</p>
+              <p>We have a solid plan for providing housing for families, and we have placed a high priority on ensuring affordable housing is built in this community through our inclusionary zoning policies, recent changes to our bonus density program and our ACC program. We still have a gap when it comes to seniors housing.</p>
+              <p>We need to ensure there is housing for all seniors: those who are downsizing and seeking market housing opportunities, as well as those who require affordable seniors housing. This is a priority.</p>
+            </div>
+          </details>
+        </article>
 
-    <!-- Priority 2 -->
-    <article class="pri-card appear" style="--d:100ms" id="p-growth">
-      <div class="pri-num" aria-hidden="true">02</div>
-      <h3>Growth We Can Be Proud Of</h3>
-      <p class="pri-lede">I am not interested in growth for the sake of growth.</p>
-      <details class="pri-more">
-        <summary><span class="more"></span></summary>
-        <div class="pri-detail">
-          <p>I watched Newport Village and Suter Brook go from contentious to beloved, and the lesson stayed with me: building something the community is proud of requires active listening, a commitment to putting people first and genuine collaboration.</p>
-          <p>I believe in moderate growth. To me, that means placing density near transit and ensuring that other forms of housing, such as townhomes, low-rise housing and infill development, can take place throughout the rest of the city.</p>
-          <p>Housing has to work for everyone, from first-time buyers to seniors sizing down near their grandkids.</p>
-          <p>We have a solid plan for providing housing for families, and we have placed a high priority on ensuring affordable housing is built in this community through our inclusionary zoning policies, recent changes to our bonus density program and our ACC program. We still have a gap when it comes to seniors housing.</p>
-          <p>We need to ensure there is housing for all seniors: those who are downsizing and seeking market housing opportunities, as well as those who require affordable seniors housing. This is a priority.</p>
-        </div>
-      </details>
-    </article>
+        <article class="pri-block appear" id="p-value">
+          <div class="pri-num" aria-hidden="true">03</div>
+          <h3>Value for Every Tax Dollar</h3>
+          <p class="pri-lede">Responsible financial management is about more than keeping one year's property tax increase down.</p>
+          <p class="pri-body">It means protecting the services people rely on while preparing Port Moody for a sound financial future.</p>
+          <details class="pri-more">
+            <summary><span class="more"></span></summary>
+            <div class="pri-detail">
+              <p>That requires aligning service levels with financial planning, planning for asset lifecycle and renewal costs, and making sure the City can maintain the infrastructure and facilities residents depend on.</p>
+              <p>We look for revenue and savings before cutting core services. That same discipline helped bring this year's budget increase down from where it began and resulted in the lowest increase of the term.</p>
+              <p>It is also a priority to keep diversifying City revenues by attracting business and growing our commercial and industrial tax base, so homeowners are not carrying the City's needs on their own.</p>
+            </div>
+          </details>
+        </article>
 
-    <!-- Priority 3 -->
-    <article class="pri-card appear" style="--d:200ms" id="p-value">
-      <div class="pri-num" aria-hidden="true">03</div>
-      <h3>Value for Every Tax Dollar</h3>
-      <p class="pri-lede">Responsible financial management is about more than keeping one year's property tax increase down.</p>
-      <details class="pri-more">
-        <summary><span class="more"></span></summary>
-        <div class="pri-detail">
-          <p>It means protecting the services people rely on while preparing Port Moody for a sound financial future.</p>
-          <p>That requires aligning service levels with financial planning, planning for asset lifecycle and renewal costs, and making sure the City can maintain the infrastructure and facilities residents depend on.</p>
-          <p>We look for revenue and savings before cutting core services. That same discipline helped bring this year's budget increase down from where it began and resulted in the lowest increase of the term.</p>
-          <p>It is also a priority to keep diversifying City revenues by attracting business and growing our commercial and industrial tax base, so homeowners are not carrying the City's needs on their own.</p>
-        </div>
-      </details>
-    </article>
-
-    <!-- Priority 4 -->
-    <article class="pri-card appear" style="--d:300ms" id="p-lead">
-      <div class="pri-num" aria-hidden="true">04</div>
-      <h3>Good Governance That Works</h3>
-      <p class="pri-lede">When I became mayor, there was important work to do rebuilding relationships with the business community, local, provincial and federal partners, non-profits and neighbouring municipalities. That work came first.</p>
-      <details class="pri-more">
-        <summary><span class="more"></span></summary>
-        <div class="pri-detail">
-          <p>Council is made up of people with different perspectives. I created an environment where those voices could be heard, and we worked together to agree on one strategic plan, revisited it every year and followed it through.</p>
-          <p>We do not always agree on how to get there, but disagreement is not division.</p>
-          <p>Leadership is not a solo exercise. It is about seeking to understand what people are saying, creating space for them to articulate their positions, bringing people together and driving consensus.</p>
-          <p>We make decisions together, in public, and my door stays open to any resident who wants to sit down. That is what good governance looks like.</p>
-        </div>
-      </details>
-    </article>
+        <article class="pri-block appear" id="p-lead">
+          <div class="pri-num" aria-hidden="true">04</div>
+          <h3>Good Governance That Works</h3>
+          <p class="pri-lede">When I became mayor, there was important work to do rebuilding relationships with the business community, local, provincial and federal partners, non-profits and neighbouring municipalities. That work came first.</p>
+          <p class="pri-body">Council is made up of people with different perspectives. I created an environment where those voices could be heard, and we worked together to agree on one strategic plan, revisited it every year and followed it through.</p>
+          <details class="pri-more">
+            <summary><span class="more"></span></summary>
+            <div class="pri-detail">
+              <p>We do not always agree on how to get there, but disagreement is not division.</p>
+              <p>Leadership is not a solo exercise. It is about seeking to understand what people are saying, creating space for them to articulate their positions, bringing people together and driving consensus.</p>
+              <p>We make decisions together, in public, and my door stays open to any resident who wants to sit down. That is what good governance looks like.</p>
+            </div>
+          </details>
+        </article>
 
       </div>
-
-      <!-- Concrete deliverables beneath the four commitments; forward-looking, never marked complete -->
-      <hr class="flourish plat-split" aria-hidden="true">
-      <div class="plat-next appear" id="next-term">
-        <h3 class="nt-title">Top Priorities for the Next Term</h3>
+      <aside class="plat-rail" id="next-term">
+        <h3 class="nt-title appear">Top Priorities for the Next Term</h3>
         <ol class="nt-list">
-          <li><span class="nt-num" aria-hidden="true">1</span><span class="nt-item">Civic daycare facility completion</span></li>
-          <li><span class="nt-num" aria-hidden="true">2</span><span class="nt-item">Building seniors housing</span></li>
-          <li><span class="nt-num" aria-hidden="true">3</span><span class="nt-item">St. Johns corridor, Phase 2 completion, including widening the Barnet overpass and increasing lane capacity on St. Johns Street</span></li>
-          <li><span class="nt-num" aria-hidden="true">4</span><span class="nt-item">Arts and business expansion</span></li>
-          <li><span class="nt-num" aria-hidden="true">5</span><span class="nt-item">Kyle Centre rebuild and the creation of a new park in Moody Centre</span></li>
+          <li class="appear" style="--d:100ms"><span class="nt-num" aria-hidden="true">1</span><span class="nt-item">Civic daycare facility completion</span></li>
+          <li class="appear" style="--d:200ms"><span class="nt-num" aria-hidden="true">2</span><span class="nt-item">Building seniors housing</span></li>
+          <li class="appear" style="--d:300ms"><span class="nt-num" aria-hidden="true">3</span><span class="nt-item">St. Johns corridor, Phase 2 completion, including widening the Barnet overpass and increasing lane capacity on St. Johns Street</span></li>
+          <li class="appear" style="--d:400ms"><span class="nt-num" aria-hidden="true">4</span><span class="nt-item">Arts and business expansion</span></li>
+          <li class="appear" style="--d:500ms"><span class="nt-num" aria-hidden="true">5</span><span class="nt-item">Kyle Centre rebuild and the creation of a new park in Moody Centre</span></li>
         </ol>
-      </div>
+        <a href="/commit-to-vote.html" class="btn btn-rose appear" style="--d:600ms">Commit to vote</a>
+      </aside>
     </div>
   </div>
 </section>
@@ -464,7 +492,7 @@
         <div class="end-logo">
           <img src="pm-firefighters-logo.png" alt="Port Moody Firefighters, IAFF Local 2399" onerror="this.parentElement.style.display='none';">
         </div>
-        <p class="end-q">&ldquo;Over the last four years as Mayor, Meghan has consistently shown support for public safety, and as such Port Moody Firefighters Local 2399 is proud to support Mayor Lahti in the upcoming election.&rdquo;</p>
+        <p class="end-q">&ldquo;Over the last four years as Mayor, Meghan has consistently shown support for public safety and as such Port Moody Firefighters Local 2399 is proud to support Mayor Lahti in the upcoming election.&rdquo;</p>
         <p class="end-attr"><strong>Port Moody Firefighters</strong>, IAFF Local 2399</p>
       </div>
       <div class="end-panel appear" style="--d:120ms">
@@ -478,8 +506,8 @@
         <div class="end-logo">
           <img src="nwdic.jpg" alt="New Westminster and District Labour Council" onerror="this.parentElement.style.display='none';">
         </div>
-        <p class="end-q">&ldquo;Mayor Meghan Lahti is officially endorsed by the New Westminster and District Labour Council, representing working people across the region.&rdquo;</p>
-        <p class="end-attr"><strong>New Westminster and District Labour Council</strong></p>
+        <p class="end-q">&ldquo;Mayor Meghan Lahti is officially endorsed by the New Westminster &amp; District Labour Council, representing working people across the region.&rdquo;</p>
+        <p class="end-attr"><strong>New Westminster &amp; District Labour Council</strong></p>
       </div>
     </div>
 
@@ -559,10 +587,12 @@
 <!-- 6. VOLUNTEER (one photograph, one headline, one sentence, one button) -->
 <section class="vol-cta">
   <img class="vol-bg" src="ML-63.jpg" alt="" width="1600" height="480" loading="lazy" aria-hidden="true">
-  <div class="vol-inner appear">
-    <h2>We shaped this town together, and the work isn&rsquo;t finished.</h2>
-    <p>Port Moody. Together. Forward.</p>
-    <a href="/volunteer.html" class="btn btn-rose">Volunteer</a>
+  <div class="vol-inner">
+    <div class="vol-content appear">
+      <h2>We shaped this town together, and the work isn&rsquo;t finished.</h2>
+      <p class="vol-slogan">Port Moody. <em>Together.</em> Forward.</p>
+      <a href="/volunteer.html" class="btn btn-rose">Volunteer</a>
+    </div>
   </div>
 </section>
 
@@ -572,8 +602,10 @@
 <footer id="site-footer">
   <div class="footer-min">
     <!-- VERIFY authorization wording with Anthony / Elections BC before launch. Full contribution limits and eligibility live on the Donate page, not the global footer. -->
+    <div class="footer-cols">
     <p class="footer-legal">Authorized by Anthony Sandler, financial agent for the Meghan Lahti 2026 Campaign, anthony@lahti2026.com. &copy; 2026 Meghan Lahti Campaign.</p>
     <p class="footer-ack">Port Moody is situated on the unceded traditional territories of the k&#695;ik&#695;&#601;&#643;&#601;m (Kwikwetlem), s&#601;l&#769;ilw&#601;ta&#660;&#7491; (Tsleil-Waututh), x&#695;m&#601;&#952;k&#695;&#601;y&#769;&#601;m (Musqueam), and S&#7811;&#x1E8F;w&#x1E8F;&#769;u7mesh (Squamish) Nations.</p>
+    </div>
     <p class="footer-credit">Website designed and developed by Sheri Zada, Campaign Manager.</p>
   </div>
 </footer>

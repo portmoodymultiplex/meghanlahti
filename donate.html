@@ -41,6 +41,22 @@
 .rules-footnote { font-size: 14px; color: var(--taupe); line-height: 1.65; margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(91,122,107,0.25); }
 .rules-footnote a { color: var(--sage); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 </style>
+<style>
+.amounts { display: flex; gap: 12px; flex-wrap: wrap; }
+.amount {
+  font-family: var(--font-body); font-size: 17px; font-weight: 600;
+  color: var(--ink); background: transparent;
+  border: 1.5px solid rgba(45,58,92,0.3); border-radius: 2px;
+  padding: 15px 26px; cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease,
+              transform 0.18s ease, box-shadow 0.18s ease;
+}
+.amount:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(45,58,92,0.12); }
+.amount.featured, .amount.selected {
+  background: var(--rose); color: #fff; border-color: var(--rose);
+}
+@media (prefers-reduced-motion: reduce) { .amount:hover { transform: none; } }
+</style>
 </head>
 <body>
 
@@ -79,20 +95,27 @@
     <p class="t-kicker">Donate</p>
     <h1>Chip in for the <em>campaign</em>.</h1>
     <hr class="t-rule">
-    <p>A neighbour-to-neighbour campaign is built by lots of people giving a little. Owed to no one except the people of Port Moody.</p>
+    <p>Every contribution helps share Meghan's message with more of Port Moody: signs, mailers, events, and everything it takes to reach every doorstep.</p>
   </div>
 </div>
 
 <section class="section bg-ivory">
   <div class="container">
-    <div class="donate-lead prose">
-      <h2 class="t-h2">Donations open soon.</h2>
-      <p>We are putting the final pieces of the donation system in place, including everything required to stay fully compliant with the BC Local Elections Campaign Financing Act. Until that is ready, the most valuable thing you can give is your time.</p>
-      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;">
-        <a href="/volunteer.html" class="btn btn-rose">Volunteer with us</a>
-        <a href="/contact.html" class="btn btn-outline-ink">Get in touch</a>
-      </div>
+    <p class="t-kicker">Donate</p>
+    <h2 class="t-h2" style="margin-bottom:14px;">$20.26 for 2026.</h2>
+    <p class="t-body" style="max-width:60ch; margin-bottom:32px;">A small amount with a big meaning. Chip in $20.26 to help power the campaign, or choose an amount that works for you.</p>
+
+    <div class="amounts" role="group" aria-label="Choose a donation amount">
+      <button type="button" class="amount featured" data-amount="20.26">$20.26</button>
+      <button type="button" class="amount" data-amount="50">$50</button>
+      <button type="button" class="amount" data-amount="100">$100</button>
+      <button type="button" class="amount" data-amount="250">$250</button>
+      <button type="button" class="amount" data-amount="500">$500</button>
     </div>
+    <p style="margin-top:26px;">
+      <button type="button" id="donateBtn" class="btn btn-rose">Donate $20.26</button>
+    </p>
+    <p class="form-note" style="margin-top:14px; font-size:14px; color:var(--taupe); max-width:56ch;">Donations are processed securely through Stripe. Maximum contribution is $1,429.70 per individual for 2026, and all contributions are reported to Elections BC.</p>
   </div>
 </section>
 
@@ -119,8 +142,10 @@
 <footer id="site-footer">
   <div class="footer-min">
     <!-- VERIFY authorization wording with Anthony / Elections BC before launch. Full contribution limits and eligibility live on the Donate page, not the global footer. -->
+    <div class="footer-cols">
     <p class="footer-legal">Authorized by Anthony Sandler, financial agent for the Meghan Lahti 2026 Campaign, anthony@lahti2026.com. &copy; 2026 Meghan Lahti Campaign.</p>
     <p class="footer-ack">Port Moody is situated on the unceded traditional territories of the k&#695;ik&#695;&#601;&#643;&#601;m (Kwikwetlem), s&#601;l&#769;ilw&#601;ta&#660;&#7491; (Tsleil-Waututh), x&#695;m&#601;&#952;k&#695;&#601;y&#769;&#601;m (Musqueam), and S&#7811;&#x1E8F;w&#x1E8F;&#769;u7mesh (Squamish) Nations.</p>
+    </div>
     <p class="footer-credit">Website designed and developed by Sheri Zada, Campaign Manager.</p>
   </div>
 </footer>
@@ -134,6 +159,37 @@
   var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 4); };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+})();
+</script>
+<script>
+/* ── STRIPE SETUP ──
+   Paste one Stripe Payment Link per amount below (Stripe Dashboard,
+   Payment Links, one link per preset amount). Until a link is added,
+   the button shows the "opening soon" message instead of charging. */
+var STRIPE_LINKS = {
+  '20.26': '',   /* paste Payment Link for $20.26 here */
+  '50':    '',
+  '100':   '',
+  '250':   '',
+  '500':   ''
+};
+(function () {
+  var selected = '20.26';
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.amount'));
+  var donate = document.getElementById('donateBtn');
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      buttons.forEach(function (x) { x.classList.remove('selected', 'featured'); });
+      b.classList.add('selected');
+      selected = b.getAttribute('data-amount');
+      donate.textContent = 'Donate $' + selected;
+    });
+  });
+  donate.addEventListener('click', function () {
+    var link = STRIPE_LINKS[selected];
+    if (link) { window.location.href = link; }
+    else { alert('Online donations are opening soon. Thank you for your patience.'); }
+  });
 })();
 </script>
 </body>

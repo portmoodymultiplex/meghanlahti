@@ -316,30 +316,32 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
   border-top: 1px solid var(--line);
 }
 .footer-min {
-  max-width: 860px; margin: 0 auto;
-  padding: 64px 72px 56px;
-  text-align: center;
+  max-width: 1180px; margin: 0 auto;
+  padding: 48px 72px 32px;
 }
 /* Quiet rose accent opening the footer, echoing the section rules. */
 .footer-min::before {
   content: ""; display: block;
   width: 44px; height: 2px; background: var(--rose);
-  margin: 0 auto 30px;
+  margin: 0 0 28px;
+}
+.footer-cols {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: start;
 }
 .footer-legal {
   font-size: 13px; color: var(--taupe);
-  line-height: 1.7; max-width: 72ch;
-  margin: 0 auto;
+  line-height: 1.7; margin: 0;
 }
 .footer-ack {
   font-size: 13px; color: var(--taupe);
-  line-height: 1.7; max-width: 72ch;
-  margin: 20px auto 0; padding-top: 20px;
-  border-top: 1px solid var(--line);
+  line-height: 1.7; margin: 0; padding: 0; border: 0;
 }
 .footer-credit {
   font-size: 12px; color: var(--taupe);
-  letter-spacing: 0.04em; margin-top: 28px;
+  letter-spacing: 0.04em; text-align: center;
+  margin-top: 32px; padding-top: 18px;
+  border-top: 1px solid var(--line);
 }
 
 /* ── SIMPLE LIST ── */
@@ -364,6 +366,7 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
   .section-sm { padding: 56px 26px; }
   .page-banner { padding: 40px 26px 44px; }
   .pullquote { padding: 60px 26px; }
-  .footer-min { padding: 48px 26px 40px; }
+  .footer-min { padding: 40px 26px 28px; }
+  .footer-cols { grid-template-columns: 1fr; gap: 24px; }
   body { font-size: 17px; }
 }
