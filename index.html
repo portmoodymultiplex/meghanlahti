@@ -102,46 +102,55 @@
   line-height: 1.75; max-width: 62ch;
 }
 
-/* ── PHOTO BREAKS (moments, not galleries) ── */
-.photo-break { margin: 0; background: var(--ivory); }
+/* ── PHOTO BREAK (one moment; caption sits on the photo, fades in) ── */
+.photo-break { margin: 0; position: relative; background: var(--ivory); }
 .photo-break img { width: 100%; max-height: 640px; object-fit: cover; object-position: center 28%; display: block; }
 .photo-break figcaption {
-  max-width: 1120px; margin: 0 auto;
-  padding: 16px 72px 0;
-  font-size: 14px; color: var(--taupe); line-height: 1.5;
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+  background: linear-gradient(to top, rgba(31,42,69,0.66) 0%, rgba(31,42,69,0.22) 55%, rgba(31,42,69,0) 100%);
+  padding: 96px 0 26px;
 }
-.photo-break figcaption strong { color: var(--slate); font-weight: 600; }
+.photo-break .pb-inner {
+  max-width: 1120px; margin: 0 auto; padding: 0 72px;
+  font-size: 15px; color: rgba(251,247,240,0.95); line-height: 1.5;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.35);
+}
+.photo-break .pb-inner strong { color: var(--ivory); font-weight: 600; }
+.photo-break .pb-inner em { font-style: italic; }
+.photo-break .pb-inner .dot { margin: 0 10px; color: var(--rose); }
 
 /* ── FOUR PRIORITIES (cards, Apple-FAQ expand) ── */
 .appear { opacity: 0; transform: translateY(18px); transition: opacity 500ms ease, transform 500ms ease; }
 .appear.is-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .appear { opacity: 1; transform: none; transition: none; } }
 
-.pri-intro { margin-bottom: 56px; }
+.pri-intro { margin-bottom: 48px; }
+.pri-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 26px; align-items: start;
+}
 .pri-card {
   background: var(--ivory);
   border: 1px solid var(--line);
   border-radius: 5px;
-  padding: 60px 64px;
-  max-width: 980px;
+  padding: 46px 48px;
   transition: box-shadow 0.25s ease;
 }
-.pri-card + .pri-card { margin-top: 30px; }
 .pri-card:hover { box-shadow: 0 12px 34px rgba(45,58,92,0.08); }
 .pri-num {
-  font-family: var(--font-head); font-size: 22px; font-weight: 700;
-  color: var(--rose); line-height: 1; margin-bottom: 20px;
+  font-family: var(--font-head); font-size: 20px; font-weight: 700;
+  color: var(--rose); line-height: 1; margin-bottom: 16px;
 }
 .pri-card h3 {
   font-family: var(--font-head);
-  font-size: clamp(26px, 2.8vw, 36px);
-  font-weight: 700; color: var(--ink); line-height: 1.1;
-  letter-spacing: -0.005em; margin-bottom: 18px;
+  font-size: clamp(24px, 2.2vw, 30px);
+  font-weight: 700; color: var(--ink); line-height: 1.12;
+  letter-spacing: -0.005em; margin-bottom: 14px;
 }
-.pri-lede { font-size: 19px; color: var(--slate); font-weight: 400; line-height: 1.66; max-width: 58ch; }
+.pri-lede { font-size: 17px; color: var(--slate); font-weight: 400; line-height: 1.66; }
 
 /* Learn more: the card expands in place, nothing else moves */
-.pri-more { margin-top: 26px; }
+.pri-more { margin-top: 20px; }
 .pri-more > summary {
   list-style: none; cursor: pointer; display: inline-block;
   font-size: 15px; font-weight: 600; color: var(--rose-deep);
@@ -151,11 +160,27 @@
 .pri-more > summary:hover { color: var(--ink); }
 .pri-more > summary .more::before { content: "Learn more \2192"; }
 .pri-more[open] > summary .more::before { content: "Show less \2191"; }
-.pri-detail { margin-top: 28px; border-top: 1px solid var(--line); padding-top: 28px; }
+.pri-detail { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 24px; }
 .pri-more[open] .pri-detail { animation: heroRise 350ms ease both; }
 @media (prefers-reduced-motion: reduce) { .pri-more[open] .pri-detail { animation: none; } }
-.pri-detail p { font-size: 17px; color: var(--slate); line-height: 1.75; margin-bottom: 16px; max-width: 60ch; }
+.pri-detail p { font-size: 16px; color: var(--slate); line-height: 1.72; margin-bottom: 14px; }
 .pri-detail p:last-child { margin-bottom: 0; }
+
+/* ── TOP PRIORITIES FOR THE NEXT TERM (forward list, no statuses) ── */
+.nt-list { list-style: none; margin-top: 40px; max-width: 860px; border-top: 1px solid var(--line); }
+.nt-list li {
+  display: grid; grid-template-columns: 56px 1fr; gap: 20px;
+  align-items: baseline; padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+.nt-num {
+  font-family: var(--font-head); font-size: 24px; font-weight: 700;
+  color: var(--rose); line-height: 1;
+}
+.nt-item {
+  font-family: var(--font-head); font-size: clamp(19px, 1.9vw, 24px);
+  font-weight: 600; color: var(--ink); line-height: 1.35;
+}
 
 /* ── ENDORSEMENTS (huge photo, dark overlay, floating glass) ── */
 .endorse-band { position: relative; background: var(--ink); padding: 152px 72px; overflow: hidden; }
@@ -163,9 +188,10 @@
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; object-position: center 45%;
 }
+/* Warm dusk overlay so the sunset reads through while the type stays legible. */
 .endorse-band::before {
   content: ""; position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(to bottom, rgba(31,42,69,0.6) 0%, rgba(31,42,69,0.74) 55%, rgba(31,42,69,0.84) 100%);
+  background: linear-gradient(to bottom, rgba(56,34,54,0.5) 0%, rgba(42,29,52,0.68) 55%, rgba(33,26,49,0.8) 100%);
 }
 .endorse-inner { position: relative; z-index: 2; max-width: 1120px; margin: 0 auto; }
 .endorse-inner .t-kicker { color: var(--rose); }
@@ -197,23 +223,31 @@
 .end-attr strong { color: var(--ivory); font-weight: 600; }
 .endorse-all { margin-top: 56px; }
 
-/* ── WHAT THIS COUNCIL BUILT (annual-report checklist) ── */
+/* ── WHAT THIS COUNCIL BUILT (annual report: three status columns) ── */
 .built-intro { max-width: 760px; }
-.built-list { list-style: none; margin-top: 56px; border-top: 1px solid var(--line); max-width: 980px; }
-.built-list li {
-  display: grid; grid-template-columns: 34px 1fr auto;
-  gap: 20px; align-items: start;
-  padding: 26px 0; border-bottom: 1px solid var(--line);
-}
-.built-icon { width: 22px; height: 22px; margin-top: 2px; }
+.built-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 44px; margin-top: 60px; align-items: start; }
+.built-col { border-top: 2px solid var(--line); padding-top: 22px; }
+.built-col.done  { border-top-color: var(--sage); }
+.built-col.going { border-top-color: var(--rose-deep); }
+.built-col.next  { border-top-color: var(--taupe); }
+.built-col-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.built-col-head .built-icon { width: 20px; height: 20px; }
 .built-icon svg { display: block; width: 100%; height: 100%; }
-.built-what { font-size: 17px; color: var(--slate); line-height: 1.65; }
-.built-what strong { font-family: var(--font-head); font-size: 19px; font-weight: 700; color: var(--ink); }
-.built-status { font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; margin-top: 4px; }
-.built-status.done { color: var(--sage); }
-.built-status.going { color: var(--rose-deep); }
-.built-status.next { color: var(--taupe); }
-.built-all { margin-top: 48px; }
+.built-col-head span {
+  font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.built-col.done  .built-col-head span { color: var(--sage); }
+.built-col.going .built-col-head span { color: var(--rose-deep); }
+.built-col.next  .built-col-head span { color: var(--taupe); }
+.built-item { padding: 20px 0; border-bottom: 1px solid var(--line); }
+.built-item:last-child { border-bottom: 0; }
+.built-item strong {
+  display: block; font-family: var(--font-head);
+  font-size: 19px; font-weight: 700; color: var(--ink);
+  line-height: 1.25; margin-bottom: 7px;
+}
+.built-item p { font-size: 15px; color: var(--slate); line-height: 1.6; margin: 0; }
+.built-all { margin-top: 52px; }
 
 /* ── VOLUNTEER (one photograph, one headline, one sentence, one button) ── */
 .vol-cta { position: relative; background: var(--ink); padding: 176px 72px; text-align: center; overflow: hidden; }
@@ -244,14 +278,14 @@
   .hero-actions { margin-top: 32px; }
   .hero .btn-hero { padding: 15px 28px; font-size: 15px; }
   .meet-band { padding: 100px 26px; }
-  .photo-break figcaption { padding: 14px 26px 0; }
+  .photo-break figcaption { padding-top: 72px; }
+  .photo-break .pb-inner { padding: 0 26px; font-size: 14px; }
+  .pri-grid { grid-template-columns: 1fr; gap: 20px; }
   .pri-card { padding: 36px 26px; }
-  .pri-card + .pri-card { margin-top: 20px; }
   .endorse-band { padding: 88px 26px; }
   .endorse-inner h2 { margin-bottom: 40px; }
   .end-grid { grid-template-columns: 1fr; }
-  .built-list li { grid-template-columns: 28px 1fr; }
-  .built-status { display: none; }
+  .built-cols { grid-template-columns: 1fr; gap: 32px; }
   .vol-cta { padding: 112px 26px; }
 }
 </style>
@@ -268,7 +302,7 @@
       <ul class="nav-links">
         <li><a href="/index.html" class="active" aria-current="page">Home</a></li>
         <li><a href="/endorsements.html">Endorsements</a></li>
-        <li><a href="/what-we-built.html">What We Built</a></li>
+        <li><a href="/what-we-built.html">The Record</a></li>
         <li><a href="/volunteer.html">Volunteer</a></li>
         <li><a href="/contact.html">Contact</a></li>
       </ul>
@@ -279,7 +313,7 @@
   <div class="mobile-menu" id="navMobile">
     <a href="/index.html">Home</a>
     <a href="/endorsements.html">Endorsements</a>
-    <a href="/what-we-built.html">What We Built</a>
+    <a href="/what-we-built.html">The Record</a>
     <a href="/volunteer.html">Volunteer</a>
     <a href="/contact.html">Contact</a>
     <a href="/donate.html" class="mobile-cta">Donate</a>
@@ -308,24 +342,27 @@
   <div class="meet-inner">
     <p class="t-kicker">Meet Meghan</p>
     <p class="meet-lead">Nearly thirty years of service means knowing the people, the files, and the work already underway. But experience only matters when it helps people work together, make sound decisions, and keep the community at the centre.</p>
-    <p class="meet-support">Outside the council chamber, I spent close to twenty years in post-secondary education. Most of what I know about this place, though, I learned the ordinary way: by raising my three kids here, school pick ups, drop offs, at the soccer field and in service to our community.</p>
+    <p class="meet-support">Outside the council chamber, I have spent my time working in post-secondary education and as a business owner. Most of what I know about this place, though, I learned the ordinary way: as a community volunteer, Girl Guide leader, soccer mom and Rotarian.</p>
+    <p class="meet-support" style="margin-top:18px;">I love Port Moody. That is why I have spent most of my adult life in service to this community. It is where my husband and I chose to raise our family, and it is a place I am proud to have had the opportunity to help shape into the community we all know and love.</p>
   </div>
 </section>
 
-<!-- Photo moment: collaboration -->
+<!-- Photo moment: collaboration. Background blurred in the image file itself so only the two mayors read clearly. -->
 <figure class="photo-break">
-  <!-- VERIFY: photo understood to be Meghan with Coquitlam Mayor Richard Stewart. Confirm identity and event, then the caption can name him. -->
-  <img src="meghan-coquitlam.jpg" alt="Meghan Lahti laughing with the mayor of a neighbouring municipality at a Port Moody event" width="1280" height="854" loading="lazy">
-  <figcaption><strong>Collaboration matters.</strong></figcaption>
+  <img src="meghan-stewart.jpg" alt="Meghan Lahti laughing with Coquitlam Mayor Richard Stewart at a Port Moody event" width="1280" height="854" loading="lazy">
+  <figcaption class="appear">
+    <p class="pb-inner"><strong>Mayor Richard Stewart</strong><span class="dot">&bull;</span><em>Collaboration matters.</em></p>
+  </figcaption>
 </figure>
 
 <!-- 3. FOUR PRIORITIES (cards; each expands in place) -->
 <section class="section bg-cream" id="priorities">
   <div class="container">
     <div class="pri-intro appear">
-      <p class="t-kicker">The plan</p>
       <h2 class="t-display">Four Priorities</h2>
     </div>
+
+    <div class="pri-grid">
 
     <!-- Priority 1 -->
     <article class="pri-card" id="p-move">
@@ -351,8 +388,10 @@
         <summary><span class="more"></span></summary>
         <div class="pri-detail">
           <p>I watched Newport Village and Suter Brook go from contentious to beloved, and the lesson stayed with me: building something the community is proud of requires active listening, a commitment to putting people first and genuine collaboration.</p>
-          <p>Moody Centre now has the critical mass needed to support the grocery store and walkable services residents have asked for over many years.</p>
-          <p>Moderate growth means density near transit. Most new homes go where the buses and trains already run, so low-rise neighbourhoods stay low-rise. Housing has to work for the whole range, from first-time buyers to seniors sizing down near their grandkids.</p>
+          <p>I believe in moderate growth. To me, that means placing density near transit and ensuring that other forms of housing, such as townhomes, low-rise housing and infill development, can take place throughout the rest of the city.</p>
+          <p>Housing has to work for everyone, from first-time buyers to seniors sizing down near their grandkids.</p>
+          <p>We have a solid plan for providing housing for families, and we have placed a high priority on ensuring affordable housing is built in this community through our inclusionary zoning policies, recent changes to our bonus density program and our ACC program. We still have a gap when it comes to seniors housing.</p>
+          <p>We need to ensure there is housing for all seniors: those who are downsizing and seeking market housing opportunities, as well as those who require affordable seniors housing. This is a priority.</p>
         </div>
       </details>
     </article>
@@ -377,43 +416,51 @@
     <article class="pri-card" id="p-lead">
       <div class="pri-num" aria-hidden="true">04</div>
       <h3>Good Governance That Works</h3>
-      <p class="pri-lede">When I became mayor, there was important work to do rebuilding relationships with the business community, local, provincial and federal partners, non-profits and neighbouring municipalities.</p>
+      <p class="pri-lede">When I became mayor, there was important work to do rebuilding relationships with the business community, local, provincial and federal partners, non-profits and neighbouring municipalities. That work came first.</p>
       <details class="pri-more">
         <summary><span class="more"></span></summary>
         <div class="pri-detail">
-          <p>That work came first.</p>
-          <p>Council is made up of people with different perspectives. I created an environment where those voices could be heard, and we worked together to agree on one strategic plan, revisit it every year and follow it.</p>
+          <p>Council is made up of people with different perspectives. I created an environment where those voices could be heard, and we worked together to agree on one strategic plan, revisited it every year and followed it through.</p>
           <p>We do not always agree on how to get there, but disagreement is not division.</p>
-          <p>Municipal leadership is not a solo exercise. It is about understanding what people are saying, creating space for them to articulate their positions, bringing people together and driving consensus.</p>
-          <p>We make decisions together, in public, and my door stays open to any resident who wants to sit down.</p>
-          <p>That is what good governance looks like.</p>
+          <p>Leadership is not a solo exercise. It is about seeking to understand what people are saying, creating space for them to articulate their positions, bringing people together and driving consensus.</p>
+          <p>We make decisions together, in public, and my door stays open to any resident who wants to sit down. That is what good governance looks like.</p>
         </div>
       </details>
     </article>
 
+    </div>
   </div>
 </section>
 
-<!-- Photo moment: listening -->
-<figure class="photo-break">
-  <!-- VERIFY: photo rights. Candid of Meghan in conversation; other people kept in frame so it reads as a real exchange. -->
-  <img src="meghan-conversation.jpg" alt="Meghan Lahti in conversation with residents at a Port Moody event" width="1280" height="854" loading="lazy">
-  <figcaption><strong>Leadership begins with listening.</strong></figcaption>
-</figure>
+<!-- TOP PRIORITIES FOR THE NEXT TERM (concrete deliverables beneath the four commitments; forward-looking, never marked complete) -->
+<section class="section bg-ivory" id="next-term">
+  <div class="container">
+    <h2 class="t-display">Top Priorities for the Next Term</h2>
+    <hr class="t-rule">
+    <ol class="nt-list">
+      <li><span class="nt-num" aria-hidden="true">1</span><span class="nt-item">Civic daycare facility completion</span></li>
+      <li><span class="nt-num" aria-hidden="true">2</span><span class="nt-item">Building seniors housing</span></li>
+      <li><span class="nt-num" aria-hidden="true">3</span><span class="nt-item">St. Johns corridor, Phase 2 completion, including widening the Barnet overpass and increasing lane capacity on St. Johns Street</span></li>
+      <li><span class="nt-num" aria-hidden="true">4</span><span class="nt-item">Arts and business expansion</span></li>
+      <li><span class="nt-num" aria-hidden="true">5</span><span class="nt-item">Kyle Centre rebuild and the creation of a new park in Moody Centre</span></li>
+    </ol>
+  </div>
+</section>
 
 <!-- 4. ENDORSEMENTS (huge photo, dark overlay, floating glass cards) -->
 <section class="endorse-band">
-  <img class="endorse-bg" src="pm-hero-aerial.jpg" alt="" width="2600" height="1952" loading="lazy" aria-hidden="true">
+  <!-- Watermarked Adobe Stock comp in place for campaign approval. Replace this file with the licensed version after purchase, same filename. -->
+  <img class="endorse-bg" src="rocky-point-sunset.jpg" alt="" width="1000" height="563" loading="lazy" aria-hidden="true">
   <div class="endorse-inner">
     <p class="t-kicker">Endorsements</p>
-    <h2>The community stands with Mayor Lahti.</h2>
+    <h2>The community endorses Meghan Lahti.</h2>
 
     <div class="end-grid">
       <div class="end-panel">
         <div class="end-logo">
           <img src="pm-firefighters-logo.png" alt="Port Moody Firefighters, IAFF Local 2399" onerror="this.parentElement.style.display='none';">
         </div>
-        <p class="end-q">&ldquo;Over the last four years as Mayor, Meghan has consistently shown support for public safety, and Port Moody Firefighters Local 2399 is proud to support Mayor Lahti in the upcoming election.&rdquo;</p>
+        <p class="end-q">&ldquo;Over the last four years as Mayor, Meghan has consistently shown support for public safety, and as such Port Moody Firefighters Local 2399 is proud to support Mayor Lahti in the upcoming election.&rdquo;</p>
         <p class="end-attr"><strong>Port Moody Firefighters</strong>, IAFF Local 2399</p>
       </div>
       <div class="end-panel">
@@ -427,7 +474,7 @@
         <div class="end-logo">
           <img src="nwdic.jpg" alt="New Westminster and District Labour Council" onerror="this.parentElement.style.display='none';">
         </div>
-        <p class="end-q">&ldquo;Mayor Meghan Lahti is officially endorsed by the New Westminster and District Labour Council.&rdquo;</p>
+        <p class="end-q">&ldquo;Mayor Meghan Lahti is officially endorsed by the New Westminster and District Labour Council, representing working people across the region.&rdquo;</p>
         <p class="end-attr"><strong>New Westminster and District Labour Council</strong></p>
       </div>
     </div>
@@ -442,47 +489,62 @@
 <section class="section bg-ivory">
   <div class="container">
     <div class="built-intro">
-      <p class="t-kicker">The record</p>
-      <h2 class="t-display">What this Council built.</h2>
+      <h2 class="t-display">The Record</h2>
       <hr class="t-rule">
       <p class="t-lead">None of it was done alone. Council agreed on a plan, some of the work is finished, more is underway, and some is still ahead. The work isn't finished, and it is all public record.</p>
     </div>
 
-    <ul class="built-list">
-      <li>
-        <span class="built-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="10" stroke="#5B7A6B" stroke-width="1.5"/><path d="M6.5 11.4 9.6 14.4 15.5 8" stroke="#5B7A6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="built-what"><strong>The new boardwalk.</strong> A waterfront walk that gets used every day, from morning runners to weekend families.</span>
-        <span class="built-status done">Completed</span>
-      </li>
-      <li>
+    <div class="built-cols">
+
+      <div class="built-col done">
+        <div class="built-col-head">
+          <span class="built-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="10" stroke="#5B7A6B" stroke-width="1.5"/><path d="M6.5 11.4 9.6 14.4 15.5 8" stroke="#5B7A6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Completed</span>
+        </div>
+        <div class="built-item">
+          <strong>The new boardwalk</strong>
+          <p>A waterfront walk that gets used every day, from morning runners to weekend families.</p>
+        </div>
         <!-- VERIFY: Inlet Field completion + "Bob Favelle Field" naming. -->
-        <span class="built-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="10" stroke="#5B7A6B" stroke-width="1.5"/><path d="M6.5 11.4 9.6 14.4 15.5 8" stroke="#5B7A6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="built-what"><strong>Bob Favelle Field.</strong> The rebuilt Inlet Field, finished and named for a long-serving member of the community.</span>
-        <span class="built-status done">Completed</span>
-      </li>
-      <li>
-        <span class="built-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="10" stroke="#5B7A6B" stroke-width="1.5"/><path d="M6.5 11.4 9.6 14.4 15.5 8" stroke="#5B7A6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="built-what"><strong>Council Strategic Plan.</strong> One shared plan for the term, agreed to by nearly all of Council and followed through.</span>
-        <span class="built-status done">Completed</span>
-      </li>
-      <li>
-        <span class="built-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="10" stroke="#A8628A" stroke-width="1.5" stroke-dasharray="3.2 3.2" stroke-linecap="round"/><path d="M11 6.6V11l3 2" stroke="#A8628A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="built-what"><strong>The new field house.</strong> In planning for years, now being built.</span>
-        <span class="built-status going">Underway</span>
-      </li>
-      <li>
+        <div class="built-item">
+          <strong>Bob Favelle Field</strong>
+          <p>The rebuilt Inlet Field, finished and named for a long-serving member of the community.</p>
+        </div>
+        <div class="built-item">
+          <strong>Council Strategic Plan</strong>
+          <p>One shared plan for the term, agreed to by nearly all of Council and followed through.</p>
+        </div>
+      </div>
+
+      <div class="built-col going">
+        <div class="built-col-head">
+          <span class="built-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="10" stroke="#A8628A" stroke-width="1.5" stroke-dasharray="3.2 3.2" stroke-linecap="round"/><path d="M11 6.6V11l3 2" stroke="#A8628A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Underway</span>
+        </div>
+        <div class="built-item">
+          <strong>The new field house</strong>
+          <p>In planning for years, now being built.</p>
+        </div>
         <!-- VERIFY: Shoreline Shuttle returning summer 2026. -->
-        <span class="built-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="10" stroke="#A8628A" stroke-width="1.5" stroke-dasharray="3.2 3.2" stroke-linecap="round"/><path d="M11 6.6V11l3 2" stroke="#A8628A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="built-what"><strong>The Shoreline Shuttle.</strong> Local shuttle service coming back after years off the road.</span>
-        <span class="built-status going">Underway</span>
-      </li>
-      <li>
+        <div class="built-item">
+          <strong>The Shoreline Shuttle</strong>
+          <p>Local shuttle service coming back after years off the road.</p>
+        </div>
+      </div>
+
+      <div class="built-col next">
+        <div class="built-col-head">
+          <span class="built-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="10" stroke="#8A7F70" stroke-width="1.5"/><path d="M7.5 11h7m0 0-2.8-2.8M14.5 11l-2.8 2.8" stroke="#8A7F70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Coming next</span>
+        </div>
         <!-- VERIFY: Barnet/Ioco bridge widening status. -->
-        <span class="built-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="10" stroke="#8A7F70" stroke-width="1.5"/><path d="M7.5 11h7m0 0-2.8-2.8M14.5 11l-2.8 2.8" stroke="#8A7F70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="built-what"><strong>Barnet and Ioco bridge widening.</strong> The next major piece of the transportation plan, still ahead.</span>
-        <span class="built-status next">Coming next</span>
-      </li>
-    </ul>
+        <div class="built-item">
+          <strong>Barnet and Ioco bridge widening</strong>
+          <p>The next major piece of the transportation plan, still ahead.</p>
+        </div>
+      </div>
+
+    </div>
 
     <p class="built-all">
       <a href="/what-we-built.html" class="link-arrow">See the full record &rarr;</a>
