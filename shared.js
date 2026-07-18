@@ -31,7 +31,7 @@
    paste its URL between the quotes below. Until it is set,
    submissions still save to Netlify as a backup.
    ============================================================ */
-window.CAMPAIGN_SHEET_ENDPOINT = '';  // e.g. 'https://script.google.com/macros/s/AKfy.../exec'
+window.CAMPAIGN_SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwUCJc1OCqScG1716pP6qeXl15I6tTMLjarZ6XO4xWrfsv1V7Bk1B1osApS13iouqHFrA/exec';
 window.CAMPAIGN_SHEET_TOKEN = 'lz26-8c2f29e6-forms';  // must match SHARED_SECRET in the Apps Script
 
 window.submitCampaignForm = function (opts) {
