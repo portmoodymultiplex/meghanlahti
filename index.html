@@ -36,7 +36,7 @@
 @keyframes heroRise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
 .hero {
   display: grid; grid-template-columns: 1.02fr 0.98fr;
-  min-height: calc(100vh - 74px);
+  min-height: calc(100vh - 86px);
   background: linear-gradient(135deg, #FDF8F4 0%, #FBF1F5 46%, #F6E4EC 100%);
   overflow: hidden;
   animation: heroFade 700ms ease both;
@@ -57,6 +57,15 @@
   letter-spacing: -0.02em; max-width: 12ch;
 }
 .hero h1 em { font-style: italic; color: var(--rose-deep); }
+.hero-vote {
+  display: inline-flex; align-items: center; gap: 8px;
+  align-self: flex-start;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--rose-deep); background: rgba(199,125,161,0.12);
+  border: 1px solid rgba(168,98,138,0.3); border-radius: 999px;
+  padding: 8px 16px; margin-bottom: 26px;
+}
+.hero-vote svg { width: 13px; height: 13px; }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 48px; align-items: center; }
 .hero .btn-hero {
   font-family: var(--font-body); font-weight: 600; font-size: 16px;
@@ -369,29 +378,32 @@
 
 <header id="site-header">
   <div class="nav-inner">
-    <a href="/index.html" class="wordmark" aria-label="Meghan Lahti for Mayor, home">
-      <span class="wordmark-name">Meghan Lahti</span>
-      <span class="wordmark-sub">Mayor of Port Moody</span>
+    <a href="/index.html" class="wordmark" aria-label="Re-Elect Meghan Lahti for Mayor of Port Moody, home">
+      <span class="wordmark-re"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1.5 6.5 4.5 9.5 10.5 2.5" stroke="#C77DA1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Re-Elect</span>
+      <span class="wordmark-name">Meghan <span class="wm-last">Lahti</span></span>
+      <span class="wordmark-sub">For Mayor of Port Moody</span>
     </a>
     <nav aria-label="Primary">
       <ul class="nav-links">
         <li><a href="/index.html" class="active" aria-current="page">Home</a></li>
         <li><a href="/endorsements.html">Endorsements</a></li>
-        <li><a href="/what-we-built.html">The Record</a></li>
+        <li><a href="/what-we-built.html">Meghan&rsquo;s Record</a></li>
         <li><a href="/volunteer.html">Volunteer</a></li>
         <li><a href="/contact.html">Contact</a></li>
       </ul>
     </nav>
+    <span class="nav-date"><span class="nav-date-label">Election Day</span>October 17, 2026</span>
     <a href="/donate.html" class="nav-cta">Donate</a>
     <button class="hamburger" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile"><span></span><span></span><span></span></button>
   </div>
   <div class="mobile-menu" id="navMobile">
     <a href="/index.html">Home</a>
     <a href="/endorsements.html">Endorsements</a>
-    <a href="/what-we-built.html">The Record</a>
+    <a href="/what-we-built.html">Meghan&rsquo;s Record</a>
     <a href="/volunteer.html">Volunteer</a>
     <a href="/contact.html">Contact</a>
     <a href="/donate.html" class="mobile-cta">Donate</a>
+    <span class="mobile-date">Election Day &middot; October 17, 2026</span>
   </div>
 </header>
 
@@ -400,6 +412,7 @@
 <!-- 1. HERO (headshot 58 on a bright gradient, quiet entrance) -->
 <section class="hero">
   <div class="hero-copy">
+    <p class="hero-vote"><svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7.5 5.5 11 12 3" stroke="#A8628A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Vote October 17, 2026</p>
     <h1>Experience that brings people <em>together</em>.</h1>
     <div class="hero-actions">
       <a href="#priorities" class="btn-hero btn-hero-primary">See the priorities</a>
@@ -437,12 +450,13 @@
           <div class="pri-num" aria-hidden="true">01</div>
           <h3>A City That Moves</h3>
           <p class="pri-lede">Getting around Port Moody is the number one thing people raise with me, and I do not blame them.</p>
-          <p class="pri-body">The Shoreline Shuttle is back on the road this summer, the e-bike and e-scooter program is in place, and the multi-use path on St. Johns is built, with more to come.</p>
+          <p class="pri-body">Traffic on St. Johns is not working for us. Over this term we have tried smaller fixes, and now it is time for a real vision for the street.</p>
           <details class="pri-more">
             <summary><span class="more"></span></summary>
             <div class="pri-detail">
-              <p>Next is the congestion itself. We widen the bridge at Barnet and Ioco first, then add the rush-hour lane on St. Johns, in that order, because the bridge has to come first or the lane simply moves the bottleneck.</p>
-              <p>Anyone promising a quick fix for St. Johns has not studied the issue.</p>
+              <p>The Shoreline Shuttle is back on the road this summer, the e-bike and e-scooter program is in place, and the multi-use path on St. Johns is built, with more to come.</p>
+              <p>We widen the bridge at Barnet and Ioco first, then add the rush-hour lane on St. Johns, in that order, because the bridge has to come first or the lane simply moves the problem down the road.</p>
+              <p>St. Johns deserves a real plan, not another band-aid, and that is what we are building.</p>
             </div>
           </details>
         </article>
@@ -451,7 +465,7 @@
           <div class="pri-num" aria-hidden="true">02</div>
           <h3>Growth We Can Be Proud Of</h3>
           <p class="pri-lede">I am not interested in growth for the sake of growth.</p>
-          <p class="pri-body">I watched Newport Village and Suter Brook go from contentious to beloved, and the lesson stayed with me: building something the community is proud of requires active listening, a commitment to putting people first and genuine collaboration.</p>
+          <p class="pri-body">I watched Newport Village and Suter Brook go from contentious to beloved, and the lesson stayed with me: building something the community is proud of requires active listening, a commitment to putting people first and genuine collaboration. Moody Centre is our chance to get this right, and I want to see the right growth for Port Moody there.</p>
           <details class="pri-more">
             <summary><span class="more"></span></summary>
             <div class="pri-detail">
@@ -471,9 +485,9 @@
           <details class="pri-more">
             <summary><span class="more"></span></summary>
             <div class="pri-detail">
+              <p>It is also a priority to keep diversifying City revenues by attracting business and growing our commercial and industrial tax base, so homeowners are not carrying the City's needs on their own.</p>
               <p>That requires aligning service levels with financial planning, planning for asset lifecycle and renewal costs, and making sure the City can maintain the infrastructure and facilities residents depend on.</p>
               <p>We look for revenue and savings before cutting core services. That same discipline helped bring this year's budget increase down from where it began and resulted in the lowest increase of the term.</p>
-              <p>It is also a priority to keep diversifying City revenues by attracting business and growing our commercial and industrial tax base, so homeowners are not carrying the City's needs on their own.</p>
             </div>
           </details>
         </article>
@@ -487,8 +501,9 @@
             <summary><span class="more"></span></summary>
             <div class="pri-detail">
               <p>We do not always agree on how to get there, but disagreement is not division.</p>
+              <p>What we have built is a council that works together, and Port Moody needs a mayor who can work with anyone. I have shown that I can.</p>
               <p>Leadership is not a solo exercise. It is about seeking to understand what people are saying, creating space for them to articulate their positions, bringing people together and driving consensus.</p>
-              <p>We make decisions together, in public, and my door stays open to any resident who wants to sit down. That is what good governance looks like.</p>
+              <p>We make decisions together, in public, and my door stays open to any resident who wants to sit down. That progress is worth protecting, and we cannot afford to slide backwards. That is what good governance looks like.</p>
             </div>
           </details>
         </article>
@@ -499,7 +514,7 @@
         <ol class="nt-list">
           <li class="appear" style="--d:100ms"><span class="nt-num" aria-hidden="true">1</span><span class="nt-item">Civic daycare facility completion</span></li>
           <li class="appear" style="--d:200ms"><span class="nt-num" aria-hidden="true">2</span><span class="nt-item">Building seniors housing</span></li>
-          <li class="appear" style="--d:300ms"><span class="nt-num" aria-hidden="true">3</span><span class="nt-item">St. Johns corridor, Phase 2 completion, including widening the Barnet overpass and increasing lane capacity on St. Johns Street</span></li>
+          <li class="appear" style="--d:300ms"><span class="nt-num" aria-hidden="true">3</span><span class="nt-item">A corridor vision for St. Johns, including Phase 2 completion, widening the Barnet overpass and increasing lane capacity</span></li>
           <li class="appear" style="--d:400ms"><span class="nt-num" aria-hidden="true">4</span><span class="nt-item">Arts and business expansion</span></li>
           <li class="appear" style="--d:500ms"><span class="nt-num" aria-hidden="true">5</span><span class="nt-item">Kyle Centre rebuild and the creation of a new park in Moody Centre</span></li>
         </ol>
@@ -552,7 +567,7 @@
 <section class="section bg-ivory">
   <div class="container">
     <div class="built-intro appear">
-      <h2 class="t-display">The Record</h2>
+      <h2 class="t-display">Meghan&rsquo;s Record</h2>
       <hr class="t-rule">
       <p class="t-lead">Progress was never the work of one person. Council set a clear plan, delivered meaningful results and moved important projects forward. There is more to do, but the record of what we accomplished together is clear, measurable and public.</p>
     </div>
@@ -577,6 +592,10 @@
           <strong>Council Strategic Plan</strong>
           <p>One shared plan for the term, agreed to by nearly all of Council and followed through.</p>
         </div>
+        <div class="built-item">
+          <strong>The Shoreline Shuttle</strong>
+          <p>Local shuttle service back on the road after years away.</p>
+        </div>
       </div>
 
       <div class="built-col going appear" style="--d:120ms">
@@ -588,11 +607,6 @@
           <strong>The new field house</strong>
           <p>In planning for years, now being built.</p>
         </div>
-        <!-- VERIFY: Shoreline Shuttle returning summer 2026. -->
-        <div class="built-item">
-          <strong>The Shoreline Shuttle</strong>
-          <p>Local shuttle service coming back after years off the road.</p>
-        </div>
       </div>
 
       <div class="built-col next appear" style="--d:240ms">
@@ -603,7 +617,7 @@
         <!-- VERIFY: Barnet/Ioco bridge widening status. -->
         <div class="built-item">
           <strong>Barnet and Ioco bridge widening</strong>
-          <p>The next major piece of the transportation plan, still ahead.</p>
+          <p>Approved, and the next major piece of the transportation plan.</p>
         </div>
       </div>
 

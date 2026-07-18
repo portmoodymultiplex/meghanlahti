@@ -197,18 +197,28 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
   padding: 0 28px;
   display: flex; align-items: center;
   justify-content: space-between;
-  height: 78px; gap: 16px;
+  height: 86px; gap: 16px;
 }
 .wordmark { display: flex; flex-direction: column; line-height: 1; flex-shrink: 0; }
+.wordmark-re {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--rose-deep); margin-bottom: 4px;
+}
+.wordmark-re svg { width: 11px; height: 11px; flex-shrink: 0; }
 .wordmark-name {
   font-family: var(--font-head);
-  font-size: 23px; font-weight: 700; color: var(--ink);
-  letter-spacing: -0.005em;
+  font-size: 15px; font-weight: 600; color: var(--ink);
+  letter-spacing: 0; line-height: 1;
+}
+.wordmark-name .wm-last {
+  font-size: 24px; font-weight: 700; letter-spacing: -0.01em;
 }
 .wordmark-sub {
-  font-size: 10px; font-weight: 600;
+  font-size: 9.5px; font-weight: 600;
   letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--taupe); margin-top: 6px;
+  color: var(--taupe); margin-top: 4px;
 }
 .nav-links { display: flex; gap: 4px; list-style: none; flex-wrap: nowrap; }
 .nav-links a {
@@ -229,6 +239,19 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
 }
 .nav-cta:hover { background: var(--rose-deep) !important; transform: translateY(-1px); box-shadow: 0 5px 14px rgba(168,98,138,0.28); }
 
+/* Election Day reminder, right of the nav links */
+.nav-date {
+  display: flex; flex-direction: column; align-items: flex-end;
+  text-align: right; flex-shrink: 0; line-height: 1.35;
+  font-size: 12.5px; font-weight: 600; color: var(--slate);
+}
+.nav-date-label {
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--rose-deep);
+}
+@media (max-width: 1250px) { .nav-date { display: none; } }
+
 /* hamburger */
 .hamburger {
   display: none; flex-direction: column; gap: 5px;
@@ -240,6 +263,11 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
   display: block; font-size: 17px; font-weight: 500;
   color: var(--ink); padding: 14px 32px;
   border-bottom: 1px solid var(--line);
+}
+.mobile-menu .mobile-date {
+  display: block; padding: 14px 32px 6px;
+  font-size: 13px; font-weight: 600; color: var(--taupe);
+  text-align: center; border-bottom: none;
 }
 .mobile-menu .mobile-cta {
   background: var(--rose); color: #fff !important;
