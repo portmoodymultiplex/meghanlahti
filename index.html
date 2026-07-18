@@ -23,12 +23,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
-/* Self-hosted signature font (guaranteed to render, no external dependency) */
-@font-face {
-  font-family: 'Mr Dafoe';
-  font-style: normal; font-weight: 400; font-display: swap;
-  src: url('MrDafoe-Regular.ttf') format('truetype');
-}
 /* ============================================================
    HOMEPAGE. Premium polish pass.
    Motion budget: two tasteful moments only.
@@ -132,10 +126,17 @@
   font-size: clamp(17px, 1.5vw, 19px); color: rgba(255,255,255,0.94);
   line-height: 1.75; max-width: 60ch;
 }
-.meet-sign {
-  font-family: 'Mr Dafoe', cursive; font-weight: 400;
-  font-size: clamp(44px, 5.6vw, 68px); color: #fff;
-  line-height: 1; margin-top: 40px;
+/* Handwritten signature image, revealed left-to-right as if being signed */
+.meet-sign-img {
+  display: block; margin-top: 40px;
+  height: clamp(64px, 8.5vw, 112px); width: auto; max-width: 100%;
+  clip-path: inset(0 100% 0 0);
+}
+.meet-sign-img.signed { animation: signOn 2s cubic-bezier(0.65, 0, 0.35, 1) forwards; }
+@keyframes signOn { to { clip-path: inset(0 0 0 0); } }
+@media (prefers-reduced-motion: reduce) {
+  .meet-sign-img { clip-path: inset(0 0 0 0); }
+  .meet-sign-img.signed { animation: none; }
 }
 .meet-photo { position: relative; margin: 0; min-height: 560px; }
 .meet-photo img {
@@ -450,7 +451,7 @@
     <hr class="meet-quote-rule" aria-hidden="true">
     <p class="meet-support">Outside the council chamber, I have spent my time working in post-secondary education and as a business owner. Most of what I know about this place, though, I learned the ordinary way: as a community volunteer, Girl Guide leader, soccer mom and Rotarian.</p>
     <p class="meet-support" style="margin-top:18px;">I love Port Moody. That is why I have spent most of my adult life in service to this community. It is where my husband and I chose to raise our family, and it is a place I am proud to have had the opportunity to help shape into the community we all know and love.</p>
-    <p class="meet-sign" aria-hidden="true">Meghan Lahti</p>
+    <img class="meet-sign-img" src="meghan-signature.png" alt="Meghan Lahti signature" width="1817" height="523">
   </div>
   <figure class="meet-photo">
     <img src="ML-162.jpg" alt="Meghan Lahti holding her granddaughter" width="1400" height="933" loading="lazy">
