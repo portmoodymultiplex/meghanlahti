@@ -31,7 +31,7 @@
    paste its URL between the quotes below. Until it is set,
    submissions still save to Netlify as a backup.
    ============================================================ */
-window.CAMPAIGN_SHEET_ENDPOINT = '';  // e.g. 'https://script.google.com/macros/s/AKfy.../exec'
+window.CAMPAIGN_SHEET_ENDPOINT = 'window.CAMPAIGN_SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfy…/exec';';  // e.g. 'https://script.google.com/macros/s/AKfy.../exec'
 
 window.submitCampaignForm = function (opts) {
   var form = opts.form;
