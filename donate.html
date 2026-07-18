@@ -117,13 +117,14 @@
       <button type="button" class="amount featured" data-amount="20.26">$20.26</button>
       <button type="button" class="amount" data-amount="50">$50</button>
       <button type="button" class="amount" data-amount="100">$100</button>
-      <button type="button" class="amount" data-amount="250">$250</button>
-      <button type="button" class="amount" data-amount="500">$500</button>
+      <button type="button" class="amount" data-amount="200">$200</button>
+      <button type="button" class="amount" data-amount="300">$300</button>
     </div>
     <p style="margin-top:26px;">
       <button type="button" id="donateBtn" class="btn btn-rose">Donate $20.26</button>
     </p>
-    <p class="form-note" style="margin-top:14px; font-size:14px; color:var(--taupe); max-width:56ch;">Donations are processed securely through Stripe. Maximum contribution is $1,429.70 per individual for 2026, and all contributions are reported to Elections BC.</p>
+    <p class="form-note" style="margin-top:18px; font-size:14px; color:var(--taupe); max-width:56ch;">Giving more than $300? Please contact our financial agent, Anthony Sandler, at <a href="mailto:anthony@lahti2026.com">anthony@lahti2026.com</a>, and we will look after it directly.</p>
+    <p class="form-note" style="margin-top:10px; font-size:14px; color:var(--taupe); max-width:56ch;">Donations are processed securely through Stripe. Maximum contribution is $1,429.70 per individual for 2026, and all contributions are reported to Elections BC.</p>
   </div>
 </section>
 
@@ -188,18 +189,16 @@
 </script>
 <script>
 /* ── STRIPE SETUP ──
-   All amounts currently point to one Stripe Payment Link, which is
-   correct if that link lets the donor choose the amount on Stripe's
-   page. For a prefilled experience (click $100, Stripe opens at $100),
-   create one Payment Link per amount in the Stripe Dashboard and paste
-   each in below. */
-var STRIPE_DEFAULT = 'https://donate.stripe.com/fZudR9dNc2Sr59afGw0Fi00';
+   Each amount opens its own Stripe Payment Link so the checkout is
+   prefilled to that amount. The $20.26 default is a "customer chooses"
+   link (donor can adjust); the others are set to their amounts.
+   Contributions over $300 are directed to the financial agent. */
 var STRIPE_LINKS = {
-  '20.26': STRIPE_DEFAULT,   /* replace with a $20.26 Payment Link for a prefilled amount */
-  '50':    STRIPE_DEFAULT,
-  '100':   STRIPE_DEFAULT,
-  '250':   STRIPE_DEFAULT,
-  '500':   STRIPE_DEFAULT
+  '20.26': 'https://donate.stripe.com/fZudR9dNc2Sr59afGw0Fi00',
+  '50':    'https://donate.stripe.com/00w6oH10q2Sratuamc0Fi01',
+  '100':   'https://donate.stripe.com/fZubJ19wW64DgRScuk0Fi02',
+  '200':   'https://donate.stripe.com/fZu5kD8sSfFd8lm65W0Fi03',
+  '300':   'https://donate.stripe.com/eVq8wP6kK64DeJK8e40Fi04'
 };
 (function () {
   var selected = '20.26';
