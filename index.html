@@ -106,6 +106,13 @@
   font-weight: 600; color: #fff; line-height: 1.42;
   margin-bottom: 30px;
 }
+.meet-lead em { font-style: italic; color: #fff; }
+/* A quiet rule marks where the introduction ends and Meghan speaks in her own words */
+.meet-quote-rule {
+  width: 44px; height: 2px; border: 0;
+  background: rgba(255,255,255,0.65);
+  margin: 0 0 26px;
+}
 .meet-support {
   font-size: clamp(17px, 1.5vw, 19px); color: rgba(255,255,255,0.94);
   line-height: 1.75; max-width: 60ch;
@@ -135,6 +142,17 @@
 @media (prefers-reduced-motion: reduce) { .appear { opacity: 1; transform: none; transition: none; } }
 
 /* ── THE PLATFORM AREA (commitments left, next-term rail right) ── */
+.plat-band {
+  position: relative; overflow: hidden;
+  background: linear-gradient(150deg, #FDF8F4 0%, #FBF1F5 42%, #F6E4EC 100%);
+}
+.plat-band::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(720px 420px at 92% 4%, rgba(199,125,161,0.14), transparent 70%),
+    radial-gradient(640px 400px at 2% 96%, rgba(199,125,161,0.1), transparent 70%);
+}
+.plat-band .container { position: relative; z-index: 1; }
 .plat-wrap {
   display: grid; grid-template-columns: 1.55fr 1fr;
   gap: clamp(56px, 7vw, 110px); align-items: start;
@@ -398,7 +416,8 @@
 <section class="meet-band">
   <div class="meet-text appear">
     <p class="t-kicker">Meet Meghan</p>
-    <p class="meet-lead">Nearly thirty years of service means knowing the people, the issues, and the work already underway. But experience only matters when it helps people work together, make sound decisions, and keep the community at the centre.</p>
+    <p class="meet-lead">Nearly thirty years of service means knowing the people, the issues, and the work already underway. <em>But experience only matters when it helps people work together, make sound decisions, and keep the community at the centre.</em></p>
+    <hr class="meet-quote-rule" aria-hidden="true">
     <p class="meet-support">Outside the council chamber, I have spent my time working in post-secondary education and as a business owner. Most of what I know about this place, though, I learned the ordinary way: as a community volunteer, Girl Guide leader, soccer mom and Rotarian.</p>
     <p class="meet-support" style="margin-top:18px;">I love Port Moody. That is why I have spent most of my adult life in service to this community. It is where my husband and I chose to raise our family, and it is a place I am proud to have had the opportunity to help shape into the community we all know and love.</p>
   </div>
@@ -408,7 +427,7 @@
 </section>
 
 <!-- 3. THE PLATFORM AREA: commitments on the left, next-term deliverables on a sticky rail -->
-<section class="section bg-cream" id="priorities">
+<section class="section plat-band" id="priorities">
   <div class="container">
     <div class="plat-wrap">
       <div class="plat-main">
@@ -535,7 +554,7 @@
     <div class="built-intro appear">
       <h2 class="t-display">The Record</h2>
       <hr class="t-rule">
-      <p class="t-lead">None of it was done alone. Council agreed on a plan, some of the work is finished, more is underway, and some is still ahead. The work isn't finished, and it is all public record.</p>
+      <p class="t-lead">Progress was never the work of one person. Council set a clear plan, delivered meaningful results and moved important projects forward. There is more to do, but the record of what we accomplished together is clear, measurable and public.</p>
     </div>
 
     <div class="built-cols">
