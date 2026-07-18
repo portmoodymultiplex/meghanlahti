@@ -400,7 +400,9 @@ textarea.field { resize: vertical; }
     <h2 class="t-h2" style="margin-bottom:14px;">Endorse Meghan.</h2>
     <p class="t-body" style="max-width:64ch; margin-bottom:28px;">If you know Meghan and want to add your name, write a few sentences below. With your permission, we may share your words on this page. We will reach out before publishing anything.</p>
 
-    <form id="endorseForm" class="form-grid" onsubmit="return handleEndorse(event);">
+    <form id="endorseForm" name="endorsement" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="form-grid" onsubmit="return handleEndorse(event);">
+      <input type="hidden" name="form-name" value="endorsement">
+      <p hidden aria-hidden="true"><label>Leave this field empty: <input name="bot-field"></label></p>
       <div class="form-two">
         <div>
           <label class="field-label" for="e-first">First name</label>
@@ -463,37 +465,24 @@ textarea.field { resize: vertical; }
   function handleEndorse(e) {
     e.preventDefault();
     var form = document.getElementById('endorseForm');
-    var btn = document.getElementById('endorseBtn');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    var data = {
-      'form':        'Endorsement',
-      'first-name':  form.querySelector('[name="first-name"]').value,
-      'last-name':   form.querySelector('[name="last-name"]').value,
-      'email':       form.querySelector('[name="email"]').value,
-      'connection':  form.querySelector('[name="connection"]').value || 'Not given',
-      'endorsement': form.querySelector('[name="endorsement"]').value,
-      '_subject':    'New Endorsement, Meghan Lahti 2026 Campaign',
-      '_template':   'table',
-      '_captcha':    'false'
-    };
-    Promise.all([
-      fetch('https://formsubmit.co/ajax/sheri@zadagroup.ca', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
-      }),
-      fetch('https://hooks.zapier.com/hooks/catch/27087516/u7y60l6/', {
-        method: 'POST',
-        body: JSON.stringify(data)
-      })
-    ]).then(function () {
-      form.style.display = 'none';
-      document.getElementById('endorseSuccess').style.display = 'block';
-    }).catch(function () {
-      btn.textContent = 'Submit endorsement';
-      btn.disabled = false;
-      alert('Something went wrong. Please email info@lahti2026.com and we will add your endorsement.');
+    submitCampaignForm({
+      formName:   'endorsement',
+      form:       form,
+      button:     document.getElementById('endorseBtn'),
+      successId:  'endorseSuccess',
+      resetLabel: 'Submit endorsement',
+      errorMsg:   'Something went wrong. Please email info@lahti2026.com and we will add your endorsement.',
+      data: {
+        'form':        'Endorsement',
+        'first-name':  form.querySelector('[name="first-name"]').value,
+        'last-name':   form.querySelector('[name="last-name"]').value,
+        'email':       form.querySelector('[name="email"]').value,
+        'connection':  form.querySelector('[name="connection"]').value || 'Not given',
+        'endorsement': form.querySelector('[name="endorsement"]').value,
+        '_subject':    'New Endorsement, Meghan Lahti 2026 Campaign',
+        '_template':   'table',
+        '_captcha':    'false'
+      }
     });
     return false;
   }

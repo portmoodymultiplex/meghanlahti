@@ -117,10 +117,9 @@ textarea.field { resize: vertical; }
         <h2 class="t-h2" style="margin-bottom:12px;">We try to write back within a day or two.</h2>
         <p class="t-body" style="margin-bottom:24px; max-width:56ch;">Questions about the campaign, volunteering, a media request, or just to say hello. This form goes to the campaign team, not to City Hall.</p>
 
-        <form id="contactForm" class="form-grid" onsubmit="return handleContact(event);">
-          <input type="hidden" name="_subject" value="New Message Meghan Lahti 2026 Campaign">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
+        <form id="contactForm" name="info-request" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="form-grid" onsubmit="return handleContact(event);">
+          <input type="hidden" name="form-name" value="info-request">
+          <p hidden aria-hidden="true"><label>Leave this field empty: <input name="bot-field"></label></p>
           <div class="form-two">
             <div>
               <label class="field-label" for="c-first">First name</label>
@@ -215,39 +214,25 @@ textarea.field { resize: vertical; }
   function handleContact(e) {
     e.preventDefault();
     var form = document.getElementById('contactForm');
-    var btn = document.getElementById('contactBtn');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-
     var interests = Array.from(form.querySelectorAll('input[name="interest"]:checked')).map(function(cb){ return cb.value; }).join(', ');
-    var data = {
-      'first-name': form.querySelector('[name="first-name"]').value,
-      'last-name':  form.querySelector('[name="last-name"]').value,
-      'email':      form.querySelector('[name="email"]').value,
-      'interests':  interests || 'None selected',
-      'message':    form.querySelector('[name="message"]').value,
-      '_subject':   'New Message Meghan Lahti 2026 Campaign',
-      '_template':  'table',
-      '_captcha':   'false'
-    };
-    data['Date'] = new Date().toLocaleString('en-CA', {timeZone:'America/Vancouver'});
-    Promise.all([
-      fetch('https://formsubmit.co/ajax/sheri@zadagroup.ca', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
-      }),
-      fetch('https://hooks.zapier.com/hooks/catch/27087516/u7y60l6/', {
-        method: 'POST',
-        body: JSON.stringify(data)
-      })
-    ]).then(function(){
-      form.style.display = 'none';
-      document.getElementById('contactSuccess').style.display = 'block';
-    }).catch(function(){
-      btn.textContent = 'Send message';
-      btn.disabled = false;
-      alert('Something went wrong. Please email info@lahti2026.com directly.');
+    submitCampaignForm({
+      formName:   'info-request',
+      form:       form,
+      button:     document.getElementById('contactBtn'),
+      successId:  'contactSuccess',
+      resetLabel: 'Send message',
+      errorMsg:   'Something went wrong. Please email info@lahti2026.com directly.',
+      data: {
+        'form':       'Info request',
+        'first-name': form.querySelector('[name="first-name"]').value,
+        'last-name':  form.querySelector('[name="last-name"]').value,
+        'email':      form.querySelector('[name="email"]').value,
+        'interests':  interests || 'None selected',
+        'message':    form.querySelector('[name="message"]').value,
+        '_subject':   'New Message Meghan Lahti 2026 Campaign',
+        '_template':  'table',
+        '_captcha':   'false'
+      }
     });
     return false;
   }

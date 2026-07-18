@@ -41,6 +41,23 @@ textarea.field { resize: vertical; }
 .checks label { display: flex; align-items: flex-start; gap: 9px; font-size: 15px; color: var(--slate); cursor: pointer; line-height: 1.4; }
 .checks input { accent-color: var(--rose-deep); width: 17px; height: 17px; margin-top: 2px; flex-shrink: 0; }
 .form-note { font-size: 14px; color: var(--taupe); line-height: 1.6; }
+/* Volunteer photo band: readable gradient scrim + campaign hashtag */
+.photo-band.is-tagged { position: relative; }
+.photo-band.is-tagged::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background:
+    linear-gradient(to top, rgba(45,58,92,0.66) 0%, rgba(45,58,92,0.20) 36%, rgba(45,58,92,0) 60%),
+    linear-gradient(to right, rgba(45,58,92,0.44) 0%, rgba(45,58,92,0) 42%);
+}
+.photo-band .photo-band-tag {
+  position: absolute; z-index: 2; margin: 0; padding: 0;
+  left: clamp(20px, 5vw, 64px); bottom: clamp(16px, 3.6vw, 40px);
+  font-family: var(--font-head);
+  font-weight: 700; font-style: italic;
+  font-size: clamp(30px, 5.4vw, 60px); line-height: 1;
+  letter-spacing: 0.005em; color: var(--ivory);
+  text-shadow: 0 2px 24px rgba(23,30,48,0.55);
+}
 .form-success { display: none; border: 1.5px solid var(--sage); background: var(--sage-pale); border-radius: 2px; padding: 28px 24px; }
 .form-success h3 { font-family: var(--font-head); font-size: 22px; color: var(--ink); margin-bottom: 8px; }
 .form-success p { font-size: 16px; color: var(--slate); }
@@ -109,8 +126,9 @@ textarea.field { resize: vertical; }
   </div>
 </section>
 
-<figure class="figure photo-band">
+<figure class="figure photo-band is-tagged">
   <img src="ML-63.jpg" alt="Meghan Lahti with supporters at her campaign launch" width="1600" height="480">
+  <figcaption class="photo-band-tag">#LAHTI2026</figcaption>
 </figure>
 
 <section class="section bg-cream">
@@ -124,7 +142,9 @@ textarea.field { resize: vertical; }
       </div>
 
       <div>
-        <form id="volForm" class="form-grid" onsubmit="return handleVolunteer(event);">
+        <form id="volForm" name="volunteer" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="form-grid" onsubmit="return handleVolunteer(event);">
+          <input type="hidden" name="form-name" value="volunteer">
+          <p hidden aria-hidden="true"><label>Leave this field empty: <input name="bot-field"></label></p>
           <div class="form-two">
             <div>
               <label class="field-label" for="v-first">First name</label>
@@ -182,40 +202,24 @@ textarea.field { resize: vertical; }
   function handleVolunteer(e) {
     e.preventDefault();
     var form = document.getElementById('volForm');
-    var btn = document.getElementById('volBtn');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    var ways = Array.from(form.querySelectorAll('input[name="ways"]:checked'))
-      .map(function (cb) { return cb.value; }).join(', ');
-    var data = {
-      'form':       'Volunteer signup',
-      'first-name': form.querySelector('[name="first-name"]').value,
-      'last-name':  form.querySelector('[name="last-name"]').value,
-      'email':      form.querySelector('[name="email"]').value,
-      'phone':      form.querySelector('[name="phone"]').value || 'Not given',
-      'ways':       ways || 'Wherever needed',
-      'note':       form.querySelector('[name="note"]').value || '',
-      '_subject':   'New Volunteer, Meghan Lahti 2026 Campaign',
-      '_template':  'table',
-      '_captcha':   'false'
-    };
-    Promise.all([
-      fetch('https://formsubmit.co/ajax/sheri@zadagroup.ca', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
-      }),
-      fetch('https://hooks.zapier.com/hooks/catch/27087516/u7y60l6/', {
-        method: 'POST',
-        body: JSON.stringify(data)
-      })
-    ]).then(function () {
-      form.style.display = 'none';
-      document.getElementById('volSuccess').style.display = 'block';
-    }).catch(function () {
-      btn.textContent = 'Sign up to volunteer';
-      btn.disabled = false;
-      alert('Something went wrong. Please email info@lahti2026.com and we will sign you up.');
+    submitCampaignForm({
+      formName:   'volunteer',
+      form:       form,
+      button:     document.getElementById('volBtn'),
+      successId:  'volSuccess',
+      resetLabel: 'Sign up to volunteer',
+      errorMsg:   'Something went wrong. Please email info@lahti2026.com and we will sign you up.',
+      data: {
+        'form':       'Volunteer signup',
+        'first-name': form.querySelector('[name="first-name"]').value,
+        'last-name':  form.querySelector('[name="last-name"]').value,
+        'email':      form.querySelector('[name="email"]').value,
+        'phone':      form.querySelector('[name="phone"]').value || 'Not given',
+        'note':       form.querySelector('[name="note"]').value || '',
+        '_subject':   'New Volunteer, Meghan Lahti 2026 Campaign',
+        '_template':  'table',
+        '_captcha':   'false'
+      }
     });
     return false;
   }

@@ -112,7 +112,9 @@ textarea.field { resize: vertical; }
       </div>
 
       <div>
-        <form id="voteForm" class="form-grid" onsubmit="return handleVote(event);">
+        <form id="voteForm" name="commit-to-vote" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="form-grid" onsubmit="return handleVote(event);">
+          <input type="hidden" name="form-name" value="commit-to-vote">
+          <p hidden aria-hidden="true"><label>Leave this field empty: <input name="bot-field"></label></p>
           <div class="form-two">
             <div>
               <label class="field-label" for="cv-first">First name</label>
@@ -170,37 +172,24 @@ textarea.field { resize: vertical; }
   function handleVote(e) {
     e.preventDefault();
     var form = document.getElementById('voteForm');
-    var btn = document.getElementById('voteBtn');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    var data = {
-      'form':        'Commit to vote',
-      'first-name':  form.querySelector('[name="first-name"]').value,
-      'last-name':   form.querySelector('[name="last-name"]').value,
-      'email':       form.querySelector('[name="email"]').value,
-      'postal-code': form.querySelector('[name="postal-code"]').value,
-      'phone':       form.querySelector('[name="phone"]').value || 'Not given',
-      '_subject':    'New Vote Commitment, Meghan Lahti 2026 Campaign',
-      '_template':   'table',
-      '_captcha':    'false'
-    };
-    Promise.all([
-      fetch('https://formsubmit.co/ajax/sheri@zadagroup.ca', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
-      }),
-      fetch('https://hooks.zapier.com/hooks/catch/27087516/u7y60l6/', {
-        method: 'POST',
-        body: JSON.stringify(data)
-      })
-    ]).then(function () {
-      form.style.display = 'none';
-      document.getElementById('voteSuccess').style.display = 'block';
-    }).catch(function () {
-      btn.textContent = 'Commit to vote';
-      btn.disabled = false;
-      alert('Something went wrong. Please email info@lahti2026.com and we will make sure you are counted.');
+    submitCampaignForm({
+      formName:   'commit-to-vote',
+      form:       form,
+      button:     document.getElementById('voteBtn'),
+      successId:  'voteSuccess',
+      resetLabel: 'Commit to vote',
+      errorMsg:   'Something went wrong. Please email info@lahti2026.com and we will make sure you are counted.',
+      data: {
+        'form':        'Commit to vote',
+        'first-name':  form.querySelector('[name="first-name"]').value,
+        'last-name':   form.querySelector('[name="last-name"]').value,
+        'email':       form.querySelector('[name="email"]').value,
+        'postal-code': form.querySelector('[name="postal-code"]').value,
+        'phone':       form.querySelector('[name="phone"]').value || 'Not given',
+        '_subject':    'New Vote Commitment, Meghan Lahti 2026 Campaign',
+        '_template':   'table',
+        '_captcha':    'false'
+      }
     });
     return false;
   }
