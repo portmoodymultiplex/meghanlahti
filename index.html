@@ -126,19 +126,9 @@
   font-size: clamp(17px, 1.5vw, 19px); color: rgba(255,255,255,0.94);
   line-height: 1.75; max-width: 60ch;
 }
-/* Handwritten signature image, revealed left-to-right as if being signed */
-.meet-sign-wrap { display: block; }
 .meet-sign-img {
   display: block; margin-top: 40px;
   height: clamp(64px, 8.5vw, 112px); width: auto; max-width: 100%;
-}
-/* JS hides it first (pre-sign), then sweeps it on. With no JS it just stays visible. */
-.meet-sign-img.pre-sign { clip-path: inset(0 100% 0 0); }
-.meet-sign-img.signed { animation: signOn 2s cubic-bezier(0.65, 0, 0.35, 1) forwards; }
-@keyframes signOn { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
-@media (prefers-reduced-motion: reduce) {
-  .meet-sign-img.pre-sign { clip-path: inset(0 0 0 0); }
-  .meet-sign-img.signed { animation: none; }
 }
 .meet-photo { position: relative; margin: 0; min-height: 560px; }
 .meet-photo img {
@@ -453,7 +443,7 @@
     <hr class="meet-quote-rule" aria-hidden="true">
     <p class="meet-support">Outside the council chamber, I have spent my time working in post-secondary education and as a business owner. Most of what I know about this place, though, I learned the ordinary way: as a community volunteer, Girl Guide leader, soccer mom and Rotarian.</p>
     <p class="meet-support" style="margin-top:18px;">I love Port Moody. That is why I have spent most of my adult life in service to this community. It is where my husband and I chose to raise our family, and it is a place I am proud to have had the opportunity to help shape into the community we all know and love.</p>
-    <span class="meet-sign-wrap"><img class="meet-sign-img" src="meghan-signature.png" alt="Meghan Lahti signature" width="1817" height="523"></span>
+    <img class="meet-sign-img" src="meghan-signature.png" alt="Meghan Lahti signature" width="1817" height="523">
   </div>
   <figure class="meet-photo">
     <img src="ML-162.jpg" alt="Meghan Lahti holding her granddaughter" width="1400" height="933" loading="lazy">
@@ -701,23 +691,6 @@
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   els.forEach(function (el) { io.observe(el); });
-
-  /* Signature: hidden first, then swept on left-to-right as it scrolls into view.
-     We observe the unclipped wrapper, not the clipped image, because a zero-width
-     clip-path makes the image itself report as never intersecting. */
-  var sigWrap = document.querySelector('.meet-sign-wrap');
-  if (sigWrap) {
-    var sigImg = sigWrap.querySelector('.meet-sign-img');
-    if (sigImg) {
-      sigImg.classList.add('pre-sign');
-      var sigIo = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { sigImg.classList.add('signed'); sigIo.unobserve(e.target); }
-        });
-      }, { threshold: 0, rootMargin: '0px 0px -120px 0px' });
-      sigIo.observe(sigWrap);
-    }
-  }
 
   /* Gentle parallax on the two photo bands. Small amplitude, transform only. */
   var plx = Array.prototype.slice.call(document.querySelectorAll('.endorse-bg, .vol-bg'));
