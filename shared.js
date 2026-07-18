@@ -31,7 +31,8 @@
    paste its URL between the quotes below. Until it is set,
    submissions still save to Netlify as a backup.
    ============================================================ */
-window.CAMPAIGN_SHEET_ENDPOINT = 'window.CAMPAIGN_SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfy…/exec';';  // e.g. 'https://script.google.com/macros/s/AKfy.../exec'
+window.CAMPAIGN_SHEET_ENDPOINT = '';  // e.g. 'https://script.google.com/macros/s/AKfy.../exec'
+window.CAMPAIGN_SHEET_TOKEN = 'lz26-8c2f29e6-forms';  // must match SHARED_SECRET in the Apps Script
 
 window.submitCampaignForm = function (opts) {
   var form = opts.form;
@@ -69,12 +70,14 @@ window.submitCampaignForm = function (opts) {
 
   // Primary: straight into the Google Sheet via the Apps Script web app.
   // no-cors keeps it a simple request so Apps Script accepts it without a preflight.
+  // The token travels only to the script (not the Netlify backup).
   if (window.CAMPAIGN_SHEET_ENDPOINT) {
+    var sheetBody = body + '&token=' + encodeURIComponent(window.CAMPAIGN_SHEET_TOKEN || '');
     posts.push(fetch(window.CAMPAIGN_SHEET_ENDPOINT, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: body
+      body: sheetBody
     }));
   }
 
