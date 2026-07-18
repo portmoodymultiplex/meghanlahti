@@ -301,7 +301,8 @@
 
 /* ── WHAT THIS COUNCIL BUILT (annual report: three status columns) ── */
 .built-intro { max-width: 760px; }
-.built-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 44px; margin-top: 60px; align-items: start; }
+.built-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; margin-top: 60px; align-items: start; }
+.built-tag { display: inline-block; margin-left: 9px; font-family: var(--font-body); font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--taupe); background: var(--cream-deep); border-radius: 999px; padding: 3px 9px; vertical-align: middle; }
 .built-col { border-top: 2px solid var(--line); padding-top: 22px; }
 .built-col.done  { border-top-color: var(--sage); }
 .built-col.going { border-top-color: var(--rose-deep); }
@@ -488,8 +489,8 @@
             <summary><span class="more"></span></summary>
             <div class="pri-detail">
               <p>I believe in moderate growth. To me, that means placing density near transit and ensuring that other forms of housing, such as townhomes, low-rise housing and infill development, can take place throughout the rest of the city.</p>
-              <p>Housing has to work for everyone, from first-time buyers to seniors sizing down near their grandkids.</p>
-              <p>We have a solid plan for providing housing for families, and we have placed a high priority on ensuring affordable housing is built in this community through our inclusionary zoning policies, recent changes to our bonus density program and our ACC program. We still have a gap when it comes to seniors housing.</p>
+              <p>Housing has to work for everyone.</p>
+              <p>We have a solid plan for providing both rental and non-rental housing, and we have placed a high priority on ensuring affordable housing is built in this community through our inclusionary zoning policies, recent changes to our bonus density program and our ACC program. We still have a gap when it comes to seniors housing.</p>
               <p>We need to ensure there is housing for all seniors: those who are downsizing and seeking market housing opportunities, as well as those who require affordable seniors housing. This is a priority.</p>
             </div>
           </details>
@@ -623,23 +624,15 @@
       <div class="built-col going appear" style="--d:120ms">
         <div class="built-col-head">
           <span class="built-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="10" stroke="#A8628A" stroke-width="1.5" stroke-dasharray="3.2 3.2" stroke-linecap="round"/><path d="M11 6.6V11l3 2" stroke="#A8628A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span>Underway</span>
+          <span>Underway / In planning</span>
         </div>
         <div class="built-item">
-          <strong>The new field house</strong>
+          <strong>The new field house <span class="built-tag">Under construction</span></strong>
           <p>In planning for years, now being built.</p>
         </div>
-      </div>
-
-      <div class="built-col next appear" style="--d:240ms">
-        <div class="built-col-head">
-          <span class="built-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="10" stroke="#8A7F70" stroke-width="1.5"/><path d="M7.5 11h7m0 0-2.8-2.8M14.5 11l-2.8 2.8" stroke="#8A7F70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span>Coming next</span>
-        </div>
-        <!-- VERIFY: Barnet/Ioco bridge widening status. -->
         <div class="built-item">
-          <strong>Barnet and Ioco bridge widening</strong>
-          <p>Approved, and the next major piece of the transportation plan.</p>
+          <strong>Barnet and Ioco bridge widening <span class="built-tag">Approved</span></strong>
+          <p>The next major piece of the transportation plan.</p>
         </div>
       </div>
 
