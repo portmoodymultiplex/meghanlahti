@@ -59,7 +59,7 @@
   color: var(--rose-deep); background: var(--rose-pale);
 }
 .rec[data-status="complete"] .rec-status { color: var(--sage); background: var(--sage-pale); }
-.rec[data-status="underway"] .rec-status { color: var(--rose-deep); background: var(--rose-pale); }
+.rec[data-status="planning"] .rec-status { color: var(--rose-deep); background: var(--rose-pale); }
 .rec[data-status="planning"] .rec-status { color: var(--taupe); background: var(--cream-deep); }
 .rec-desc { font-size: 16px; color: var(--slate); line-height: 1.68; margin-top: 9px; max-width: 72ch; }
 .rec[hidden], .cat[hidden] { display: none; }
@@ -129,8 +129,7 @@
     <div class="wb-filter" role="group" aria-label="Filter the record by status">
       <button type="button" class="active" data-filter="all" aria-pressed="true">All</button>
       <button type="button" data-filter="complete" aria-pressed="false">Completed</button>
-      <button type="button" data-filter="underway" aria-pressed="false">Underway</button>
-      <button type="button" data-filter="planning" aria-pressed="false">Approved / In planning</button>
+      <button type="button" data-filter="planning" aria-pressed="false">Underway / In planning</button>
     </div>
 
     <details class="cat appear" open>
@@ -157,7 +156,7 @@
         </div>
         <div class="rec" data-status="planning">
           <!-- VERIFY: rush-hour lane status -->
-          <div class="rec-top"><span class="rec-name">Rush-hour lane on St. Johns</span><span class="rec-status">Approved</span></div>
+          <div class="rec-top"><span class="rec-name">Rush-hour lane on St. Johns</span><span class="rec-status">In planning</span></div>
           <p class="rec-desc">Paired with the bridge widening, so it eases the traffic instead of moving it.</p>
         </div>
       </div>
@@ -176,12 +175,12 @@
           <div class="rec-top"><span class="rec-name">Inlet Field, named Bob Favelle Field</span><span class="rec-status">Completed</span></div>
           <p class="rec-desc">Finished after years of waiting, and named for a long-serving, dedicated member of the community.</p>
         </div>
-        <div class="rec" data-status="underway">
+        <div class="rec" data-status="planning">
           <!-- VERIFY: "ground broke in 2024" if date used publicly -->
           <div class="rec-top"><span class="rec-name">The new field house</span><span class="rec-status">Under construction</span></div>
           <p class="rec-desc">In planning for years, ground has broken, and it is now being built.</p>
         </div>
-        <div class="rec" data-status="underway">
+        <div class="rec" data-status="planning">
           <div class="rec-top"><span class="rec-name">Kyle Centre redevelopment, Phase 2</span><span class="rec-status">Under construction</span></div>
           <p class="rec-desc">The next phase of the redevelopment is under way.</p>
         </div>
@@ -195,7 +194,7 @@
           <div class="rec-top"><span class="rec-name">Community Gardens</span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="planning">
-          <div class="rec-top"><span class="rec-name">Civic daycare facility</span><span class="rec-status">Approved</span></div>
+          <div class="rec-top"><span class="rec-name">Civic daycare facility</span><span class="rec-status">In planning</span></div>
           <p class="rec-desc">A new civic daycare to expand childcare in the community, approved and in planning for the next term.</p>
         </div>
       </div>
@@ -213,7 +212,7 @@
           <div class="rec-top"><span class="rec-name">Land Management Strategy</span><span class="rec-status">Completed</span></div>
           <p class="rec-desc">A first for Port Moody. It sets a plan for how city-owned land is managed, instead of deciding one parcel at a time.</p>
         </div>
-        <div class="rec" data-status="underway">
+        <div class="rec" data-status="planning">
           <!-- VERIFY: relationship-repair wording; school district kept out of public copy pending Meghan's approval to name it. -->
           <div class="rec-top"><span class="rec-name">Rebuilt working relationships</span><span class="rec-status">Ongoing</span></div>
           <p class="rec-desc">Relationships with the business community, non-profits, neighbouring municipalities, and community partners were put back on solid ground.</p>
@@ -229,7 +228,7 @@
           <div class="rec-top"><span class="rec-name">Two Youth Summits</span><span class="rec-status">Completed</span></div>
           <p class="rec-desc">The youth voice brought directly into Council chambers, twice, and something Meghan wants to keep doing.</p>
         </div>
-        <div class="rec" data-status="underway">
+        <div class="rec" data-status="planning">
           <div class="rec-top"><span class="rec-name">Arts and Business Council</span><span class="rec-status">Underway</span></div>
           <p class="rec-desc">The Mayor's Task Force on Arts and Business is becoming an arm's-length council that brings the two communities together, with city support to help it start.</p>
         </div>
@@ -319,7 +318,7 @@
           <div class="rec-top"><span class="rec-name">Pay parking in the busiest areas</span><span class="rec-status">Completed</span></div>
           <p class="rec-desc">Not everyone was happy about it. It brought in revenue so services did not have to be cut, and it took some pressure off parking at the waterfront at the same time.</p>
         </div>
-        <div class="rec" data-status="underway">
+        <div class="rec" data-status="planning">
           <div class="rec-top"><span class="rec-name">Conservative, audited budgets</span><span class="rec-status">Ongoing</span></div>
           <p class="rec-desc">Spending decisions that look for revenue and savings before reaching for the service axe, and that plan for the long-term cost of maintaining what the city owns.</p>
         </div>
