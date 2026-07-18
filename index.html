@@ -23,6 +23,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
+/* Self-hosted signature font (guaranteed to render, no external dependency) */
+@font-face {
+  font-family: 'Mr Dafoe';
+  font-style: normal; font-weight: 400; font-display: swap;
+  src: url('MrDafoe-Regular.ttf') format('truetype');
+}
 /* ============================================================
    HOMEPAGE. Premium polish pass.
    Motion budget: two tasteful moments only.
@@ -57,15 +63,15 @@
   letter-spacing: -0.02em; max-width: 12ch;
 }
 .hero h1 em { font-style: italic; color: var(--rose-deep); }
-.hero-vote {
-  display: inline-flex; align-items: center; gap: 8px;
+.hero-reelect {
+  display: inline-flex; align-items: center; gap: 11px;
   align-self: flex-start;
-  font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--rose-deep); background: rgba(199,125,161,0.12);
-  border: 1px solid rgba(168,98,138,0.3); border-radius: 999px;
-  padding: 8px 16px; margin-bottom: 26px;
+  font-family: var(--font-body);
+  font-size: clamp(17px, 2vw, 25px); font-weight: 700;
+  letter-spacing: 0.03em; text-transform: uppercase;
+  color: var(--rose-deep); margin-bottom: 22px;
 }
-.hero-vote svg { width: 13px; height: 13px; }
+.hero-reelect svg { width: clamp(20px, 2vw, 26px); height: auto; flex-shrink: 0; }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 48px; align-items: center; }
 .hero .btn-hero {
   font-family: var(--font-body); font-weight: 600; font-size: 16px;
@@ -125,6 +131,11 @@
 .meet-support {
   font-size: clamp(17px, 1.5vw, 19px); color: rgba(255,255,255,0.94);
   line-height: 1.75; max-width: 60ch;
+}
+.meet-sign {
+  font-family: 'Mr Dafoe', cursive; font-weight: 400;
+  font-size: clamp(44px, 5.6vw, 68px); color: #fff;
+  line-height: 1; margin-top: 40px;
 }
 .meet-photo { position: relative; margin: 0; min-height: 560px; }
 .meet-photo img {
@@ -327,6 +338,7 @@
 }
 .vol-inner { position: relative; z-index: 2; max-width: 1120px; margin: 0 auto; }
 .vol-content { max-width: 560px; margin-left: auto; text-align: left; }
+.vol-inner h2 em { font-style: italic; color: var(--rose); }
 .vol-inner h2 {
   font-family: var(--font-head);
   font-size: clamp(30px, 3.8vw, 48px);
@@ -376,6 +388,11 @@
 </head>
 <body>
 
+<a class="votebar" href="/commit-to-vote.html">
+  <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7.5 5.5 11 12 3" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span>Vote October 17, 2026 &middot; Commit to vote <span class="arrow">&rarr;</span></span>
+</a>
+
 <header id="site-header">
   <div class="nav-inner">
     <a href="/index.html" class="wordmark" aria-label="Re-Elect Meghan Lahti for Mayor of Port Moody, home">
@@ -412,7 +429,7 @@
 <!-- 1. HERO (headshot 58 on a bright gradient, quiet entrance) -->
 <section class="hero">
   <div class="hero-copy">
-    <p class="hero-vote"><svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7.5 5.5 11 12 3" stroke="#A8628A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Vote October 17, 2026</p>
+    <p class="hero-reelect"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 12.5 10 18.5 20 6" stroke="#A8628A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Re-Elect Meghan Lahti</p>
     <h1>Experience that brings people <em>together</em>.</h1>
     <div class="hero-actions">
       <a href="#priorities" class="btn-hero btn-hero-primary">See the priorities</a>
@@ -433,6 +450,7 @@
     <hr class="meet-quote-rule" aria-hidden="true">
     <p class="meet-support">Outside the council chamber, I have spent my time working in post-secondary education and as a business owner. Most of what I know about this place, though, I learned the ordinary way: as a community volunteer, Girl Guide leader, soccer mom and Rotarian.</p>
     <p class="meet-support" style="margin-top:18px;">I love Port Moody. That is why I have spent most of my adult life in service to this community. It is where my husband and I chose to raise our family, and it is a place I am proud to have had the opportunity to help shape into the community we all know and love.</p>
+    <p class="meet-sign" aria-hidden="true">Meghan Lahti</p>
   </div>
   <figure class="meet-photo">
     <img src="ML-162.jpg" alt="Meghan Lahti holding her granddaughter" width="1400" height="933" loading="lazy">
@@ -634,7 +652,7 @@
   <img class="vol-bg" src="ML-63.jpg" alt="" width="1600" height="480" loading="lazy" aria-hidden="true">
   <div class="vol-inner">
     <div class="vol-content appear">
-      <h2>We shaped this town together, and the work isn&rsquo;t finished.</h2>
+      <h2>We shaped this town <em>together</em>, and the work isn&rsquo;t finished.</h2>
       <p class="vol-slogan">Port Moody. <em>Together.</em> Forward.</p>
       <div style="display:flex; gap:14px; flex-wrap:wrap;">
         <a href="/volunteer.html" class="btn btn-rose">Volunteer</a>
