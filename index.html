@@ -81,12 +81,13 @@
 .hero .btn-hero-outline { background: transparent; color: var(--ink); border: 1.5px solid rgba(45,58,92,0.35); }
 .hero .btn-hero-outline:hover { background: var(--ink); color: var(--ivory); border-color: var(--ink); }
 .hero-photo { position: relative; min-height: 520px; }
-/* The photo dissolves into the gradient: its left edge is masked out over a wide
+/* The visual dissolves into the gradient: its left edge is masked out over a wide
    feather, then a soft rose wash ties the tones together. No hard seam. */
-.hero-photo img {
+.hero-photo img,
+.hero-photo video {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover; object-position: 42% 18%;
+  object-fit: cover; object-position: 50% 30%;
   display: block;
   -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.45) 18%, rgba(0,0,0,0.85) 34%, #000 48%);
           mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.45) 18%, rgba(0,0,0,0.85) 34%, #000 48%);
@@ -134,7 +135,7 @@
 .meet-photo img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover; object-position: 55% 35%;
+  object-fit: cover; object-position: 42% 20%;
   display: block;
   -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.7) 14%, #000 30%);
           mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.7) 14%, #000 30%);
@@ -354,6 +355,64 @@
 }
 .vol-slogan em { font-style: italic; color: var(--rose); }
 
+/* ── COLLABORATION (photo left, short statement right) ── */
+.collab-band { background: var(--cream); padding: 110px 72px; }
+.collab-wrap {
+  max-width: 1120px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(44px, 6vw, 88px); align-items: center;
+}
+.collab-photo { margin: 0; }
+.collab-photo img { width: 100%; height: auto; border-radius: 6px; display: block; box-shadow: 0 18px 48px rgba(45,58,92,0.14); }
+.collab-photo figcaption { font-size: 13px; color: var(--taupe); padding: 12px 4px 0; line-height: 1.5; }
+.collab-text h2 {
+  font-family: var(--font-head);
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 700; color: var(--ink); line-height: 1.12;
+  letter-spacing: -0.01em; margin-bottom: 18px;
+}
+.collab-text h2 em { font-style: italic; color: var(--rose-deep); }
+.collab-text p { font-size: 17px; color: var(--slate); line-height: 1.75; max-width: 54ch; }
+
+/* ── OFF THE CLOCK (dog sports now; grandkids photo slot ready) ── */
+.off-band { background: var(--ivory); padding: 120px 72px; }
+.off-wrap {
+  max-width: 1120px; margin: 0 auto;
+  display: grid; grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(44px, 6vw, 88px); align-items: center;
+}
+.off-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+.off-photos figure { margin: 0; }
+.off-photos img { width: 100%; height: 460px; object-fit: cover; object-position: center 20%; border-radius: 6px; display: block; }
+.off-photos figcaption { font-size: 13px; color: var(--taupe); padding: 12px 4px 0; line-height: 1.5; }
+.off-text h2 {
+  font-family: var(--font-head);
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 700; color: var(--ink); line-height: 1.12;
+  letter-spacing: -0.01em; margin-bottom: 18px;
+}
+.off-text h2 em { font-style: italic; color: var(--rose-deep); }
+.off-text p { font-size: 17px; color: var(--slate); line-height: 1.75; max-width: 54ch; }
+
+/* ── IN THE COMMUNITY (captioned gallery; grows as photos come in) ── */
+.comm-band { background: var(--cream); padding: 120px 72px 128px; }
+.comm-inner { max-width: 1120px; margin: 0 auto; }
+.comm-head { max-width: 720px; margin-bottom: 52px; }
+.comm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px 24px; }
+.comm-grid figure { margin: 0; }
+.comm-grid img {
+  width: 100%; height: 300px; object-fit: cover; object-position: center 30%;
+  border-radius: 6px; display: block;
+}
+.comm-grid figcaption { font-size: 13px; color: var(--taupe); padding: 11px 4px 0; line-height: 1.55; }
+
+@media (max-width: 900px) {
+  .collab-band, .off-band, .comm-band { padding: 84px 26px; }
+  .collab-wrap, .off-wrap { grid-template-columns: 1fr; gap: 36px; }
+  .comm-grid { grid-template-columns: 1fr; }
+  .comm-grid img { height: auto; max-height: 420px; }
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; min-height: 0; }
@@ -438,8 +497,12 @@
     </div>
   </div>
   <div class="hero-photo">
-    <!-- Picture 58 of Meghan's headshots. Save the file as meghan-headshot-58.jpg beside index.html. -->
-    <img src="meghan-headshot-58.jpg" alt="Mayor Meghan Lahti, smiling with her arms crossed in front of greenery" width="2600" height="1733" fetchpriority="high">
+    <!-- Campaign hero video (portrait phone video, 720x1280). It sits in the photo
+         column at near-native width; a full-bleed hero would crop it to a sliver
+         and upscale it soft. Poster frame extracted at 22s (Meghan with family). -->
+    <video autoplay muted loop playsinline preload="metadata" poster="photos/hero-poster.jpg" aria-label="Scenes from Meghan Lahti's campaign launch event">
+      <source src="photos/meghan-hero.mp4" type="video/mp4">
+    </video>
   </div>
 </section>
 
@@ -454,7 +517,7 @@
     <img class="meet-sign-img" src="meghan-signature.svg" alt="Meghan Lahti signature" width="1817" height="523">
   </div>
   <figure class="meet-photo">
-    <img src="ML-162.jpg" alt="Meghan Lahti holding her granddaughter" width="1400" height="933" loading="lazy">
+    <img src="meghan-headshot-58.jpg" alt="Mayor Meghan Lahti, smiling with her arms crossed in front of greenery" width="2600" height="1733" loading="lazy">
   </figure>
 </section>
 
@@ -565,10 +628,25 @@
   </div>
 </section>
 
+<!-- 3b. COLLABORATION (Meghan with Mayor Richard Stewart of Coquitlam) -->
+<section class="collab-band">
+  <div class="collab-wrap appear">
+    <figure class="collab-photo">
+      <img src="photos/meghan-richardstuart.jpg" alt="Meghan Lahti with Mayor Richard Stewart of Coquitlam at a community event" width="1280" height="854" loading="lazy">
+      <figcaption>Meghan with Mayor Richard Stewart of Coquitlam.</figcaption>
+    </figure>
+    <div class="collab-text">
+      <p class="t-kicker">Working across city lines</p>
+      <h2>Collaboration <em>matters</em>.</h2>
+      <p>Transit, policing, emergency response and growth are all regional work, decided at tables Port Moody shares with its neighbours. Meghan has built the relationships that make those tables work for this city.</p>
+    </div>
+  </div>
+</section>
+
 <!-- 4. ENDORSEMENTS (huge photo, dark overlay, floating glass cards) -->
 <section class="endorse-band">
-  <!-- Watermarked Adobe Stock comp in place for campaign approval. Replace this file with the licensed version after purchase, same filename. -->
-  <img class="endorse-bg" src="rocky-point-sunset.jpg" alt="" width="1000" height="563" loading="lazy" aria-hidden="true">
+  <!-- Rocky Point sunrise, replaced the watermarked stock comp with Meghan's own photo. -->
+  <img class="endorse-bg" src="photos/sunset.jpg" alt="" width="2000" height="2666" loading="lazy" aria-hidden="true">
   <div class="endorse-inner">
     <div class="appear">
       <p class="t-kicker">Endorsements</p>
@@ -636,7 +714,7 @@
         </div>
         <div class="built-item">
           <strong>The Shoreline Shuttle</strong>
-          <p>Local shuttle service back on the road after years away.</p>
+          <p>Local shuttle service back on the road.</p>
         </div>
       </div>
 
@@ -668,6 +746,87 @@
     <p class="built-all">
       <a href="/what-we-built.html" class="link-arrow">See the full record &rarr;</a>
     </p>
+  </div>
+</section>
+
+<!-- 5b. OFF THE CLOCK (dog sports; grandkids photo slot ready for when it arrives) -->
+<section class="off-band">
+  <div class="off-wrap appear">
+    <div class="off-photos">
+      <figure>
+        <img src="photos/dock-diving.jpeg" alt="Meghan Lahti at a dock diving competition with her chocolate lab" width="1327" height="1653" loading="lazy">
+        <figcaption>In her spare time, Meghan enjoys dog sports such as dock diving.</figcaption>
+      </figure>
+      <figure>
+        <img src="photos/meghan-grandkids.jpeg" alt="Meghan Lahti and her husband with two of their grandchildren at the beach" width="883" height="1566" loading="lazy">
+        <figcaption>Grandma duty, her favourite job of all.</figcaption>
+      </figure>
+    </div>
+    <div class="off-text">
+      <p class="t-kicker">Off the clock</p>
+      <h2>Not always the <em>mayor</em>.</h2>
+      <p>When she is not in the council chamber, Meghan is usually somewhere near the water with her dog. She competes in dog sports like dock diving, and the title she answers to fastest these days is grandma.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5c. IN THE COMMUNITY (captioned gallery, grows as new photos come in) -->
+<section class="comm-band">
+  <div class="comm-inner">
+    <div class="comm-head appear">
+      <p class="t-kicker">In the community</p>
+      <h2 class="t-display">Where the job actually happens.</h2>
+    </div>
+    <div class="comm-grid">
+      <figure class="appear">
+        <img src="photos/spencer-moore.jpg" alt="Spencer Moore receiving the 2025 Youth Sports Award from Meghan Lahti" width="1179" height="877" loading="lazy">
+        <figcaption>13-year-old Spencer Moore receiving the 2025 Youth Sports Award.</figcaption>
+      </figure>
+      <figure class="appear" style="--d:80ms">
+        <img src="photos/fire-awards.jpeg" alt="Meghan Lahti at the Port Moody Fire Rescue Awards Ceremony" width="1290" height="985" loading="lazy">
+        <figcaption>Annual Port Moody Fire Rescue Awards Ceremony and Appreciation Banquet, with Fire Chief Darcey O&rsquo;Riordan, Councillor Dilworth and former Fire Chief Ron Coulson.</figcaption>
+      </figure>
+      <figure class="appear" style="--d:160ms">
+        <img src="photos/swearing-new-recruit.jpeg" alt="Meghan Lahti at the swearing in of a new Port Moody Police recruit" width="1200" height="800" loading="lazy">
+        <figcaption>Swearing in of a new recruit with Police Chief David Fleugel.</figcaption>
+      </figure>
+      <figure class="appear">
+        <img src="photos/meghan-mm.jpeg" alt="Meghan Lahti delivering a speech at a podium with flags behind her" width="1170" height="867" loading="lazy">
+        <figcaption>Delivering the mayoral address.</figcaption>
+      </figure>
+      <figure class="appear">
+        <img src="photos/inlet-spring-regatta.jpg" alt="Meghan Lahti with the Nothin' Dragon Paddling Society at the Inlet Spring Regatta" width="2000" height="1500" loading="lazy">
+        <figcaption>Inlet Spring Regatta.</figcaption>
+      </figure>
+      <figure class="appear" style="--d:80ms">
+        <img src="photos/ribfest.jpg" alt="Meghan Lahti with volunteers at Ribfest" width="2000" height="1500" loading="lazy">
+        <figcaption>With the volunteer crew at Ribfest.</figcaption>
+      </figure>
+      <figure class="appear" style="--d:160ms">
+        <img src="photos/dumplingfestival.jpg" alt="Meghan Lahti on stage at the Dumpling Festival" width="2000" height="2666" loading="lazy">
+        <figcaption>On stage at the Dumpling Festival.</figcaption>
+      </figure>
+      <figure class="appear">
+        <img src="photos/tccs-spring.jpeg" alt="Meghan Lahti on stage in traditional dress at the Spring Festival Fair" width="1170" height="1080" loading="lazy">
+        <figcaption>Tri-City Chinese Community Society&rsquo;s 3rd Spring Festival Fair.</figcaption>
+      </figure>
+      <figure class="appear" style="--d:80ms">
+        <img src="photos/tccs-spring-zoe.jpeg" alt="Meghan Lahti with a ceremonial drum at the Spring Festival Fair" width="1170" height="1275" loading="lazy">
+        <figcaption>Drumming in the celebrations at the Spring Festival Fair, with Zo&euml; Royer.</figcaption>
+      </figure>
+      <figure class="appear" style="--d:160ms">
+        <img src="photos/30th-annual.jpeg" alt="Meghan Lahti in an embroidered costume at the Asian Heritage Month celebration" width="1170" height="1493" loading="lazy">
+        <figcaption>The 30th annual celebration of Asian Heritage Month.</figcaption>
+      </figure>
+      <figure class="appear">
+        <img src="photos/lahti-speaking.jpg" alt="Meghan Lahti speaking at a community event" width="1365" height="2048" loading="lazy">
+        <figcaption>Speaking at a community event.</figcaption>
+      </figure>
+      <figure class="appear" style="--d:80ms">
+        <img src="photos/meghan-conversation.jpg" alt="Meghan Lahti in conversation with residents" width="1600" height="1067" loading="lazy">
+        <figcaption>The best part of the job: the conversations.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -714,6 +873,11 @@
   onScroll();
 
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Respect reduced motion: hold the hero video on its poster frame. */
+  var heroVid = document.querySelector('.hero-photo video');
+  if (heroVid && reduce) { heroVid.removeAttribute('autoplay'); heroVid.pause(); }
+
   var els = document.querySelectorAll('.appear');
   if (reduce || !('IntersectionObserver' in window)) {
     els.forEach(function (el) { el.classList.add('is-in'); });

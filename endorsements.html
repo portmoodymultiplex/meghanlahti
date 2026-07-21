@@ -132,6 +132,24 @@ textarea.field { resize: vertical; }
 .org-card .letter > summary .lbl::before { content: "Read the full letter \2193"; }
 .org-card .letter[open] > summary .lbl::before { content: "Hide the full letter \2191"; }
 
+/* Photo pair between endorsement sections */
+.end-photo-duo { background: var(--ivory); padding: 0 72px 96px; }
+.end-photo-duo-inner {
+  max-width: 1120px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;
+}
+.end-photo-duo figure { margin: 0; }
+.end-photo-duo img {
+  width: 100%; height: 560px; object-fit: cover; object-position: center 18%;
+  border-radius: 6px; display: block;
+}
+.end-photo-duo figcaption { font-size: 13px; color: var(--taupe); padding: 11px 4px 0; line-height: 1.55; }
+@media (max-width: 900px) {
+  .end-photo-duo { padding: 0 26px 64px; }
+  .end-photo-duo-inner { grid-template-columns: 1fr; }
+  .end-photo-duo img { height: auto; max-height: 480px; }
+}
+
 @media (max-width: 900px) {
   .org-grid, .voice-grid { grid-template-columns: 1fr; }
 }
@@ -178,7 +196,7 @@ textarea.field { resize: vertical; }
 <main>
 
 <div class="end-hero">
-  <img class="end-hero-bg" src="rocky-point-sunset.jpg" alt="" width="1000" height="563" aria-hidden="true">
+  <img class="end-hero-bg" src="photos/sunset.jpg" alt="" width="2000" height="2666" aria-hidden="true">
   <div class="end-hero-inner appear is-in">
     <p class="t-kicker" style="color:var(--rose);">Endorsements</p>
     <h1>The community endorses Meghan Lahti.</h1>
@@ -231,6 +249,21 @@ textarea.field { resize: vertical; }
     </div>
   </div>
 </section>
+
+<!-- Photo pair. NOTE: Zoe Royer has not formally endorsed yet, so her caption
+     stays descriptive and makes no endorsement claim. Swap in a quote when she does. -->
+<div class="end-photo-duo">
+  <div class="end-photo-duo-inner">
+    <figure>
+      <img src="photos/lahti-nwld.jpg" alt="Meghan Lahti with Janet Andrews of the New Westminster and District Labour Council" width="1365" height="2048" loading="lazy">
+      <figcaption>Meghan with Janet Andrews, Secretary-Treasurer of the New Westminster &amp; District Labour Council.</figcaption>
+    </figure>
+    <figure>
+      <img src="photos/meghan-zoe-web.jpg" alt="Meghan Lahti with Zoe Royer, Member of Parliament" width="2000" height="2996" loading="lazy">
+      <figcaption>Meghan with Zo&euml; Royer, Port Moody&rsquo;s Member of Parliament and a former Port Moody City Councillor.</figcaption>
+    </figure>
+  </div>
+</div>
 
 <!-- Individual community endorsements -->
 <section class="section bg-cream">
