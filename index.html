@@ -157,7 +157,7 @@
 
 /* ── THE PLATFORM AREA (commitments left, next-term rail right) ── */
 .plat-band {
-  position: relative; overflow: hidden;
+  position: relative; overflow: clip; /* clip, not hidden: hidden makes this the sticky container and kills the pinned rail CTA */
   background: linear-gradient(150deg, #FDF8F4 0%, #FBF1F5 42%, #F6E4EC 100%);
 }
 .plat-band::before {
@@ -187,9 +187,11 @@
 .pri-lede { font-size: 18px; color: var(--ink); font-weight: 500; line-height: 1.6; max-width: 58ch; }
 .pri-body { font-size: 17px; color: var(--slate); line-height: 1.72; margin-top: 14px; max-width: 60ch; }
 
-/* The next-term rail stays pinned in view alongside the four priorities; the
-   CTA at its foot anchors it so it does not leave a large void below. */
-.plat-rail { position: sticky; top: 108px; }
+/* The rail scrolls naturally with the page. The list reads first; then, in the
+   space beneath it, the Re-Elect reminder pins mid-viewport and fades in as you
+   scroll through the remaining priorities. No dead column, no hard sell. */
+.plat-rail { display: flex; flex-direction: column; align-self: stretch; }
+.rail-cta-wrap { flex: 1; margin-top: 72px; }
 .nt-title {
   font-family: var(--font-head);
   font-size: clamp(23px, 2.2vw, 29px);
@@ -255,7 +257,7 @@
 .nt-list li { grid-template-columns: 28px 1fr; gap: 16px; align-items: start; }
 .nt-check { display: inline-flex; align-items: center; justify-content: center; color: var(--rose-deep); margin-top: 4px; }
 .nt-check svg { width: 22px; height: 22px; }
-.nt-cta { margin-top: 40px; border-top: 1px solid var(--line); padding-top: 30px; }
+.nt-cta { position: sticky; top: 34vh; }
 .nt-cta-reelect {
   display: inline-flex; align-items: center; gap: 7px;
   font-size: 12px; font-weight: 700;
@@ -497,6 +499,8 @@
   .meet-photo::after { background: linear-gradient(to bottom, rgba(183,109,146,0.5) 0%, rgba(183,109,146,0) 40%); }
   .plat-wrap { grid-template-columns: 1fr; gap: 64px; }
   .plat-rail { position: static; }
+  .rail-cta-wrap { margin-top: 44px; }
+  .nt-cta { position: static; }
   .pri-block { padding: 38px 0 42px; }
   .vol-cta { padding: 112px 26px; }
   .vol-content { max-width: none; }
@@ -681,12 +685,14 @@
           <li class="appear" style="--d:500ms"><span class="nt-check" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7.5 5.5 11 12 3" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nt-item">Kyle Centre rebuild and the creation of a new park in Moody Centre</span></li>
           <li class="appear" style="--d:600ms"><span class="nt-check" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7.5 5.5 11 12 3" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nt-item">Expanding Rocky Point Park</span></li>
         </ol>
-        <div class="nt-cta">
-          <p class="nt-cta-reelect"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1.5 6.5 4.5 9.5 10.5 2.5" stroke="#A8628A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Re-Elect</p>
-          <p class="nt-cta-name">Meghan Lahti</p>
-          <p class="nt-cta-sub">For Mayor of Port Moody</p>
-          <p class="nt-cta-note">Election Day is October 17, 2026.</p>
-          <a class="btn btn-rose" href="/commit-to-vote.html">Commit to vote</a>
+        <div class="rail-cta-wrap">
+          <div class="nt-cta appear">
+            <p class="nt-cta-reelect"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1.5 6.5 4.5 9.5 10.5 2.5" stroke="#A8628A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Re-Elect</p>
+            <p class="nt-cta-name">Meghan Lahti</p>
+            <p class="nt-cta-sub">For Mayor of Port Moody</p>
+            <p class="nt-cta-note">Election Day is October 17, 2026.</p>
+            <a class="btn btn-rose" href="/commit-to-vote.html">Commit to vote</a>
+          </div>
         </div>
       </aside>
     </div>
@@ -927,7 +933,7 @@
     <!-- VERIFY authorization wording with Anthony / Elections BC before launch. Full contribution limits and eligibility live on the Donate page, not the global footer. -->
     <div class="footer-cols">
     <p class="footer-legal">Authorized by Anthony Sandler, financial agent for the Meghan Lahti 2026 Campaign, anthony@lahti2026.com. &copy; 2026 Meghan Lahti Campaign.</p>
-    <p class="footer-ack">Port Moody is situated on the unceded traditional territories of the k&#695;ik&#695;&#601;&#643;&#601;m (Kwikwetlem), s&#601;l&#769;ilw&#601;ta&#660;&#7491; (Tsleil-Waututh), x&#695;m&#601;&#952;k&#695;&#601;y&#769;&#601;m (Musqueam), and S&#7811;&#x1E8F;w&#x1E8F;&#769;u7mesh (Squamish) Nations.</p>
+    <p class="footer-ack">Port Moody is situated on the traditional territories of the k&#695;ik&#695;&#601;&#643;&#601;m (Kwikwetlem), s&#601;l&#769;ilw&#601;ta&#660;&#7491; (Tsleil-Waututh), x&#695;m&#601;&#952;k&#695;&#601;y&#769;&#601;m (Musqueam), and S&#7811;&#x1E8F;w&#x1E8F;&#769;u7mesh (Squamish) Nations.</p>
     </div>
     <div class="footer-social">
       <a href="https://www.facebook.com/mayormeghanlahti" target="_blank" rel="noopener">Facebook</a>
