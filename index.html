@@ -255,8 +255,28 @@
 .nt-list li { grid-template-columns: 28px 1fr; gap: 16px; align-items: start; }
 .nt-check { display: inline-flex; align-items: center; justify-content: center; color: var(--rose-deep); margin-top: 4px; }
 .nt-check svg { width: 22px; height: 22px; }
-.nt-cta { margin-top: 40px; }
-.nt-cta-note { font-size: 15px; color: var(--slate); line-height: 1.55; margin-bottom: 16px; }
+.nt-cta { margin-top: 40px; border-top: 1px solid var(--line); padding-top: 30px; }
+.nt-cta-reelect {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--rose-deep); margin-bottom: 6px;
+}
+.nt-cta-reelect svg { width: 13px; height: 13px; flex-shrink: 0; }
+.nt-cta-name {
+  font-family: var(--font-head);
+  font-size: clamp(26px, 2.4vw, 32px); font-weight: 700;
+  color: var(--ink); line-height: 1.1; margin-bottom: 4px;
+}
+.nt-cta-sub {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--taupe); margin-bottom: 18px;
+}
+.nt-cta-note {
+  font-size: 18px; font-weight: 600; color: var(--ink);
+  line-height: 1.5; margin-bottom: 18px;
+}
 
 /* ── ENDORSEMENTS (huge photo, dark overlay, floating glass) ── */
 .endorse-band { position: relative; background: var(--ink); padding: 152px 72px; overflow: hidden; }
@@ -394,23 +414,65 @@
 .off-text h2 em { font-style: italic; color: var(--rose-deep); }
 .off-text p { font-size: 17px; color: var(--slate); line-height: 1.75; max-width: 54ch; }
 
-/* ── IN THE COMMUNITY (captioned gallery; grows as photos come in) ── */
-.comm-band { background: var(--cream); padding: 120px 72px 128px; }
-.comm-inner { max-width: 1120px; margin: 0 auto; }
-.comm-head { max-width: 720px; margin-bottom: 52px; }
-.comm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px 24px; }
-.comm-grid figure { margin: 0; }
-.comm-grid img {
-  width: 100%; height: 300px; object-fit: cover; object-position: center 30%;
+/* ── IN THE COMMUNITY (horizontal filmstrip: swipe on mobile, arrows on desktop) ── */
+.comm-band { background: var(--cream); padding: 120px 0 128px; overflow: hidden; }
+.comm-inner { max-width: none; margin: 0; }
+.comm-head {
+  max-width: 1120px; margin: 0 auto 44px;
+  padding: 0 72px;
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+}
+.comm-head-text { max-width: 720px; }
+.comm-nav { display: flex; gap: 10px; flex-shrink: 0; padding-bottom: 6px; }
+.comm-btn {
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 1.5px solid rgba(45,58,92,0.3); background: transparent;
+  color: var(--ink); cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, opacity 0.18s ease;
+}
+.comm-btn:hover { background: var(--rose-deep); border-color: var(--rose-deep); color: #fff; }
+.comm-btn:disabled { opacity: 0.3; pointer-events: none; }
+.comm-btn svg { width: 18px; height: 18px; }
+.comm-scroller {
+  display: flex; gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 max(72px, calc((100vw - 1120px) / 2)) 18px;
+  scrollbar-width: none;
+}
+.comm-scroller::-webkit-scrollbar { display: none; }
+.comm-scroller figure {
+  margin: 0; flex: 0 0 360px;
+  scroll-snap-align: start;
+}
+.comm-scroller img {
+  width: 100%; height: 440px; object-fit: cover; object-position: center 30%;
   border-radius: 6px; display: block;
 }
-.comm-grid figcaption { font-size: 13px; color: var(--taupe); padding: 11px 4px 0; line-height: 1.55; }
+.comm-scroller figcaption { font-size: 13px; color: var(--taupe); padding: 11px 4px 0; line-height: 1.55; }
+/* thin progress track under the strip, echoing the rose rules */
+.comm-progress {
+  max-width: 1120px; margin: 26px auto 0; padding: 0 72px;
+}
+.comm-progress-track { height: 2px; background: var(--line); position: relative; border-radius: 999px; }
+.comm-progress-fill {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 12%;
+  background: var(--rose-deep); border-radius: 999px;
+  transition: width 0.15s ease, transform 0.15s ease;
+}
 
 @media (max-width: 900px) {
-  .collab-band, .off-band, .comm-band { padding: 84px 26px; }
+  .collab-band, .off-band { padding: 84px 26px; }
+  .comm-band { padding: 84px 0 92px; }
   .collab-wrap, .off-wrap { grid-template-columns: 1fr; gap: 36px; }
-  .comm-grid { grid-template-columns: 1fr; }
-  .comm-grid img { height: auto; max-height: 420px; }
+  .comm-head { padding: 0 26px; margin-bottom: 30px; }
+  .comm-nav { display: none; }
+  .comm-scroller { gap: 16px; padding: 0 26px 14px; }
+  .comm-scroller figure { flex: 0 0 78vw; }
+  .comm-scroller img { height: 380px; }
+  .comm-progress { padding: 0 26px; }
 }
 
 /* ── RESPONSIVE ── */
@@ -620,6 +682,9 @@
           <li class="appear" style="--d:600ms"><span class="nt-check" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7.5 5.5 11 12 3" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nt-item">Expanding Rocky Point Park</span></li>
         </ol>
         <div class="nt-cta">
+          <p class="nt-cta-reelect"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1.5 6.5 4.5 9.5 10.5 2.5" stroke="#A8628A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Re-Elect</p>
+          <p class="nt-cta-name">Meghan Lahti</p>
+          <p class="nt-cta-sub">For Mayor of Port Moody</p>
           <p class="nt-cta-note">Election Day is October 17, 2026.</p>
           <a class="btn btn-rose" href="/commit-to-vote.html">Commit to vote</a>
         </div>
@@ -749,7 +814,76 @@
   </div>
 </section>
 
-<!-- 5b. OFF THE CLOCK (dog sports; grandkids photo slot ready for when it arrives) -->
+<!-- 5b. IN THE COMMUNITY (captioned gallery, grows as new photos come in) -->
+<section class="comm-band">
+  <div class="comm-inner">
+    <div class="comm-head appear">
+      <div class="comm-head-text">
+        <p class="t-kicker">In the community</p>
+        <h2 class="t-display">Where the job actually happens.</h2>
+      </div>
+      <div class="comm-nav" aria-hidden="false">
+        <button type="button" class="comm-btn" id="commPrev" aria-label="Previous photos"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button type="button" class="comm-btn" id="commNext" aria-label="More photos"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+    <div class="comm-scroller" id="commScroller" tabindex="0" role="region" aria-label="Photos of Meghan in the community">
+      <figure>
+        <img src="photos/spencer-moore.jpg" alt="Spencer Moore receiving the 2025 Youth Sports Award from Meghan Lahti" width="1179" height="877" loading="lazy">
+        <figcaption>13-year-old Spencer Moore receiving the 2025 Youth Sports Award.</figcaption>
+      </figure>
+      <figure>
+        <img src="photos/fire-awards.jpeg" alt="Meghan Lahti at the Port Moody Fire Rescue Awards Ceremony" width="1290" height="985" loading="lazy">
+        <figcaption>Annual Port Moody Fire Rescue Awards Ceremony and Appreciation Banquet, with Fire Chief Darcey O&rsquo;Riordan, Councillor Dilworth and former Fire Chief Ron Coulson.</figcaption>
+      </figure>
+      <figure>
+        <img src="photos/swearing-new-recruit.jpeg" alt="Meghan Lahti at the swearing in of a new Port Moody Police recruit" width="1200" height="800" loading="lazy">
+        <figcaption>Swearing in of a new recruit with Police Chief David Fleugel.</figcaption>
+      </figure>
+      <figure>
+        <img src="photos/meghan-mm.jpeg" alt="Meghan Lahti delivering a speech at a podium with flags behind her" width="1170" height="867" loading="lazy">
+        <figcaption>Delivering the mayoral address.</figcaption>
+      </figure>
+      <figure>
+        <img src="photos/inlet-spring-regatta.jpg" alt="Meghan Lahti with the Nothin' Dragon Paddling Society at the Inlet Spring Regatta" width="2000" height="1500" loading="lazy">
+        <figcaption>Inlet Spring Regatta.</figcaption>
+      </figure>
+      <figure>
+        <img src="photos/ribfest.jpg" alt="Meghan Lahti with volunteers at Ribfest" width="2000" height="1500" loading="lazy">
+        <figcaption>Judging the rib contest at Ribfest.</figcaption>
+      </figure>
+      <figure>
+        <img src="photos/dumplingfestival.jpg" alt="Meghan Lahti on stage at the Dumpling Festival" width="2000" height="2666" loading="lazy">
+        <figcaption>On stage at the Dumpling Festival.</figcaption>
+      </figure>
+      <figure>
+        <img src="photos/tccs-spring.jpeg" alt="Meghan Lahti on stage in traditional dress at the Spring Festival Fair" width="1170" height="1080" loading="lazy">
+        <figcaption>Tri-City Chinese Community Society&rsquo;s 3rd Spring Festival Fair.</figcaption>
+      </figure>
+      <figure>
+        <img src="photos/tccs-spring-zoe.jpeg" alt="Meghan Lahti with a ceremonial drum at the Spring Festival Fair" width="1170" height="1275" loading="lazy">
+        <figcaption>Drumming in the celebrations at the Spring Festival Fair, with Zo&euml; Royer.</figcaption>
+      </figure>
+      <figure>
+        <img src="photos/30th-annual.jpeg" alt="Meghan Lahti in an embroidered costume at the Asian Heritage Month celebration" width="1170" height="1493" loading="lazy">
+        <figcaption>The 30th annual celebration of Asian Heritage Month.</figcaption>
+      </figure>
+      <figure>
+        <img src="photos/pomoarts-ribbon.jpg" alt="Meghan Lahti at the ribbon cutting for the PoMo Arts Visitor Centre at Old City Hall" width="960" height="1280" loading="lazy">
+        <figcaption>Cutting the ribbon for PoMo Arts&rsquo; new Visitor Centre.</figcaption>
+      </figure>
+      <figure>
+        <img src="photos/explorasian.jpg" alt="Meghan Lahti at the opening ceremonies of the 30th ExplorAsian Festival" width="1536" height="2048" loading="lazy">
+        <figcaption>Opening remarks at the opening ceremonies of the 30th ExplorAsian Festival.</figcaption>
+      </figure>
+    </div>
+    <div class="comm-progress" aria-hidden="true">
+      <div class="comm-progress-track"><div class="comm-progress-fill" id="commProgress"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5c. OFF THE CLOCK (dog sports and grandma duty) -->
 <section class="off-band">
   <div class="off-wrap appear">
     <div class="off-photos">
@@ -766,66 +900,6 @@
       <p class="t-kicker">Off the clock</p>
       <h2>Not always the <em>mayor</em>.</h2>
       <p>When she is not in the council chamber, Meghan is usually somewhere near the water with her dog. She competes in dog sports like dock diving, and the title she answers to fastest these days is grandma.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 5c. IN THE COMMUNITY (captioned gallery, grows as new photos come in) -->
-<section class="comm-band">
-  <div class="comm-inner">
-    <div class="comm-head appear">
-      <p class="t-kicker">In the community</p>
-      <h2 class="t-display">Where the job actually happens.</h2>
-    </div>
-    <div class="comm-grid">
-      <figure class="appear">
-        <img src="photos/spencer-moore.jpg" alt="Spencer Moore receiving the 2025 Youth Sports Award from Meghan Lahti" width="1179" height="877" loading="lazy">
-        <figcaption>13-year-old Spencer Moore receiving the 2025 Youth Sports Award.</figcaption>
-      </figure>
-      <figure class="appear" style="--d:80ms">
-        <img src="photos/fire-awards.jpeg" alt="Meghan Lahti at the Port Moody Fire Rescue Awards Ceremony" width="1290" height="985" loading="lazy">
-        <figcaption>Annual Port Moody Fire Rescue Awards Ceremony and Appreciation Banquet, with Fire Chief Darcey O&rsquo;Riordan, Councillor Dilworth and former Fire Chief Ron Coulson.</figcaption>
-      </figure>
-      <figure class="appear" style="--d:160ms">
-        <img src="photos/swearing-new-recruit.jpeg" alt="Meghan Lahti at the swearing in of a new Port Moody Police recruit" width="1200" height="800" loading="lazy">
-        <figcaption>Swearing in of a new recruit with Police Chief David Fleugel.</figcaption>
-      </figure>
-      <figure class="appear">
-        <img src="photos/meghan-mm.jpeg" alt="Meghan Lahti delivering a speech at a podium with flags behind her" width="1170" height="867" loading="lazy">
-        <figcaption>Delivering the mayoral address.</figcaption>
-      </figure>
-      <figure class="appear">
-        <img src="photos/inlet-spring-regatta.jpg" alt="Meghan Lahti with the Nothin' Dragon Paddling Society at the Inlet Spring Regatta" width="2000" height="1500" loading="lazy">
-        <figcaption>Inlet Spring Regatta.</figcaption>
-      </figure>
-      <figure class="appear" style="--d:80ms">
-        <img src="photos/ribfest.jpg" alt="Meghan Lahti with volunteers at Ribfest" width="2000" height="1500" loading="lazy">
-        <figcaption>With the volunteer crew at Ribfest.</figcaption>
-      </figure>
-      <figure class="appear" style="--d:160ms">
-        <img src="photos/dumplingfestival.jpg" alt="Meghan Lahti on stage at the Dumpling Festival" width="2000" height="2666" loading="lazy">
-        <figcaption>On stage at the Dumpling Festival.</figcaption>
-      </figure>
-      <figure class="appear">
-        <img src="photos/tccs-spring.jpeg" alt="Meghan Lahti on stage in traditional dress at the Spring Festival Fair" width="1170" height="1080" loading="lazy">
-        <figcaption>Tri-City Chinese Community Society&rsquo;s 3rd Spring Festival Fair.</figcaption>
-      </figure>
-      <figure class="appear" style="--d:80ms">
-        <img src="photos/tccs-spring-zoe.jpeg" alt="Meghan Lahti with a ceremonial drum at the Spring Festival Fair" width="1170" height="1275" loading="lazy">
-        <figcaption>Drumming in the celebrations at the Spring Festival Fair, with Zo&euml; Royer.</figcaption>
-      </figure>
-      <figure class="appear" style="--d:160ms">
-        <img src="photos/30th-annual.jpeg" alt="Meghan Lahti in an embroidered costume at the Asian Heritage Month celebration" width="1170" height="1493" loading="lazy">
-        <figcaption>The 30th annual celebration of Asian Heritage Month.</figcaption>
-      </figure>
-      <figure class="appear">
-        <img src="photos/lahti-speaking.jpg" alt="Meghan Lahti speaking at a community event" width="1365" height="2048" loading="lazy">
-        <figcaption>Speaking at a community event.</figcaption>
-      </figure>
-      <figure class="appear" style="--d:80ms">
-        <img src="photos/meghan-conversation.jpg" alt="Meghan Lahti in conversation with residents" width="1600" height="1067" loading="lazy">
-        <figcaption>The best part of the job: the conversations.</figcaption>
-      </figure>
     </div>
   </div>
 </section>
@@ -889,6 +963,48 @@
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   els.forEach(function (el) { io.observe(el); });
+
+  /* In the Community filmstrip: arrows page by one card, snap does the rest.
+     Progress bar mirrors scroll position. Touch devices just swipe. */
+  var strip = document.getElementById('commScroller');
+  if (strip) {
+    var prev = document.getElementById('commPrev');
+    var next = document.getElementById('commNext');
+    var fill = document.getElementById('commProgress');
+    var cardStep = function () {
+      var fig = strip.querySelector('figure');
+      if (!fig) return 380;
+      var gap = parseFloat(getComputedStyle(strip).columnGap || getComputedStyle(strip).gap) || 24;
+      return fig.getBoundingClientRect().width + gap;
+    };
+    var page = function (dir) {
+      strip.scrollBy({ left: dir * cardStep(), behavior: reduce ? 'auto' : 'smooth' });
+    };
+    if (prev && next) {
+      prev.addEventListener('click', function () { page(-1); });
+      next.addEventListener('click', function () { page(1); });
+    }
+    var sync = function () {
+      var max = strip.scrollWidth - strip.clientWidth;
+      if (prev && next) {
+        prev.disabled = strip.scrollLeft <= 4;
+        next.disabled = strip.scrollLeft >= max - 4;
+      }
+      if (fill && max > 0) {
+        var visible = strip.clientWidth / strip.scrollWidth;
+        var pos = strip.scrollLeft / max;
+        fill.style.width = (visible * 100).toFixed(2) + '%';
+        fill.style.transform = 'translateX(' + (pos * (100 / visible - 100)).toFixed(2) + '%)';
+      }
+    };
+    strip.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+    strip.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); page(1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); page(-1); }
+    });
+  }
 
   /* Gentle parallax on the two photo bands. Small amplitude, transform only. */
   var plx = Array.prototype.slice.call(document.querySelectorAll('.endorse-bg, .vol-bg'));
