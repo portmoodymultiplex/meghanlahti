@@ -61,7 +61,12 @@
 .rec[data-status="complete"] .rec-status { color: var(--sage); background: var(--sage-pale); }
 .rec[data-status="planning"] .rec-status { color: var(--rose-deep); background: var(--rose-pale); }
 .rec[data-status="planning"] .rec-status { color: var(--taupe); background: var(--cream-deep); }
-.rec-desc { font-size: 16px; color: var(--slate); line-height: 1.68; margin-top: 9px; max-width: 72ch; }
+.rec-lead { display: flex; align-items: center; gap: 13px; min-width: 0; }
+.rec-icon { flex-shrink: 0; width: 22px; height: 22px; display: inline-flex; }
+.rec-icon svg { width: 100%; height: 100%; display: block; }
+.rec-icon.done { color: var(--rose-deep); }
+.rec-icon.progress { color: var(--slate); }
+.rec-desc { font-size: 16px; color: var(--slate); line-height: 1.68; margin-top: 9px; max-width: 72ch; padding-left: 35px; }
 .rec[hidden], .cat[hidden] { display: none; }
 
 .attributed { max-width: 780px; margin: 0 auto; }
@@ -138,64 +143,54 @@
       <div class="rec-list">
         <div class="rec" data-status="complete">
           <!-- VERIFY: returning summer 2026 -->
-          <div class="rec-top"><span class="rec-name">The Shoreline Shuttle</span><span class="rec-status">Completed</span></div>
-          <p class="rec-desc">Bringing the shuttle back was a 2022 commitment, and the buses are back on the road.</p>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">The Shoreline Shuttle</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">E-bike and e-scooter program</span><span class="rec-status">Completed</span></div>
-          <p class="rec-desc">A real last-mile option for the trip between transit and home, in place and being used.</p>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">E-bike and e-scooter program</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Multi-use path along St. Johns</span><span class="rec-status">Completed</span></div>
-          <p class="rec-desc">The first stretch is built, with more of it planned as the city grows.</p>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Multi-use path along St. Johns</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="planning">
           <!-- VERIFY: bridge widening status -->
-          <div class="rec-top"><span class="rec-name">Widening the bridge at Barnet and Ioco</span><span class="rec-status">Approved</span></div>
-          <p class="rec-desc">A real traffic problem, with a real plan to take it on. It comes before the St. Johns lane, because order matters.</p>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Widening the bridge at Barnet and Ioco</span></span><span class="rec-status">Approved</span></div>
         </div>
         <div class="rec" data-status="planning">
           <!-- VERIFY: rush-hour lane status -->
-          <div class="rec-top"><span class="rec-name">Rush-hour lane on St. Johns</span><span class="rec-status">In planning</span></div>
-          <p class="rec-desc">Paired with the bridge widening, so it eases the traffic instead of moving it.</p>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon progress" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 20h9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Rush-hour lane on St. Johns</span></span><span class="rec-status">In planning</span></div>
         </div>
       </div>
     </details>
 
     <details class="cat appear" open>
       <summary><span class="cat-title">Places people use</span><span class="cat-toggle" aria-hidden="true"></span></summary>
-      <p class="cat-intro">The kind of community spaces you only really notice when they are not there. Most of these had been talked about for years before this term.</p>
+      <p class="cat-intro">The kind of community spaces you only really notice when they are not there.</p>
       <div class="rec-list">
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">The new boardwalk</span><span class="rec-status">Completed</span></div>
-          <p class="rec-desc">Built, open, and used every day, from morning runners to families on a Saturday.</p>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">The new boardwalk</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
           <!-- VERIFY: completion + naming -->
-          <div class="rec-top"><span class="rec-name">Inlet Field, named Bob Favelle Field</span><span class="rec-status">Completed</span></div>
-          <p class="rec-desc">Finished after years of waiting, and named for a long-serving, dedicated member of the community.</p>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Inlet Field, named Bob Favelle Field</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="planning">
           <!-- VERIFY: "ground broke in 2024" if date used publicly -->
-          <div class="rec-top"><span class="rec-name">The new field house</span><span class="rec-status">Under construction</span></div>
-          <p class="rec-desc">In planning for years, ground has broken, and it is now being built.</p>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon progress" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m15 12-8.5 8.5a2.12 2.12 0 1 1-3-3L12 9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.64 15 22 10.64" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="m20.91 11.7-1.25-1.25c-.6-.6-.93-1.4-.93-2.25v-.86L16.01 4.6a5.56 5.56 0 0 0-3.94-1.64H9l.92.82A6.18 6.18 0 0 1 12 8.4v1.56l2 2h.86c.85 0 1.65.33 2.25.93l1.25 1.25" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">The new field house</span></span><span class="rec-status">Under construction</span></div>
         </div>
         <div class="rec" data-status="planning">
-          <div class="rec-top"><span class="rec-name">Kyle Centre redevelopment, Phase 2</span><span class="rec-status">In planning</span></div>
-          <p class="rec-desc">The next phase of the redevelopment.</p>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon progress" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 20h9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Kyle Centre redevelopment, Phase 2</span></span><span class="rec-status">In planning</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Basketball Courts</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Basketball Courts</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Pickleball Courts</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Pickleball Courts</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Community Gardens</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Community Gardens</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="planning">
-          <div class="rec-top"><span class="rec-name">Civic daycare facility</span><span class="rec-status">In planning</span></div>
-          <p class="rec-desc">A new civic daycare to expand childcare in the community, approved and in planning for the next term.</p>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon progress" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 20h9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Civic daycare facility</span></span><span class="rec-status">In planning</span></div>
         </div>
       </div>
     </details>
@@ -205,17 +200,14 @@
       <p class="cat-intro">A lot of the most important work in city government is invisible until you do not have it. These pieces make the next decade easier to manage.</p>
       <div class="rec-list">
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Council Strategic Plan</span><span class="rec-status">Completed</span></div>
-          <p class="rec-desc">A shared plan for the term, agreed to by nearly every member of Council and followed through: reliable core services, healthy community development, a resilient natural environment, and a prosperous community.</p>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Council Strategic Plan</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Land Management Strategy</span><span class="rec-status">Completed</span></div>
-          <p class="rec-desc">A first for Port Moody. It sets a plan for how city-owned land is managed, instead of deciding one parcel at a time.</p>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Land Management Strategy</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="planning">
           <!-- VERIFY: relationship-repair wording; school district kept out of public copy pending Meghan's approval to name it. -->
-          <div class="rec-top"><span class="rec-name">Rebuilt working relationships</span><span class="rec-status">Ongoing</span></div>
-          <p class="rec-desc">Relationships with the business community, non-profits, neighbouring municipalities, and community partners were put back on solid ground.</p>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon progress" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 3v6h-6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 21v-6h6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 9a7.5 7.5 0 0 1 12.9-2.6L21 9M3 15l3.6 2.6A7.5 7.5 0 0 0 19.5 15" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Rebuilt working relationships</span></span><span class="rec-status">Ongoing</span></div>
         </div>
       </div>
     </details>
@@ -225,12 +217,10 @@
       <p class="cat-intro">Council decisions are better when more people are part of them, especially the voices that usually get missed.</p>
       <div class="rec-list">
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Two Youth Summits</span><span class="rec-status">Completed</span></div>
-          <p class="rec-desc">The youth voice brought directly into Council chambers, twice, and something Meghan wants to keep doing.</p>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Two Youth Summits</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="planning">
-          <div class="rec-top"><span class="rec-name">Arts and Business Council</span><span class="rec-status">Underway</span></div>
-          <p class="rec-desc">The Mayor's Task Force on Arts and Business is becoming an arm's-length council that brings the two communities together, with city support to help it start.</p>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon progress" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.9"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Arts and Business Council</span></span><span class="rec-status">Underway</span></div>
         </div>
       </div>
     </details>
@@ -239,52 +229,52 @@
       <summary><span class="cat-title">Plans, strategies and bylaws</span><span class="cat-toggle" aria-hidden="true"></span></summary>
       <div class="rec-list">
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Industrial Land Strategy</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Industrial Land Strategy</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Official Community Plan</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Official Community Plan</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Asset Management Investment Plan</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Asset Management Investment Plan</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Tree Protection Bylaw</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Tree Protection Bylaw</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Urban Forest Management Strategy</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Urban Forest Management Strategy</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Natural Asset Management Strategy</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Natural Asset Management Strategy</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Guidelines for Respectful Dialogue and Civic Discourse</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Guidelines for Respectful Dialogue and Civic Discourse</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Old Orchard Master Plan</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Old Orchard Master Plan</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Rocky Point Master Plan</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Rocky Point Master Plan</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Parkland Strategy</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Parkland Strategy</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Parks and Recreation Master Plan</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Parks and Recreation Master Plan</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Recreation Facilities Study</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Recreation Facilities Study</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Trail Network Plan</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Trail Network Plan</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Inclusionary Zoning Policy</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Inclusionary Zoning Policy</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">ACC Bylaw</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">ACC Bylaw</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Bonus Density Policy</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Bonus Density Policy</span></span><span class="rec-status">Completed</span></div>
         </div>
       </div>
     </details>
@@ -293,19 +283,19 @@
       <summary><span class="cat-title">Mayor-Led Initiatives and Public Engagement</span><span class="cat-toggle" aria-hidden="true"></span></summary>
       <div class="rec-list">
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Mayor&rsquo;s Task Force on Arts and Business</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Mayor&rsquo;s Task Force on Arts and Business</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Mayor&rsquo;s Town Hall on Snow Removal</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Mayor&rsquo;s Town Hall on Snow Removal</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Mayor&rsquo;s Town Hall on Parks Expansion</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Mayor&rsquo;s Town Hall on Parks Expansion</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Mayor&rsquo;s Town Hall on the Official Community Plan</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Mayor&rsquo;s Town Hall on the Official Community Plan</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Mayor&rsquo;s Task Force on Respectful Dialogue</span><span class="rec-status">Completed</span></div>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Mayor&rsquo;s Task Force on Respectful Dialogue</span></span><span class="rec-status">Completed</span></div>
         </div>
       </div>
     </details>
@@ -315,12 +305,10 @@
       <p class="cat-intro">Being smart with money is less about cutting and more about asking whether there is another way first.</p>
       <div class="rec-list">
         <div class="rec" data-status="complete">
-          <div class="rec-top"><span class="rec-name">Pay parking in the busiest areas</span><span class="rec-status">Completed</span></div>
-          <p class="rec-desc">Not everyone was happy about it. It brought in revenue so services did not have to be cut, and it took some pressure off parking at the waterfront at the same time.</p>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Pay parking in the busiest areas</span></span><span class="rec-status">Completed</span></div>
         </div>
         <div class="rec" data-status="planning">
-          <div class="rec-top"><span class="rec-name">Conservative, audited budgets</span><span class="rec-status">Ongoing</span></div>
-          <p class="rec-desc">Spending decisions that look for revenue and savings before reaching for the service axe, and that plan for the long-term cost of maintaining what the city owns.</p>
+          <div class="rec-top"><span class="rec-lead"><span class="rec-icon progress" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 3v6h-6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 21v-6h6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 9a7.5 7.5 0 0 1 12.9-2.6L21 9M3 15l3.6 2.6A7.5 7.5 0 0 0 19.5 15" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="rec-name">Conservative, audited budgets</span></span><span class="rec-status">Ongoing</span></div>
         </div>
       </div>
     </details>
