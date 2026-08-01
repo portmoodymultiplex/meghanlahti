@@ -15,17 +15,18 @@ README-deploy.md                        <- these notes           optional, does 
 
 Both `netlify.toml` and `netlify/` must sit at the **root of the repo**, not inside a subfolder, unless you have set a custom base directory in Netlify.
 
-## 1. Set the password
+## 1. The password
 
-In Netlify: **Site configuration → Environment variables → Add a variable**
+The password is **canvasscrew123** and it already works. No configuration needed, just deploy.
 
-- Key: `CANVASS_PASSWORD`
-- Value: whatever you choose
-- Scopes: leave as all
+It is checked on Netlify's servers, so it never reaches the browser and cannot be read from page source. It is written in `netlify/edge-functions/canvass-gate.ts` as a fallback default.
 
-The password lives only in Netlify, never in the repo and never in page source. Change it any time without a redeploy.
+**If this repo is public on GitHub, change that.** Anything committed to git stays in the history forever, even after you delete it. To move the password out of the repo:
 
-**Note:** if `CANVASS_PASSWORD` is not set, the gate stays open rather than locking everyone out. That is deliberate, so a missed env var never blocks a Saturday canvass. Set it before you share the link.
+1. In Netlify: **Site configuration → Environment variables → Add a variable**, key `CANVASS_PASSWORD`, value `canvasscrew123`.
+2. Delete the `DEFAULT_PASSWORD` line from the edge function and commit.
+
+The environment variable always wins over the default, so you can do step 1 now and step 2 whenever.
 
 ## 2. Push and deploy
 
@@ -40,12 +41,6 @@ The edge function runs automatically on any request to `/canvasserteam` or anyth
 ## Do not add it to robots.txt
 
 `robots.txt` is a public file. Listing `/canvasserteam` there is the fastest way to tell someone exactly where to look. The page already carries `noindex, nofollow` in a meta tag, and `netlify.toml` adds the same as an HTTP header, which is what well-behaved crawlers obey. Just make sure the page is not in your sitemap and is not linked from any public page on the site.
-
-## About the password
-
-The password is in the volunteer welcome message and the group chat description. It is **not** written in this repo on purpose. If this repository is ever public, or becomes public later, anything committed here is permanently in the git history even after you delete it.
-
-Set it only in the Netlify environment variable. That is the one place it belongs.
 
 ## If you want to revoke everyone at once
 

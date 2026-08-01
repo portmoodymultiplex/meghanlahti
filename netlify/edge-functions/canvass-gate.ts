@@ -7,6 +7,11 @@ import type { Context } from "@netlify/edge-functions";
 const COOKIE = "lahti_canvass";
 const MAX_AGE = 60 * 60 * 24 * 60; // 60 days
 
+// The volunteer password. Works out of the box with no configuration.
+// To change it without touching the repo, set CANVASS_PASSWORD in
+// Netlify > Site configuration > Environment variables. That value wins.
+const DEFAULT_PASSWORD = "canvasscrew123";
+
 async function tokenFor(password: string): Promise<string> {
   const data = new TextEncoder().encode("lahti2026:" + password);
   const digest = await crypto.subtle.digest("SHA-256", data);
@@ -21,8 +26,7 @@ function safeEqual(a: string, b: string): boolean {
 }
 
 export default async (request: Request, context: Context) => {
-  const password = Deno.env.get("CANVASS_PASSWORD") ?? "";
-  if (!password) return context.next(); // not configured yet, stay open rather than lock everyone out
+  const password = Deno.env.get("CANVASS_PASSWORD") || DEFAULT_PASSWORD;
 
   const expected = await tokenFor(password);
   const url = new URL(request.url);
@@ -92,12 +96,12 @@ button:hover{background:#A8628A}
   <div class="kick">Meghan Lahti 2026 &middot; Volunteers</div>
   <h1>Canvasser Hub</h1>
   <p>This area is for our canvassing team. Enter the password from your welcome message or the group chat.</p>
-  ${failed ? '<div class="err">That password did not work. Check the group chat, or email anthony@lahti2026.com.</div>' : ""}
+  ${failed ? '<div class="err">That password did not work. Check the group chat, or email sheri@lahti2026.com.</div>' : ""}
   <form method="POST">
     <label for="p">Password</label>
     <input id="p" name="password" type="password" autocomplete="current-password" autofocus required>
     <button type="submit">Enter</button>
   </form>
-  <p class="foot">Not a volunteer yet and want to help? Email <a href="mailto:anthony@lahti2026.com">anthony@lahti2026.com</a>.</p>
+  <p class="foot">Not a volunteer yet and want to help? Email <a href="mailto:sheri@lahti2026.com">sheri@lahti2026.com</a>.</p>
 </div></body></html>`;
 }
