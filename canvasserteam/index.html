@@ -121,6 +121,8 @@ summary:hover{color:var(--rose-deep)}
 .ans .warn p{margin:0;font-size:16px}
 .ans .ok{background:var(--sage-pale);border-left:4px solid var(--sage);padding:13px 16px;border-radius:0 10px 10px 0;margin-bottom:13px}
 .ans .ok p{margin:0;font-size:16px}
+.ans .note-inline{background:var(--cream);border-left:4px solid var(--ink);padding:13px 16px;
+  border-radius:0 10px 10px 0;margin-bottom:13px;font-size:16px}
 .path{display:inline-block;background:var(--cream);border:1px solid var(--line);border-radius:7px;
   padding:2px 9px;font-size:15.5px;font-weight:650;color:var(--ink);white-space:nowrap}
 .ph{background:var(--rose-pale);border:1px dashed var(--rose-deep);border-radius:6px;padding:1px 8px;
@@ -314,7 +316,8 @@ m388 -475 c0 -2 -7 -6 -15 -10 -8 -3 -15 -1 -15 4 0 6 7 10 15 10 8 0 15 -2
     <p class="sub">The app tells you which doors to knock and remembers what happened. That is genuinely all of it.</p>
 
     <div class="steps">
-      <div class="st"><div class="ck"><svg viewBox="0 0 24 24"><polyline points="4,12.5 9.5,18 20,6.5"/></svg></div><div><b>Sync before you start</b><span>Settings, the cog at the bottom, then <strong>Sync now</strong>. Wait for the green tick.</span></div></div>
+      <div class="st"><div class="ck"><svg viewBox="0 0 24 24"><polyline points="4,12.5 9.5,18 20,6.5"/></svg></div><div><b>Sync before you start</b><span>Tap the <strong>cog labelled Settings</strong> at the far right of the bottom bar, then tap <strong>Sync now</strong>. Wait for the green tick.</span></div></div>
+      <div class="st"><div class="ck"><svg viewBox="0 0 24 24"><polyline points="4,12.5 9.5,18 20,6.5"/></svg></div><div><b>Switch to the map</b><span><strong>Interaction opens as a list.</strong> Tap the <strong>lines button</strong> at the top right, then tap <strong>Map</strong>.</span></div></div>
       <div class="st"><div class="ck"><svg viewBox="0 0 24 24"><polyline points="4,12.5 9.5,18 20,6.5"/></svg></div><div><b>Find the purple</b><span>That shaded area is your turf. Grey pins are houses nobody has spoken to yet.</span></div></div>
       <div class="st"><div class="ck"><svg viewBox="0 0 24 24"><polyline points="4,12.5 9.5,18 20,6.5"/></svg></div><div><b>Knock, then tap the pin and tap a status</b><span>That is the whole job for most doors. Two seconds, no form.</span></div></div>
       <div class="st"><div class="ck"><svg viewBox="0 0 24 24"><polyline points="4,12.5 9.5,18 20,6.5"/></svg></div><div><b>Log the real conversations properly</b><span>Tap <strong>&gt;</strong> on the card, then <strong>Log Interaction</strong>, then <strong>Save</strong>.</span></div></div>
@@ -344,33 +347,38 @@ m388 -475 c0 -2 -7 -6 -15 -10 -8 -3 -15 -1 -15 4 0 6 7 10 15 10 8 0 15 -2
 
   <section class="blk" id="screens">
     <div class="rule"></div>
-    <h2>The four screens you will use</h2>
+    <h2>The five screens you will use</h2>
     <p class="sub">Everything else in the app is optional. These are the ones that matter.</p>
 
     <div class="shots">
       <div class="shot">
+        <img src="img/viewswitch.png" alt="The Houses list, with the View by button circled, and the View by menu with Map highlighted">
+        <div class="lbl">1 &middot; Switch to the map</div>
+        <p><strong>Interaction opens as a list, not a map.</strong> Tap the <strong>lines button</strong> top right, then <strong>Map</strong>. It remembers your choice.</p>
+      </div>
+      <div class="shot">
         <img src="img/map.png" alt="Map view with the turf shaded purple">
-        <div class="lbl">1 &middot; The map</div>
+        <div class="lbl">2 &middot; The map</div>
         <p>Purple is your turf. Grey pins are houses nobody has spoken to yet. Coloured pins are already logged.</p>
       </div>
       <div class="shot">
         <img src="img/statuses.png" alt="The seven statuses on the house card">
-        <div class="lbl">2 &middot; Tap a pin</div>
+        <div class="lbl">3 &middot; Tap a pin</div>
         <p>The card slides up with all seven statuses. One tap logs it. This is most of what you will do all day.</p>
       </div>
       <div class="shot">
         <img src="img/interaction.png" alt="The interaction form">
-        <div class="lbl">3 &middot; Real conversations</div>
+        <div class="lbl">4 &middot; Real conversations</div>
         <p>Status, then person, then what you learned. <strong>Save</strong> is top right and nothing records until you tap it.</p>
       </div>
       <div class="shot">
         <img src="img/turf.png" alt="Turf card showing counts by status">
-        <div class="lbl">4 &middot; Your score</div>
+        <div class="lbl">5 &middot; Your score</div>
         <p>Tap the purple for your turf code and a live count. <strong>Not Contacted</strong> is the number that should be going down.</p>
       </div>
     </div>
 
-    <div class="note"><strong>One thing to never tap:</strong> "Delete Account Access" in Settings. It sits two rows above Log Out and it permanently removes your access. To close the app, use <strong>Log Out</strong>.</div>
+    <div class="note"><strong>One thing to never tap:</strong> "Delete Account Access" in Settings. It sits directly above Log Out and it permanently removes your access. To close the app, use <strong>Log Out</strong>.</div>
   </section>
 
   <section class="blk" id="watch">
@@ -436,16 +444,24 @@ m388 -475 c0 -2 -7 -6 -15 -10 -8 -3 -15 -1 -15 4 0 6 7 10 15 10 8 0 15 -2
     <h2>The app is not doing what I expect</h2>
 
     <details open><summary>I cannot see my assignment, or the map is empty</summary><div class="ans">
-      <p>Work these in order.</p>
+      <p><strong>If you have not been given a turf yet, a blank Interaction list is correct.</strong> Nothing is broken. Your houses appear once the office assigns you and you sync. If you are testing the app before your first shift, empty is what you should expect to see.</p>
+      <p>If you have been assigned and still see nothing, work these in order.</p>
       <ol>
-        <li>Open <span class="path">Settings</span>, the cog on the bottom bar, and tap <strong>Sync now</strong>. Wait for the green tick, then go back to <strong>Interaction</strong>.</li>
-        <li>While you are in Settings, check <strong>Auto Sync</strong> is on. Sync manually anyway, every shift.</li>
+        <li>Tap the <strong>cog labelled Settings</strong> at the far right of the bottom bar, then tap <strong>Sync now</strong>. Wait for the green tick, then go back to <strong>Interaction</strong>.</li>
+        <li>While you are still in Settings, check <strong>Auto Sync</strong> is on. Sync manually anyway, every shift.</li>
         <li><strong>Zoom out.</strong> Turf is small on a city map and very easy to scroll past.</li>
         <li>Check <strong>Account</strong> reads <strong>Meghan for Mayor 2026</strong> and <strong>Campaign Effort</strong> reads <strong>Meghan Campaign 2026</strong>. If either is wrong, tap it and switch.</li>
-        <li>Still nothing? You have not been assigned a turf. Message your shift lead.</li>
+        <li>Still nothing? Message your shift lead.</li>
       </ol>
     </div></details>
 
+
+    <details><summary>The app opened as a list of addresses, where is the map?</summary><div class="ans">
+      <p><strong>That is normal.</strong> Interaction opens in <strong>Houses</strong> mode, a list, not the map. Nothing is wrong.</p>
+      <p>Tap the <strong>button with three lines</strong> in the top right corner, beside the circled <strong>i</strong>. A <strong>View by</strong> menu slides up. Tap <strong>Map</strong>.</p>
+      <p>The app remembers your choice, so you only do this once. The same menu is how you get back to the list, and it is also where <strong>Streets</strong> lives, which some people prefer for working a block in order.</p>
+      <img src="img/viewswitch.png" alt="The Houses list with the View by button circled, and the View by menu with Map highlighted" style="width:100%;max-width:520px;border-radius:12px;border:1px solid var(--line);margin-top:6px">
+    </div></details>
 
     <details><summary>What is the Planner tab for?</summary><div class="ans">
       <p><strong>Your schedule.</strong> Scheduled appointments and assignments from the office appear in the Planner. Check it before a shift, and again whenever your shift lead says something has been added.</p>
@@ -455,13 +471,14 @@ m388 -475 c0 -2 -7 -6 -15 -10 -8 -3 -15 -1 -15 4 0 6 7 10 15 10 8 0 15 -2
 
     <details><summary>I have no cell signal on this street</summary><div class="ans">
       <p>Keep knocking. The app works offline and holds your interactions on the phone.</p>
-      <p>When you are back on signal, open <span class="path">Settings</span> and tap <strong>Sync now</strong>. That sends your work up and pulls the team's down in one go. Do it before you close the app and again before you go home.</p>
+      <p>When you are back on signal, tap the <strong>cog labelled Settings</strong> at the far right of the bottom bar, then tap <strong>Sync now</strong>. That sends your work up and pulls the team's down in one go. Do it before you close the app and again before you go home.</p>
       <div class="warn"><p><strong>Never delete the app or clear its data while you have interactions that have not synced.</strong> They are gone permanently and there is no way for the office to recover them.</p></div>
     </div></details>
 
     <details><summary>The map does not know where I am</summary><div class="ans">
-      <p><strong>iPhone.</strong> Settings, then Ecanvasser, then Location. Choose <strong>While Using the App</strong> and turn on <strong>Precise Location</strong>. Then turn <strong>Low Power Mode off</strong>.</p>
-      <p><strong>Android.</strong> Settings, Apps, Ecanvasser, Permissions, Location. Choose <strong>Allow only while using the app</strong> and enable <strong>Use precise location</strong>. Then Settings, Battery, Battery Optimization, find Ecanvasser and set it to <strong>Don't optimize</strong>.</p>
+      <p class="note-inline">These steps are in your <strong>phone's</strong> Settings app, not the cog inside Ecanvasser. Close Ecanvasser first.</p>
+      <p><strong>iPhone.</strong> Open your phone's Settings app. Scroll to <strong>Ecanvasser</strong>, tap it, tap <strong>Location</strong>. Choose <strong>While Using the App</strong> and turn on <strong>Precise Location</strong>. Then, back in your phone's Settings, turn <strong>Low Power Mode off</strong>.</p>
+      <p><strong>Android.</strong> Open your phone's Settings app. Tap <strong>Apps</strong>, then <strong>Ecanvasser</strong>, then <strong>Permissions</strong>, then <strong>Location</strong>. Choose <strong>Allow only while using the app</strong> and enable <strong>Use precise location</strong>. Then, back in your phone's Settings, tap <strong>Battery</strong>, then <strong>Battery Optimization</strong>, find Ecanvasser and set it to <strong>Don't optimize</strong>.</p>
       <p>If it is still wrong: step out from under trees and awnings, hold the phone still for a few seconds, open Google Maps or Apple Maps until it finds you accurately, then go back to Walk. Restarting the phone helps more often than it should. Check the app store for an update, Ecanvasser fixes GPS issues regularly.</p>
     </div></details>
 
@@ -502,7 +519,7 @@ m388 -475 c0 -2 -7 -6 -15 -10 -8 -3 -15 -1 -15 4 0 6 7 10 15 10 8 0 15 -2
 
 
     <details><summary>What must I never tap?</summary><div class="ans">
-      <div class="warn"><p><strong>"Delete Account Access"</strong> in the Settings menu, two rows above Log Out. It sounds harmless. It permanently removes your access to the campaign account and there is no undo. If you just want to close the app, use <strong>Log Out</strong>.</p></div>
+      <div class="warn"><p><strong>"Delete Account Access"</strong> in the Settings menu, directly above Log Out. It sounds harmless. It permanently removes your access to the campaign account and there is no undo. If you just want to close the app, use <strong>Log Out</strong>.</p></div>
       <p>Also avoid Clear data, Clear storage, and deleting the app while you have unsynced interactions.</p>
     </div></details>
   </section>
@@ -599,7 +616,7 @@ m388 -475 c0 -2 -7 -6 -15 -10 -8 -3 -15 -1 -15 4 0 6 7 10 15 10 8 0 15 -2
     <details><summary>What do I do at the end of my shift?</summary><div class="ans">
       <ol>
         <li>Check every door you knocked is logged. Walk back through the map looking for grey pins on streets you finished.</li>
-        <li>Open <span class="path">Settings</span> and tap <strong>Sync now</strong>. Wait for the green tick.</li>
+        <li>Tap the <strong>cog labelled Settings</strong> at the far right of the bottom bar, then tap <strong>Sync now</strong>. Wait for the green tick.</li>
         <li>Tap the purple turf and note your <strong>Not Contacted</strong> number.</li>
         <li>Message your shift lead that you are done, where you finished, and that number.</li>
       </ol>
