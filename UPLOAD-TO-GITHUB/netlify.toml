@@ -1,0 +1,20 @@
+# Merge this into your existing netlify.toml, or add the file if you do not have one.
+
+# Keep the edge function's source from being served as a static file.
+[[redirects]]
+  from = "/netlify/*"
+  to = "/"
+  status = 404
+  force = true
+
+[[headers]]
+  for = "/canvasserteam"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/canvasserteam/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    Cache-Control = "no-store"
